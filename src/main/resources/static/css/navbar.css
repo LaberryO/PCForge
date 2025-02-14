@@ -1,0 +1,20 @@
+.lb_side-menu {
+	z-index: 2;
+	overflow-x: hidden;
+	transition: 0.3s;
+	padding-top: 60px;
+	background-color: rgb(207, 207, 207);
+}
+
+.lb_side-menu.lb_disabled {
+	width: 0;
+}
+
+.lb_side-menu.lb_active {
+	width: 300px;
+}
+
+.lb_overlay {
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1;
+}
