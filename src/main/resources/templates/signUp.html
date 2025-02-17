@@ -1,32 +1,38 @@
-<html lang="en" layout:fragment="~{layout}">
-    <div layout:fragment="content" class="container mt-5">
-        <div class="row">
-            <div class="col mt-5 text-center">
-                <h2>회원가입</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <form action="" th:object="${UserCreateForm}" method="post">
-                    <div class="mb-3">
-                        <label for="id" class="form-label">회원 아이디</label>
-                        <input type="text" class="form-control" id="id" name="id">
-                    </div>
-                    <div class="mb-3">
-                        <label for="pw1" class="form-label">비밀번호</label>
-                        <input type="password" class="form-control" id="pw1" name="password" >
-                    </div>
-                    <div class="mb-3">
-                        <label for="pw2" class="form-label">비밀번호 확인</label>
-                        <input type="password" class="form-control" id="pw2" name="passwordConfirm">
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">이메일</label>
-                        <input type="email" class="form-control" id="email" name="email" >
-                    </div>
-                    <button type="submit" class="btn btn-primary">가입</button>
-                </form>
-            </div>
-        </div>
-    </div>
+<html lang="en" layout:decorate="~{layout}">
+<div layout:fragment="content" class="container mt-5">
+	<div class="row">
+		<div class="col mt-5 text-center">
+			<h2>회원가입</h2>
+
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<form th:action="@{/user/signUp}" th:object="${userCreateForm}" method="post">
+				<!-- 첫 번째 오류만 출력 -->
+				<div th:if="${#fields.hasAnyErrors()}" class="alert alert-danger mt-5 text-center">
+					<span th:text="${#fields.errors()[0]}"></span>
+				</div>
+				<div class="mb-3">
+					<label for="id" class="form-label">회원 아이디</label>
+					<input type="text" class="form-control" th:field="*{username}">
+				</div>
+				<div class="mb-3">
+					<label for="password1" class="form-label">비밀번호</label>
+					<input type="password" class="form-control" th:field="*{password1}">
+				</div>
+				<div class="mb-3">
+					<label for="password2" class="form-label">비밀번호 확인</label>
+					<input type="password" class="form-control" th:field="*{password2}">
+				</div>
+				<div class="mb-3">
+					<label for="email" class="form-label">이메일</label>
+					<input type="email" class="form-control" th:field="*{email}">
+				</div>
+				<button type="submit" class="btn btn-primary">가입</button>
+			</form>
+		</div>
+	</div>
+</div>
+
 </html>
