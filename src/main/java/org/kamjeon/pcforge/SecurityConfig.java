@@ -16,7 +16,8 @@ public class SecurityConfig {
 
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.authorizeHttpRequests(authorize -> authorize.requestMatchers(new AntPathRequestMatcher("/**")).permitAll())
+		// 특정 Url은 보안을 거치지 않음.
+		http.authorizeHttpRequests(authorize -> authorize.requestMatchers("/css/**", "/js/**", "/images/**", "/**").permitAll())
 				// h2-console은 보안 무시
 				.csrf(csrf -> csrf.ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**")))
 				// h2-console의 컨텐츠는 항상 표시
@@ -24,5 +25,7 @@ public class SecurityConfig {
 						new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN)));
 		return http.build();
 	}
+	
+	
 
 }

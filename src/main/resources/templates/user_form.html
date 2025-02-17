@@ -1,0 +1,82 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" class="container">
+	<!-- User Form -->
+	<div class="row vh-100 position-relative">
+		<div class="col-8 col-xl-5 position-absolute top-50 start-50 translate-middle">
+			<div class="card">
+				<div class="card-body">
+					<form class="py-3" th:action="@{|/user/${namePage}|}">
+						<!-- Title -->
+						<div class="row my-1">
+							<div class="col">
+								<h4 class="card-title text-center fw-bold">
+									[[${titlePage}]]
+								</h4>
+							</div>
+						</div>
+						<!-- Field -->
+						<div class="row my-3">
+							<div class="col">
+								<!-- ID -->
+								<div class="row my-3">
+									<div class="col-md-6 px-4 d-flex align-items-center">
+										<label class="" for="">
+											사용자명
+										</label>
+									</div>
+									<div class="col-md-6">
+										<input class="form-control" type="text" />
+									</div>
+								</div>
+								<!-- PW -->
+								<div class="row my-3">
+									<div class="col-md-6 px-4 d-flex align-items-center">
+										<label class="" for="">
+											비밀번호
+										</label>
+									</div>
+									<div class="col-md-6">
+										<input class="form-control" type="password" />
+									</div>
+								</div>
+								<!-- ifRegister -->
+								<th:block th:if="${ifRegister == true}">
+									<div class="row my-3">
+										<div class="col-md-6 px-4 d-flex align-items-center">
+											<label class="" for="">
+												비밀번호 확인
+											</label>
+										</div>
+										<div class="col-md-6">
+											<input class="form-control" type="password" />
+										</div>
+									</div>
+									<div class="row my-3">
+										<div class="col-md-6 px-4 d-flex align-items-center">
+											<label class="" for="">
+												이메일
+											</label>
+										</div>
+										<div class="col-md-6">
+											<input class="form-control" type="email" />
+										</div>
+									</div>
+								</th:block>
+							</div>
+						</div>
+						<!-- Button -->
+						<div class="row mt-5">
+							<div class="col d-flex justify-content-center align-items-center">
+								<a class="btn btn-primary" href="javascript:void(0)">
+									[[${btnPage}]]
+								</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</html>

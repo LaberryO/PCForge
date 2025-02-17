@@ -1,13 +1,12 @@
-<nav th:fragment="navbarFragment" class="navbar fixed-top navbar-expand-lg shadow-sm px-4 mb-5 bg-body-tertiary">
-	<link layout:fragment="style" rel="stylesheet" th:href="@{css/navbar.css}"></link>
+<nav th:fragment="navbarFragment" class="navbar fixed-top navbar-expand-lg shadow-sm px-4 mb-5 bg-body-tertiary" id="lb_navbar">
 	<!-- Header  -->
 	<div class="container-fluid">
 		<a class="navbar-brand" href="javascript:void(0)" id="navbar-menu">
 			<i class="bi bi-list fs-2"></i>
 		</a>
 
-		<a class="btn btn-outline-light" th:href="@{/user/signUp}">
-			회원가입
+		<a class="btn btn-outline-primary" th:if="${hideNavbar == null or !hideNavbar}" th:href="@{/user/sign-in}">
+			로그인
 		</a>
 	</div>
 	<!-- SideMenu -->
@@ -16,26 +15,4 @@
 	</div>
 	<!-- Overlay -->
 	<div class="lb_overlay d-none w-100 h-100 position-fixed top-0 start-0" id="overlay"></div>
-	<script layout:fragment="script">
-		const btnMenu = document.getElementById("navbar-menu");
-		const menu = document.getElementById("side-menu");
-		const overlay = document.getElementById("overlay");
-
-		function smOpen() {
-			overlay.classList.remove("d-none");
-			overlay.classList.add("d-block");
-			menu.classList.remove("lb_disabled");
-			menu.classList.add("lb_active");
-		}
-
-		function smClose() {
-			overlay.classList.remove("d-block");
-			overlay.classList.add("d-none");
-			menu.classList.remove("lb_active");
-			menu.classList.add("lb_disabled");
-		}
-		
-		btnMenu.addEventListener("click", smOpen)
-		overlay.addEventListener("click", smClose)
-	</script>
 </nav>
