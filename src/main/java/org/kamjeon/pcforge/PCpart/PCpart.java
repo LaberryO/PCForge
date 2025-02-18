@@ -16,6 +16,7 @@ public class PCpart {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	
 	private Long cpu_id;
 	
 	private Long ram_id;
