@@ -1,0 +1,66 @@
+<html layout:decorate="~{layout}">
+<th:block layout:fragment="style">
+	<link rel="stylesheet" th:href="@{/css/forge.css}" />
+</th:block>
+<div layout:fragment="content" class="container vh-100 pb-5" id="forgeContent">
+	<div class="row h-100">
+		<!-- Target Left -->
+		<div class="col-4 me-2">
+			<div class="card h-100">
+				<div class="card-body">
+					<!-- Image -->
+					<div class="row lb_height-30">
+						<div class="col">
+							상단
+						</div>
+					</div>
+					<!-- Graph -->
+					<div class="row lb_height-70 border-top">
+						<div class="col">
+							하단
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Target Right -->
+		<div class="col-4 ms-2">
+			<div class="card h-100">
+				<div class="card-body">
+
+				</div>
+			</div>
+		</div>
+		<!-- Feature -->
+		<div class="col-3 ms-auto">
+			<div class="row h-100">
+				<div class="col d-flex flex-column">
+					<!-- Pick the PCpart -->
+					<div class="row h-50">
+						<div class="col">
+							<div class="card h-100">
+								<div class="card-body">
+									123
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Action -->
+					<div class="row lb_height-40 mt-auto">
+						<div class="col">
+							<div class="card h-100">
+								<div class="card-body">
+									123
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script layout:fragment="script" th:src="@{/js/forge.js}"></script>
+
+</html>

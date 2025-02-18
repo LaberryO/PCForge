@@ -15,10 +15,10 @@ public class UserCreateForm {
 	private String username;
 	
 	@NotBlank(message="비밀번호는 필수 사항입니다.")
-	private String password1;
+	private String password;
 	
 	@NotBlank(message="비밀번호 확인은 필수 사항입니다.")
-	private String password2;
+	private String checkPassword;
 	
 	@NotBlank(message="이메일은 필수 사항입니다.")
 	@Email

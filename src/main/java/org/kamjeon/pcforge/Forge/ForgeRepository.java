@@ -1,0 +1,7 @@
+package org.kamjeon.pcforge.Forge;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ForgeRepository extends JpaRepository<Forge, Long> {
+
+}

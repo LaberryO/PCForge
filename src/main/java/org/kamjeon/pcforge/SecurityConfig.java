@@ -15,14 +15,13 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
-	
+
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception  {
 		http.authorizeHttpRequests((authorize) -> authorize.requestMatchers(new AntPathRequestMatcher("/**")).permitAll())
 		.csrf((csrf)->csrf.ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**")))
 		.headers((headers) -> headers.addHeaderWriter(new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN)))
-		.formLogin((formLogin) -> formLogin.loginPage("/user/login").defaultSuccessUrl("/"));
-		
+		.formLogin((formLogin) -> formLogin.loginPage("/user/sign-in").defaultSuccessUrl("/"));
 		return http.build();
 	}
 	
