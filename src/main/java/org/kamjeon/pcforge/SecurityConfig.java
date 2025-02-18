@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -15,17 +17,19 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig {
 
 	@Bean
-	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		// 특정 Url은 보안을 거치지 않음.
-		http.authorizeHttpRequests(authorize -> authorize.requestMatchers("/css/**", "/js/**", "/images/**", "/**").permitAll())
-				// h2-console은 보안 무시
-				.csrf(csrf -> csrf.ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**")))
-				// h2-console의 컨텐츠는 항상 표시
-				.headers(headers -> headers.addHeaderWriter(
-						new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN)));
+	SecurityFilterChain filterChain(HttpSecurity http) throws Exception  {
+		http.authorizeHttpRequests((authorize) -> authorize.requestMatchers(new AntPathRequestMatcher("/**")).permitAll())
+		.csrf((csrf)->csrf.ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**")))
+		.headers((headers) -> headers.addHeaderWriter(new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN)))
+		.formLogin((formLogin) -> formLogin.loginPage("/user/login").defaultSuccessUrl("/"));
+		
 		return http.build();
 	}
 	
 	
+	@Bean
+	PasswordEncoder passwordEncoder() {
+	    return new BCryptPasswordEncoder();
+	}
 
 }
