@@ -1,13 +1,21 @@
-<nav th:fragment="navbarFragment" class="navbar fixed-top navbar-expand-lg shadow-sm px-4 mb-5 bg-body-tertiary" id="lb_navbar">
+<nav th:fragment="navbarFragment" class="navbar fixed-top navbar-expand-lg shadow-sm px-4 mb-5 bg-body-tertiary"
+	id="lb_navbar">
 	<!-- Header  -->
 	<div class="container-fluid">
-		<a class="navbar-brand" href="javascript:void(0)" id="navbar-menu">
+		<a class="navbar-brand lb_ahover" href="javascript:void(0)" id="navbar-menu">
 			<i class="bi bi-list fs-2"></i>
 		</a>
-
-		<a class="btn btn-outline-primary" th:if="${hideNavbar == null or !hideNavbar}" th:href="@{/user/sign-in}">
-			로그인
-		</a>
+		<!-- Authorize -->
+		<th:block sec:authorize="isAuthenticated()">
+			<a class="lb_ahover" href="javascript:void(0)">
+				<i class="bi bi-person-circle text-dark fs-2"></i>
+			</a>
+		</th:block>
+		<th:block sec:authorize="isAnonymous()">
+			<a class="btn btn-outline-primary" th:if="${hideNavbar == null or !hideNavbar}" th:href="@{/user/sign-in}">
+				로그인
+			</a>
+		</th:block>
 	</div>
 	<!-- SideMenu -->
 	<div class="lb_side-menu lb_disabled h-100 position-fixed top-0 start-0" id="side-menu">

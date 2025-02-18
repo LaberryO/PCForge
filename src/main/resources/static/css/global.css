@@ -18,3 +18,19 @@
 	background-color: rgba(0, 0, 0, 0.5);
 	z-index: 1;
 }
+
+.lb_ahover {
+	transition: 0.1s;
+}
+
+.lb_ahover:hover {
+	transform: scale(1.1);
+}
+
+.lb_top-90 {top: 90%;}
+
+.lb_height-70 {height: 70%;}
+
+.lb_height-40 {height: 40%;}
+
+.lb_height-30 {height: 30%;}
