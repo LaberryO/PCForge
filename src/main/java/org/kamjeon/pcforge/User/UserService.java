@@ -2,6 +2,7 @@ package org.kamjeon.pcforge.User;
 
 import java.util.Optional;
 
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +15,14 @@ public class UserService {
 	private final UserRepository userRepository;
 	private final PasswordEncoder passwordEncoder;
 	
-	public void CreateUser(UserCreateForm userCreate) {
+	public SiteUser CreateUser(String name, String email, String password) {
 		SiteUser user = new SiteUser();
-		user.setUserName(userCreate.getUsername());
-		user.setPassword(passwordEncoder.encode(userCreate.getPassword1()));
-		user.setEmail(userCreate.getEmail());
+		user.setUserName(name);
+		user.setPassword(passwordEncoder.encode(password));
+		user.setEmail(email);
 		
 		this.userRepository.save(user);
+		return user;
 	}
 	public SiteUser GetUser(String name) {
 		
