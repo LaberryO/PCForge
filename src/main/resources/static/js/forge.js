@@ -9,6 +9,5 @@ function forgeContent() {
 	console.log("Margin has Updated: ", target.style.paddingTop);
 }
 
-forgeContent();
-
+document.addEventListener("DOMContentLoaded", forgeContent);
 window.addEventListener("resize", forgeContent);
