@@ -31,7 +31,7 @@ public class Comment {
 	private LocalDateTime time;
 	
 	@ManyToOne
-	private Share question;
+	private Share share;
 	
 	@ManyToOne
 	private SiteUser user;

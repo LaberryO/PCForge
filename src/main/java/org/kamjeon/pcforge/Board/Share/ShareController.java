@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 public class ShareController {
 	private final ShareService shareService;
 	
-	//DOTO 나중에 list 구현
+	// TODO 나중에 list 구현
 	@GetMapping("/list")
 	public String list() {
 		
