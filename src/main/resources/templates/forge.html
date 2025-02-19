@@ -1,9 +1,7 @@
 <html layout:decorate="~{layout}">
-<th:block layout:fragment="style">
-	<link rel="stylesheet" th:href="@{/css/forge.css}" />
-</th:block>
-<div layout:fragment="content" class="container vh-100 pb-5" id="forgeContent">
-	<div class="row h-100">
+<div layout:fragment="content" class="container vh-100 d-flex flex-column" id="forgeContent">
+	<!-- Section -->
+	<div class="row flex-grow-1">
 		<!-- Target -->
 		<div class="col-4 me-2">
 			<div class="card h-100">
@@ -37,7 +35,8 @@
 										<div class="col">
 											<div class="input-group">
 												<input type="text" class="form-control" />
-												<a class="input-group-append d-flex align-items-center btn btn-secondary">
+												<a
+													class="input-group-append d-flex align-items-center btn btn-secondary">
 													<i class="bi bi-search"></i>
 												</a>
 											</div>
@@ -45,7 +44,7 @@
 									</div>
 									<!-- Pick -->
 									<div class="row">
-										
+
 									</div>
 								</div>
 							</div>
@@ -63,6 +62,51 @@
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
+	<!-- Footer -->
+	<div class="row text-center py-3">
+		<!-- CPU -->
+		<div class="col">
+			<a href="" class="btn btn-light border-secondary w-100 py-2 px-3">
+				CPU
+			</a>
+		</div>
+		<!-- RAM-->
+		<div class="col">
+			<a href="" class="btn btn-light border-secondary w-100 py-2 px-3">
+				RAM
+			</a>
+		</div>
+		<!-- GPU -->
+		<div class="col">
+			<a href="" class="btn btn-light border-secondary w-100 py-2 px-3">
+				GPU
+			</a>
+		</div>
+		<!-- MotherBoard -->
+		<div class="col">
+			<a href="" class="btn btn-light border-secondary w-100 py-2 px-3">
+				메인보드
+			</a>
+		</div>
+		<!-- Disk -->
+		<div class="col">
+			<a href="" class="btn btn-light border-secondary w-100 py-2 px-3">
+				저장 장치
+			</a>
+		</div>
+		<!-- PowerSupply -->
+		<div class="col">
+			<a href="" class="btn btn-light border-secondary w-100 py-2 px-3">
+				파워
+			</a>
+		</div>
+		<!-- Case -->
+		<div class="col">
+			<a href="" class="btn btn-light border-secondary w-100 py-2 px-3">
+				케이스
+			</a>
 		</div>
 	</div>
 </div>
