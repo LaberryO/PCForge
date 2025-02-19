@@ -2,6 +2,6 @@ package org.kamjeon.pcforge.Forge;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ForgeRepository extends JpaRepository<Forge, Long> {
-
+public interface ForgeRepository extends JpaRepository<Forge, Integer> {
+	Forge findById(String id);
 }
