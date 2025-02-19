@@ -2,7 +2,7 @@
 <div layout:fragment="content" class="container">
 	<!-- User Form -->
 	<div class="row vh-100 position-relative">
-		<div class="col-8 col-xl-5 position-absolute top-50 start-50 translate-middle">
+		<div class="col-10 col-xl-5 position-absolute top-50 start-50 translate-middle">
 			<div class="card">
 				<div class="card-body">
 					<form class="py-3" th:action="@{|/user/${namePage}|}" th:object="${userCreateForm}" method="post">
@@ -84,6 +84,20 @@
 								</button>
 							</div>
 						</div>
+						<!-- ifRegister == false -->
+						<th:block th:unless="${ifRegister == true}">
+							<div class="row border-top mt-5 pt-1 justify-content-center align-items-center">
+								<div class="col-md-1"></div>
+								<div class="col-6 py-3">
+									아직 계정이 없으신가요?
+								</div>
+								<div class="col-4">
+									<div class="btn btn-success">
+										회원가입
+									</div>
+								</div>
+							</div>
+						</th:block>
 					</form>
 				</div>
 			</div>
