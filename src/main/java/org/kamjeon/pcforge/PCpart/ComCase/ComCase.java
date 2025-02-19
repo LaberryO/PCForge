@@ -1,16 +1,10 @@
-package org.kamjeon.pcforge.Forge;
+package org.kamjeon.pcforge.PCpart.ComCase;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
-@Entity
-public class Forge {
+public class ComCase {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +12,11 @@ public class Forge {
 	
 	private String name;
 	
-	// PcPart Entity 연동해야함
+	private String formFactor;
+	
+	private String color;
+	
+	private String material;
+	
 	
 }
