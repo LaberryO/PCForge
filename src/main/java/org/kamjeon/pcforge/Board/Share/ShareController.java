@@ -4,6 +4,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -31,7 +32,8 @@ public class ShareController {
 	}
 	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/write/{id}")
-	public String firstWrite() {
+	public String firstWrite(@Valid ShareForm share, BindingResult bind, @PathVariable("id") Integer id) {
+		
 		return "";
 	}
 	
