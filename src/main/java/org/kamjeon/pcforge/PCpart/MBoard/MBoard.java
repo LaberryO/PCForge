@@ -6,6 +6,7 @@ import org.springframework.data.annotation.Id;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,13 +25,13 @@ public class MBoard {
 	
 	private String formFactor;
 	
-	private int maxMemory;
+	private Integer maxMemory;
 	
 	private String ddrSuppory;
 	
-	private int pciSlots;
+	private Integer PCISlots;
 	
-	//다대일
+	@ManyToOne
 	private Company makeCompany;
 	
 	private String fileName;

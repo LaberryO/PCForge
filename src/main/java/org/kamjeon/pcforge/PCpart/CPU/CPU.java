@@ -2,8 +2,21 @@ package org.kamjeon.pcforge.PCpart.CPU;
 
 import org.kamjeon.pcforge.PCpart.Company.Company;
 
-public class CPU {
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
+@Entity
+public class CPU {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	private String name;
@@ -28,6 +41,6 @@ public class CPU {
 	
 	private Integer balance;
 	
-	// ManyToOne
+	@ManyToOne
 	private Company makeCompany;
 }

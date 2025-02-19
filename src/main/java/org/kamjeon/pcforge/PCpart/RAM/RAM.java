@@ -21,15 +21,15 @@ public class RAM {
 	
 	private String name;
 	
-	private int capacity;
+	private Integer capacity;
 	
 	private String type;
 	
-	private int speed;
+	private Integer speed;
 	
-	private int memoryChannel;
+	private Integer memoryChannel;
 	
-	//다대일
+	@ManyToOne
 	private Company makeCompany;
 	
 	private String fileName;

@@ -6,6 +6,7 @@ import org.springframework.data.annotation.Id;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,15 +21,16 @@ public class GPU {
 	
 	private String name;
 	
-	private float defaultSpeed;
+	private Float defaultSpeed;
 	
-	private int memorySize;
+	private Integer memorySize;
 	
 	private String type;
 	
+	@ManyToOne
 	private Company makeCompany;
 	
-	private int powerConsumption;
+	private Integer powerConsumption;
 	
 	private String fileName;
 }

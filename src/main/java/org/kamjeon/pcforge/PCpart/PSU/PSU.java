@@ -6,6 +6,7 @@ import org.springframework.data.annotation.Id;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,13 +22,13 @@ public class PSU {
 	
 	private String name;
 	
-	private int wattage;
+	private Integer wattage;
 	
 	private String efficency;
 	
 	private String formFactor;
 	
-	//다대일
+	@ManyToOne
 	private Company makeCompany;
 	
 	private String fileName;
