@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 public class ForgeController {
 	private final ForgeService forgeService;
 	
-	@GetMapping("/")
+	@GetMapping("create")
 	public String forge() {
 		return "forge";
 	}
