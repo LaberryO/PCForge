@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.kamjeon.pcforge.Board.Comment.Comment;
+import org.kamjeon.pcforge.Forge.Forge;
 import org.kamjeon.pcforge.User.SiteUser;
 
 import jakarta.persistence.CascadeType;
@@ -18,6 +19,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -51,9 +53,9 @@ public class Share {
 	
 	@ManyToMany
 	Set<SiteUser> voter;
-	
-	
-	//TODO 부품 엔티티들 등록
+
+	@OneToOne
+	private Forge forge;
 	
 	
 }
