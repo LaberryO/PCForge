@@ -1,4 +1,4 @@
-package org.kamjeon.pcforge.Board.Share;
+package org.kamjeon.pcforge.Board.Comment;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -8,12 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ShareForm {
-
-	@NotBlank
-	@NotEmpty(message="제목은 필수 항목입니다.")
-	@Size(max = 50)
-	private String subject;
+public class CommentForm {
 	
 	@NotBlank
 	@NotEmpty(message="내용은 필수 항목입니다.")
