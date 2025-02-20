@@ -39,7 +39,7 @@ public class Share {
 	@Column(columnDefinition = "TEXT")
 	private String content;
 	
-	private String file;
+	private List<String> file;
 	
 	private LocalDateTime time;
 	
@@ -57,5 +57,6 @@ public class Share {
 	@OneToOne
 	private Forge forge;
 	
+	private Integer click; //조회수
 	
 }

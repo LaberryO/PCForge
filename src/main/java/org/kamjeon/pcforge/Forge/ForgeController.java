@@ -15,6 +15,8 @@ import lombok.RequiredArgsConstructor;
 public class ForgeController {
 	private final ForgeService forgeService;
 
+	
+	//처음에 견적사이트 버튼 누르면
 	@GetMapping("create")
 	public String forge() {
 		return "forge";
