@@ -39,6 +39,10 @@ public class ShareController {
 	@GetMapping("/board/{id}")
 	public String board(Model model, @PathVariable("id") int id, CommentForm comment) {
 		Share share = this.shareService.getShare(id);
+		//조회수 증가 
+		int click = share.getClick();
+		share.setClick(click++);
+		
 		model.addAttribute("share",share);
 		
 		return ""; //해당 share ID의 페이지로 이동 #kim

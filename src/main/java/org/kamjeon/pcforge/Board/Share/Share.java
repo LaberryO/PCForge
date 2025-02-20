@@ -57,5 +57,6 @@ public class Share {
 	@OneToOne
 	private Forge forge;
 	
+	private Integer click; //조회수
 	
 }
