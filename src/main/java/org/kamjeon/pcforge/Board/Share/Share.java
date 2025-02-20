@@ -39,7 +39,7 @@ public class Share {
 	@Column(columnDefinition = "TEXT")
 	private String content;
 	
-	private String file;
+	private List<String> file;
 	
 	private LocalDateTime time;
 	

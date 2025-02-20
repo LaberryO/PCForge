@@ -1,5 +1,7 @@
 package org.kamjeon.pcforge.Forge;
 
+import java.util.List;
+
 import org.kamjeon.pcforge.PCpart.CPU.CPU;
 import org.kamjeon.pcforge.PCpart.ComCase.ComCase;
 import org.kamjeon.pcforge.PCpart.Disk.Disk;
@@ -47,4 +49,7 @@ public class Forge {
 	
 	@ManyToOne
 	private ComCase comCase;
+	
+	//각 부품들의 사진들을 가져와서 저장 시키는 것
+	private List<String> fileNames;
 }

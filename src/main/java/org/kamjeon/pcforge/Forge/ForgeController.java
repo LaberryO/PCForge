@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/forge")
 public class ForgeController {
 	private final ForgeService forgeService;
+
 	
 	@GetMapping("create")
 	public String forge() {
