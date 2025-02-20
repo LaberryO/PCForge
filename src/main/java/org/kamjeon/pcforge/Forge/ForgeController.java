@@ -1,7 +1,10 @@
 package org.kamjeon.pcforge.Forge;
 
+import org.kamjeon.pcforge.PCpart.PCpartUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.RequiredArgsConstructor;
@@ -11,9 +14,21 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/forge")
 public class ForgeController {
 	private final ForgeService forgeService;
-	
+
 	@GetMapping("create")
 	public String forge() {
 		return "forge";
 	}
+
+	@GetMapping("create/{status}")
+	public String gotoStatus(@PathVariable("status") String status, Model model) {
+	    try {
+	    	PCpartUtils.checkPCPart(status.toLowerCase());
+	    	model.addAttribute("status", status);
+	    } catch (IllegalArgumentException e) {
+	    	System.out.println("에러 발생: " + e.getMessage());
+	    }
+	    return "forge";
+	}
+
 }

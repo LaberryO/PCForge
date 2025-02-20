@@ -37,7 +37,7 @@ public class Forge {
 	private GPU gpu;
 	
 	@ManyToOne
-	private MBoard mBoard;
+	private MBoard mboard;
 	
 	@ManyToOne
 	private Disk disk;
@@ -46,5 +46,5 @@ public class Forge {
 	private PSU psu;
 	
 	@ManyToOne
-	private ComCase comCase;
+	private ComCase comcase;
 }

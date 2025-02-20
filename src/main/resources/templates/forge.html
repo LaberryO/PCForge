@@ -1,9 +1,9 @@
 <html layout:decorate="~{layout}">
-<div layout:fragment="content" class="container vh-100 d-flex flex-column" id="forgeContent">
+<div layout:fragment="content" class="container-fluid vh-100 d-flex flex-column" id="forgeContent">
 	<!-- Section -->
-	<div class="row flex-grow-1">
+	<form class="row flex-grow-1 mx-2">
 		<!-- Target -->
-		<div class="col-4 me-2">
+		<div class="col-md-4 me-2">
 			<div class="card h-100">
 				<div class="card-body">
 					<!-- Image -->
@@ -22,16 +22,16 @@
 			</div>
 		</div>
 		<!-- Feature -->
-		<div class="col-3 ms-auto">
+		<div class="col-md-3 ms-auto">
 			<div class="row h-100">
 				<div class="col d-flex flex-column">
 					<!-- Pick the PCpart -->
-					<div class="row h-50">
+					<div class="row flex-grow-1">
 						<div class="col">
 							<div class="card h-100">
 								<div class="card-body">
 									<!-- Search -->
-									<div class="row">
+									<div class="row pb-3">
 										<div class="col">
 											<div class="input-group">
 												<input type="text" class="form-control" />
@@ -43,19 +43,35 @@
 										</div>
 									</div>
 									<!-- Pick -->
-									<div class="row">
-
-									</div>
+									<form class="row overflow-y-scroll">
+										<!-- 루프 돌릴거임 -->
+										<div class="col-12 px-2 form-check">
+											<label class="card position-relative text-truncate lb_pointer" title="">
+												<input class="position-absolute form-check-input m-0 ms-1 mt-1" type="checkbox" />
+												<div class="card-body">
+													123
+												</div>
+											</label>
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>
 					</div>
 					<!-- Action -->
-					<div class="row lb_height-40 mt-auto">
+					<div class="row mt-3">
 						<div class="col">
 							<div class="card h-100">
 								<div class="card-body">
-									123
+									<!-- Feature -->
+									<div class="row">
+										<div class="col d-flex justify-content-end align-items-center px-3">
+											<a href="" class="btn btn-success"
+												th:classappend="${status == 'comcase' ? '' : 'disabled'}">
+												구매
+											</a>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -63,52 +79,62 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</form>
+
 	<!-- Footer -->
-	<div class="row text-center py-3">
+	<nav class="row position-fixed bottom-0 vw-100 pt-3 shadow-lg text-center bg-body-tertiary" id="lb_footer">
 		<!-- CPU -->
-		<div class="col">
-			<a href="" class="btn btn-light border-secondary w-100 py-2 px-3">
+		<div class="col d-flex align-items-center">
+			<a th:href="@{./cpu}" th:classappend="${status == 'cpu' ? 'text-bg-warning' : ''}"
+				class="border border-body-tertiary rounded-top w-100 pt-2 pb-3 px-3 text-decoration-none text-black">
 				CPU
 			</a>
 		</div>
 		<!-- RAM-->
-		<div class="col">
-			<a href="" class="btn btn-light border-secondary w-100 py-2 px-3">
+		<div class="col d-flex align-items-center">
+			<a th:href="@{./ram}" th:classappend="${status == 'ram' ? 'text-bg-warning' : ''}"
+				class="border border-body-tertiary rounded-top w-100 pt-2 pb-3 px-3 text-decoration-none text-black">
 				RAM
 			</a>
 		</div>
 		<!-- GPU -->
-		<div class="col">
-			<a href="" class="btn btn-light border-secondary w-100 py-2 px-3">
+		<div class="col d-flex align-items-center">
+			<a th:href="@{./gpu}" th:classappend="${status == 'gpu' ? 'text-bg-warning' : ''}"
+				class="border border-body-tertiary rounded-top w-100 pt-2 pb-3 px-3 text-decoration-none text-black">
 				GPU
 			</a>
 		</div>
 		<!-- MotherBoard -->
-		<div class="col">
-			<a href="" class="btn btn-light border-secondary w-100 py-2 px-3">
+		<div class="col d-flex align-items-center">
+			<a th:href="@{./mboard}" th:classappend="${status == 'mboard' ? 'text-bg-warning' : ''}"
+				class="border border-body-tertiary rounded-top w-100 pt-2 pb-3 px-3 text-decoration-none text-black">
 				메인보드
 			</a>
 		</div>
 		<!-- Disk -->
-		<div class="col">
-			<a href="" class="btn btn-light border-secondary w-100 py-2 px-3">
+		<div class="col d-flex align-items-center">
+			<a th:href="@{./disk}" th:classappend="${status == 'disk' ? 'text-bg-warning' : ''}"
+				class="border border-body-tertiary rounded-top w-100 pt-2 pb-3 px-3 text-decoration-none text-black">
 				저장 장치
 			</a>
 		</div>
 		<!-- PowerSupply -->
-		<div class="col">
-			<a href="" class="btn btn-light border-secondary w-100 py-2 px-3">
+		<div class="col d-flex align-items-center">
+			<a th:href="@{./psu}" th:classappend="${status == 'psu' ? 'text-bg-warning' : ''}"
+				class="border border-body-tertiary rounded-top w-100 pt-2 pb-3 px-3 text-decoration-none text-black">
 				파워
 			</a>
 		</div>
 		<!-- Case -->
-		<div class="col">
-			<a href="" class="btn btn-light border-secondary w-100 py-2 px-3">
+		<div class="col d-flex align-items-center">
+			<a th:href="@{./comcase}" th:classappend="${status == 'comcase' ? 'text-bg-warning' : ''}"
+				class="border border-body-tertiary rounded-top w-100 pt-2 pb-3 px-3 text-decoration-none text-black">
 				케이스
 			</a>
 		</div>
-	</div>
+	</nav>
+
+
 </div>
 
 <script layout:fragment="script" th:src="@{/js/forge.js}"></script>

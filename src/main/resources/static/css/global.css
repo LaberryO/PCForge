@@ -19,13 +19,11 @@
 	z-index: 1;
 }
 
-.lb_ahover {
-	transition: 0.1s;
-}
+.lb_pointer {cursor: pointer;}
 
-.lb_ahover:hover {
-	transform: scale(1.1);
-}
+.lb_ahover {transition: 0.1s;}
+
+.lb_ahover:hover {transform: scale(1.1);}
 
 .lb_top-90 {top: 90%;}
 

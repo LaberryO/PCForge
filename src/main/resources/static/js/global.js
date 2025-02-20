@@ -1,3 +1,4 @@
+// navbar
 const btnMenu = document.getElementById("navbar-menu");
 const menu = document.getElementById("side-menu");
 const overlay = document.getElementById("overlay");
