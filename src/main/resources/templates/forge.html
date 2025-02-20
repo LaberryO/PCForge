@@ -47,7 +47,8 @@
 										<!-- 루프 돌릴거임 -->
 										<div class="col-12 px-2 form-check">
 											<label class="card position-relative text-truncate lb_pointer" title="">
-												<input class="position-absolute form-check-input m-0 ms-1 mt-1" type="checkbox" />
+												<input class="position-absolute form-check-input m-0 ms-1 mt-1"
+													type="checkbox" />
 												<div class="card-body">
 													123
 												</div>
@@ -67,7 +68,7 @@
 									<div class="row">
 										<div class="col d-flex justify-content-end align-items-center px-3">
 											<a href="" class="btn btn-success"
-												th:classappend="${status == 'comcase' ? '' : 'disabled'}">
+												th:classappend="${status == 'final' ? '' : 'disabled'}">
 												구매
 											</a>
 										</div>
@@ -130,6 +131,13 @@
 			<a th:href="@{./comcase}" th:classappend="${status == 'comcase' ? 'text-bg-warning' : ''}"
 				class="border border-body-tertiary rounded-top w-100 pt-2 pb-3 px-3 text-decoration-none text-black">
 				케이스
+			</a>
+		</div>
+		<!-- Final -->
+		<div class="col d-flex align-items-center">
+			<a th:href="@{./final}" th:classappend="${status == 'final' ? 'text-bg-success' : 'text-black'}"
+				class="border border-body-tertiary rounded-top w-100 pt-2 pb-3 px-3 text-decoration-none">
+				최종 결정
 			</a>
 		</div>
 	</nav>

@@ -15,15 +15,18 @@ import lombok.RequiredArgsConstructor;
 public class ForgeController {
 	private final ForgeService forgeService;
 
+	//처음에 견적사이트 버튼 누르면
 	@GetMapping("create")
-	public String forge() {
+	public String forge(Forge forge) {
 		return "forge";
 	}
 
 	@GetMapping("create/{status}")
-	public String gotoStatus(@PathVariable("status") String status, Model model) {
+	public String gotoStatus(@PathVariable("status") String status, Model model, Forge forge) {
 	    try {
-	    	PCpartUtils.checkPCPart(status.toLowerCase());
+	    	if (!"final".equals(status)) {
+	    		PCpartUtils.checkPCPart(status.toLowerCase());
+	    	}
 	    	model.addAttribute("status", status);
 	    } catch (IllegalArgumentException e) {
 	    	System.out.println("에러 발생: " + e.getMessage());
