@@ -12,7 +12,6 @@ import org.kamjeon.pcforge.PCpart.MBoard.MBoardRepository;
 import org.kamjeon.pcforge.PCpart.PSU.PSURepository;
 import org.kamjeon.pcforge.PCpart.RAM.RAMRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import lombok.RequiredArgsConstructor;
 
@@ -45,6 +44,7 @@ public class ForgeService {
 		
 		return null;
 	}
+	
 	
 	
 	//-------------------------------------------------------------
