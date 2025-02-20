@@ -27,7 +27,7 @@ public class MBoard {
 	
 	private Integer maxMemory;
 	
-	private String ddrSuppory;
+	private String ddrSupport;
 	
 	private Integer PCISlots;
 	
