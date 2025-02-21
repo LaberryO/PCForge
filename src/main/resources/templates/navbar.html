@@ -6,18 +6,24 @@
 			<i class="bi bi-list fs-2"></i>
 		</a>
 		<!-- Authorize -->
-		<th:block sec:authorize="isAuthenticated()">
-			<a class="lb_ahover" href="javascript:void(0)">
+		<div class="nav-item dropstart" sec:authorize="isAuthenticated()">
+			<a class="nav-link dropdown-toggle lb_chover" href="javascript:void(0)" role="button"
+				data-bs-toggle="dropdown" aria-expanded="false" id="AccountInfo">
 				<i class="bi bi-person-circle text-dark fs-2"></i>
 			</a>
-		</th:block>
+			<div class="dropdown-menu">
+				<div class="row mx-2">
+					<!-- User Id-->
+					<div class="col-12" sec:authentication="name"></div>
+					<!-- Email -->
+					<div class="col-12" id="emailResult"></div>
+				</div>
+			</div>
+		</div>
 		<th:block sec:authorize="isAnonymous()">
 			<a class="btn btn-outline-primary" th:if="${hideNavbar == null or !hideNavbar}" th:href="@{/user/sign-in}">
 				로그인
 			</a>
 		</th:block>
-	</div>	
-	<th:block layout:fragment="script">
-		<script th:src="@{/js/navbar.js}"></script>
-	</th:block>
+	</div>
 </nav>

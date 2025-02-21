@@ -33,7 +33,7 @@ public class ShareController {
 		Page<Share> paging = this.shareService.getList(page);
 		model.addAttribute("paging", paging);
 		
-		return "Share_list";
+		return "board";
 	}
 	
 	@GetMapping("/board/{id}")

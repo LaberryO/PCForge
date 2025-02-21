@@ -1,5 +1,6 @@
 <html layout:decorate="~{layout}">
-<div layout:fragment="content" class="container-fluid d-flex flex-column" id="forgeContent">
+<title layout:fragment="title">견적 제작하기</title>
+<div layout:fragment="content" class="container-fluid d-flex flex-column" id="mainContent">
 	<!-- Section -->
 	<form class="row flex-grow-1 mx-2">
 		<!-- Target -->
@@ -15,7 +16,11 @@
 					<!-- Graph -->
 					<div class="row lb_height-70 border-top">
 						<div class="col">
-							하단
+							<div class="row">
+								<div class="col">
+
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -42,6 +47,8 @@
 					</div>
 				</div>
 			</div>
+			<!-- Margin -->
+			<div class="col-12 mt-3 d-md-none"></div>
 			<!-- Feature -->
 			<div class="col-md-3 ms-auto">
 				<div class="row h-100">
@@ -106,56 +113,56 @@
 		<!-- Footer -->
 		<nav class="row position-fixed bottom-0 vw-100 pt-3 shadow-lg text-center bg-body-tertiary" id="lb_footer">
 			<!-- CPU -->
-			<div class="col d-flex align-items-center">
+			<div class="col-6 col-md d-flex align-items-center">
 				<a th:href="@{/forge/create/cpu}" th:classappend="${status == 'cpu' ? 'text-bg-warning' : ''}"
 					class="border border-body-tertiary rounded-top w-100 pt-2 pb-3 px-3 text-decoration-none text-black">
 					CPU
 				</a>
 			</div>
 			<!-- RAM-->
-			<div class="col d-flex align-items-center">
+			<div class="col-6 col-md d-flex align-items-center">
 				<a th:href="@{/forge/create/ram}" th:classappend="${status == 'ram' ? 'text-bg-warning' : ''}"
 					class="border border-body-tertiary rounded-top w-100 pt-2 pb-3 px-3 text-decoration-none text-black">
 					RAM
 				</a>
 			</div>
 			<!-- GPU -->
-			<div class="col d-flex align-items-center">
+			<div class="col-6 col-md d-flex align-items-center">
 				<a th:href="@{/forge/create/gpu}" th:classappend="${status == 'gpu' ? 'text-bg-warning' : ''}"
 					class="border border-body-tertiary rounded-top w-100 pt-2 pb-3 px-3 text-decoration-none text-black">
 					GPU
 				</a>
 			</div>
 			<!-- MotherBoard -->
-			<div class="col d-flex align-items-center">
+			<div class="col-6 col-md d-flex align-items-center">
 				<a th:href="@{/forge/create/mboard}" th:classappend="${status == 'mboard' ? 'text-bg-warning' : ''}"
 					class="border border-body-tertiary rounded-top w-100 pt-2 pb-3 px-3 text-decoration-none text-black">
 					메인보드
 				</a>
 			</div>
 			<!-- Disk -->
-			<div class="col d-flex align-items-center">
+			<div class="col-6 col-md d-flex align-items-center">
 				<a th:href="@{/forge/create/disk}" th:classappend="${status == 'disk' ? 'text-bg-warning' : ''}"
 					class="border border-body-tertiary rounded-top w-100 pt-2 pb-3 px-3 text-decoration-none text-black">
 					저장 장치
 				</a>
 			</div>
 			<!-- PowerSupply -->
-			<div class="col d-flex align-items-center">
+			<div class="col-6 col-md d-flex align-items-center">
 				<a th:href="@{/forge/create/psu}" th:classappend="${status == 'psu' ? 'text-bg-warning' : ''}"
 					class="border border-body-tertiary rounded-top w-100 pt-2 pb-3 px-3 text-decoration-none text-black">
 					파워
 				</a>
 			</div>
 			<!-- Case -->
-			<div class="col d-flex align-items-center">
+			<div class="col-6 col-md d-flex align-items-center">
 				<a th:href="@{/forge/create/comcase}" th:classappend="${status == 'comcase' ? 'text-bg-warning' : ''}"
 					class="border border-body-tertiary rounded-top w-100 pt-2 pb-3 px-3 text-decoration-none text-black">
 					케이스
 				</a>
 			</div>
 			<!-- Final -->
-			<div class="col d-flex align-items-center">
+			<div class="col-6 col-md d-flex align-items-center">
 				<a th:href="@{/forge/create/final}"
 					th:classappend="${status == 'final' ? 'text-bg-success' : 'text-black'}"
 					class="border border-body-tertiary rounded-top w-100 pt-2 pb-3 px-3 text-decoration-none">
@@ -163,6 +170,7 @@
 				</a>
 			</div>
 		</nav>
+
 
 
 </div>
