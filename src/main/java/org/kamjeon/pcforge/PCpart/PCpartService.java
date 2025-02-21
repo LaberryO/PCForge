@@ -1,5 +1,8 @@
 package org.kamjeon.pcforge.PCpart;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.kamjeon.pcforge.PCpart.CPU.CPU;
 import org.kamjeon.pcforge.PCpart.ComCase.ComCase;
 import org.kamjeon.pcforge.PCpart.Company.Company;
@@ -8,8 +11,13 @@ import org.kamjeon.pcforge.PCpart.GPU.GPU;
 import org.kamjeon.pcforge.PCpart.MBoard.MBoard;
 import org.kamjeon.pcforge.PCpart.PSU.PSU;
 import org.kamjeon.pcforge.PCpart.RAM.RAM;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+
 
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
@@ -23,6 +31,44 @@ import lombok.RequiredArgsConstructor;
 public class PCpartService {
 	private final PCpartRepository pcPartRepository;
 	
+	
+	public Page<PCParts> getList(int page, String kw, String searchType){
+		List<Sort.Order> sorts = new ArrayList<>();
+		sorts.add(Sort.Order.desc("createDate"));
+		Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
+		Specification<PCParts> spec = Specification.where(null);
+		
+		switch(searchType) {
+		  case "COMCASE":
+	            spec = searchComCase(kw);
+	            break;
+	        case "CPU":
+	            spec = searchCPU(kw);
+	            break;
+	        case "DISK":
+	            spec = searchDisk(kw);
+	            break;
+	        case "GPU":
+	            spec = searchGPU(kw);
+	            break;
+	        case "MBOARD":
+	            spec = searchMBoard(kw);
+	            break;
+	        case "PSU":
+	            spec = searchPSU(kw);
+	            break;
+	        case "RAM":
+	            spec = searchRAM(kw);
+	            break;
+	        case "COMPANY":
+	            spec = searchCompany(kw);
+	            break;
+	        default:
+	            spec = searchAll(kw);
+	            break;
+		}
+		return this.pcPartRepository.findAll(spec, pageable);
+	}
 	
 	private Specification<PCParts> searchAll(String kw) {
 	    return (Root<PCParts> p, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
