@@ -34,8 +34,9 @@ public class PCpartService {
 	
 	public Page<PCParts> getList(int page, String kw, String searchType){
 		List<Sort.Order> sorts = new ArrayList<>();
-		sorts.add(Sort.Order.desc("createDate"));
+		sorts.add(Sort.Order.desc("id"));
 		Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
+		
 		Specification<PCParts> spec = Specification.where(null);
 		
 		switch(searchType) {
@@ -72,7 +73,7 @@ public class PCpartService {
 	
 	private Specification<PCParts> searchAll(String kw) {
 	    return (Root<PCParts> p, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
-	        query.distinct(true); // 중복 제거
+	        query.distinct(true); 
 	        
 	        // 각 테이블 조인
 	        Join<PCParts, ComCase> comCase = p.join("comCase", JoinType.LEFT);
