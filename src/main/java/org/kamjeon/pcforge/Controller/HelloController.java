@@ -8,7 +8,7 @@ public class HelloController {
 	
 	@GetMapping("/sub")
 	public String testSub() {
-		return "sub";
+		return "main";
 	}
 	
 	@GetMapping("/sub/chart")
