@@ -1,6 +1,11 @@
 package org.kamjeon.pcforge.User;
 
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -71,4 +76,19 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	@PostMapping("/api/get-email")
+	@PreAuthorize("isAuthenticated()") // 인증된 사용자만 접근 가능
+	public ResponseEntity<String> getEmailById(Model model) {
+		// 현재 로그인된 사용자 정보 가져오기
+	    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+	    if (principal instanceof UserDetails) {
+	        String username = ((UserDetails) principal).getUsername(); // username 가져오기
+	        SiteUser user = userService.getUser(username);
+	        String email = user.getEmail();
+	        return ResponseEntity.ok(email);
+	    } else {
+	        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인되지 않은 사용자입니다.");
+	    }
+	}
 }

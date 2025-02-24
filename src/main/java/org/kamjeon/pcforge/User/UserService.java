@@ -30,7 +30,7 @@ public class UserService {
 		
 		if(_siteUser.isPresent()) {
 			return _siteUser.get();
-		}else {
+		} else {
 			throw new RuntimeException();
 		}
 	}

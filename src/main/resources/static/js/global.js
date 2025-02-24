@@ -1,8 +1,6 @@
-// navbar
 const btnMenu = document.getElementById("navbar-menu");
 const menu = document.getElementById("side-menu");
 const overlay = document.getElementById("overlay");
-const accountBtn = document.getElementById("AccountInfo");
 let isOpen;
 
 function contentResize() {
@@ -43,17 +41,6 @@ function smResize() {
 	console.log("Padding Top is: " + menu.style.paddingTop);
 }
 
-function getEmailById() {
-	fetch('user/api/get-email')
-		.then(response => response.text())
-		.then(data => {
-			document.getElementById("emailResult").innerHTML = data;
-		})
-		.catch(error => {
-			console.error('Error: ', error);
-		});
-}
-
 btnMenu.addEventListener("click", () => {
 	if (isOpen) {
 		smClose();
@@ -71,4 +58,4 @@ window.addEventListener("resize", () => {
 	smResize();
 });
 
-accountBtn.addEventListener("click", getEmailById);
+
