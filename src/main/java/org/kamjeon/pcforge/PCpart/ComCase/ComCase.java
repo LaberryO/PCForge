@@ -1,11 +1,13 @@
 package org.kamjeon.pcforge.PCpart.ComCase;
 
+import org.kamjeon.pcforge.PCpart.PCParts;
 import org.kamjeon.pcforge.PCpart.Company.Company;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,5 +35,9 @@ public class ComCase {
 	private Company makeCompany;
 	
 	private String fileName;
+	
+	@ManyToOne
+	@JoinColumn(name = "pcparts_id")
+	private PCParts pcPart;
 	
 }

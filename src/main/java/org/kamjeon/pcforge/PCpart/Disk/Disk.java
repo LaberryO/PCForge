@@ -1,11 +1,13 @@
 package org.kamjeon.pcforge.PCpart.Disk;
 
+import org.kamjeon.pcforge.PCpart.PCParts;
 import org.kamjeon.pcforge.PCpart.Company.Company;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,4 +31,8 @@ public class Disk {
 	
 	@ManyToOne
 	private Company makeCompany;
+	
+	@ManyToOne
+	@JoinColumn(name = "pcparts_id")
+	private PCParts pcPart;
 }
