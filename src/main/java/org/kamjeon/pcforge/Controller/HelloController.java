@@ -1,13 +1,18 @@
 package org.kamjeon.pcforge.Controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class HelloController {
 	
-	@GetMapping("/api/hello")
-	public String test() {
-		return "Hello, World!";
+	@GetMapping("/sub")
+	public String testSub() {
+		return "sub";
+	}
+	
+	@GetMapping("/sub/chart")
+	public String testSub2() {
+		return "charts";
 	}
 }
