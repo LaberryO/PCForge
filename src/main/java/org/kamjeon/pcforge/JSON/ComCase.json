@@ -1,0 +1,112 @@
+[
+  {
+    "case_id": 1,
+    "name": "마이크로닉스 COOLMAX 스테디 (블랙)",
+    "formFactor": "미들타워",
+    "color": "블랙",
+    "material": "강화유리, 메쉬",
+    "fanSupport": 4,
+    "makeCompany": "마이크로닉스",
+    "fileName": "",
+    "price": 43650
+  },
+  {
+    "case_id": 2,
+    "name": "DAVEN V300 (화이트)",
+    "formFactor": "미니타워",
+    "color": "화이트",
+    "material": "강화유리, 메쉬",
+    "fanSupport": 3,
+    "makeCompany": "DAVEN",
+    "fileName": "",
+    "price": 35000
+  },
+  {
+    "case_id": 3,
+    "name": "앱코 G40 시그니처 (블랙)",
+    "formFactor": "미들타워",
+    "color": "블랙",
+    "material": "강화유리, 메쉬",
+    "fanSupport": 4,
+    "makeCompany": "앱코",
+    "fileName": "",
+    "price": 55000
+  },
+  {
+    "case_id": 4,
+    "name": "다크플래쉬 DRX70 Mesh",
+    "formFactor": "미들타워",
+    "color": "블랙",
+    "material": "강화유리, 메쉬",
+    "fanSupport": 4,
+    "makeCompany": "다크플래쉬",
+    "fileName": "",
+    "price": 60000
+  },
+  {
+    "case_id": 5,
+    "name": "마이크로닉스 ML-420 BTF (화이트)",
+    "formFactor": "미들타워",
+    "color": "화이트",
+    "material": "강화유리, 메쉬",
+    "fanSupport": 4,
+    "makeCompany": "마이크로닉스",
+    "fileName": "",
+    "price": 65000
+  },
+  {
+    "case_id": 6,
+    "name": "쿨러마스터 MasterBox Q300L",
+    "formFactor": "미니타워",
+    "color": "블랙",
+    "material": "강화유리, 메쉬",
+    "fanSupport": 6,
+    "makeCompany": "쿨러마스터",
+    "fileName": "",
+    "price": 67000
+  },
+  {
+    "case_id": 7,
+    "name": "ABKO NCORE X-Frame",
+    "formFactor": "미들타워",
+    "color": "블랙",
+    "material": "강화유리, 메쉬",
+    "fanSupport": 4,
+    "makeCompany": "ABKO",
+    "fileName": "",
+    "price": 52000
+  },
+  {
+    "case_id": 8,
+    "name": "MSI MAG VAMPIRIC 100R",
+    "formFactor": "미들타워",
+    "color": "블랙",
+    "material": "강화유리, 메쉬",
+    "fanSupport": 6,
+    "makeCompany": "MSI",
+    "fileName": "",
+    "price": 74000
+  },
+  {
+    "case_id": 9,
+    "name": "링크스키 LUX-KD1",
+    "formFactor": "미들타워",
+    "color": "블랙",
+    "material": "강화유리, 메쉬",
+    "fanSupport": 5,
+    "makeCompany": "링크스키",
+    "fileName": "",
+    "price": 65000
+  },
+  {
+    "case_id": 10,
+    "name": "이엠텍 컬러풀 C700",
+    "formFactor": "미들타워",
+    "color": "블랙",
+    "material": "강화유리, 메쉬",
+    "fanSupport": 5,
+    "makeCompany": "이엠텍",
+    "fileName": "",
+    "price": 82000
+  }
+]

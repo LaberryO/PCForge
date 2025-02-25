@@ -1,0 +1,112 @@
+[
+  {
+    "ram_id": 1,
+    "name": "삼성 DDR4 8GB PC4-25600",
+    "capacity": 8,
+    "type": "DDR4",
+    "speed": 25600,
+    "memoryChannel": 2,
+    "makeCompany": "삼성",
+    "fileName": "",
+    "price": 29000
+  },
+  {
+    "ram_id": 2,
+    "name": "킹스톤 HyperX FURY DDR4 16GB PC4-3200",
+    "capacity": 16,
+    "type": "DDR4",
+    "speed": 3200,
+    "memoryChannel": 2,
+    "makeCompany": "킹스톤",
+    "fileName": "",
+    "price": 54000
+  },
+  {
+    "ram_id": 3,
+    "name": "팀그룹 T-Force Vulcan Z DDR4 8GB 3200MHz",
+    "capacity": 8,
+    "type": "DDR4",
+    "speed": 3200,
+    "memoryChannel": 2,
+    "makeCompany": "팀그룹",
+    "fileName": "",
+    "price": 27000
+  },
+  {
+    "ram_id": 4,
+    "name": "Corsair Vengeance LPX DDR4 16GB 3200MHz",
+    "capacity": 16,
+    "type": "DDR4",
+    "speed": 3200,
+    "memoryChannel": 2,
+    "makeCompany": "Corsair",
+    "fileName": "",
+    "price": 63000
+  },
+  {
+    "ram_id": 5,
+    "name": "G.SKILL Ripjaws V DDR4 8GB 3600MHz",
+    "capacity": 8,
+    "type": "DDR4",
+    "speed": 3600,
+    "memoryChannel": 2,
+    "makeCompany": "G.SKILL",
+    "fileName": "",
+    "price": 35000
+  },
+  {
+    "ram_id": 6,
+    "name": "Corsair Vengeance LPX DDR4 32GB 3200MHz",
+    "capacity": 32,
+    "type": "DDR4",
+    "speed": 3200,
+    "memoryChannel": 2,
+    "makeCompany": "Corsair",
+    "fileName": "",
+    "price": 115000
+  },
+  {
+    "ram_id": 7,
+    "name": "삼성 DDR4 16GB PC4-25600",
+    "capacity": 16,
+    "type": "DDR4",
+    "speed": 25600,
+    "memoryChannel": 2,
+    "makeCompany": "삼성",
+    "fileName": "",
+    "price": 54000
+  },
+  {
+    "ram_id": 8,
+    "name": "팀그룹 T-Force Delta RGB DDR4 16GB 3200MHz",
+    "capacity": 16,
+    "type": "DDR4",
+    "speed": 3200,
+    "memoryChannel": 2,
+    "makeCompany": "팀그룹",
+    "fileName": "",
+    "price": 65000
+  },
+  {
+    "ram_id": 9,
+    "name": "킹스톤 HyperX Predator DDR4 16GB 3600MHz",
+    "capacity": 16,
+    "type": "DDR4",
+    "speed": 3600,
+    "memoryChannel": 2,
+    "makeCompany": "킹스톤",
+    "fileName": "",
+    "price": 78000
+  },
+  {
+    "ram_id": 10,
+    "name": "G.SKILL Trident Z Neo DDR4 32GB 3600MHz",
+    "capacity": 32,
+    "type": "DDR4",
+    "speed": 3600,
+    "memoryChannel": 2,
+    "makeCompany": "G.SKILL",
+    "fileName": "",
+    "price": 175000
+  }
+]

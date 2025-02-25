@@ -1,0 +1,87 @@
+[
+  {
+    "manufacturer": "Intel",
+    "cpu_type": "Core i5-14th Gen 14400F (Raptor Lake Refresh)",
+    "socket": "Intel (Socket 1700)",
+    "cores": {
+      "performance": 6,
+      "efficient": 4
+    },
+    "threads": 16,
+    "base_clock": "2.5GHz",
+    "max_clock": "4.7GHz",
+    "max_memory": "192GB",
+    "memory": {
+      "type": "DDR5, DDR4",
+      "clock": "4800, 3200MHz",
+      "channels": 2
+    },
+    "integrated_graphics": false,
+    "price": "219,990"
+  },
+  {
+    "manufacturer": "Intel",
+    "cpu_type": "Core Ultra7(S2) 265K (Arrow Lake)",
+    "socket": "Intel (Socket 1851)",
+    "cores": {
+      "performance": 8,
+      "efficient": 12
+    },
+    "threads": 20,
+    "base_clock": "3.9GHz",
+    "max_clock": "5.5GHz",
+    "max_memory": "192GB",
+    "memory": {
+      "type": "DDR5",
+      "clock": "6400MHz",
+      "channels": 2
+    },
+    "integrated_graphics": true,
+    "price": "578,000"
+  },
+  {
+    "manufacturer": "Intel",
+    "cpu_type": "Core i5-14th Gen 14600KF (Raptor Lake Refresh)",
+    "socket": "Intel (Socket 1700)",
+    "cores": {
+      "performance": 6,
+      "efficient": 8
+    },
+    "threads": 20,
+    "base_clock": "3.5GHz",
+    "max_clock": "5.3GHz",
+    "max_memory": "192GB",
+    "memory": {
+      "type": "DDR5, DDR4",
+      "clock": "5600, 3200MHz",
+      "channels": 2
+    },
+    "integrated_graphics": false,
+    "price": "533,600"
+  },
+  {
+    "manufacturer": "Intel",
+    "cpu_type": "Core i5-14th Gen 14600KF (Raptor Lake Refresh)",
+    "socket": "Intel (Socket 1700)",
+    "cores": {
+      "performance": 6,
+      "efficient": 8
+    },
+    "threads": 20,
+    "base_clock": "3.5GHz",
+    "max_clock": "5.3GHz",
+    "max_memory": "192GB",
+    "memory": {
+      "type": "DDR5, DDR4",
+      "clock": "5600, 3200MHz",
+      "channels": 2
+    },
+    "integrated_graphics": false,
+    "price": "126,420"
+  },
+  {
+    "manufacturer": "Intel",
+    "cpu_type": "Core Ultra5 (S2) 225F (Arrow Lake)",
+    "socket": "Intel (Socket 1851)",
+    "cores": {
+      "performance": 10
