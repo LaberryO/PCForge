@@ -36,7 +36,10 @@ public class RAM {
 	
 	private String fileName;
 	
-	@ManyToOne
-	@JoinColumn(name = "pcparts_id")
-	private PCParts pcPart;
+	private int price;
+	/*
+	 * @ManyToOne
+	 * 
+	 * @JoinColumn(name = "pcparts_id") private PCParts pcPart;
+	 */
 }

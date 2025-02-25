@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Version;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,12 +20,14 @@ public class Company {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+	 
 	private String name;
 	
 	private String country;
 	
-	@ManyToOne
-	@JoinColumn(name = "pcparts_id")
-	private PCParts pcPart;
+	/*
+	 * @ManyToOne
+	 * 
+	 * @JoinColumn(name = "pcparts_id") private PCParts pcPart;
+	 */
 }

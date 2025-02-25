@@ -27,28 +27,24 @@ public class PCParts {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	private String test;
 
-	@OneToMany(mappedBy = "pcPart")
-	private List<ComCase> comCase;
-
-	@OneToMany(mappedBy = "pcPart")
-	private List<CPU> cpu;
-
-	@OneToMany(mappedBy = "pcPart")
-	private List<Disk> disk;
-
-	@OneToMany(mappedBy = "pcPart")
-	private List<GPU> gpu;
-
-	@OneToMany(mappedBy = "pcPart") 
-	private List<MBoard> mBoard;
-
-	@OneToMany(mappedBy = "pcPart")
-	private List<PSU> psu;
-
-	@OneToMany(mappedBy = "pcPart")
-	private List<RAM> ram;
-
-	@OneToMany(mappedBy = "pcPart")
-	private List<Company> company;
+	/*
+	 * @OneToMany(mappedBy = "pcPart") private List<ComCase> comCase;
+	 * 
+	 * @OneToMany(mappedBy = "pcPart") private List<CPU> cpu;
+	 * 
+	 * @OneToMany(mappedBy = "pcPart") private List<Disk> disk;
+	 * 
+	 * @OneToMany(mappedBy = "pcPart") private List<GPU> gpu;
+	 * 
+	 * @OneToMany(mappedBy = "pcPart") private List<MBoard> mBoard;
+	 * 
+	 * @OneToMany(mappedBy = "pcPart") private List<PSU> psu;
+	 * 
+	 * @OneToMany(mappedBy = "pcPart") private List<RAM> ram;
+	 * 
+	 * @OneToMany(mappedBy = "pcPart") private List<Company> company;
+	 */
 }

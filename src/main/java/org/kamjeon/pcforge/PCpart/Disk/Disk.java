@@ -32,7 +32,13 @@ public class Disk {
 	@ManyToOne
 	private Company makeCompany;
 	
-	@ManyToOne
-	@JoinColumn(name = "pcparts_id")
-	private PCParts pcPart;
+	private String fileName;
+	
+	private int price;
+	
+	/*
+	 * @ManyToOne
+	 * 
+	 * @JoinColumn(name = "pcparts_id") private PCParts pcPart;
+	 */
 }
