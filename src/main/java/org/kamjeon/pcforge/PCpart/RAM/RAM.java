@@ -16,30 +16,30 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RAM {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	private String name;
-	
+
 	private Integer capacity;
-	
+
 	private String type;
-	
+
 	private Integer speed;
-	
+
 	private Integer memoryChannel;
-	
+
 	@ManyToOne
 	private Company makeCompany;
-	
+
 	private String fileName;
-	
+
 	private int price;
-	/*
-	 * @ManyToOne
-	 * 
-	 * @JoinColumn(name = "pcparts_id") private PCParts pcPart;
-	 */
+
+	@ManyToOne
+	@JoinColumn(name = "pcparts_id", nullable = true)
+	private PCParts pcPart;
+
 }

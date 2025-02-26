@@ -16,32 +16,34 @@ import lombok.Setter;
 @Setter
 @Entity
 public class ComCase {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	private String name;
-	
+
 	private String formFactor;
-	
+
 	private String color;
-	
+
 	private String material;
-	
+
 	private Integer fanSupport;
-	
-	@ManyToOne
-	private Company makeCompany;
-	
+
+
 	private String fileName;
-	
+
 	private int price;
+
+	@ManyToOne
+	@JoinColumn(name = "company_id")
+	private Company makeCompany;
+
 	
-	/*
-	 * @ManyToOne
-	 * 
-	 * @JoinColumn(name = "pcparts_id") private PCParts pcPart;
-	 */
-	
+	  @ManyToOne
+	  @JoinColumn(name = "pcparts_id")
+	  private PCParts pcPart;
+	 
+
 }

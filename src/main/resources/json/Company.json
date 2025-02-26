@@ -1,151 +1,121 @@
 [
     {
-        "id": 1,
         "name": "삼성",
         "country": "South Korea"
     },
     {
-        "id": 2,
         "name": "킹스톤",
         "country": "USA"
     },
     {
-        "id": 3,
         "name": "팀그룹",
         "country": "Taiwan"
     },
     {
-        "id": 4,
         "name": "Corsair",
         "country": "USA"
     },
     {
-        "id": 5,
         "name": "G.SKILL",
         "country": "Taiwan"
     },
     {
-        "id": 6,
         "name": "마이크로닉스",
         "country": "South Korea"
     },
     {
-        "id": 7,
         "name": "시소닉",
         "country": "Taiwan"
     },
     {
-        "id": 8,
         "name": "에이수스",
         "country": "Taiwan"
     },
     {
-        "id": 9,
         "name": "딥쿨",
         "country": "China"
     },
     {
-        "id": 10,
         "name": "FSP",
         "country": "Taiwan"
     },
     {
-        "id": 11,
         "name": "컴퓨터 A1",
         "country": "South Korea"
     },
     {
-        "id": 12,
         "name": "코르세어",
         "country": "USA"
     },
     {
-        "id": 13,
         "name": "정전기",
         "country": "South Korea"
     },
     {
-        "id": 14,
         "name": "MSI",
         "country": "Taiwan"
     },
     {
-        "id": 15,
         "name": "ASRock",
         "country": "Taiwan"
     },
     {
-        "id": 16,
         "name": "GIGABYTE",
         "country": "Taiwan"
     },
     {
-        "id": 17,
         "name": "NVIDIA",
         "country": "USA"
     },
     {
-        "id": 18,
         "name": "Western Digital",
         "country": "USA"
     },
     {
-        "id": 19,
         "name": "Seagate",
         "country": "USA"
     },
     {
-        "id": 20,
         "name": "Crucial",
         "country": "USA"
     },
     {
-        "id": 21,
         "name": "Toshiba",
         "country": "Japan"
     },
     {
-        "id": 22,
         "name": "SanDisk",
         "country": "USA"
     },
     {
-        "id": 23,
         "name": "Intel",
         "country": "USA"
     },
     {
-        "id": 24,
         "name": "DAVEN",
         "country": "South Korea"
     },
     {
-        "id": 25,
         "name": "앱코",
         "country": "South Korea"
     },
     {
-        "id": 26,
         "name": "다크플래쉬",
         "country": "China"
     },
     {
-        "id": 27,
         "name": "쿨러마스터",
         "country": "Taiwan"
     },
     {
-        "id": 28,
         "name": "ABKO",
         "country": "South Korea"
     },
     {
-        "id": 29,
         "name": "링크스키",
         "country": "South Korea"
     },
     {
-        "id": 30,
         "name": "이엠텍",
         "country": "South Korea"
     }

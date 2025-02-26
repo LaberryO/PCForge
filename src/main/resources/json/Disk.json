@@ -1,142 +1,72 @@
 [
   {
-    "id": 1,
     "name": "Samsung 970 EVO Plus",
     "capacity": 1000,
     "type": "SSD",
     "speed": 3500,
-    "makeCompany": {
-      "id": 1,
-      "name": "Samsung",
-      "country": "South Korea"
-    },
-    "fileName": "",
-    "price": "129,000"
+    "price": "129000"
   },
   {
-    "id": 2,
     "name": "Western Digital Black SN850",
     "capacity": 500,
     "type": "SSD",
     "speed": 7000,
-    "makeCompany": {
-      "id": 18,
-      "name": "Western Digital",
-      "country": "USA"
-    },
-    "fileName": "",
-    "price": "155,000"
+    "price": "155000"
   },
   {
-    "id": 3,
     "name": "Seagate Barracuda",
     "capacity": 2000,
     "type": "HDD",
     "speed": 7200,
-    "makeCompany": {
-      "id": 19,
-      "name": "Seagate",
-      "country": "USA"
-    },
-    "fileName": "",
-    "price": "82,000"
+    "price": "82000"
   },
   {
-    "id": 4,
     "name": "Crucial P5 Plus",
     "capacity": 1000,
     "type": "SSD",
     "speed": 6600,
-    "makeCompany": {
-      "id": 20,
-      "name": "Crucial",
-      "country": "USA"
-    },
-    "fileName": "",
-    "price": "114,000"
+    "price": "114000"
   },
   {
-    "id": 5,
     "name": "Toshiba X300",
     "capacity": 4000,
     "type": "HDD",
     "speed": 7200,
-    "makeCompany": {
-      "id": 21,
-      "name": "Toshiba",
-      "country": "Japan"
-    },
-    "fileName": "",
-    "price": "155,000"
+    "price": "155000"
   },
   {
-    "id": 6,
     "name": "Kingston KC3000",
     "capacity": 2000,
     "type": "SSD",
     "speed": 7000,
-    "makeCompany": {
-      "id": 2,
-      "name": "Kingston",
-      "country": "USA"
-    },
-    "fileName": "",
-    "price": "269,000"
+    "price": "269000"
   },
   {
-    "id": 7,
     "name": "SanDisk Ultra 3D",
     "capacity": 1000,
     "type": "SSD",
     "speed": 560,
-    "makeCompany": {
-      "id": 22,
-      "name": "SanDisk",
-      "country": "USA"
-    },
-    "fileName": "",
-    "price": "89,000"
+    "price": "89000"
   },
   {
-    "id": 8,
     "name": "Seagate FireCuda 530",
     "capacity": 2000,
     "type": "SSD",
     "speed": 7300,
-    "makeCompany": {
-      "id": 19,
-      "name": "Seagate",
-      "country": "USA"
-    },
-    "fileName": "",
-    "price": "315,000"
+    "price": "315000"
   },
   {
-    "id": 9,
     "name": "WD Blue 3D NAND",
     "capacity": 500,
     "type": "SSD",
     "speed": 560,
-    "makeCompany": {
-      "id": 18,
-      "name": "Western Digital",
-      "country": "USA"
-    },
-    "fileName": "",
-    "price": "62,000"
+    "price": "62000"
   },
   {
-    "id": 10,
     "name": "Seagate IronWolf",
     "capacity": 3000,
     "type": "HDD",
     "speed": 7200,
-    "makeCompany": {
-      "id": 19,
-      "name": "Seagate",
-      "country": "USA"
-    },
-    "fileName": "",
-    "price": "132,000"
+    "price": "132000"
   }
 ]

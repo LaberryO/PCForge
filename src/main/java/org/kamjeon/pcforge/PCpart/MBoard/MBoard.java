@@ -40,9 +40,9 @@ public class MBoard {
 	
 	private int price;
 	
-	/*
-	 * @ManyToOne
-	 * 
-	 * @JoinColumn(name = "pcparts_id") private PCParts pcPart;
-	 */
+	
+	  @ManyToOne
+	  @JoinColumn(name = "pcparts_id", nullable = true) 
+	  private PCParts pcPart;
+	 
 }

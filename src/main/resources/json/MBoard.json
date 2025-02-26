@@ -1,6 +1,5 @@
 [
   {
-    "id": 1,
     "name": "MSI MAG X870 토마호크 WIFI",
     "price": 350000,
     "socket": "AMD(소켓AM5)",
@@ -16,7 +15,6 @@
     "fileName": ""
   },
   {
-    "id": 2,
     "name": "ASRock B650M PG Lightning",
     "price": 150000,
     "socket": "AMD(소켓AM5)",
@@ -32,7 +30,6 @@
     "fileName": ""
   },
   {
-    "id": 3,
     "name": "MSI MAG B760M 박격포 II",
     "price": 180000,
     "socket": "인텔(소켓1700)",
@@ -48,7 +45,6 @@
     "fileName": ""
   },
   {
-    "id": 4,
     "name": "MSI PRO B760M-A DDR4 II",
     "price": 130000,
     "socket": "인텔(소켓1700)",
@@ -64,7 +60,6 @@
     "fileName": ""
   },
   {
-    "id": 5,
     "name": "MSI MAG B650M 박격포 WIFI",
     "price": 170000,
     "socket": "AMD(소켓AM5)",
@@ -80,7 +75,6 @@
     "fileName": ""
   },
   {
-    "id": 6,
     "name": "ASUS TUF Gaming B850M-PLUS WIFI STCOM",
     "price": 200000,
     "socket": "AMD(소켓AM5)",
@@ -96,7 +90,6 @@
     "fileName": ""
   },
   {
-    "id": 7,
     "name": "GIGABYTE B650M K 피씨디렉트",
     "price": 160000,
     "socket": "AMD(소켓AM5)",
@@ -112,7 +105,6 @@
     "fileName": ""
   },
   {
-    "id": 8,
     "name": "GIGABYTE B650M K 제이씨현",
     "price": 160000,
     "socket": "AMD(소켓AM5)",
@@ -128,7 +120,6 @@
     "fileName": ""
   },
   {
-    "id": 9,
     "name": "ASUS PRIME A520M-K 대원씨티에스",
     "price": 75000,
     "socket": "AMD(소켓AM4)",
@@ -144,7 +135,6 @@
     "fileName": ""
   },
   {
-    "id": 10,
     "name": "ASRock B650M Pro RS 대원씨티에스",
     "price": 130000,
     "socket": "AMD(소켓AM5)",

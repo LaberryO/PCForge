@@ -11,6 +11,7 @@ import org.kamjeon.pcforge.PCpart.MBoard.MBoard;
 import org.kamjeon.pcforge.PCpart.PSU.PSU;
 import org.kamjeon.pcforge.PCpart.RAM.RAM;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,27 +25,33 @@ import lombok.Setter;
 @Entity
 public class PCParts {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	
-	private String test;
 
-	/*
-	 * @OneToMany(mappedBy = "pcPart") private List<ComCase> comCase;
-	 * 
-	 * @OneToMany(mappedBy = "pcPart") private List<CPU> cpu;
-	 * 
-	 * @OneToMany(mappedBy = "pcPart") private List<Disk> disk;
-	 * 
-	 * @OneToMany(mappedBy = "pcPart") private List<GPU> gpu;
-	 * 
-	 * @OneToMany(mappedBy = "pcPart") private List<MBoard> mBoard;
-	 * 
-	 * @OneToMany(mappedBy = "pcPart") private List<PSU> psu;
-	 * 
-	 * @OneToMany(mappedBy = "pcPart") private List<RAM> ram;
-	 * 
-	 * @OneToMany(mappedBy = "pcPart") private List<Company> company;
-	 */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // 자동 증가 설정
+    private Integer pcparts_id;
+
+    @OneToMany(mappedBy = "pcPart", cascade = CascadeType.ALL) // 자식 객체들이 모두 연결되도록 설정
+    private List<ComCase> comCase;
+
+    @OneToMany(mappedBy = "pcPart", cascade = CascadeType.ALL)
+    private List<CPU> cpu;
+
+    @OneToMany(mappedBy = "pcPart", cascade = CascadeType.ALL)
+    private List<Disk> disk;
+
+    @OneToMany(mappedBy = "pcPart", cascade = CascadeType.ALL)
+    private List<GPU> gpu;
+
+    @OneToMany(mappedBy = "pcPart", cascade = CascadeType.ALL)
+    private List<MBoard> mBoard;
+
+    @OneToMany(mappedBy = "pcPart", cascade = CascadeType.ALL)
+    private List<PSU> psu;
+
+    @OneToMany(mappedBy = "pcPart", cascade = CascadeType.ALL)
+    private List<RAM> ram;
+
+    @OneToMany(mappedBy = "pcPart", cascade = CascadeType.ALL)
+    private List<Company> company;
+	 
 }

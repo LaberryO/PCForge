@@ -47,6 +47,6 @@ public class CPU {
 	private Company makeCompany;
 	
 	@ManyToOne
-	@JoinColumn(name = "pcparts_id")
+	@JoinColumn(name = "pcparts_id", nullable = true)
 	private PCParts pcPart;
 }

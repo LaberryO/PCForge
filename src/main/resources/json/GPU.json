@@ -1,6 +1,5 @@
 [
   {
-    "id": 1,
     "name": "MSI GeForce GTX 1660 Super GAMING X",
     "defaultSpeed": 1530.0,
     "memorySize": 6144,
@@ -15,7 +14,6 @@
     "price": 259000
   },
   {
-    "id": 2,
     "name": "EVGA GeForce RTX 3070 XC3 Ultra Gaming",
     "defaultSpeed": 1500.0,
     "memorySize": 8192,
@@ -30,7 +28,6 @@
     "price": 799000
   },
   {
-    "id": 3,
     "name": "ZOTAC GAMING GeForce RTX 3080",
     "defaultSpeed": 1440.0,
     "memorySize": 10240,
@@ -45,7 +42,6 @@
     "price": 1150000
   },
   {
-    "id": 4,
     "name": "Gigabyte Radeon RX 6600 XT GAMING OC",
     "defaultSpeed": 2350.0,
     "memorySize": 8192,
@@ -60,7 +56,6 @@
     "price": 490000
   },
   {
-    "id": 5,
     "name": "ASUS TUF Gaming GeForce RTX 3060",
     "defaultSpeed": 1320.0,
     "memorySize": 12288,
@@ -75,7 +70,6 @@
     "price": 589000
   },
   {
-    "id": 6,
     "name": "MSI GeForce RTX 3070 Ti GAMING X",
     "defaultSpeed": 1770.0,
     "memorySize": 8192,
@@ -90,7 +84,6 @@
     "price": 950000
   },
   {
-    "id": 7,
     "name": "NVIDIA Quadro RTX 8000",
     "defaultSpeed": 1770.0,
     "memorySize": 48512,
@@ -105,7 +98,6 @@
     "price": 11000000
   },
   {
-    "id": 8,
     "name": "MSI GeForce RTX 3090 SUPRIM X",
     "defaultSpeed": 1695.0,
     "memorySize": 24336,
@@ -120,7 +112,6 @@
     "price": 2200000
   },
   {
-    "id": 9,
     "name": "ASRock Radeon RX 5700 XT Challenger D",
     "defaultSpeed": 1750.0,
     "memorySize": 8192,
@@ -135,7 +126,6 @@
     "price": 600000
   },
   {
-    "id": 10,
     "name": "Gigabyte GeForce GTX 1660 Ti GAMING OC",
     "defaultSpeed": 1770.0,
     "memorySize": 6144,
