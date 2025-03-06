@@ -48,16 +48,18 @@ public class DataLoader {
 	
 	@Transactional
 	public void allDataLoder() throws IOException {
-		 PCParts pcpart = pcRp.findById(1).orElse(null);  // 가장 첫 번째 PCParts를 가져옴 (또는 다른 조건으로 확인 가능)
-		 	System.out.println(pcRp.findById(1));
-		    if (pcpart == null) {
-		        pcpart = new PCParts();
-		        this.pcRp.save(pcpart); 
-		        System.out.println("새로운 PCParts 객체 생성");
-		    } else {
-		        System.out.println("기존 PCParts 객체 사용");
-		        return;
-		    }
+		List<PCParts> pcPartsList = pcRp.findAll();
+		PCParts pcpart = null;
+		if (pcPartsList.isEmpty()) {
+		    // 데이터가 없다면 새로 생성
+		    pcpart = new PCParts();
+		    this.pcRp.save(pcpart); 
+		    System.out.println("새로운 PCParts 객체 생성");
+		} else {
+		    // 첫 번째 데이터 사용
+		    pcpart = pcPartsList.get(0);
+		    System.out.println("기존 PCParts 객체 사용");
+		}
 
 	    PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 
@@ -141,6 +143,8 @@ public class DataLoader {
 	    } catch (IOException e) {
 	        e.printStackTrace();
 	        throw new RuntimeException("JSON 파일 로딩 오류");
+	    } finally {
+	    	System.out.println("데이터 로딩 완료.");
 	    }
 	}
 
