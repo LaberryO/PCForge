@@ -1,110 +1,140 @@
 [
   {
-    "gpu_id": 1,
     "name": "MSI GeForce GTX 1660 Super GAMING X",
     "defaultSpeed": 1530.0,
     "memorySize": 6144,
     "type": "GeForce GTX 1660 Super",
-    "makeCompany": "MSI",
+    "makeCompany": {
+      "id": 14,
+      "name": "MSI",
+      "country": "Taiwan"
+    },
     "powerConsumption": 125,
     "fileName": "",
     "price": 259000
   },
   {
-    "gpu_id": 2,
     "name": "EVGA GeForce RTX 3070 XC3 Ultra Gaming",
     "defaultSpeed": 1500.0,
     "memorySize": 8192,
     "type": "GeForce RTX 3070",
-    "makeCompany": "EVGA",
+    "makeCompany": {
+      "id": 17,
+      "name": "NVIDIA",
+      "country": "USA"
+    },
     "powerConsumption": 220,
     "fileName": "",
     "price": 799000
   },
   {
-    "gpu_id": 3,
     "name": "ZOTAC GAMING GeForce RTX 3080",
     "defaultSpeed": 1440.0,
     "memorySize": 10240,
     "type": "GeForce RTX 3080",
-    "makeCompany": "ZOTAC",
+    "makeCompany": {
+      "id": 14,
+      "name": "MSI",
+      "country": "Taiwan"
+    },
     "powerConsumption": 320,
     "fileName": "",
     "price": 1150000
   },
   {
-    "gpu_id": 4,
     "name": "Gigabyte Radeon RX 6600 XT GAMING OC",
     "defaultSpeed": 2350.0,
     "memorySize": 8192,
     "type": "Radeon RX 6600 XT",
-    "makeCompany": "Gigabyte",
+    "makeCompany": {
+      "id": 16,
+      "name": "GIGABYTE",
+      "country": "Taiwan"
+    },
     "powerConsumption": 160,
     "fileName": "",
     "price": 490000
   },
   {
-    "gpu_id": 5,
     "name": "ASUS TUF Gaming GeForce RTX 3060",
     "defaultSpeed": 1320.0,
     "memorySize": 12288,
     "type": "GeForce RTX 3060",
-    "makeCompany": "ASUS",
+    "makeCompany": {
+      "id": 8,
+      "name": "에이수스",
+      "country": "Taiwan"
+    },
     "powerConsumption": 170,
     "fileName": "",
     "price": 589000
   },
   {
-    "gpu_id": 6,
     "name": "MSI GeForce RTX 3070 Ti GAMING X",
     "defaultSpeed": 1770.0,
     "memorySize": 8192,
     "type": "GeForce RTX 3070 Ti",
-    "makeCompany": "MSI",
+    "makeCompany": {
+      "id": 14,
+      "name": "MSI",
+      "country": "Taiwan"
+    },
     "powerConsumption": 250,
     "fileName": "",
     "price": 950000
   },
   {
-    "gpu_id": 7,
     "name": "NVIDIA Quadro RTX 8000",
     "defaultSpeed": 1770.0,
     "memorySize": 48512,
     "type": "Quadro RTX 8000",
-    "makeCompany": "NVIDIA",
+    "makeCompany": {
+      "id": 17,
+      "name": "NVIDIA",
+      "country": "USA"
+    },
     "powerConsumption": 295,
     "fileName": "",
     "price": 11000000
   },
   {
-    "gpu_id": 8,
     "name": "MSI GeForce RTX 3090 SUPRIM X",
     "defaultSpeed": 1695.0,
     "memorySize": 24336,
     "type": "GeForce RTX 3090",
-    "makeCompany": "MSI",
+    "makeCompany": {
+      "id": 14,
+      "name": "MSI",
+      "country": "Taiwan"
+    },
     "powerConsumption": 350,
     "fileName": "",
     "price": 2200000
   },
   {
-    "gpu_id": 9,
     "name": "ASRock Radeon RX 5700 XT Challenger D",
     "defaultSpeed": 1750.0,
     "memorySize": 8192,
     "type": "Radeon RX 5700 XT",
-    "makeCompany": "ASRock",
+    "makeCompany": {
+      "id": 15,
+      "name": "ASRock",
+      "country": "Taiwan"
+    },
     "powerConsumption": 225,
     "fileName": "",
     "price": 600000
   },
   {
-    "gpu_id": 10,
     "name": "Gigabyte GeForce GTX 1660 Ti GAMING OC",
     "defaultSpeed": 1770.0,
     "memorySize": 6144,
     "type": "GeForce GTX 1660 Ti",
-    "makeCompany": "Gigabyte",
+    "makeCompany": {
+      "id": 16,
+      "name": "GIGABYTE",
+      "country": "Taiwan"
+    },
     "powerConsumption": 120,
     "fileName": "",
     "price": 370000

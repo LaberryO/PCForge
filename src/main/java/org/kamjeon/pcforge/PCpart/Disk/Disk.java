@@ -29,10 +29,18 @@ public class Disk {
 	
 	private Integer speed;
 	
+	
+	
+	private String fileName;
+	
+	private int price;
+	
 	@ManyToOne
+	@JoinColumn(name = "company_id")
 	private Company makeCompany;
 	
 	@ManyToOne
-	@JoinColumn(name = "pcparts_id")
+	@JoinColumn(name = "pcparts_id", nullable = true) 
 	private PCParts pcPart;
+	 
 }

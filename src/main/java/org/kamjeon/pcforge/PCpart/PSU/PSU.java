@@ -17,25 +17,28 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PSU {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	private String name;
-	
+
 	private Integer wattage;
-	
+
 	private String efficency;
-	
+
 	private String formFactor;
-	
+
 	@ManyToOne
 	private Company makeCompany;
-	
+
 	private String fileName;
-	
+
+	private int price;
+
 	@ManyToOne
-	@JoinColumn(name = "pcparts_id")
+	@JoinColumn(name = "pcparts_id", nullable = true)
 	private PCParts pcPart;
+
 }

@@ -1,102 +1,112 @@
 [
   {
-    "psu_id": 1,
     "name": "마이크로닉스 Classic II 600W 80Plus Bronze",
     "wattage": 600,
     "efficiency": "80Plus Bronze",
     "formFactor": "ATX",
-    "makeCompany": "마이크로닉스",
-    "fileName": "",
+    "makeCompany": {
+      "name": "마이크로닉스",
+      "country": "South Korea"
+    },
     "price": 39900
   },
   {
-    "psu_id": 2,
     "name": "시소닉 FOCUS GX-650, 80Plus Gold",
     "wattage": 650,
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
-    "makeCompany": "시소닉",
-    "fileName": "",
+    "makeCompany": {
+      "name": "시소닉",
+      "country": "Taiwan"
+    },
     "price": 106000
   },
   {
-    "psu_id": 3,
     "name": "에이수스 ROG Strix 850W 80Plus Gold",
     "wattage": 850,
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
-    "makeCompany": "에이수스",
-    "fileName": "",
+    "makeCompany": {
+      "name": "에이수스",
+      "country": "Taiwan"
+    },
     "price": 139000
   },
   {
-    "psu_id": 4,
     "name": "딥쿨 DQ850-M-V2L 850W 80Plus Gold",
     "wattage": 850,
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
-    "makeCompany": "딥쿨",
-    "fileName": "",
+    "makeCompany": {
+      "name": "딥쿨",
+      "country": "China"
+    },
     "price": 124000
   },
   {
-    "psu_id": 5,
     "name": "FSP HYDRO G PRO 750W 80Plus Gold",
     "wattage": 750,
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
-    "makeCompany": "FSP",
-    "fileName": "",
+    "makeCompany": {
+      "name": "FSP",
+      "country": "Taiwan"
+    },
     "price": 115000
   },
   {
-    "psu_id": 6,
     "name": "컴퓨터 A1 500W 80Plus Bronze",
     "wattage": 500,
     "efficiency": "80Plus Bronze",
     "formFactor": "ATX",
-    "makeCompany": "컴퓨터 A1",
-    "fileName": "",
+    "makeCompany": {
+      "name": "컴퓨터 A1",
+      "country": "South Korea"
+    },
     "price": 22000
   },
   {
-    "psu_id": 7,
     "name": "코르세어 RM850x 850W 80Plus Gold",
     "wattage": 850,
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
-    "makeCompany": "코르세어",
-    "fileName": "",
+    "makeCompany": {
+      "name": "코르세어",
+      "country": "USA"
+    },
     "price": 151000
   },
   {
-    "psu_id": 8,
     "name": "정전기 600W 80Plus Bronze",
     "wattage": 600,
     "efficiency": "80Plus Bronze",
     "formFactor": "ATX",
-    "makeCompany": "정전기",
-    "fileName": "",
+    "makeCompany": {
+      "name": "정전기",
+      "country": "South Korea"
+    },
     "price": 28000
   },
   {
-    "psu_id": 9,
     "name": "에이수스 TUF Gaming 750W 80Plus Gold",
     "wattage": 750,
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
-    "makeCompany": "에이수스",
-    "fileName": "",
+    "makeCompany": {
+      "name": "에이수스",
+      "country": "Taiwan"
+    },
     "price": 112000
   },
   {
-    "psu_id": 10,
     "name": "시소닉 FOCUS GX-750, 80Plus Gold",
     "wattage": 750,
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
-    "makeCompany": "시소닉",
-    "fileName": "",
+    "makeCompany": {
+      "name": "시소닉",
+      "country": "Taiwan"
+    },
     "price": 119000
   }
 ]

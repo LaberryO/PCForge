@@ -22,7 +22,7 @@ public class CommentService {
 		com.setTime(LocalDateTime.now());
 		
 		this.commentRepository.save(com);
-		
+
 		return com;
 	}
 	

@@ -1,112 +1,122 @@
 [
   {
-    "ram_id": 1,
     "name": "삼성 DDR4 8GB PC4-25600",
     "capacity": 8,
     "type": "DDR4",
     "speed": 25600,
     "memoryChannel": 2,
-    "makeCompany": "삼성",
-    "fileName": "",
+    "makeCompany": {
+      "name": "삼성",
+      "country": "South Korea"
+    },
     "price": 29000
   },
   {
-    "ram_id": 2,
     "name": "킹스톤 HyperX FURY DDR4 16GB PC4-3200",
     "capacity": 16,
     "type": "DDR4",
     "speed": 3200,
     "memoryChannel": 2,
-    "makeCompany": "킹스톤",
-    "fileName": "",
+    "makeCompany": {
+      "name": "킹스톤",
+      "country": "USA"
+    },
     "price": 54000
   },
   {
-    "ram_id": 3,
     "name": "팀그룹 T-Force Vulcan Z DDR4 8GB 3200MHz",
     "capacity": 8,
     "type": "DDR4",
     "speed": 3200,
     "memoryChannel": 2,
-    "makeCompany": "팀그룹",
-    "fileName": "",
+    "makeCompany": {
+      "name": "팀그룹",
+      "country": "Taiwan"
+    },
     "price": 27000
   },
   {
-    "ram_id": 4,
     "name": "Corsair Vengeance LPX DDR4 16GB 3200MHz",
     "capacity": 16,
     "type": "DDR4",
     "speed": 3200,
     "memoryChannel": 2,
-    "makeCompany": "Corsair",
-    "fileName": "",
+    "makeCompany": {
+      "name": "Corsair",
+      "country": "USA"
+    },
     "price": 63000
   },
   {
-    "ram_id": 5,
     "name": "G.SKILL Ripjaws V DDR4 8GB 3600MHz",
     "capacity": 8,
     "type": "DDR4",
     "speed": 3600,
     "memoryChannel": 2,
-    "makeCompany": "G.SKILL",
-    "fileName": "",
+    "makeCompany": {
+      "name": "G.SKILL",
+      "country": "Taiwan"
+    },
     "price": 35000
   },
   {
-    "ram_id": 6,
     "name": "Corsair Vengeance LPX DDR4 32GB 3200MHz",
     "capacity": 32,
     "type": "DDR4",
     "speed": 3200,
     "memoryChannel": 2,
-    "makeCompany": "Corsair",
-    "fileName": "",
+    "makeCompany": {
+      "name": "Corsair",
+      "country": "USA"
+    },
     "price": 115000
   },
   {
-    "ram_id": 7,
     "name": "삼성 DDR4 16GB PC4-25600",
     "capacity": 16,
     "type": "DDR4",
     "speed": 25600,
     "memoryChannel": 2,
-    "makeCompany": "삼성",
-    "fileName": "",
+    "makeCompany": {
+      "name": "삼성",
+      "country": "South Korea"
+    },
     "price": 54000
   },
   {
-    "ram_id": 8,
     "name": "팀그룹 T-Force Delta RGB DDR4 16GB 3200MHz",
     "capacity": 16,
     "type": "DDR4",
     "speed": 3200,
     "memoryChannel": 2,
-    "makeCompany": "팀그룹",
-    "fileName": "",
+    "makeCompany": {
+      "name": "팀그룹",
+      "country": "Taiwan"
+    },
     "price": 65000
   },
   {
-    "ram_id": 9,
     "name": "킹스톤 HyperX Predator DDR4 16GB 3600MHz",
     "capacity": 16,
     "type": "DDR4",
     "speed": 3600,
     "memoryChannel": 2,
-    "makeCompany": "킹스톤",
-    "fileName": "",
+    "makeCompany": {
+      "name": "킹스톤",
+      "country": "USA"
+    },
     "price": 78000
   },
   {
-    "ram_id": 10,
     "name": "G.SKILL Trident Z Neo DDR4 32GB 3600MHz",
     "capacity": 32,
     "type": "DDR4",
     "speed": 3600,
     "memoryChannel": 2,
-    "makeCompany": "G.SKILL",
-    "fileName": "",
+    "makeCompany": {
+      "name": "G.SKILL",
+      "country": "Taiwan"
+    },
     "price": 175000
   }
 ]
