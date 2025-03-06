@@ -5,10 +5,7 @@
     "type": "DDR4",
     "speed": 25600,
     "memoryChannel": 2,
-    "makeCompany": {
-      "name": "삼성",
-      "country": "South Korea"
-    },
+    "fileName": "",
     "price": 29000
   },
   {
@@ -17,10 +14,7 @@
     "type": "DDR4",
     "speed": 3200,
     "memoryChannel": 2,
-    "makeCompany": {
-      "name": "킹스톤",
-      "country": "USA"
-    },
+    "fileName": "",
     "price": 54000
   },
   {
@@ -29,10 +23,7 @@
     "type": "DDR4",
     "speed": 3200,
     "memoryChannel": 2,
-    "makeCompany": {
-      "name": "팀그룹",
-      "country": "Taiwan"
-    },
+    "fileName": "",
     "price": 27000
   },
   {
@@ -41,10 +32,7 @@
     "type": "DDR4",
     "speed": 3200,
     "memoryChannel": 2,
-    "makeCompany": {
-      "name": "Corsair",
-      "country": "USA"
-    },
+    "fileName": "",
     "price": 63000
   },
   {
@@ -53,10 +41,7 @@
     "type": "DDR4",
     "speed": 3600,
     "memoryChannel": 2,
-    "makeCompany": {
-      "name": "G.SKILL",
-      "country": "Taiwan"
-    },
+    "fileName": "",
     "price": 35000
   },
   {
@@ -65,10 +50,7 @@
     "type": "DDR4",
     "speed": 3200,
     "memoryChannel": 2,
-    "makeCompany": {
-      "name": "Corsair",
-      "country": "USA"
-    },
+    "fileName": "",
     "price": 115000
   },
   {
@@ -77,10 +59,7 @@
     "type": "DDR4",
     "speed": 25600,
     "memoryChannel": 2,
-    "makeCompany": {
-      "name": "삼성",
-      "country": "South Korea"
-    },
+    "fileName": "",
     "price": 54000
   },
   {
@@ -89,10 +68,7 @@
     "type": "DDR4",
     "speed": 3200,
     "memoryChannel": 2,
-    "makeCompany": {
-      "name": "팀그룹",
-      "country": "Taiwan"
-    },
+    "fileName": "",
     "price": 65000
   },
   {
@@ -101,10 +77,7 @@
     "type": "DDR4",
     "speed": 3600,
     "memoryChannel": 2,
-    "makeCompany": {
-      "name": "킹스톤",
-      "country": "USA"
-    },
+    "fileName": "",
     "price": 78000
   },
   {
@@ -113,10 +86,7 @@
     "type": "DDR4",
     "speed": 3600,
     "memoryChannel": 2,
-    "makeCompany": {
-      "name": "G.SKILL",
-      "country": "Taiwan"
-    },
+    "fileName": "",
     "price": 175000
   }
 ]

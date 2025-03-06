@@ -1,152 +1,102 @@
 [
   {
     "name": "MSI MAG X870 토마호크 WIFI",
-    "price": 350000,
     "socket": "AMD(소켓AM5)",
     "formFactor": "ATX (30.5x24.4cm)",
     "ddrSupport": "DDR5",
     "maxMemory": 256,
     "pciSlots": 4,
-    "makeCompany": {
-      "id": 14,
-      "name": "MSI",
-      "country": "Taiwan"
-    },
-    "fileName": ""
+    "fileName": "",
+    "price": 350000
   },
   {
     "name": "ASRock B650M PG Lightning",
-    "price": 150000,
     "socket": "AMD(소켓AM5)",
     "formFactor": "M-ATX",
     "ddrSupport": "DDR5",
     "maxMemory": 192,
     "pciSlots": 3,
-    "makeCompany": {
-      "id": 15,
-      "name": "ASRock",
-      "country": "Taiwan"
-    },
-    "fileName": ""
+    "fileName": "",
+    "price": 150000
   },
   {
     "name": "MSI MAG B760M 박격포 II",
-    "price": 180000,
     "socket": "인텔(소켓1700)",
     "formFactor": "M-ATX",
     "ddrSupport": "DDR5",
     "maxMemory": 256,
     "pciSlots": 3,
-    "makeCompany": {
-      "id": 14,
-      "name": "MSI",
-      "country": "Taiwan"
-    },
-    "fileName": ""
+    "fileName": "",
+    "price": 180000
   },
   {
     "name": "MSI PRO B760M-A DDR4 II",
-    "price": 130000,
     "socket": "인텔(소켓1700)",
     "formFactor": "M-ATX",
     "ddrSupport": "DDR4",
     "maxMemory": 128,
     "pciSlots": 3,
-    "makeCompany": {
-      "id": 14,
-      "name": "MSI",
-      "country": "Taiwan"
-    },
-    "fileName": ""
+    "fileName": "",
+    "price": 130000
   },
   {
     "name": "MSI MAG B650M 박격포 WIFI",
-    "price": 170000,
     "socket": "AMD(소켓AM5)",
     "formFactor": "M-ATX",
     "ddrSupport": "DDR5",
     "maxMemory": 256,
     "pciSlots": 3,
-    "makeCompany": {
-      "id": 14,
-      "name": "MSI",
-      "country": "Taiwan"
-    },
-    "fileName": ""
+    "fileName": "",
+    "price": 170000
   },
   {
     "name": "ASUS TUF Gaming B850M-PLUS WIFI STCOM",
-    "price": 200000,
     "socket": "AMD(소켓AM5)",
     "formFactor": "M-ATX",
     "ddrSupport": "DDR5",
     "maxMemory": 192,
     "pciSlots": 3,
-    "makeCompany": {
-      "id": 8,
-      "name": "ASUS",
-      "country": "Taiwan"
-    },
-    "fileName": ""
+    "fileName": "",
+    "price": 200000
   },
   {
     "name": "GIGABYTE B650M K 피씨디렉트",
-    "price": 160000,
     "socket": "AMD(소켓AM5)",
     "formFactor": "M-ATX",
     "ddrSupport": "DDR5",
     "maxMemory": 192,
     "pciSlots": 3,
-    "makeCompany": {
-      "id": 16,
-      "name": "GIGABYTE",
-      "country": "Taiwan"
-    },
-    "fileName": ""
+    "fileName": "",
+    "price": 160000
   },
   {
     "name": "GIGABYTE B650M K 제이씨현",
-    "price": 160000,
     "socket": "AMD(소켓AM5)",
     "formFactor": "M-ATX",
     "ddrSupport": "DDR5",
     "maxMemory": 192,
     "pciSlots": 3,
-    "makeCompany": {
-      "id": 16,
-      "name": "GIGABYTE",
-      "country": "Taiwan"
-    },
-    "fileName": ""
+    "fileName": "",
+    "price": 160000
   },
   {
     "name": "ASUS PRIME A520M-K 대원씨티에스",
-    "price": 75000,
     "socket": "AMD(소켓AM4)",
     "formFactor": "M-ATX",
     "ddrSupport": "DDR4",
     "maxMemory": 64,
     "pciSlots": 3,
-    "makeCompany": {
-      "id": 8,
-      "name": "ASUS",
-      "country": "Taiwan"
-    },
-    "fileName": ""
+    "fileName": "",
+    "price": 75000
   },
   {
     "name": "ASRock B650M Pro RS 대원씨티에스",
-    "price": 130000,
     "socket": "AMD(소켓AM5)",
     "formFactor": "M-ATX",
     "ddrSupport": "DDR5",
     "maxMemory": 192,
     "pciSlots": 3,
-    "makeCompany": {
-      "id": 15,
-      "name": "ASRock",
-      "country": "Taiwan"
-    },
-    "fileName": ""
+    "fileName": "",
+    "price": 130000
   }
 ]

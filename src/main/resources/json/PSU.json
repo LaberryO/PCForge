@@ -4,10 +4,7 @@
     "wattage": 600,
     "efficiency": "80Plus Bronze",
     "formFactor": "ATX",
-    "makeCompany": {
-      "name": "마이크로닉스",
-      "country": "South Korea"
-    },
+    "fileName": "",
     "price": 39900
   },
   {
@@ -15,10 +12,7 @@
     "wattage": 650,
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
-    "makeCompany": {
-      "name": "시소닉",
-      "country": "Taiwan"
-    },
+    "fileName": "",
     "price": 106000
   },
   {
@@ -26,10 +20,7 @@
     "wattage": 850,
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
-    "makeCompany": {
-      "name": "에이수스",
-      "country": "Taiwan"
-    },
+    "fileName": "",
     "price": 139000
   },
   {
@@ -37,10 +28,7 @@
     "wattage": 850,
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
-    "makeCompany": {
-      "name": "딥쿨",
-      "country": "China"
-    },
+    "fileName": "",
     "price": 124000
   },
   {
@@ -48,10 +36,7 @@
     "wattage": 750,
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
-    "makeCompany": {
-      "name": "FSP",
-      "country": "Taiwan"
-    },
+    "fileName": "",
     "price": 115000
   },
   {
@@ -59,10 +44,7 @@
     "wattage": 500,
     "efficiency": "80Plus Bronze",
     "formFactor": "ATX",
-    "makeCompany": {
-      "name": "컴퓨터 A1",
-      "country": "South Korea"
-    },
+    "fileName": "",
     "price": 22000
   },
   {
@@ -70,10 +52,7 @@
     "wattage": 850,
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
-    "makeCompany": {
-      "name": "코르세어",
-      "country": "USA"
-    },
+    "fileName": "",
     "price": 151000
   },
   {
@@ -81,10 +60,7 @@
     "wattage": 600,
     "efficiency": "80Plus Bronze",
     "formFactor": "ATX",
-    "makeCompany": {
-      "name": "정전기",
-      "country": "South Korea"
-    },
+    "fileName": "",
     "price": 28000
   },
   {
@@ -92,10 +68,7 @@
     "wattage": 750,
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
-    "makeCompany": {
-      "name": "에이수스",
-      "country": "Taiwan"
-    },
+    "fileName": "",
     "price": 112000
   },
   {
@@ -103,10 +76,7 @@
     "wattage": 750,
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
-    "makeCompany": {
-      "name": "시소닉",
-      "country": "Taiwan"
-    },
+    "fileName": "",
     "price": 119000
   }
 ]
