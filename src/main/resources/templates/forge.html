@@ -45,51 +45,34 @@
 							<div class="card max-vh-md-50">
 								<!-- 검색 창 -->
 								<div class="card-header">
-									<form class="input-group" action="">
-										<input type="text" class="form-control" placeholder="" />
-										<button class="btn btn-secondary" type="submit">
+									<div class="input-group">
+										<input type="text" class="form-control" id="search_kw" th:value="${kw}" placeholder="" />
+										<a class="btn btn-secondary" id="btnSearch">
 											조회
-										</button>
-									</form>
+										</a>
+									</div>
 								</div>
 								<!-- 선택 -->
 								<div class="card-body h-auto overflow-scroll">
 									<div class="row">
 										<!-- 선택될 한개 요소 -->
-										<div class="col-6 mb-4">
-											<label for="test-fuck1" class="card">
+										<div class="col-6 mb-4" th:each="item : ${forgeSearchList}">
+											<label th:for="${item.id}" class="card">
 												<div class="card-body">
 													<img th:src="@{/assets/img/exam-cpu.jpg}" alt="" class="w-100" />
 												</div>
 												<div class="card-footer text-truncate">
-													<input type="checkbox" class="form-check-input" id="test-fuck1"
-														vlaue="" />
-													<span class="ms-1" title="cpu1234567890">cpu1234567890</span>
+													<input type="checkbox" class="form-check-input" th:id="${item.id}"
+														value="" />
+													<span class="ms-1" th:title="${item.name}">[[${item.name}]]</span>
 												</div>
 											</label>
 										</div>
-										<div class="col-6 mb-4">
-											<div class="card">
-												<div class="card-body">
-													<img src="" alt="" class="img-fluid" />
-												</div>
-												<div class="card-footer">
-													cpu1
-												</div>
-											</div>
-										</div>
-										<div class="col-6 mb-4">
-											<div class="card">
-												<div class="card-body">
-													<img src="" alt="" class="img-fluid" />
-												</div>
-												<div class="card-footer">
-													cpu1
-												</div>
-											</div>
-										</div>
 									</div>
 								</div>
+								<form th:action="@{|/forge/create/${statusTemp}|}" method="get" id="searchForm">
+									<input type="hidden" id="kw" name="kw" th:value="${kw}" />
+								</form>
 							</div>
 						</div>
 					</div>
