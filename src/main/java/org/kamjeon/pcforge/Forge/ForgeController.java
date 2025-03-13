@@ -1,10 +1,14 @@
 package org.kamjeon.pcforge.Forge;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import org.kamjeon.pcforge.PCpart.PCpartService;
 import org.kamjeon.pcforge.PCpart.PCpartUtils;
 import org.kamjeon.pcforge.PCpart.CPU.CPU;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -69,6 +73,42 @@ public class ForgeController {
 			System.out.println("에러 발생: " + e.getMessage());
 		}
 		return "forge";
+	}
+
+	@GetMapping("create/{status}/getThis")
+	public ResponseEntity<Map<String, Object>> getThis(@PathVariable("status") String status,
+			@RequestParam("id") Integer id) {
+		String statusTemp = status.toLowerCase();
+		PCpartUtils.checkPCPart(statusTemp);
+		Optional<?> forgeSearchOne = Optional.empty();
+
+		switch (statusTemp) {
+		case "cpu":
+			forgeSearchOne = this.forgeService.getCpu(id);
+			break;
+		case "comcase":
+			forgeSearchOne = this.forgeService.getComCase(id);
+			break;
+		case "disk":
+			forgeSearchOne = this.forgeService.getDisk(id);
+			break;
+		case "gpu":
+			forgeSearchOne = this.forgeService.getGPU(id);
+			break;
+		case "mboard":
+			forgeSearchOne = this.forgeService.getMBoard(id);
+			break;
+		case "psu":
+			forgeSearchOne = this.forgeService.getPSU(id);
+			break;
+		case "ram":
+			forgeSearchOne = this.forgeService.getRAM(id);
+			break;
+		}
+		
+		Map<String, Object> response = new HashMap<>();
+        response.put("data", forgeSearchOne.orElse(null)); // Optional 값 반환
+        return ResponseEntity.ok(response);
 	}
 
 }

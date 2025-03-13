@@ -6,10 +6,15 @@ import org.kamjeon.pcforge.PCpart.CPU.CPU;
 import org.kamjeon.pcforge.PCpart.CPU.CPURepository;
 import org.kamjeon.pcforge.PCpart.ComCase.ComCase;
 import org.kamjeon.pcforge.PCpart.ComCase.ComCaseRepository;
+import org.kamjeon.pcforge.PCpart.Disk.Disk;
 import org.kamjeon.pcforge.PCpart.Disk.DiskRepository;
+import org.kamjeon.pcforge.PCpart.GPU.GPU;
 import org.kamjeon.pcforge.PCpart.GPU.GPURepository;
+import org.kamjeon.pcforge.PCpart.MBoard.MBoard;
 import org.kamjeon.pcforge.PCpart.MBoard.MBoardRepository;
+import org.kamjeon.pcforge.PCpart.PSU.PSU;
 import org.kamjeon.pcforge.PCpart.PSU.PSURepository;
+import org.kamjeon.pcforge.PCpart.RAM.RAM;
 import org.kamjeon.pcforge.PCpart.RAM.RAMRepository;
 import org.springframework.stereotype.Service;
 
@@ -29,21 +34,34 @@ public class ForgeService {
 	
 	
 	//나중에 견적 사이트에서 추가해줄 것들
-	public Optional<ComCase> getComCase(int id) {
-		Optional<ComCase> cam = this.comCaseRepository.findById(id);
-		if(!cam.isPresent())
-			return  cam;
-		
-		return null;
-	}
-	
 	public Optional<CPU> getCpu(int id) {
-		Optional<CPU> cpu = this.cpuRepository.findById(id);
-		if(!cpu.isPresent())
-			return  cpu;
-		
-		return null;
+	    return this.cpuRepository.findById(id);
 	}
+
+	public Optional<ComCase> getComCase(int id) {
+	    return this.comCaseRepository.findById(id);
+	}
+
+	public Optional<Disk> getDisk(int id) {
+	    return this.diskRepository.findById(id);
+	}
+
+	public Optional<GPU> getGPU(int id) {
+	    return this.gpuRepository.findById(id);
+	}
+
+	public Optional<MBoard> getMBoard(int id) {
+	    return this.mBoardRepository.findById(id);
+	}
+
+	public Optional<PSU> getPSU(int id) {
+	    return this.psuRepository.findById(id);
+	}
+
+	public Optional<RAM> getRAM(int id) {
+	    return this.ramRepository.findById(id);
+	}
+
 	
 	
 	
@@ -62,11 +80,6 @@ public class ForgeService {
 	
 	//만들어진 forge테이블에서 가져오기
 	public Optional<Forge> getForge(int id) {
-		
-		Optional<Forge> forge = this.forgeRepository.findById(id);
-		if(!forge.isPresent())
-			return  forge;
-		
-		return null;
+		return this.forgeRepository.findById(id);
 	}
 }

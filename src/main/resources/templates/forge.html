@@ -3,15 +3,26 @@
 <div layout:fragment="content" id="layoutSidenav_content">
 	<main>
 		<div class="container-fluid px-4 py-4">
+			<input type="hidden" id="pageStatus" th:value="${statusTemp}" />
 			<div class="row">
 				<!-- 1번 비교 -->
 				<div class="col-md-4">
-					<div class="card">
+					<div class="card" id="selectedItem1">
 						<div class="card-header">
 							제목
 						</div>
 						<div class="card-body">
-							내용
+							<div class="row">
+								<div class="col">
+									<span id="item_name"></span>
+								</div>
+							</div>
+							<th:block th:replace="~{|${statusTemp}| :: |${statusTemp}Fragment|}"></th:block>
+							<div class="row">
+								<div class="col">
+									금액: <span id="item_price"></span>원
+								</div>
+							</div>
 						</div>
 						<div class="card-footer">
 							<div class="ms-auto btn btn-outline-danger">
@@ -23,12 +34,22 @@
 				<div class="col-12 mt-4 d-md-none"></div>
 				<!-- 2번 비교 -->
 				<div class="col-md-4">
-					<div class="card">
+					<div class="card" id="selectedItem2">
 						<div class="card-header">
 							제목
 						</div>
 						<div class="card-body">
-							내용
+							<div class="row">
+								<div class="col">
+									<span id="item_name"></span>
+								</div>
+							</div>
+							<th:block th:replace="~{${statusTemp} :: |${statusTemp}Fragment|}"></th:block>
+							<div class="row">
+								<div class="col">
+									금액: <span id="item_price"></span>원
+								</div>
+							</div>
 						</div>
 						<div class="card-footer">
 							<div class="ms-auto btn btn-outline-danger">
@@ -46,7 +67,8 @@
 								<!-- 검색 창 -->
 								<div class="card-header">
 									<div class="input-group">
-										<input type="text" class="form-control" id="search_kw" th:value="${kw}" placeholder="" />
+										<input type="text" class="form-control" id="search_kw" th:value="${kw}"
+											placeholder="" />
 										<a class="btn btn-secondary" id="btnSearch">
 											조회
 										</a>
@@ -62,8 +84,8 @@
 													<img th:src="@{/assets/img/exam-cpu.jpg}" alt="" class="w-100" />
 												</div>
 												<div class="card-footer text-truncate">
-													<input type="checkbox" class="form-check-input" th:id="${item.id}"
-														value="" />
+													<input type="checkbox" class="form-check-input" name="item_option"
+														th:id="${item.id}" th:value="${item.id}" />
 													<span class="ms-1" th:title="${item.name}">[[${item.name}]]</span>
 												</div>
 											</label>
