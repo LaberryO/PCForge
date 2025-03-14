@@ -21,3 +21,15 @@
 		max-height: 50vh;
 	}
 }
+
+.vh-50 {
+	height: 50vh;
+}
+
+.ps-inherit {
+	padding-left: inherit;
+}
+
+.ms-inherit {
+	margin-left: inherit;
+}
