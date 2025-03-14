@@ -17,7 +17,7 @@
 									<span id="item_name"></span>
 								</div>
 							</div>
-							<th:block th:replace="~{|${statusTemp}| :: |${statusTemp}Fragment|}"></th:block>
+							<th:block th:replace="~{|/fragments/${statusTemp}| :: |${statusTemp}Fragment|}"></th:block>
 							<div class="row">
 								<div class="col">
 									금액: <span id="item_price"></span>원
@@ -44,7 +44,7 @@
 									<span id="item_name"></span>
 								</div>
 							</div>
-							<th:block th:replace="~{${statusTemp} :: |${statusTemp}Fragment|}"></th:block>
+							<th:block th:replace="~{|/fragments/${statusTemp}| :: |${statusTemp}Fragment|}"></th:block>
 							<div class="row">
 								<div class="col">
 									금액: <span id="item_price"></span>원
