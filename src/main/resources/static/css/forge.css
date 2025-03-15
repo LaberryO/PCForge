@@ -1,0 +1,9 @@
+.nav-item {
+	flex: 1 1 33%;
+}
+
+@media (min-width: 768px) {
+	.nav-item {
+		flex: 1 1 auto;
+	}
+}

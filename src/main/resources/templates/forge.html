@@ -1,5 +1,8 @@
 <html layout:decorate="~{layout}">
 <title layout:fragment="title">견적 제작하기 - PCForge</title>
+<th:block layout:fragment="style">
+	<link rel="stylesheet" th:href="@{/css/forge.css}" />
+</th:block>
 <div layout:fragment="content" id="layoutSidenav_content">
 	<main>
 		<div class="container-fluid px-4 py-4">
@@ -119,24 +122,24 @@
 			</div>
 		</div>
 	</main>
-	<nav class="nav nav-tabs justify-content-around position-absolute bottom-0 start-50 translate-middle-x w-100 ps-inherit ms-inherit">
+	<nav class="nav justify-content-around position-fixed bottom-0 start-50 translate-middle-x w-100 ps-md-inherit ms-md-inherit text-center bg-light">
 		<div class="nav-item">
-			<a href="" class="nav-link">CPU</a>
+			<a th:href="@{cpu}" class="nav-link">CPU</a>
 		</div>
 		<div class="nav-item">
-			<a href="" class="nav-link">RAM</a>
+			<a th:href="@{ram}" class="nav-link">RAM</a>
 		</div>
 		<div class="nav-item">
-			<a href="" class="nav-link">GPU</a>
+			<a th:href="@{gpu}" class="nav-link">GPU</a>
 		</div>
 		<div class="nav-item">
-			<a href="" class="nav-link">메인보드</a>
+			<a th:href="@{mboard}" class="nav-link">메인보드</a>
 		</div>
 		<div class="nav-item">
-			<a href="" class="nav-link">파워</a>
+			<a th:href="@{psu}" class="nav-link">파워</a>
 		</div>
 		<div class="nav-item">
-			<a href="" class="nav-link">케이스</a>
+			<a th:href="@{comcase}" class="nav-link">케이스</a>
 		</div>
 	</nav>
 </div>
