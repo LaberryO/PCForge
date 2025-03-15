@@ -66,6 +66,7 @@ checkboxes.forEach(checkbox => {
 function clearTarget(target) {
 	if (!target) return;
 	target.querySelectorAll("span, p, h3").forEach(el => el.textContent = "");
+	target.querySelectorAll("img").forEach(el => el.src = "");
 }
 
 // ✅ 선택된 항목을 box1, box2에 배치하는 함수 (box2 내용이 box1으로 이동하지 않도록 유지)
@@ -114,6 +115,11 @@ function fetchPCPart(path, id, target) {
 function updateDataContent(status, data, target) {
 	target.querySelector("#item_name").textContent = data.name;
 	target.querySelector("#item_price").textContent = data.price;
+	let image = data.fileName;
+	if (image === null || image.trim() === "") {
+		image = "/assets/img/exam-cpu.jpg";
+	}
+	target.querySelector("#item_image").src = image;
 	switch (status) {
 		case "cpu":
 			break;
