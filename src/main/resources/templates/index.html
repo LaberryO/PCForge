@@ -28,6 +28,64 @@
 			</div>
 		</div>
 	</section>
+	<section class="content-section bg-dark text-white text-center" id="carousel">
+	    <div class="container px-4 px-lg-5">
+	        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+	            <div class="carousel-inner">
+	                <!-- 첫 번째 아이템 -->
+	                <div class="carousel-item active">
+	                    <div class="row g-0">
+	                        <div class="col-4">
+	                            <img src="your-image-path1.jpg" class="d-block w-100" alt="First Image" style="height: 300px; object-fit: cover;">
+	                        </div>
+	                        <div class="col-4">
+	                            <img src="your-image-path2.jpg" class="d-block w-100" alt="Second Image" style="height: 300px; object-fit: cover;">
+	                        </div>
+	                        <div class="col-4">
+	                            <img src="your-image-path3.jpg" class="d-block w-100" alt="Third Image" style="height: 300px; object-fit: cover;">
+	                        </div>
+	                    </div>
+	                </div>
+	                <!-- 두 번째 아이템 -->
+	                <div class="carousel-item">
+	                    <div class="row g-0">
+	                        <div class="col-4">
+	                            <img src="/images/miku1.jpg" class="d-block w-100" alt="Fourth Image" style="height: 300px; object-fit: cover;">
+	                        </div>
+	                        <div class="col-4">
+	                            <img src="/images/miku2.jpg" class="d-block w-100" alt="Fifth Image" style="height: 300px; object-fit: cover;">
+	                        </div>
+	                        <div class="col-4">
+	                            <img src="your-image-path6.jpg" class="d-block w-100" alt="Sixth Image" style="height: 300px; object-fit: cover;">
+	                        </div>
+	                    </div>
+	                </div>
+	                <!-- 세 번째 아이템 -->
+	                <div class="carousel-item">
+	                    <div class="row g-0">
+	                        <div class="col-4">
+	                            <img src="your-image-path7.jpg" class="d-block w-100" alt="Seventh Image" style="height: 300px; object-fit: cover;">
+	                        </div>
+	                        <div class="col-4">
+	                            <img src="your-image-path8.jpg" class="d-block w-100" alt="Eighth Image" style="height: 300px; object-fit: cover;">
+	                        </div>
+	                        <div class="col-4">
+	                            <img src="your-image-path9.jpg" class="d-block w-100" alt="Ninth Image" style="height: 300px; object-fit: cover;">
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+	                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	                <span class="visually-hidden">Previous</span>
+	            </button>
+	            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+	                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+	                <span class="visually-hidden">Next</span>
+	            </button>
+	        </div>
+	    </div>
+	</section>
 	<!-- Services-->
 	<section class="content-section bg-primary text-white text-center" id="services">
 		<div class="container px-4 px-lg-5">
@@ -75,7 +133,71 @@
 				Now!</a>
 		</div>
 	</section>
-	<!-- Portfolio-->
+	<!-- Introduction Section with Cards -->
+	<div class="container">
+		<div class="sidebar">
+			    <div class="sidebar-header text-center">
+			        <h3 class="text-secondary mb-0">세션</h3>
+			        <h2 class="mb-5">시스템 정보</h2>
+			    </div>
+			    <a href="#session1">세션 1: CPU</a>
+			    <a href="#session2">세션 2: 메모리</a>
+			    <a href="#session3">세션 3: 스토리지</a>
+			</div>
+
+
+				<section id="session1">
+				    <h2>세션 1: CPU 정보</h2>
+				    <div class="row justify-content-center"> <!-- 여기를 수정했습니다. -->
+				        <div class="col-md-6 col-lg-4">
+				            <div class="card mb-4 text-center" style="min-height: 300px;">
+				                <div class="card-body">
+				                    <h5 class="card-title">프로세서</h5>
+				                    <p class="card-text">Intel Core i9-13900K</p>
+				                </div>
+				            </div>
+				        </div>
+				        <div class="col-md-6 col-lg-4">
+				            <div class="card mb-4 text-center" style="min-height: 300px;">
+				                <div class="card-body">
+				                    <h5 class="card-title">코어 수</h5>
+				                    <p class="card-text">24 (8P + 16E)</p>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				</section>
+
+				<section id="session2">
+				    <h2>세션 2: 메모리 정보</h2>
+				    <div class="row justify-content-center"> <!-- 여기를 수정했습니다. -->
+				        <div class="col-md-6 col-lg-4">
+				            <div class="card mb-4 text-center" style="min-height: 300px;">
+				                <div class="card-body">
+				                    <h5 class="card-title">RAM 용량</h5>
+				                    <p class="card-text">32GB DDR5</p>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				</section>
+
+				<section id="session3">
+				    <h2>세션 3: 스토리지 정보</h2>
+				    <div class="row justify-content-center"> <!-- 여기를 수정했습니다. -->
+				        <div class="col-md-6 col-lg-4">
+				            <div class="card mb-4 text-center" style="min-height: 300px;">
+				                <div class="card-body">
+				                    <h5 class="card-title">SSD</h5>
+				                    <p class="card-text">Samsung 990 Pro 1TB</p>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				</section>
+	</div>
+	
+	   <!-- Portfolio-->
 	<section class="content-section" id="portfolio">
 		<div class="container px-4 px-lg-5">
 			<div class="content-section-heading text-center">
