@@ -6,7 +6,8 @@
     "type": "GeForce GTX 1660 Super",
     "powerConsumption": 125,
     "fileName": "",
-    "price": 259000
+    "price": 259000,
+    "makeCompany": 14
   },
   {
     "name": "EVGA GeForce RTX 3070 XC3 Ultra Gaming",
@@ -15,7 +16,8 @@
     "type": "GeForce RTX 3070",
     "powerConsumption": 220,
     "fileName": "",
-    "price": 799000
+    "price": 799000,
+    "makeCompany": 19
   },
   {
     "name": "ZOTAC GAMING GeForce RTX 3080",
@@ -24,7 +26,8 @@
     "type": "GeForce RTX 3080",
     "powerConsumption": 320,
     "fileName": "",
-    "price": 1150000
+    "price": 1150000,
+    "makeCompany": 19
   },
   {
     "name": "Gigabyte Radeon RX 6600 XT GAMING OC",
@@ -33,7 +36,8 @@
     "type": "Radeon RX 6600 XT",
     "powerConsumption": 160,
     "fileName": "",
-    "price": 490000
+    "price": 490000,
+    "makeCompany": 17
   },
   {
     "name": "ASUS TUF Gaming GeForce RTX 3060",
@@ -42,7 +46,8 @@
     "type": "GeForce RTX 3060",
     "powerConsumption": 170,
     "fileName": "",
-    "price": 589000
+    "price": 589000,
+    "makeCompany": 8
   },
   {
     "name": "MSI GeForce RTX 3070 Ti GAMING X",
@@ -51,7 +56,8 @@
     "type": "GeForce RTX 3070 Ti",
     "powerConsumption": 250,
     "fileName": "",
-    "price": 950000
+    "price": 950000,
+    "makeCompany": 14
   },
   {
     "name": "NVIDIA Quadro RTX 8000",
@@ -60,7 +66,8 @@
     "type": "Quadro RTX 8000",
     "powerConsumption": 295,
     "fileName": "",
-    "price": 11000000
+    "price": 11000000,
+    "makeCompany": 19
   },
   {
     "name": "MSI GeForce RTX 3090 SUPRIM X",
@@ -69,7 +76,8 @@
     "type": "GeForce RTX 3090",
     "powerConsumption": 350,
     "fileName": "",
-    "price": 2200000
+    "price": 2200000,
+    "makeCompany": 14
   },
   {
     "name": "ASRock Radeon RX 5700 XT Challenger D",
@@ -78,7 +86,8 @@
     "type": "Radeon RX 5700 XT",
     "powerConsumption": 225,
     "fileName": "",
-    "price": 600000
+    "price": 600000,
+    "makeCompany": 16
   },
   {
     "name": "Gigabyte GeForce GTX 1660 Ti GAMING OC",
@@ -87,6 +96,7 @@
     "type": "GeForce GTX 1660 Ti",
     "powerConsumption": 120,
     "fileName": "",
-    "price": 370000
+    "price": 370000,
+    "makeCompany": 17
   }
 ]

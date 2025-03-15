@@ -31,8 +31,11 @@ public class RAM {
 
 	private Integer memoryChannel;
 
-	@ManyToOne
-	private Company makeCompany;
+	private Integer makeCompany;
+	
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+	private Company myCom;
 
 	private String fileName;
 

@@ -5,7 +5,8 @@
     "type": "SSD",
     "speed": 3500,
     "fileName": "",
-    "price": "129000"
+    "price": "129000",
+    "makeCompany": 1
   },
   {
     "name": "Western Digital Black SN850",
@@ -13,7 +14,8 @@
     "type": "SSD",
     "speed": 7000,
     "fileName": "",
-    "price": "155000"
+    "price": "155000",
+    "makeCompany": 19
   },
   {
     "name": "Seagate Barracuda",
@@ -21,7 +23,8 @@
     "type": "HDD",
     "speed": 7200,
     "fileName": "",
-    "price": "82000"
+    "price": "82000",
+    "makeCompany": 20
   },
   {
     "name": "Crucial P5 Plus",
@@ -29,7 +32,8 @@
     "type": "SSD",
     "speed": 6600,
     "fileName": "",
-    "price": "114000"
+    "price": "114000",
+    "makeCompany": 21
   },
   {
     "name": "Toshiba X300",
@@ -37,7 +41,8 @@
     "type": "HDD",
     "speed": 7200,
     "fileName": "",
-    "price": "155000"
+    "price": "155000",
+    "makeCompany": 19
   },
   {
     "name": "Kingston KC3000",
@@ -45,7 +50,8 @@
     "type": "SSD",
     "speed": 7000,
     "fileName": "",
-    "price": "269000"
+    "price": "269000",
+    "makeCompany": 2
   },
   {
     "name": "SanDisk Ultra 3D",
@@ -53,7 +59,8 @@
     "type": "SSD",
     "speed": 560,
     "fileName": "",
-    "price": "89000"
+    "price": "89000",
+    "makeCompany": 22
   },
   {
     "name": "Seagate FireCuda 530",
@@ -61,7 +68,8 @@
     "type": "SSD",
     "speed": 7300,
     "fileName": "",
-    "price": "315000"
+    "price": "315000",
+    "makeCompany": 20
   },
   {
     "name": "WD Blue 3D NAND",
@@ -69,7 +77,8 @@
     "type": "SSD",
     "speed": 560,
     "fileName": "",
-    "price": "62000"
+    "price": "62000",
+    "makeCompany": 19
   },
   {
     "name": "Seagate IronWolf",
@@ -77,6 +86,7 @@
     "type": "HDD",
     "speed": 7200,
     "fileName": "",
-    "price": "132000"
+    "price": "132000",
+    "makeCompany": 20
   }
 ]

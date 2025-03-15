@@ -1,0 +1,87 @@
+<html layout:decorate="~{layout}">
+  <div layout:fragment="content" class="container my-5">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h1 class="py-5 my-2">PCPart Shop</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <div class="input-group">
+          <input type="text" id="search_kw" class="form-control w-50" th:value="${kw}" />
+          <div class="input-group-append">
+            <button class="btn btn-info" id="btn_search">찾기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 my-2">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>아이디</th>
+            <th>제품명</th>
+            <th>가격</th>
+          </tr>
+        </thead>
+        <tbody>
+
+			<tr th:each="pcPart, loop : ${paging.content}">
+			    <td th:text="${paging.totalElements - (paging.number * paging.size) - loop.index}"></td> <!-- 현재 페이지의 인덱스 계산 -->
+
+			    <!-- pcPart가 null이 아니고, cpu가 null이 아닐 경우에만 출력 -->
+			    <td th:text="${pcPart != null and pcPart.ram != null ? pcPart.ram.name : 'No CPU'}"></td>
+
+			    <!-- gpu가 null일 경우 대비 -->
+			    <td th:text="${pcPart != null and pcPart.gpu != null ? pcPart.gpu.price : 'No GPU'}"></td>
+			</tr>
+
+        </tbody>
+      </table>
+
+      <!--페이징 처리 시작-->
+      <nav aria-label="Page navigation example" class="border" th:if="${!paging.isEmpty()}">
+        <ul class="pagination justify-content-center">
+          <li class="page-item" th:classappend="${paging.hasPrevious()} ? '' : 'disabled'">
+            <a class="page-link" href="javascript:void(0)" th:data-page="${paging.number - 1}">이전</a>
+          </li>
+
+          <li th:each="page : ${#numbers.sequence(0, paging.totalPages - 1)}"
+              th:classappend="${page == paging.number} ? 'active'">
+            <a class="page-link" href="javascript:void(0)" th:data-page="${page}">[[${page + 1}]]</a>
+          </li>
+
+          <li class="page-item" th:classappend="${paging.hasNext()} ? '' : 'disabled'">
+            <a class="page-link" href="javascript:void(0)" th:data-page="${paging.number + 1}">다음</a>
+          </li>
+        </ul>
+      </nav>
+
+      <form th:action="@{/shop/list}" method="get" id="searchForm">
+        <input type="hidden" id="kw" name="kw" th:value="${kw}" />
+        <input type="hidden" id="page" th:value="${paging.number}" />
+      </form>
+
+    </div>
+  </div>
+
+  <script layout:fragment="script">
+    // 페이지 이동 기능
+    const page_elements = document.getElementsByClassName("page-link");
+    Array.from(page_elements).forEach(function (element) {
+      element.addEventListener("click", function () {
+        document.getElementById("page").value = this.dataset.page;
+        document.getElementById("searchForm").submit();
+      });
+    });
+
+    // 검색 버튼 클릭 시
+    const btn_search = document.getElementById("btn_search");
+    btn_search.addEventListener("click", function () {
+      document.getElementById("kw").value = document.getElementById("search_kw").value;
+      document.getElementById("page").value = 0;
+      document.getElementById("searchForm").submit();
+    });
+  </script>
+</html>
