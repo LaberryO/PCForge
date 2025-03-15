@@ -1,5 +1,8 @@
 <html layout:decorate="~{layout}">
 <title layout:fragment="title">견적 제작하기 - PCForge</title>
+<th:block layout:fragment="style">
+	<link rel="stylesheet" th:href="@{/css/forge.css}" />
+</th:block>
 <div layout:fragment="content" id="layoutSidenav_content">
 	<main>
 		<div class="container-fluid px-4 py-4">
@@ -25,7 +28,7 @@
 							</div>
 						</div>
 						<div class="card-footer">
-							<div class="ms-auto btn btn-outline-danger">
+							<div class="ms-auto btn btn-outline-danger" id="select_disable">
 								선택 해제
 							</div>
 						</div>
@@ -52,7 +55,7 @@
 							</div>
 						</div>
 						<div class="card-footer">
-							<div class="ms-auto btn btn-outline-danger">
+							<div class="ms-auto btn btn-outline-danger" id="select_disable">
 								선택 해제
 							</div>
 						</div>
@@ -63,7 +66,7 @@
 					<!-- 검색 부분 -->
 					<div class="row mb-4">
 						<div class="col">
-							<div class="card max-vh-md-50">
+							<div class="card vh-50">
 								<!-- 검색 창 -->
 								<div class="card-header">
 									<div class="input-group">
@@ -104,7 +107,7 @@
 						<div class="col">
 							<div class="card">
 								<div class="card-header">
-									제목
+									구매 관련
 								</div>
 								<div class="card-body">
 									내용
@@ -115,11 +118,31 @@
 							</div>
 						</div>
 					</div>
+					<div class="row py-5 d-md-none"></div>
 				</div>
 			</div>
-
 		</div>
 	</main>
+	<nav class="nav justify-content-around position-fixed bottom-0 start-50 translate-middle-x w-100 ps-md-inherit ms-md-inherit text-center bg-light">
+		<div class="nav-item">
+			<a th:href="@{cpu}" class="nav-link">CPU</a>
+		</div>
+		<div class="nav-item">
+			<a th:href="@{ram}" class="nav-link">RAM</a>
+		</div>
+		<div class="nav-item">
+			<a th:href="@{gpu}" class="nav-link">GPU</a>
+		</div>
+		<div class="nav-item">
+			<a th:href="@{mboard}" class="nav-link">메인보드</a>
+		</div>
+		<div class="nav-item">
+			<a th:href="@{psu}" class="nav-link">파워</a>
+		</div>
+		<div class="nav-item">
+			<a th:href="@{comcase}" class="nav-link">케이스</a>
+		</div>
+	</nav>
 </div>
 <th:block layout:fragment="script">
 	<script th:src="@{/js/forge.js}"></script>
