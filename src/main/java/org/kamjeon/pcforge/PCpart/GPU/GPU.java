@@ -29,8 +29,12 @@ public class GPU {
 	
 	private String type;
 	
-	@ManyToOne
-	private Company makeCompany;
+
+	private Integer makeCompany;
+	
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+	private Company myCom;
 	
 	private Integer powerConsumption;
 	

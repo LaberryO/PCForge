@@ -41,11 +41,17 @@ public class CPU {
 	
 	private Boolean innerGPU;
 	
+	private String fileName;
+	
 	private Integer balance;
 	
-	@ManyToOne
-	private Company makeCompany;
+
+	private Integer makeCompany;
 	
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+	private Company myCom;
+    
 	@ManyToOne
 	@JoinColumn(name = "pcparts_id", nullable = true)
 	private PCParts pcPart;

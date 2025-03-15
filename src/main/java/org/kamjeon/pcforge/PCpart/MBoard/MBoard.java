@@ -33,8 +33,12 @@ public class MBoard {
 	
 	private Integer PCISlots;
 	
-	@ManyToOne
-	private Company makeCompany;
+
+	private Integer makeCompany;
+	
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+	private Company myCom;
 	
 	private String fileName;
 	

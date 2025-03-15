@@ -5,9 +5,10 @@
     "formFactor": "ATX (30.5x24.4cm)",
     "ddrSupport": "DDR5",
     "maxMemory": 256,
-    "pciSlots": 4,
+    "PCISlots": 4,
     "fileName": "",
-    "price": 350000
+    "price": 350000,
+    "makeCompany": 14
   },
   {
     "name": "ASRock B650M PG Lightning",
@@ -15,9 +16,10 @@
     "formFactor": "M-ATX",
     "ddrSupport": "DDR5",
     "maxMemory": 192,
-    "pciSlots": 3,
+    "PCISlots": 3,
     "fileName": "",
-    "price": 150000
+    "price": 150000,
+    "makeCompany": 16
   },
   {
     "name": "MSI MAG B760M 박격포 II",
@@ -25,9 +27,10 @@
     "formFactor": "M-ATX",
     "ddrSupport": "DDR5",
     "maxMemory": 256,
-    "pciSlots": 3,
+    "PCISlots": 3,
     "fileName": "",
-    "price": 180000
+    "price": 180000,
+    "makeCompany": 14
   },
   {
     "name": "MSI PRO B760M-A DDR4 II",
@@ -35,9 +38,10 @@
     "formFactor": "M-ATX",
     "ddrSupport": "DDR4",
     "maxMemory": 128,
-    "pciSlots": 3,
+    "PCISlots": 3,
     "fileName": "",
-    "price": 130000
+    "price": 130000,
+    "makeCompany": 14
   },
   {
     "name": "MSI MAG B650M 박격포 WIFI",
@@ -45,9 +49,10 @@
     "formFactor": "M-ATX",
     "ddrSupport": "DDR5",
     "maxMemory": 256,
-    "pciSlots": 3,
+    "PCISlots": 3,
     "fileName": "",
-    "price": 170000
+    "price": 170000,
+    "makeCompany": 14
   },
   {
     "name": "ASUS TUF Gaming B850M-PLUS WIFI STCOM",
@@ -55,9 +60,10 @@
     "formFactor": "M-ATX",
     "ddrSupport": "DDR5",
     "maxMemory": 192,
-    "pciSlots": 3,
+    "PCISlots": 3,
     "fileName": "",
-    "price": 200000
+    "price": 200000,
+    "makeCompany": 8
   },
   {
     "name": "GIGABYTE B650M K 피씨디렉트",
@@ -65,9 +71,10 @@
     "formFactor": "M-ATX",
     "ddrSupport": "DDR5",
     "maxMemory": 192,
-    "pciSlots": 3,
+    "PCISlots": 3,
     "fileName": "",
-    "price": 160000
+    "price": 160000,
+    "makeCompany": 17
   },
   {
     "name": "GIGABYTE B650M K 제이씨현",
@@ -75,9 +82,10 @@
     "formFactor": "M-ATX",
     "ddrSupport": "DDR5",
     "maxMemory": 192,
-    "pciSlots": 3,
+    "PCISlots": 3,
     "fileName": "",
-    "price": 160000
+    "price": 160000,
+    "makeCompany": 17
   },
   {
     "name": "ASUS PRIME A520M-K 대원씨티에스",
@@ -85,9 +93,10 @@
     "formFactor": "M-ATX",
     "ddrSupport": "DDR4",
     "maxMemory": 64,
-    "pciSlots": 3,
+    "PCISlots": 3,
     "fileName": "",
-    "price": 75000
+    "price": 75000,
+    "makeCompany": 8
   },
   {
     "name": "ASRock B650M Pro RS 대원씨티에스",
@@ -95,8 +104,9 @@
     "formFactor": "M-ATX",
     "ddrSupport": "DDR5",
     "maxMemory": 192,
-    "pciSlots": 3,
+    "PCISlots": 3,
     "fileName": "",
-    "price": 130000
+    "price": 130000,
+    "makeCompany": 16
   }
 ]

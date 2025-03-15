@@ -2,6 +2,7 @@ package org.kamjeon.pcforge.JSON;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import org.kamjeon.pcforge.PCpart.PCParts;
 import org.kamjeon.pcforge.PCpart.PCpartRepository;
@@ -48,94 +49,129 @@ public class DataLoader {
 	
 	@Transactional
 	public void allDataLoder() throws IOException {
-		 PCParts pcpart = pcRp.findById(1).orElse(null);  // 가장 첫 번째 PCParts를 가져옴 (또는 다른 조건으로 확인 가능)
-		 	System.out.println(pcRp.findById(1));
-		    if (pcpart == null) {
-		        pcpart = new PCParts();
-		        this.pcRp.save(pcpart); 
-		        System.out.println("새로운 PCParts 객체 생성");
-		    } else {
-		        System.out.println("기존 PCParts 객체 사용");
-		        return;
-		    }
+	    if (pcRp.count() > 0) { // 이미 데이터가 존재하면 로딩 중단
+	        System.out.println("데이터가 이미 존재합니다. 로딩을 건너뜁니다.");
+	        return;
+	    }
+
+	    PCParts pcpart = new PCParts();
+	    this.pcRp.save(pcpart);
+	    System.out.println("새로운 PCParts 객체 생성");
 
 	    PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 
-	    // Company.json 로드
+	    // Company.json 로드 (회사 데이터 확인)
 	    Resource company = resolver.getResource("classpath:json/Company.json");
-	    if (company != null) {
-	    	 System.out.println("데이터 찾음");
+	    if (company.exists() && companyRp.count() == 0) { // Company 데이터가 없을 경우만 추가
 	        List<Company> companyData = objectMapper.readValue(company.getInputStream(), new TypeReference<List<Company>>() {});
-	    	 System.out.println("데이터 넣기 시작함");
-	    		int num = 0;
 	        for (Company c : companyData) {
-	        	num++;
-	        	System.out.println("반복 횟수"+num);
-	        	if(pcpart == null)
-	        		System.out.println("시발");
-	            c.setPcPart(pcpart);  // Company와 PCParts 연결
-	            System.out.println("PCPart 고유 ID"+pcpart.getPcparts_id());
+	            c.setPcPart(pcpart);
 	        }
-	    	 System.out.println("데이터 찾기 전");
-	        companyRp.saveAll(companyData); 
-		    System.out.println("데이터 저장함");
+	        companyRp.saveAll(companyData);
+	        System.out.println("회사 데이터 저장 완료");
 	    }
 
 	    try {
-	    	System.out.println("2차 트랜잭션 실행");
-	        // JSON 파일들을 순차적으로 처리
+	        System.out.println("2차 트랜잭션 실행");
 	        Resource[] resources = resolver.getResources("classpath:json/*.json");
 
 	        for (Resource res : resources) {
 	            String fileName = res.getFilename();
 	            if (fileName == null) continue;
-	            System.out.println(fileName);
-	            if(fileName.equalsIgnoreCase("CPU.json") || fileName.equalsIgnoreCase("Company.json")) continue;
 
-	            if (fileName.equalsIgnoreCase("Disk.json")) {
+	            if (fileName.equalsIgnoreCase("Disk.json") && diskRp.count() == 0) {
 	                List<Disk> diskData = objectMapper.readValue(res.getInputStream(), new TypeReference<List<Disk>>() {});
 	                for (Disk disk : diskData) {
-	                    disk.setPcPart(pcpart);  // Disk와 PCParts 연결
+	                    disk.setPcPart(pcpart);
+	                    Optional<Company> com = this.companyRp.findById(disk.getMakeCompany());
+	                    if(com.isPresent()) {
+	                    	Company computer = com.get();
+	                    	disk.setMyCom(computer);
+	                    }
 	                }
 	                diskRp.saveAll(diskData);
-	                System.out.println("디스크 완료");
-	            } else if (fileName.equalsIgnoreCase("GPU.json")) {
+	                System.out.println("디스크 데이터 저장 완료");
+	            } 
+	            else if (fileName.equalsIgnoreCase("CPU.json") && cpuRp.count() == 0) {
+	                List<CPU> cpuData = objectMapper.readValue(res.getInputStream(), new TypeReference<List<CPU>>() {});
+	                for (CPU cpu : cpuData) {
+	                    cpu.setPcPart(pcpart);
+	                    Optional<Company> com = this.companyRp.findById(cpu.getMakeCompany());
+	                    if(com.isPresent()) {
+	                    	Company computer = com.get();
+	                    	cpu.setMyCom(computer);
+	                    }
+	                }
+	                cpuRp.saveAll(cpuData);
+	                System.out.println("CPU 데이터 저장 완료");
+	            }
+	            else if (fileName.equalsIgnoreCase("GPU.json") && gpuRp.count() == 0) {
 	                List<GPU> gpuData = objectMapper.readValue(res.getInputStream(), new TypeReference<List<GPU>>() {});
 	                for (GPU gpu : gpuData) {
-	                    gpu.setPcPart(pcpart);  // GPU와 PCParts 연결
+	                    gpu.setPcPart(pcpart);
+	                    Optional<Company> com = this.companyRp.findById(gpu.getMakeCompany());
+	                    if(com.isPresent()) {
+	                    	Company computer = com.get();
+	                    	gpu.setMyCom(computer);
+	                    }
 	                }
 	                gpuRp.saveAll(gpuData);
-	                System.out.println("지피유 완료");
-	            } else if (fileName.equalsIgnoreCase("MBoard.json")) {
+	                System.out.println("GPU 데이터 저장 완료");
+	            }
+	            else if (fileName.equalsIgnoreCase("MBoard.json") && mBoardRp.count() == 0) {
 	                List<MBoard> mBoardData = objectMapper.readValue(res.getInputStream(), new TypeReference<List<MBoard>>() {});
 	                for (MBoard mBoard : mBoardData) {
-	                    mBoard.setPcPart(pcpart);  // MBoard와 PCParts 연결
+	                    mBoard.setPcPart(pcpart);
+	                    Optional<Company> com = this.companyRp.findById(mBoard.getMakeCompany());
+	                    if(com.isPresent()) {
+	                    	Company computer = com.get();
+	                    	mBoard.setMyCom(computer);
+	                    }
 	                }
 	                mBoardRp.saveAll(mBoardData);
-	                System.out.println("엠보드 완료");
-	            } else if (fileName.equalsIgnoreCase("PSU.json")) {
+	                System.out.println("MBoard 데이터 저장 완료");
+	            }
+	            else if (fileName.equalsIgnoreCase("PSU.json") && psuRp.count() == 0) {
 	                List<PSU> psuData = objectMapper.readValue(res.getInputStream(), new TypeReference<List<PSU>>() {});
 	                for (PSU psu : psuData) {
-	                    psu.setPcPart(pcpart);  // PSU와 PCParts 연결
+	                    psu.setPcPart(pcpart);
+	                    Optional<Company> com = this.companyRp.findById(psu.getMakeCompany());
+	                    if(com.isPresent()) {
+	                    	Company computer = com.get();
+	                    	psu.setMyCom(computer);
+	                    }
 	                }
 	                psuRp.saveAll(psuData);
-	                System.out.println("피시유 완료");
-	            } else if (fileName.equalsIgnoreCase("Ram.json")) {
+	                System.out.println("PSU 데이터 저장 완료");
+	            }
+	            else if (fileName.equalsIgnoreCase("Ram.json") && ramRp.count() == 0) {
 	                List<RAM> ramData = objectMapper.readValue(res.getInputStream(), new TypeReference<List<RAM>>() {});
 	                for (RAM ram : ramData) {
-	                    ram.setPcPart(pcpart);  // RAM과 PCParts 연결
+	                    ram.setPcPart(pcpart);
+	                    Optional<Company> com = this.companyRp.findById(ram.getMakeCompany());
+	                    if(com.isPresent()) {
+	                    	Company computer = com.get();
+	                    	ram.setMyCom(computer);
+	                    }
 	                }
 	                ramRp.saveAll(ramData);
-	                System.out.println("렘 완료");
-	            } else if (fileName.equalsIgnoreCase("ComCase.json")) {
+	                System.out.println("RAM 데이터 저장 완료");
+	            }
+	            else if (fileName.equalsIgnoreCase("ComCase.json") && comRp.count() == 0) {
 	                List<ComCase> comData = objectMapper.readValue(res.getInputStream(), new TypeReference<List<ComCase>>() {});
 	                for (ComCase comCase : comData) {
-	                    comCase.setPcPart(pcpart);  // ComCase와 PCParts 연결
+	                    comCase.setPcPart(pcpart);
+	                    Optional<Company> com = this.companyRp.findById(comCase.getMakeCompany());
+	                    if(com.isPresent()) {
+	                    	Company computer = com.get();
+	                    	comCase.setMyCom(computer);
+	                    }
 	                }
 	                comRp.saveAll(comData);
-	                System.out.println("컴 완료");
-	            } else {
-	                System.out.println("지원하지 않는 JSON 파일: " + fileName);
+	                System.out.println("컴퓨터 케이스 데이터 저장 완료");
+	            } 
+	            else {
+	                System.out.println("이미 데이터가 존재하거나 지원하지 않는 JSON 파일: " + fileName);
 	            }
 	        }
 	    } catch (IOException e) {
@@ -143,5 +179,6 @@ public class DataLoader {
 	        throw new RuntimeException("JSON 파일 로딩 오류");
 	    }
 	}
+
 
 }

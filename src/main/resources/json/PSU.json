@@ -5,7 +5,8 @@
     "efficiency": "80Plus Bronze",
     "formFactor": "ATX",
     "fileName": "",
-    "price": 39900
+    "price": 39900,
+    "makeCompany": 6
   },
   {
     "name": "시소닉 FOCUS GX-650, 80Plus Gold",
@@ -13,7 +14,8 @@
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
     "fileName": "",
-    "price": 106000
+    "price": 106000,
+    "makeCompany": 7
   },
   {
     "name": "에이수스 ROG Strix 850W 80Plus Gold",
@@ -21,7 +23,8 @@
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
     "fileName": "",
-    "price": 139000
+    "price": 139000,
+    "makeCompany": 8
   },
   {
     "name": "딥쿨 DQ850-M-V2L 850W 80Plus Gold",
@@ -29,7 +32,8 @@
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
     "fileName": "",
-    "price": 124000
+    "price": 124000,
+    "makeCompany": 9
   },
   {
     "name": "FSP HYDRO G PRO 750W 80Plus Gold",
@@ -37,7 +41,8 @@
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
     "fileName": "",
-    "price": 115000
+    "price": 115000,
+    "makeCompany": 10
   },
   {
     "name": "컴퓨터 A1 500W 80Plus Bronze",
@@ -45,7 +50,8 @@
     "efficiency": "80Plus Bronze",
     "formFactor": "ATX",
     "fileName": "",
-    "price": 22000
+    "price": 22000,
+    "makeCompany": 11
   },
   {
     "name": "코르세어 RM850x 850W 80Plus Gold",
@@ -53,7 +59,8 @@
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
     "fileName": "",
-    "price": 151000
+    "price": 151000,
+    "makeCompany": 12
   },
   {
     "name": "정전기 600W 80Plus Bronze",
@@ -61,7 +68,8 @@
     "efficiency": "80Plus Bronze",
     "formFactor": "ATX",
     "fileName": "",
-    "price": 28000
+    "price": 28000,
+    "makeCompany": 13
   },
   {
     "name": "에이수스 TUF Gaming 750W 80Plus Gold",
@@ -69,7 +77,8 @@
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
     "fileName": "",
-    "price": 112000
+    "price": 112000,
+    "makeCompany": 8
   },
   {
     "name": "시소닉 FOCUS GX-750, 80Plus Gold",
@@ -77,6 +86,7 @@
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
     "fileName": "",
-    "price": 119000
+    "price": 119000,
+    "makeCompany": 7
   }
 ]

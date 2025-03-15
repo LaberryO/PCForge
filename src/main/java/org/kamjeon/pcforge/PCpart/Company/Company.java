@@ -3,9 +3,15 @@ package org.kamjeon.pcforge.PCpart.Company;
 import java.util.List;
 
 import org.kamjeon.pcforge.PCpart.PCParts;
+import org.kamjeon.pcforge.PCpart.CPU.CPU;
 import org.kamjeon.pcforge.PCpart.ComCase.ComCase;
 import org.kamjeon.pcforge.PCpart.Disk.Disk;
+import org.kamjeon.pcforge.PCpart.GPU.GPU;
+import org.kamjeon.pcforge.PCpart.MBoard.MBoard;
+import org.kamjeon.pcforge.PCpart.PSU.PSU;
+import org.kamjeon.pcforge.PCpart.RAM.RAM;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,12 +36,30 @@ public class Company {
 	
 	private String country;
 	
-	@OneToMany(mappedBy = "makeCompany")  // Disk 엔티티에서 makeCompany 필드와 매핑
-	private List<ComCase> caess;
-	
-	@OneToMany(mappedBy = "makeCompany")  // Disk 엔티티에서 makeCompany 필드와 매핑
-	private List<Disk> disks;
-	
+	 @OneToMany(mappedBy = "myCom", cascade = CascadeType.ALL)
+	 private List<CPU> cpus;
+	 
+	 @OneToMany(mappedBy = "myCom", cascade = CascadeType.ALL)
+	 private List<ComCase> comcases;
+	 
+	 @OneToMany(mappedBy = "myCom", cascade = CascadeType.ALL)
+	 private List<Disk> disks;
+	 
+	 @OneToMany(mappedBy = "myCom", cascade = CascadeType.ALL)
+	 private List<GPU> gpus;
+	 
+	 @OneToMany(mappedBy = "myCom", cascade = CascadeType.ALL)
+	 private List<MBoard> mBoards;
+	 
+	 @OneToMany(mappedBy = "myCom", cascade = CascadeType.ALL)
+	 private List<PSU> psus;
+	 
+	 @OneToMany(mappedBy = "myCom", cascade = CascadeType.ALL)
+	 private List<RAM> rams;
+	 
+
+	 
+	 
 	  @ManyToOne
 	  @JoinColumn(name = "pcparts_id", nullable = true) 
 	  private PCParts pcPart;

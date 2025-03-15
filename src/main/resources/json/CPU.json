@@ -1,87 +1,152 @@
 [
   {
-    "manufacturer": "Intel",
-    "cpu_type": "Core i5-14th Gen 14400F (Raptor Lake Refresh)",
+    "name": "Core i5-14th Gen 14400F (Raptor Lake Refresh)",
+    "defaultSpeed": 2.5,
+    "maxSpeed": 4.7,
     "socket": "Intel (Socket 1700)",
-    "cores": {
-      "performance": 6,
-      "efficient": 4
-    },
-    "threads": 16,
-    "base_clock": "2.5GHz",
-    "max_clock": "4.7GHz",
-    "max_memory": "192GB",
-    "memory": {
-      "type": "DDR5, DDR4",
-      "clock": "4800, 3200MHz",
-      "channels": 2
-    },
-    "integrated_graphics": false,
-    "price": "219,990"
+    "coreCount": 10,
+    "threadCount": 16,
+    "ddr": 5,
+    "ddrSpeed": 4800,
+    "memoryChannel": 2,
+    "innerGPU": false,
+    "fileName": "",
+    "balance": 219990,
+    "makeCompany": 22
   },
   {
-    "manufacturer": "Intel",
-    "cpu_type": "Core Ultra7(S2) 265K (Arrow Lake)",
+    "name": "Core Ultra7(S2) 265K (Arrow Lake)",
+    "defaultSpeed": 3.9,
+    "maxSpeed": 5.5,
     "socket": "Intel (Socket 1851)",
-    "cores": {
-      "performance": 8,
-      "efficient": 12
-    },
-    "threads": 20,
-    "base_clock": "3.9GHz",
-    "max_clock": "5.5GHz",
-    "max_memory": "192GB",
-    "memory": {
-      "type": "DDR5",
-      "clock": "6400MHz",
-      "channels": 2
-    },
-    "integrated_graphics": true,
-    "price": "578,000"
+    "coreCount": 20,
+    "threadCount": 20,
+    "ddr": 5,
+    "ddrSpeed": 6400,
+    "memoryChannel": 2,
+    "innerGPU": true,
+    "fileName": "",
+    "balance": 578000,
+    "makeCompany": 22
   },
   {
-    "manufacturer": "Intel",
-    "cpu_type": "Core i5-14th Gen 14600KF (Raptor Lake Refresh)",
+    "name": "Core i5-14th Gen 14600KF (Raptor Lake Refresh)",
+    "defaultSpeed": 3.5,
+    "maxSpeed": 5.3,
     "socket": "Intel (Socket 1700)",
-    "cores": {
-      "performance": 6,
-      "efficient": 8
-    },
-    "threads": 20,
-    "base_clock": "3.5GHz",
-    "max_clock": "5.3GHz",
-    "max_memory": "192GB",
-    "memory": {
-      "type": "DDR5, DDR4",
-      "clock": "5600, 3200MHz",
-      "channels": 2
-    },
-    "integrated_graphics": false,
-    "price": "533,600"
+    "coreCount": 14,
+    "threadCount": 20,
+    "ddr": 5,
+    "ddrSpeed": 5600,
+    "memoryChannel": 2,
+    "innerGPU": false,
+    "fileName": "",
+    "balance": 533600,
+    "makeCompany": 22
   },
   {
-    "manufacturer": "Intel",
-    "cpu_type": "Core i5-14th Gen 14600KF (Raptor Lake Refresh)",
+    "name": "Core i5-14th Gen 14600KF (Raptor Lake Refresh)",
+    "defaultSpeed": 3.5,
+    "maxSpeed": 5.3,
     "socket": "Intel (Socket 1700)",
-    "cores": {
-      "performance": 6,
-      "efficient": 8
-    },
-    "threads": 20,
-    "base_clock": "3.5GHz",
-    "max_clock": "5.3GHz",
-    "max_memory": "192GB",
-    "memory": {
-      "type": "DDR5, DDR4",
-      "clock": "5600, 3200MHz",
-      "channels": 2
-    },
-    "integrated_graphics": false,
-    "price": "126,420"
+    "coreCount": 14,
+    "threadCount": 20,
+    "ddr": 5,
+    "ddrSpeed": 5600,
+    "memoryChannel": 2,
+    "innerGPU": false,
+    "fileName": "",
+    "balance": 126420,
+    "makeCompany": 22
   },
   {
-    "manufacturer": "Intel",
-    "cpu_type": "Core Ultra5 (S2) 225F (Arrow Lake)",
-    "socket": "Intel (Socket 1851)",
-    "cores": {
-      "performance": 10
+    "name": "Ryzen 7 7800X3D",
+    "defaultSpeed": 4.2,
+    "maxSpeed": 5.0,
+    "socket": "AMD (Socket AM5)",
+    "coreCount": 8,
+    "threadCount": 16,
+    "ddr": 5,
+    "ddrSpeed": 5200,
+    "memoryChannel": 2,
+    "innerGPU": false,
+    "fileName": "",
+    "balance": 599000,
+    "makeCompany": 23
+  },
+  {
+    "name": "Core i9-14th Gen 14900K (Raptor Lake Refresh)",
+    "defaultSpeed": 3.2,
+    "maxSpeed": 6.0,
+    "socket": "Intel (Socket 1700)",
+    "coreCount": 24,
+    "threadCount": 32,
+    "ddr": 5,
+    "ddrSpeed": 5600,
+    "memoryChannel": 2,
+    "innerGPU": true,
+    "fileName": "",
+    "balance": 999000,
+    "makeCompany": 22
+  },
+  {
+    "name": "Ryzen 5 7600X",
+    "defaultSpeed": 4.7,
+    "maxSpeed": 5.3,
+    "socket": "AMD (Socket AM5)",
+    "coreCount": 6,
+    "threadCount": 12,
+    "ddr": 5,
+    "ddrSpeed": 5200,
+    "memoryChannel": 2,
+    "innerGPU": true,
+    "fileName": "",
+    "balance": 329000,
+    "makeCompany": 23
+  },
+  {
+    "name": "Core i7-14th Gen 14700K (Raptor Lake Refresh)",
+    "defaultSpeed": 3.4,
+    "maxSpeed": 5.6,
+    "socket": "Intel (Socket 1700)",
+    "coreCount": 20,
+    "threadCount": 28,
+    "ddr": 5,
+    "ddrSpeed": 5600,
+    "memoryChannel": 2,
+    "innerGPU": true,
+    "fileName": "",
+    "balance": 699000,
+    "makeCompany": 22
+  },
+  {
+    "name": "Ryzen 9 7950X",
+    "defaultSpeed": 4.5,
+    "maxSpeed": 5.7,
+    "socket": "AMD (Socket AM5)",
+    "coreCount": 16,
+    "threadCount": 32,
+    "ddr": 5,
+    "ddrSpeed": 5200,
+    "memoryChannel": 2,
+    "innerGPU": false,
+    "fileName": "",
+    "balance": 899000,
+    "makeCompany": 23
+  },
+  {
+    "name": "Core i3-14th Gen 13100F (Raptor Lake Refresh)",
+    "defaultSpeed": 3.4,
+    "maxSpeed": 4.5,
+    "socket": "Intel (Socket 1700)",
+    "coreCount": 4,
+    "threadCount": 8,
+    "ddr": 4,
+    "ddrSpeed": 3200,
+    "memoryChannel": 2,
+    "innerGPU": false,
+    "fileName": "",
+    "balance": 129000,
+    "makeCompany": 22
+  }
+]

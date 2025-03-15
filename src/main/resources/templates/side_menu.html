@@ -4,23 +4,23 @@
 			<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
 				<div class="sb-sidenav-menu">
 					<div class="nav">
-						<div class="sb-sidenav-menu-heading">Home</div>
+						<div class="sb-sidenav-menu-heading">Core</div>
 						<a class="nav-link" th:href="@{/sub}">
 							<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-							대시보드
+							Dashboard
 						</a>
-						<div class="sb-sidenav-menu-heading">Forge</div>
+						<div class="sb-sidenav-menu-heading">Interface</div>
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
 							data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
 							<div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-							견적 제작
+							Layouts
 							<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 						</a>
 						<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
 							data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" th:href="@{/forge/create}">견적 제작하러 가기</a>
-								<a class="nav-link" th:href="@{/share/list}">견적 공유 게시판</a>
+								<a class="nav-link" href="layout-static.html">Static Navigation</a>
+								<a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
 							</nav>
 						</div>
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
@@ -73,12 +73,9 @@
 						</a>
 					</div>
 				</div>
-				<div class="sb-sidenav-footer" sec:authorize="isAuthenticated()">
-					<div class="small">로그인된 사용자: </div>
-					<span sec:authentication="name"></span>
-				</div>
-				<div class="sb-sidenav-footer bg-success" sec:authorize="isAnonymous()">
-					<a class="text-white nav-link" th:href="@{/user/sign-in}">로그인이 필요합니다!</a>
+				<div class="sb-sidenav-footer">
+					<div class="small">Logged in as:</div>
+					Start Bootstrap
 				</div>
 			</nav>
 		</div>
