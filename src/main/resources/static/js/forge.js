@@ -133,3 +133,44 @@ function updateDataContent(status, data, target) {
 
 	}
 }
+
+// 선택 해제 버튼 작동하게 하는 코드
+document.addEventListener("DOMContentLoaded", function () {
+    // 선택 해제 버튼 이벤트 리스너 추가
+    document.querySelectorAll("#select_disable").forEach(button => {
+        button.addEventListener("click", function () {
+            let card = this.closest(".card"); // 현재 버튼이 속한 카드 찾기
+            if (!card) return;
+
+            let cardId = card.id; // selectedItem1 또는 selectedItem2
+            let itemId = null;
+
+            // ✅ 카드 내부의 item_name을 이용해 체크박스와 매칭할 ID 찾기
+            let itemNameElement = card.querySelector("#item_name");
+            if (itemNameElement && itemNameElement.textContent.trim() !== "") {
+                itemId = [...checkboxes].find(cb => cb.nextElementSibling.textContent.trim() === itemNameElement.textContent.trim())?.value;
+            }
+
+            if (itemId) {
+                // ✅ 선택 목록에서 제거
+                selectedItems = selectedItems.filter(item => item !== itemId);
+
+                // ✅ 체크박스 해제
+                let checkbox = document.querySelector(`input[name='item_option'][value='${itemId}']`);
+                if (checkbox) checkbox.checked = false;
+            }
+
+            // ✅ 해당 카드 내용 초기화
+            clearTarget(card);
+
+            // ✅ targetMap 업데이트
+            if (cardId === "selectedItem1") {
+                targetMap.first = "";
+            } else if (cardId === "selectedItem2") {
+                targetMap.second = "";
+            }
+
+            updateTargetMapping(); // 선택 목록 정리
+        });
+    });
+});
