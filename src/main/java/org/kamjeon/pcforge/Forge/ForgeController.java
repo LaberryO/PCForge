@@ -23,7 +23,8 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/forge")
 public class ForgeController {
 	private final ForgeService forgeService;
-	private final PCpartService pCpartService;
+	// 필요하면 활성화 하기로
+	//private final PCpartService pCpartService;
 
 	// 처음에 견적사이트 버튼 누르면
 	@GetMapping("create")
@@ -43,26 +44,26 @@ public class ForgeController {
 
 			switch (statusTemp) {
 			case "cpu":
-				forgeSearchList = isKwEmpty ? this.pCpartService.getCPUList() : this.pCpartService.getCPUList(kw);
+				forgeSearchList = isKwEmpty ? this.forgeService.getCPUList() : this.forgeService.getCPUList(kw);
 				break;
 			case "comcase":
-				forgeSearchList = isKwEmpty ? this.pCpartService.getComCaseList()
-						: this.pCpartService.getComCaseList(kw);
+				forgeSearchList = isKwEmpty ? this.forgeService.getComCaseList()
+						: this.forgeService.getComCaseList(kw);
 				break;
 			case "disk":
-				forgeSearchList = isKwEmpty ? this.pCpartService.getDiskList() : this.pCpartService.getDiskList(kw);
+				forgeSearchList = isKwEmpty ? this.forgeService.getDiskList() : this.forgeService.getDiskList(kw);
 				break;
 			case "gpu":
-				forgeSearchList = isKwEmpty ? this.pCpartService.getGPUList() : this.pCpartService.getGPUList(kw);
+				forgeSearchList = isKwEmpty ? this.forgeService.getGPUList() : this.forgeService.getGPUList(kw);
 				break;
 			case "mboard":
-				forgeSearchList = isKwEmpty ? this.pCpartService.getMBoardList() : this.pCpartService.getMBoardList(kw);
+				forgeSearchList = isKwEmpty ? this.forgeService.getMBoardList() : this.forgeService.getMBoardList(kw);
 				break;
 			case "psu":
-				forgeSearchList = isKwEmpty ? this.pCpartService.getPSUList() : this.pCpartService.getPSUList(kw);
+				forgeSearchList = isKwEmpty ? this.forgeService.getPSUList() : this.forgeService.getPSUList(kw);
 				break;
 			case "ram":
-				forgeSearchList = isKwEmpty ? this.pCpartService.getRAMList() : this.pCpartService.getRAMList(kw);
+				forgeSearchList = isKwEmpty ? this.forgeService.getRAMList() : this.forgeService.getRAMList(kw);
 				break;
 			default:
 				throw new IllegalArgumentException("알 수 없는 부품입니다: " + statusTemp);
