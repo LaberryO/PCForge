@@ -129,6 +129,11 @@ function updateDataContent(status, data, target) {
 			target.querySelector("#item_channel").textContent = data.memoryChannel;
 			target.querySelector("#item_size").textContent = data.capacity;
 			break;
+		case "gpu":
+			target.querySelector("#item_speed").textContent = data.defaultSpeed;
+			target.querySelector("#item_power").textContent = data.powerConsumption;
+			target.querySelector("#item_memory").textContent = data.memorySize;
+			break;
 
 
 	}
