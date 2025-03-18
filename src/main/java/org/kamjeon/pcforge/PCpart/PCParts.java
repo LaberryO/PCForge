@@ -17,6 +17,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,30 +29,30 @@ public class PCParts {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // 자동 증가 설정
-    private Integer pcparts_id;
+    private Integer id;
 
-    @OneToMany(mappedBy = "pcPart", cascade = CascadeType.ALL) // 자식 객체들이 모두 연결되도록 설정
-    private List<ComCase> comCase;
+    @OneToOne(mappedBy = "pcPart", cascade = CascadeType.ALL)  // ComCase는 단일 객체 참조
+    private ComCase comCase;
 
-    @OneToMany(mappedBy = "pcPart", cascade = CascadeType.ALL)
-    private List<CPU> cpu;
+    @OneToOne(mappedBy = "pcPart", cascade = CascadeType.ALL)  // CPU는 단일 객체 참조
+    private CPU cpu;
 
-    @OneToMany(mappedBy = "pcPart", cascade = CascadeType.ALL)
-    private List<Disk> disk;
+    @OneToOne(mappedBy = "pcPart", cascade = CascadeType.ALL)  // Disk는 단일 객체 참조
+    private Disk disk;
 
-    @OneToMany(mappedBy = "pcPart", cascade = CascadeType.ALL)
-    private List<GPU> gpu;
+    @OneToOne(mappedBy = "pcPart", cascade = CascadeType.ALL)  // GPU는 단일 객체 참조
+    private GPU gpu;
 
-    @OneToMany(mappedBy = "pcPart", cascade = CascadeType.ALL)
-    private List<MBoard> mBoard;
+    @OneToOne(mappedBy = "pcPart", cascade = CascadeType.ALL)  // MBoard는 단일 객체 참조
+    private MBoard mBoard;
 
-    @OneToMany(mappedBy = "pcPart", cascade = CascadeType.ALL)
-    private List<PSU> psu;
+    @OneToOne(mappedBy = "pcPart", cascade = CascadeType.ALL)  // PSU는 단일 객체 참조
+    private PSU psu;
 
-    @OneToMany(mappedBy = "pcPart", cascade = CascadeType.ALL)
-    private List<RAM> ram;
+    @OneToOne(mappedBy = "pcPart", cascade = CascadeType.ALL)  // RAM은 단일 객체 참조
+    private RAM ram;
 
-    @OneToMany(mappedBy = "pcPart", cascade = CascadeType.ALL)
-    private List<Company> company;
+    @OneToOne(mappedBy = "pcPart", cascade = CascadeType.ALL)  // Company는 단일 객체 참조
+    private Company company;
 	 
 }

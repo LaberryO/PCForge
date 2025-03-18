@@ -43,7 +43,7 @@ public class CPU {
 	
 	private String fileName;
 	
-	private Integer balance;
+	private Integer price;
 	
 
 	private Integer makeCompany;

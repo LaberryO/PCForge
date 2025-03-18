@@ -23,11 +23,10 @@ public class PCpartController {
             @RequestParam(value = "page", defaultValue = "0") int page, 
             @RequestParam(value = "kw", defaultValue = "") String kw) {
 
-		// 임시 비활성화 0315
-//		 Page<PCParts> paging = this.pcPartService.getList(page, kw, type); 
-//	        model.addAttribute("paging", paging);
-//	        model.addAttribute("kw", kw);
-//	        model.addAttribute("type", type);
+		 Page<PCParts> paging = this.pcPartService.getList(page, kw, type); 
+	        model.addAttribute("paging", paging);
+	        model.addAttribute("kw", kw);
+	        model.addAttribute("type", type);
 	        
 		return "shop"; // 이동 
 	}
