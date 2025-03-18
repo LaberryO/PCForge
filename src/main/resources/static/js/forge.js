@@ -134,8 +134,13 @@ function updateDataContent(status, data, target) {
 			target.querySelector("#item_power").textContent = data.powerConsumption;
 			target.querySelector("#item_memory").textContent = data.memorySize;
 			break;
-
-
+		case "mboard":
+			target.querySelector("#item_ddr").textContent = data.ddrSupport;
+			target.querySelector("#item_socket").textContent = data.socket;
+			target.querySelector("#item_formFactor").textContent = data.formFactor;
+			target.querySelector("#item_maxMemory").textContent = data.maxMemory;
+			break;
+		
 	}
 }
 
