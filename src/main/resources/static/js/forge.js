@@ -116,9 +116,10 @@ function updateDataContent(status, data, target) {
 	target.querySelector("#item_name").textContent = data.name;
 	target.querySelector("#item_price").textContent = data.price;
 	let image = data.fileName;
-	if (image === null || image.trim() === "") {
-		image = "/assets/img/exam-cpu.jpg";
+	if (!image || image.trim() === "") {
+	    image = "/assets/img/exam-cpu.jpg";
 	}
+
 	target.querySelector("#item_image").src = image;
 	switch (status) {
 		case "cpu":
