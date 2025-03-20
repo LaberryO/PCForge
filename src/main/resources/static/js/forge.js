@@ -123,6 +123,15 @@ function updateDataContent(status, data, target) {
 	target.querySelector("#item_image").src = image;
 	switch (status) {
 		case "cpu":
+			target.querySelector("#item_socket").textContent = data.socket;
+			target.querySelector("#item_core").textContent = data.coreCount;
+			target.querySelector("#item_thread").textContent = data.threadCount;
+			target.querySelector("#item_ddr").textContent = `DDR${data.ddr}`;
+			target.querySelector("#item_ramSpeed").textContent = `${data.ddrSpeed} MHz`;
+			target.querySelector("#item_defaultSpeed").textContent = `${data.defaultSpeed} GHz`;
+			target.querySelector("#item_maxSpeed").textContent = `${data.maxSpeed} GHz`;
+			target.querySelector("#item_channel").textContent = `${data.memoryChannel} Channel`;
+			target.querySelector("#item_gpu").textContent = data.innerGPU ? "내장 GPU 있음" : "내장 GPU 없음";
 			break;
 		case "ram":
 			target.querySelector("#item_type").textContent = data.type;
