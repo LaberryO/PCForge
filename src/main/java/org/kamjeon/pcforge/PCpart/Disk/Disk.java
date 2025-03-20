@@ -38,9 +38,7 @@ public class Disk {
 
 	private Integer makeCompany;
 	
-    @ManyToOne
-    @JoinColumn(name = "company_id")
-	private Company myCom;
+   
 	
 	@ManyToOne
 	@JoinColumn(name = "pcparts_id", nullable = true) 

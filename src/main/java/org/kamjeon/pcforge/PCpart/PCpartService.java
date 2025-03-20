@@ -90,7 +90,7 @@ public class PCpartService {
     }
     private Specification<PCParts> searchAll(String kw) {
         return (Root<PCParts> p, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
-            
+            System.out.println("여기 실행하는 중");
             // 각 연관된 엔티티와 조인 설정
             Join<PCParts, ComCase> comCaseJoin = p.join("comCase", JoinType.LEFT);
             Join<PCParts, CPU> cpuJoin = p.join("cpu", JoinType.LEFT);
@@ -119,13 +119,14 @@ public class PCpartService {
     private Specification<ComCase> searchComCase(String kw) {
         return (Root<ComCase> p, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
             query.distinct(true);
-            Join<ComCase, PCParts> comCase = p.join("comCase", JoinType.INNER);
+            Join<ComCase, PCParts> comCase = p.join("pcPart", JoinType.INNER);
             return cb.like(comCase.get("name"), "%" + kw + "%");
         };
     }
 
     private Specification<CPU> searchCPU(String kw) {
         return (Root<CPU> cpu, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
+            System.out.println("cpu 실행하는 중");
             query.distinct(true);
             Join<CPU, PCParts> pcParts = cpu.join("pcPart", JoinType.INNER);
 

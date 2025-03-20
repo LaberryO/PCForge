@@ -49,14 +49,14 @@ public class DataLoader {
 	
 	@Transactional
 	public void allDataLoder() throws IOException {
-	    if (pcRp.count() > 0) { // 이미 데이터가 존재하면 로딩 중단
-	        System.out.println("데이터가 이미 존재합니다. 로딩을 건너뜁니다.");
-	        return;
-	    }
-
-	    PCParts pcpart = new PCParts();
-	    this.pcRp.save(pcpart);
-	    System.out.println("새로운 PCParts 객체 생성");
+		/*
+		 * if (pcRp.count() > 0) { // 이미 데이터가 존재하면 로딩 중단
+		 * System.out.println("데이터가 이미 존재합니다. 로딩을 건너뜁니다."); return; }
+		 */
+		/*
+		 * PCParts pcpart = new PCParts(); this.pcRp.save(pcpart);
+		 * System.out.println("새로운 PCParts 객체 생성");
+		 */
 
 	    PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 
@@ -65,7 +65,9 @@ public class DataLoader {
 	    if (company.exists() && companyRp.count() == 0) { // Company 데이터가 없을 경우만 추가
 	        List<Company> companyData = objectMapper.readValue(company.getInputStream(), new TypeReference<List<Company>>() {});
 	        for (Company c : companyData) {
-	            c.setPcPart(pcpart);
+	        	 PCParts pcParts = new PCParts();
+         	    pcParts = pcRp.save(pcParts);
+         	    c.setPcPart(pcParts); 
 	        }
 	        companyRp.saveAll(companyData);
 	        System.out.println("회사 데이터 저장 완료");
@@ -82,12 +84,13 @@ public class DataLoader {
 	            if (fileName.equalsIgnoreCase("Disk.json") && diskRp.count() == 0) {
 	                List<Disk> diskData = objectMapper.readValue(res.getInputStream(), new TypeReference<List<Disk>>() {});
 	                for (Disk disk : diskData) {
-	                    disk.setPcPart(pcpart);
+	                	 PCParts pcParts = new PCParts();
+	                	    pcParts = pcRp.save(pcParts);
+
+	                	    disk.setPcPart(pcParts); 
+
 	                    Optional<Company> com = this.companyRp.findById(disk.getMakeCompany());
-	                    if(com.isPresent()) {
-	                    	Company computer = com.get();
-	                    	disk.setMyCom(computer);
-	                    }
+	                    
 	                }
 	                diskRp.saveAll(diskData);
 	                System.out.println("디스크 데이터 저장 완료");
@@ -95,12 +98,13 @@ public class DataLoader {
 	            else if (fileName.equalsIgnoreCase("CPU.json") && cpuRp.count() == 0) {
 	                List<CPU> cpuData = objectMapper.readValue(res.getInputStream(), new TypeReference<List<CPU>>() {});
 	                for (CPU cpu : cpuData) {
-	                    cpu.setPcPart(pcpart);
+	                 	 PCParts pcParts = new PCParts();
+	                	    pcParts = pcRp.save(pcParts);
+
+	                	    cpu.setPcPart(pcParts); 
+
 	                    Optional<Company> com = this.companyRp.findById(cpu.getMakeCompany());
-	                    if(com.isPresent()) {
-	                    	Company computer = com.get();
-	                    	cpu.setMyCom(computer);
-	                    }
+	                   
 	                }
 	                cpuRp.saveAll(cpuData);
 	                System.out.println("CPU 데이터 저장 완료");
@@ -108,12 +112,12 @@ public class DataLoader {
 	            else if (fileName.equalsIgnoreCase("GPU.json") && gpuRp.count() == 0) {
 	                List<GPU> gpuData = objectMapper.readValue(res.getInputStream(), new TypeReference<List<GPU>>() {});
 	                for (GPU gpu : gpuData) {
-	                    gpu.setPcPart(pcpart);
+	                	 PCParts pcParts = new PCParts();
+	                	    pcParts = pcRp.save(pcParts);
+
+	                	    gpu.setPcPart(pcParts); 
 	                    Optional<Company> com = this.companyRp.findById(gpu.getMakeCompany());
-	                    if(com.isPresent()) {
-	                    	Company computer = com.get();
-	                    	gpu.setMyCom(computer);
-	                    }
+	                   
 	                }
 	                gpuRp.saveAll(gpuData);
 	                System.out.println("GPU 데이터 저장 완료");
@@ -121,12 +125,12 @@ public class DataLoader {
 	            else if (fileName.equalsIgnoreCase("MBoard.json") && mBoardRp.count() == 0) {
 	                List<MBoard> mBoardData = objectMapper.readValue(res.getInputStream(), new TypeReference<List<MBoard>>() {});
 	                for (MBoard mBoard : mBoardData) {
-	                    mBoard.setPcPart(pcpart);
+	                	 PCParts pcParts = new PCParts();
+	                	    pcParts = pcRp.save(pcParts);
+
+	                	    mBoard.setPcPart(pcParts); 
 	                    Optional<Company> com = this.companyRp.findById(mBoard.getMakeCompany());
-	                    if(com.isPresent()) {
-	                    	Company computer = com.get();
-	                    	mBoard.setMyCom(computer);
-	                    }
+	           
 	                }
 	                mBoardRp.saveAll(mBoardData);
 	                System.out.println("MBoard 데이터 저장 완료");
@@ -134,12 +138,12 @@ public class DataLoader {
 	            else if (fileName.equalsIgnoreCase("PSU.json") && psuRp.count() == 0) {
 	                List<PSU> psuData = objectMapper.readValue(res.getInputStream(), new TypeReference<List<PSU>>() {});
 	                for (PSU psu : psuData) {
-	                    psu.setPcPart(pcpart);
+	                	 PCParts pcParts = new PCParts();
+	                	    pcParts = pcRp.save(pcParts);
+
+	                	    psu.setPcPart(pcParts); 
 	                    Optional<Company> com = this.companyRp.findById(psu.getMakeCompany());
-	                    if(com.isPresent()) {
-	                    	Company computer = com.get();
-	                    	psu.setMyCom(computer);
-	                    }
+	              
 	                }
 	                psuRp.saveAll(psuData);
 	                System.out.println("PSU 데이터 저장 완료");
@@ -147,12 +151,12 @@ public class DataLoader {
 	            else if (fileName.equalsIgnoreCase("Ram.json") && ramRp.count() == 0) {
 	                List<RAM> ramData = objectMapper.readValue(res.getInputStream(), new TypeReference<List<RAM>>() {});
 	                for (RAM ram : ramData) {
-	                    ram.setPcPart(pcpart);
+	                	 PCParts pcParts = new PCParts();
+	                	    pcParts = pcRp.save(pcParts);
+
+	                	    ram.setPcPart(pcParts); 
 	                    Optional<Company> com = this.companyRp.findById(ram.getMakeCompany());
-	                    if(com.isPresent()) {
-	                    	Company computer = com.get();
-	                    	ram.setMyCom(computer);
-	                    }
+	             
 	                }
 	                ramRp.saveAll(ramData);
 	                System.out.println("RAM 데이터 저장 완료");
@@ -160,12 +164,12 @@ public class DataLoader {
 	            else if (fileName.equalsIgnoreCase("ComCase.json") && comRp.count() == 0) {
 	                List<ComCase> comData = objectMapper.readValue(res.getInputStream(), new TypeReference<List<ComCase>>() {});
 	                for (ComCase comCase : comData) {
-	                    comCase.setPcPart(pcpart);
+	                	 PCParts pcParts = new PCParts();
+	                	    pcParts = pcRp.save(pcParts);
+
+	                	    comCase.setPcPart(pcParts); 
 	                    Optional<Company> com = this.companyRp.findById(comCase.getMakeCompany());
-	                    if(com.isPresent()) {
-	                    	Company computer = com.get();
-	                    	comCase.setMyCom(computer);
-	                    }
+	           
 	                }
 	                comRp.saveAll(comData);
 	                System.out.println("컴퓨터 케이스 데이터 저장 완료");

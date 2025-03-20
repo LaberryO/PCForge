@@ -36,27 +36,7 @@ public class Company {
 	
 	private String country;
 	
-	 @OneToMany(mappedBy = "myCom", cascade = CascadeType.ALL)
-	 private List<CPU> cpus;
-	 
-	 @OneToMany(mappedBy = "myCom", cascade = CascadeType.ALL)
-	 private List<ComCase> comcases;
-	 
-	 @OneToMany(mappedBy = "myCom", cascade = CascadeType.ALL)
-	 private List<Disk> disks;
-	 
-	 @OneToMany(mappedBy = "myCom", cascade = CascadeType.ALL)
-	 private List<GPU> gpus;
-	 
-	 @OneToMany(mappedBy = "myCom", cascade = CascadeType.ALL)
-	 private List<MBoard> mBoards;
-	 
-	 @OneToMany(mappedBy = "myCom", cascade = CascadeType.ALL)
-	 private List<PSU> psus;
-	 
-	 @OneToMany(mappedBy = "myCom", cascade = CascadeType.ALL)
-	 private List<RAM> rams;
-	 
+	
 
 	 
 	 

@@ -11,7 +11,7 @@
     "memoryChannel": 2,
     "innerGPU": false,
     "fileName": "",
-    "balance": 219990,
+    "price": 219990,
     "makeCompany": 22
   },
   {
@@ -26,7 +26,7 @@
     "memoryChannel": 2,
     "innerGPU": true,
     "fileName": "",
-    "balance": 578000,
+    "price": 578000,
     "makeCompany": 22
   },
   {
@@ -41,7 +41,7 @@
     "memoryChannel": 2,
     "innerGPU": false,
     "fileName": "",
-    "balance": 533600,
+    "price": 533600,
     "makeCompany": 22
   },
   {
@@ -56,7 +56,7 @@
     "memoryChannel": 2,
     "innerGPU": false,
     "fileName": "",
-    "balance": 126420,
+    "price": 126420,
     "makeCompany": 22
   },
   {
@@ -71,7 +71,7 @@
     "memoryChannel": 2,
     "innerGPU": false,
     "fileName": "",
-    "balance": 599000,
+    "price": 599000,
     "makeCompany": 23
   },
   {
@@ -86,7 +86,7 @@
     "memoryChannel": 2,
     "innerGPU": true,
     "fileName": "",
-    "balance": 999000,
+    "price": 999000,
     "makeCompany": 22
   },
   {
@@ -101,7 +101,7 @@
     "memoryChannel": 2,
     "innerGPU": true,
     "fileName": "",
-    "balance": 329000,
+    "price": 329000,
     "makeCompany": 23
   },
   {
@@ -116,7 +116,7 @@
     "memoryChannel": 2,
     "innerGPU": true,
     "fileName": "",
-    "balance": 699000,
+    "price": 699000,
     "makeCompany": 22
   },
   {
@@ -131,7 +131,7 @@
     "memoryChannel": 2,
     "innerGPU": false,
     "fileName": "",
-    "balance": 899000,
+    "price": 899000,
     "makeCompany": 23
   },
   {
@@ -146,7 +146,7 @@
     "memoryChannel": 2,
     "innerGPU": false,
     "fileName": "",
-    "balance": 129000,
+    "price": 129000,
     "makeCompany": 22
   }
 ]

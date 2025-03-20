@@ -33,9 +33,7 @@ public class RAM {
 
 	private Integer makeCompany;
 	
-    @ManyToOne
-    @JoinColumn(name = "company_id")
-	private Company myCom;
+   
 
 	private String fileName;
 

@@ -30,11 +30,11 @@
 			<tr th:each="pcPart, loop : ${paging.content}">
 			    <td th:text="${paging.totalElements - (paging.number * paging.size) - loop.index}"></td> <!-- 현재 페이지의 인덱스 계산 -->
 
-			    <!-- pcPart가 null이 아니고, cpu가 null이 아닐 경우에만 출력 -->
-			    <td th:text="${pcPart != null and pcPart.ram != null ? pcPart.ram.name : 'No CPU'}"></td>
+			    <!-- pcPart가 null이 아니고, pcPart의 name이 있을 경우에만 출력 -->
+			    <td th:text="${pcPart != null and pcPart.name != null ? pcPart.name : 'No Name'}"></td>
 
-			    <!-- gpu가 null일 경우 대비 -->
-			    <td th:text="${pcPart != null and pcPart.gpu != null ? pcPart.gpu.price : 'No GPU'}"></td>
+			    <!-- pcPart가 null이 아니고, pcPart의 price가 있을 경우에만 출력 -->
+			    <td th:text="${pcPart != null and pcPart.price != null ? pcPart.price : 'No Price'}"></td>
 			</tr>
 
         </tbody>

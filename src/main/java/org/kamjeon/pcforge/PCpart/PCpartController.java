@@ -1,7 +1,6 @@
 package org.kamjeon.pcforge.PCpart;
 
-import org.kamjeon.pcforge.PCpart.CPU.CPU;
-import org.kamjeon.pcforge.PCpart.GPU.GPU;
+
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +18,7 @@ public class PCpartController {
 	
 	@GetMapping("/list")
     public String list(Model model, 
-            @RequestParam(value = "type", defaultValue = "All") String type, 
+            @RequestParam(value = "type", defaultValue = "CPU") String type, 
             @RequestParam(value = "page", defaultValue = "0") int page, 
             @RequestParam(value = "kw", defaultValue = "") String kw) {
 
