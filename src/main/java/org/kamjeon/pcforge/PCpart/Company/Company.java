@@ -3,13 +3,8 @@ package org.kamjeon.pcforge.PCpart.Company;
 import java.util.List;
 
 import org.kamjeon.pcforge.PCpart.PCParts;
-import org.kamjeon.pcforge.PCpart.CPU.CPU;
-import org.kamjeon.pcforge.PCpart.ComCase.ComCase;
-import org.kamjeon.pcforge.PCpart.Disk.Disk;
-import org.kamjeon.pcforge.PCpart.GPU.GPU;
-import org.kamjeon.pcforge.PCpart.MBoard.MBoard;
-import org.kamjeon.pcforge.PCpart.PSU.PSU;
-import org.kamjeon.pcforge.PCpart.RAM.RAM;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -27,21 +22,18 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Company {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer company_id;
-	 
+
 	private String name;
-	
+
 	private String country;
 	
-	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "pcparts_id", nullable = true)
+	private PCParts pcPart;
 
-	 
-	 
-	  @ManyToOne
-	  @JoinColumn(name = "pcparts_id", nullable = true) 
-	  private PCParts pcPart;
-	 
 }

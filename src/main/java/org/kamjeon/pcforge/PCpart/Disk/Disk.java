@@ -3,6 +3,8 @@ package org.kamjeon.pcforge.PCpart.Disk;
 import org.kamjeon.pcforge.PCpart.PCParts;
 import org.kamjeon.pcforge.PCpart.Company.Company;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -39,7 +41,7 @@ public class Disk {
 	private Integer makeCompany;
 	
    
-	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "pcparts_id", nullable = true) 
 	private PCParts pcPart;

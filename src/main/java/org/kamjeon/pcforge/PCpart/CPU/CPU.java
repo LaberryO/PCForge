@@ -3,6 +3,8 @@ package org.kamjeon.pcforge.PCpart.CPU;
 import org.kamjeon.pcforge.PCpart.PCParts;
 import org.kamjeon.pcforge.PCpart.Company.Company;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -48,9 +50,8 @@ public class CPU {
 
 	private Integer makeCompany;
 	
-   
-    
-	@ManyToOne
+	@JsonIgnore
+   	@ManyToOne
 	@JoinColumn(name = "pcparts_id", nullable = true)
 	private PCParts pcPart;
 }

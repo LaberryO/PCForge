@@ -3,6 +3,8 @@ package org.kamjeon.pcforge.PCpart.ComCase;
 import org.kamjeon.pcforge.PCpart.PCParts;
 import org.kamjeon.pcforge.PCpart.Company.Company;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -38,7 +40,7 @@ public class ComCase {
 
 	private Integer makeCompany;
 
-	
+	@JsonIgnore
 	  @ManyToOne
 	  @JoinColumn(name = "pcparts_id")
 	  private PCParts pcPart;
