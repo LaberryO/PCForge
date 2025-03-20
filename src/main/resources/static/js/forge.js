@@ -150,7 +150,10 @@ function updateDataContent(status, data, target) {
 			target.querySelector("#item_formFactor").textContent = data.formFactor;
 			target.querySelector("#item_maxMemory").textContent = data.maxMemory;
 			break;
-		
+		case "psu":
+			target.querySelector("#item_formFactor").textContent = data.formFactor;
+			target.querySelector("#item_wattage").textContent = data.wattage;
+			break;
 	}
 }
 
