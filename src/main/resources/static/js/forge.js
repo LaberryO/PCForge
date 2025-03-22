@@ -98,7 +98,7 @@ function fetchPCPart(path, id, target) {
 	fetch(`${path}/getThis?id=${id}`)
 		.then(response => response.json())
 		.then(data => {
-			console.log("Server Response: ", data);
+//			console.log("Server Response: ", data);
 			if (data.data) {
 				updateDataContent(pageStatus, data.data, target);
 			} else {
@@ -111,7 +111,7 @@ function fetchPCPart(path, id, target) {
 		});
 }
 
-
+// 제품 정보 표시
 function updateDataContent(status, data, target) {
 	target.querySelector("#item_name").textContent = data.name;
 	target.querySelector("#item_price").textContent = data.price;
@@ -135,25 +135,45 @@ function updateDataContent(status, data, target) {
 			break;
 		case "ram":
 			target.querySelector("#item_type").textContent = data.type;
-			target.querySelector("#item_speed").textContent = data.speed;
-			target.querySelector("#item_channel").textContent = data.memoryChannel;
-			target.querySelector("#item_size").textContent = data.capacity;
+			target.querySelector("#item_speed").textContent = data.speed+"MHz";
+			target.querySelector("#item_channel").textContent = data.memoryChannel+"채널";
+			target.querySelector("#item_size").textContent = data.capacity+"GB";
 			break;
 		case "gpu":
-			target.querySelector("#item_speed").textContent = data.defaultSpeed;
-			target.querySelector("#item_power").textContent = data.powerConsumption;
-			target.querySelector("#item_memory").textContent = data.memorySize;
+			target.querySelector("#item_speed").textContent = data.defaultSpeed+"MHz";
+			target.querySelector("#item_power").textContent = data.powerConsumption+"W";
+			target.querySelector("#item_memory").textContent = data.memorySize+"MHz";
 			break;
 		case "mboard":
 			target.querySelector("#item_ddr").textContent = data.ddrSupport;
 			target.querySelector("#item_socket").textContent = data.socket;
 			target.querySelector("#item_formFactor").textContent = data.formFactor;
-			target.querySelector("#item_maxMemory").textContent = data.maxMemory;
+			target.querySelector("#item_maxMemory").textContent = data.maxMemory+"GB";
 			break;
 		case "psu":
 			target.querySelector("#item_formFactor").textContent = data.formFactor;
-			target.querySelector("#item_wattage").textContent = data.wattage;
+			target.querySelector("#item_wattage").textContent = data.wattage+"W";
 			break;
+		case "comcase":
+			target.querySelector("#item_color").textContent = data.color;
+			target.querySelector("#item_fan").textContent = data.fanSupport + "개";
+			target.querySelector("#item_tower").textContent = data.formFactor;
+			target.querySelector("#item_material").textContent = data.material;
+			break;
+		case "disk":
+			target.querySelector("#item_size").textContent = formatStorage(data.capacity);
+			target.querySelector("#item_speed").textContent = data.speed+"MB/s";
+			target.querySelector("#item_type").textContent = data.type;
+			break;
+	}
+}
+
+// GB -> TB 함수
+function formatStorage(sizeGB) {
+	if (sizeGB >= 1000) {
+		return (sizeGB / 1000).toFixed(2) + " TB";
+	} else {
+		return sizeGB + " GB";
 	}
 }
 
