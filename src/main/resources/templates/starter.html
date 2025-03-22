@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<title>Agency - Start Bootstrap Theme</title>
+	<!-- Favicon-->
+	<link rel="icon" type="image/x-icon" href="starterAsset/favicon.ico" />
+	<!-- Font Awesome icons (free version)-->
+	<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+	<!-- Google fonts-->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+	<!-- Core theme CSS (includes Bootstrap)-->
+
+
+	<link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+	<link th:href="@{/css/template_styles.css}" rel="stylesheet" />
+	<link rel="stylesheet" th:href="@{/css/lb_styles.css}" />
+	<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+	<!-- Page CSS -->
+	<th:block layout:fragment="style"></th:block>
+	<link th:href="@{/css/starter.css}" rel="stylesheet" />
+</head>
+
+<body class="sb-nav-fixed" id="page-top">
+	<!-- Navbar -->
+	<nav th:replace="~{navbar :: navbarFragment}"></nav>
+	<!-- SideMenu -->
+	<th:block th:replace="~{side_menu :: sideMenuFragment}"></th:block>
+	<!-- Content -->
+	<th:block layout:fragment="content"></th:block>
+	<!-- End Div -->
+	<th:block th:replace="~{end_div :: endivFragment}"></th:block>
+	<!-- JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		crossorigin="anonymous"></script>
+	<script th:src="@{/js/scripts.js}"></script>
+	<!-- Page JS -->
+	<th:block layout:fragment="script"></th:block>
+</body>
+<!-- Masthead-->
+<header class="masthead">
+	<div class="container">
+		<div class="masthead-subheading">Welcome To Our Studio!</div>
+		<div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
+		<a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
+	</div>
+</header>
+<div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+	<div class="carousel-inner" style="height: 80vh;">
+
+		<!-- 첫 번째 슬라이드 -->
+		<div class="carousel-item active">
+			<div class="container h-100 d-flex align-items-center justify-content-center">
+				<div class="row g-2 w-100">
+					<div class="col-md-6">
+						<img src="/images/miku1.jpg" class="img-fluid w-100 h-100 object-fit-cover rounded" alt="이미지 1">
+					</div>
+					<div class="col-md-6">
+						<img src="/images/miku1.jpg" class="img-fluid w-100 h-100 object-fit-cover rounded" alt="이미지 2">
+					</div>
+					<div class="col-md-6">
+						<img src="/images/miku1.jpg" class="img-fluid w-100 h-100 object-fit-cover rounded" alt="이미지 3">
+					</div>
+					<div class="col-md-6">
+						<img src="/images/miku1.jpg" class="img-fluid w-100 h-100 object-fit-cover rounded" alt="이미지 4">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 두 번째 슬라이드 -->
+		<div class="carousel-item">
+			<div class="container h-100 d-flex align-items-center justify-content-center">
+				<div class="row g-2 w-100">
+					<div class="col-md-6">
+						<img src="/images/miku1.jpg" class="img-fluid w-100 h-100 object-fit-cover rounded" alt="이미지 5">
+					</div>
+					<div class="col-md-6">
+						<img src="/images/miku1.jpg" class="img-fluid w-100 h-100 object-fit-cover rounded" alt="이미지 6">
+					</div>
+					<div class="col-md-6">
+						<img src="/images/miku1.jpg" class="img-fluid w-100 h-100 object-fit-cover rounded" alt="이미지 7">
+					</div>
+					<div class="col-md-6">
+						<img src="/images/miku1.jpg" class="img-fluid w-100 h-100 object-fit-cover rounded" alt="이미지 8">
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Carousel Controls -->
+	<button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+		<span class="carousel-control-prev-icon"></span>
+	</button>
+	<button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+		<span class="carousel-control-next-icon"></span>
+	</button>
+</div>
+<!-- Services-->
+<section class="page-section" id="services">
+	<div class="container">
+		<div class="text-center">
+			<h2 class="section-heading text-uppercase">Services</h2>
+			<h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+		</div>
+		<div class="row text-center">
+			<div class="col-md-4">
+				<span class="fa-stack fa-4x">
+					<i class="fas fa-circle fa-stack-2x text-primary"></i>
+					<i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+				</span>
+				<h4 class="my-3">E-Commerce</h4>
+				<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
+					architecto quo inventore harum ex magni, dicta impedit.</p>
+			</div>
+			<div class="col-md-4">
+				<span class="fa-stack fa-4x">
+					<i class="fas fa-circle fa-stack-2x text-primary"></i>
+					<i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+				</span>
+				<h4 class="my-3">Responsive Design</h4>
+				<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
+					architecto quo inventore harum ex magni, dicta impedit.</p>
+			</div>
+			<div class="col-md-4">
+				<span class="fa-stack fa-4x">
+					<i class="fas fa-circle fa-stack-2x text-primary"></i>
+					<i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+				</span>
+				<h4 class="my-3">Web Security</h4>
+				<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
+					architecto quo inventore harum ex magni, dicta impedit.</p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Portfolio Grid-->
+<section class="page-section bg-light" id="portfolio">
+	<div class="container">
+		<div class="text-center">
+			<h2 class="section-heading text-uppercase">Portfolio</h2>
+			<h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+		</div>
+		<div class="row">
+			<div class="col-lg-4 col-sm-6 mb-4">
+				<!-- Portfolio item 1-->
+				<div class="portfolio-item">
+					<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+						<div class="portfolio-hover">
+							<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+						</div>
+						<img class="img-fluid" th:src="@{/starterAsset/img/portfolio/1.jpg}" alt="..." />
+					</a>
+					<div class="portfolio-caption">
+						<div class="portfolio-caption-heading">Threads</div>
+						<div class="portfolio-caption-subheading text-muted">Illustration</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-sm-6 mb-4">
+				<!-- Portfolio item 2-->
+				<div class="portfolio-item">
+					<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
+						<div class="portfolio-hover">
+							<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+						</div>
+						<img class="img-fluid" th:src="@{/starterAsset/img/portfolio/2.jpg}" alt="..." />
+					</a>
+					<div class="portfolio-caption">
+						<div class="portfolio-caption-heading">Explore</div>
+						<div class="portfolio-caption-subheading text-muted">Graphic Design</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-sm-6 mb-4">
+				<!-- Portfolio item 3-->
+				<div class="portfolio-item">
+					<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
+						<div class="portfolio-hover">
+							<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+						</div>
+						<img class="img-fluid" th:src="@{/starterAsset/img/portfolio/3.jpg}" alt="..." />
+					</a>
+					<div class="portfolio-caption">
+						<div class="portfolio-caption-heading">Finish</div>
+						<div class="portfolio-caption-subheading text-muted">Identity</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
+				<!-- Portfolio item 4-->
+				<div class="portfolio-item">
+					<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
+						<div class="portfolio-hover">
+							<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+						</div>
+						<img class="img-fluid" th:src="@{/starterAsset/img/portfolio/4.jpg}" alt="..." />
+					</a>
+					<div class="portfolio-caption">
+						<div class="portfolio-caption-heading">Lines</div>
+						<div class="portfolio-caption-subheading text-muted">Branding</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
+				<!-- Portfolio item 5-->
+				<div class="portfolio-item">
+					<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
+						<div class="portfolio-hover">
+							<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+						</div>
+						<img class="img-fluid" th:src="@{/starterAsset/img/portfolio/5.jpg}" alt="..." />
+					</a>
+					<div class="portfolio-caption">
+						<div class="portfolio-caption-heading">Southwest</div>
+						<div class="portfolio-caption-subheading text-muted">Website Design</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-sm-6">
+				<!-- Portfolio item 6-->
+				<div class="portfolio-item">
+					<a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
+						<div class="portfolio-hover">
+							<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+						</div>
+						<img class="img-fluid" th:src="@{/starterAsset/img/portfolio/6.jpg}" alt="..." />
+					</a>
+					<div class="portfolio-caption">
+						<div class="portfolio-caption-heading">Window</div>
+						<div class="portfolio-caption-subheading text-muted">Photography</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- About-->
+<section class="page-section" id="about">
+	<div class="container">
+		<div class="text-center mb-5">
+			<h2 class="section-heading text-uppercase">Our Journey</h2>
+			<h3 class="section-subheading text-muted">작은 시작에서 혁신으로, 그리고 그 다음을 향해</h3>
+		</div>
+
+		<div class="row align-items-center mb-5">
+			<div class="col-md-8">
+				<h4 class="text-primary">🚀 작은 아이디어, 큰 도전</h4>
+				<p class="text-muted">
+					모든 것은 한 가지 아이디어에서 시작되었습니다.
+					<strong>우리는 "더 나은 세상을 만들 수 있을까?"</strong> 라는 질문을 던졌습니다.
+					그리고 그 대답을 찾기 위해, 우리는 가장 작은 것부터 바꾸기 시작했죠.
+				</p>
+				<blockquote class="blockquote">
+					<p class="mb-0">"모든 혁신은 작은 도전에서 시작된다."</p>
+					<footer class="blockquote-footer">창립자 이야기</footer>
+				</blockquote>
+			</div>
+			<div class="col-md-4 text-center">
+				<img class="rounded-circle img-fluid small-img" th:src="@{/starterAsset/img/about/1.jpg}" alt="..." />
+			</div>
+		</div>
+
+		<div class="row align-items-center mb-5 flex-row-reverse">
+			<div class="col-md-8">
+				<h4 class="text-primary">🔥 실패를 넘어, 성장을 향해</h4>
+				<p class="text-muted">
+					첫 번째 도전은 실패로 끝났습니다. 하지만 그 실패 덕분에, 우리는 배웠습니다.
+					**사용자들의 진짜 문제는 무엇인가?** 어떻게 하면 우리의 기술이 그들을 도울 수 있을까?
+					시행착오 끝에, 우리는 <mark>더 나은 해결책</mark>을 찾게 되었습니다.
+				</p>
+			</div>
+			<div class="col-md-4 text-center">
+				<img class="rounded-circle img-fluid small-img" th:src="@{/starterAsset/img/about/2.jpg}" alt="..." />
+			</div>
+		</div>
+
+		<div class="row align-items-center mb-5">
+			<div class="col-md-8">
+				<h4 class="text-primary">🌎 글로벌 무대를 향해</h4>
+				<p class="text-muted">
+					현재, 우리는 국내를 넘어 **전 세계적인 서비스**로 성장하고 있습니다.
+					<em>AI, 데이터 분석, 블록체인 등 다양한 기술을 결합하여 더 혁신적인 솔루션을 제공하고 있죠.</em>
+					하지만 우리의 목표는 단순한 성장이 아닙니다. <strong>사람들에게 긍정적인 영향을 주는 것</strong>,
+					그것이 우리가 나아가는 방향입니다.
+				</p>
+			</div>
+			<div class="col-md-4 text-center">
+				<img class="rounded-circle img-fluid small-img" th:src="@{/starterAsset/img/about/3.jpg}" alt="..." />
+			</div>
+		</div>
+
+		<div class="row text-center">
+			<div class="col-lg-12">
+				<h4 class="text-primary">🌟 우리는 함께 만들어갑니다</h4>
+				<p class="text-muted">
+					우리의 이야기는 아직 끝나지 않았습니다. 그리고,
+					<strong>이 이야기를 함께 만들어갈 당신</strong>이 있기에 우리는 더 나아갈 수 있습니다.
+					이제, <mark>함께 새로운 미래를 만들어 봅시다.</mark>
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<!-- Clients-->
+<div class="py-5">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-md-3 col-sm-6 my-3">
+				<a href="#!"><img class="img-fluid img-brand d-block mx-auto"
+						th:src="@{/starterAsset/img/logos/microsoft.svg}" alt="..." aria-label="Microsoft Logo" /></a>
+			</div>
+			<div class="col-md-3 col-sm-6 my-3">
+				<a href="#!"><img class="img-fluid img-brand d-block mx-auto"
+						th:src="@{/starterAsset/img/logos/google.svg}" alt="..." aria-label="Google Logo" /></a>
+			</div>
+			<div class="col-md-3 col-sm-6 my-3">
+				<a href="#!"><img class="img-fluid img-brand d-block mx-auto"
+						th:src="@{/starterAsset/img/logos/facebook.svg}" alt="..." aria-label="Facebook Logo" /></a>
+			</div>
+			<div class="col-md-3 col-sm-6 my-3">
+				<a href="#!"><img class="img-fluid img-brand d-block mx-auto"
+						th:src="@{/starterAsset/img/logos/ibm.svg}" alt="..." aria-label="IBM Logo" /></a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Contact-->
+
+<!-- Footer-->
+<footer class="footer py-4">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2023</div>
+			<div class="col-lg-4 my-3 my-lg-0">
+				<a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i
+						class="fab fa-twitter"></i></a>
+				<a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i
+						class="fab fa-facebook-f"></i></a>
+				<a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i
+						class="fab fa-linkedin-in"></i></a>
+			</div>
+			<div class="col-lg-4 text-lg-end">
+				<a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
+				<a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- Portfolio Modals-->
+<!-- Portfolio item 1 modal popup-->
+<div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="close-modal" data-bs-dismiss="modal"><img th:src="@{/starterAsset/img/close-icon.svg}"
+					alt="Close modal" /></div>
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-8">
+						<div class="modal-body">
+							<!-- Project details-->
+							<h2 class="text-uppercase">Project Name</h2>
+							<p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+							<img class="img-fluid d-block mx-auto" th:src="@{/starterAsset/img/portfolio/1.jpg}"
+								alt="..." />
+							<p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
+								adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt
+								repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae,
+								nostrum, reiciendis facere nemo!</p>
+							<ul class="list-inline">
+								<li>
+									<strong>Client:</strong>
+									Threads
+								</li>
+								<li>
+									<strong>Category:</strong>
+									Illustration
+								</li>
+							</ul>
+							<button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+								<i class="fas fa-xmark me-1"></i>
+								Close Project
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Portfolio item 2 modal popup-->
+<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="close-modal" data-bs-dismiss="modal"><img th:src="@{/starterAsset/img/close-icon.svg}"
+					alt="Close modal" /></div>
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-8">
+						<div class="modal-body">
+							<!-- Project details-->
+							<h2 class="text-uppercase">Project Name</h2>
+							<p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+							<img class="img-fluid d-block mx-auto" th:src="@{/starterAsset/img/portfolio/2.jpg}"
+								alt="..." />
+							<p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
+								adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt
+								repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae,
+								nostrum, reiciendis facere nemo!</p>
+							<ul class="list-inline">
+								<li>
+									<strong>Client:</strong>
+									Explore
+								</li>
+								<li>
+									<strong>Category:</strong>
+									Graphic Design
+								</li>
+							</ul>
+							<button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+								<i class="fas fa-xmark me-1"></i>
+								Close Project
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Portfolio item 3 modal popup-->
+<div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="close-modal" data-bs-dismiss="modal"><img th:src="@{/starterAsset/img/close-icon.svg}"
+					alt="Close modal" /></div>
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-8">
+						<div class="modal-body">
+							<!-- Project details-->
+							<h2 class="text-uppercase">Project Name</h2>
+							<p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+							<img class="img-fluid d-block mx-auto" th:src="@{/starterAsset/img/portfolio/3.jpg}"
+								alt="..." />
+							<p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
+								adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt
+								repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae,
+								nostrum, reiciendis facere nemo!</p>
+							<ul class="list-inline">
+								<li>
+									<strong>Client:</strong>
+									Finish
+								</li>
+								<li>
+									<strong>Category:</strong>
+									Identity
+								</li>
+							</ul>
+							<button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+								<i class="fas fa-xmark me-1"></i>
+								Close Project
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Portfolio item 4 modal popup-->
+<div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="close-modal" data-bs-dismiss="modal"><img th:src="@{/starterAsset/img/close-icon.svg}"
+					alt="Close modal" /></div>
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-8">
+						<div class="modal-body">
+							<!-- Project details-->
+							<h2 class="text-uppercase">Project Name</h2>
+							<p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+							<img class="img-fluid d-block mx-auto" th:src="@{/starterAsset/img/portfolio/4.jpg}"
+								alt="..." />
+							<p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
+								adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt
+								repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae,
+								nostrum, reiciendis facere nemo!</p>
+							<ul class="list-inline">
+								<li>
+									<strong>Client:</strong>
+									Lines
+								</li>
+								<li>
+									<strong>Category:</strong>
+									Branding
+								</li>
+							</ul>
+							<button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+								<i class="fas fa-xmark me-1"></i>
+								Close Project
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Portfolio item 5 modal popup-->
+<div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="close-modal" data-bs-dismiss="modal"><img th:src="@{/starterAsset/img/close-icon.svg}"
+					alt="Close modal" /></div>
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-8">
+						<div class="modal-body">
+							<!-- Project details-->
+							<h2 class="text-uppercase">Project Name</h2>
+							<p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+							<img class="img-fluid d-block mx-auto" th:src="@{/starterAsset/img/portfolio/5.jpg}"
+								alt="..." />
+							<p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
+								adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt
+								repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae,
+								nostrum, reiciendis facere nemo!</p>
+							<ul class="list-inline">
+								<li>
+									<strong>Client:</strong>
+									Southwest
+								</li>
+								<li>
+									<strong>Category:</strong>
+									Website Design
+								</li>
+							</ul>
+							<button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+								<i class="fas fa-xmark me-1"></i>
+								Close Project
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Portfolio item 6 modal popup-->
+<div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="close-modal" data-bs-dismiss="modal"><img th:src="@{/starterAsset/img/close-icon.svg}"
+					alt="Close modal" /></div>
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-8">
+						<div class="modal-body">
+							<!-- Project details-->
+							<h2 class="text-uppercase">Project Name</h2>
+							<p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+							<img class="img-fluid d-block mx-auto" th:src="@{/starterAsset/img/portfolio/6.jpg}"
+								alt="..." />
+							<p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
+								adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt
+								repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae,
+								nostrum, reiciendis facere nemo!</p>
+							<ul class="list-inline">
+								<li>
+									<strong>Client:</strong>
+									Window
+								</li>
+								<li>
+									<strong>Category:</strong>
+									Photography
+								</li>
+							</ul>
+							<button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+								<i class="fas fa-xmark me-1"></i>
+								Close Project
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script th:src="@{/js/starter.js}"></script>
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<!-- * *                               SB Forms JS                               * *-->
+<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+</html>
