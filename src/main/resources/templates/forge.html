@@ -21,9 +21,17 @@
 								</div>
 							</div>
 							<th:block th:replace="~{|/fragments/${statusTemp}| :: |${statusTemp}Fragment|}"></th:block>
+							<div class="row align-items-center justify-content-between">
+								<div class="col-md-3 text-center">
+									금액
+								</div>
+								<div class="col-md-9 d-flex align-items-center">
+									<canvas class="single-chart" id="item_price"></canvas>
+								</div>
+							</div>
 							<div class="row">
 								<div class="col">
-									금액: <span id="item_price"></span>원
+									<canvas id="forgeChart"></canvas>
 								</div>
 							</div>
 						</div>
@@ -48,9 +56,17 @@
 								</div>
 							</div>
 							<th:block th:replace="~{|/fragments/${statusTemp}| :: |${statusTemp}Fragment|}"></th:block>
+							<div class="row align-items-center justify-content-between">
+								<div class="col-md-3 text-center">
+									금액
+								</div>
+								<div class="col-md-9 d-flex align-items-center">
+									<canvas class="single-chart" id="item_price"></canvas>
+								</div>
+							</div>
 							<div class="row">
 								<div class="col">
-									금액: <span id="item_price"></span>원
+									<canvas id="forgeChart"></canvas>
 								</div>
 							</div>
 						</div>
@@ -123,7 +139,8 @@
 			</div>
 		</div>
 	</main>
-	<nav class="nav justify-content-around position-fixed bottom-0 start-50 translate-middle-x w-100 ps-md-inherit ms-md-inherit text-center bg-light">
+	<nav
+		class="nav justify-content-around position-fixed bottom-0 start-50 translate-middle-x w-100 ps-md-inherit ms-md-inherit text-center bg-light">
 		<div class="nav-item">
 			<a th:href="@{cpu}" class="nav-link">CPU</a>
 		</div>
@@ -147,7 +164,10 @@
 		</div>
 	</nav>
 </div>
+
 <th:block layout:fragment="script">
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 	<script th:src="@{/js/forge.js}"></script>
 </th:block>
 

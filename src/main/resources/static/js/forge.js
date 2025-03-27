@@ -3,6 +3,7 @@ const checkboxes = document.querySelectorAll('input[name="item_option"]');
 const selected1 = document.getElementById("selectedItem1");
 const selected2 = document.getElementById("selectedItem2");
 const pageStatus = document.getElementById("pageStatus").value;
+Chart.register(ChartDataLabels);
 
 btnSearch.addEventListener("click", () => {
 	document.getElementById("kw").value = document.getElementById("search_kw").value;
@@ -20,7 +21,7 @@ const targetMap = {
 
 // ✅ 체크박스 이벤트 리스너 추가
 checkboxes.forEach(checkbox => {
-	checkbox.addEventListener("change", function() {
+	checkbox.addEventListener("change", function () {
 		const value = this.value; // 선택된 부품의 ID
 		const path = window.location.pathname;
 
@@ -67,6 +68,16 @@ function clearTarget(target) {
 	if (!target) return;
 	target.querySelectorAll("span, p, h3").forEach(el => el.textContent = "");
 	target.querySelectorAll("img").forEach(el => el.src = "");
+	let charts = target.querySelectorAll("canvas"); // 여러 개의 canvas 요소를 선택
+
+	charts.forEach(chart => {
+		let chartInstance = Chart.getChart(chart); // 각 canvas에 대해 이미 생성된 차트가 있는지 확인
+
+		// 기존 차트가 있으면 삭제
+		if (chartInstance) {
+			chartInstance.destroy();
+		}
+	});
 }
 
 // ✅ 선택된 항목을 box1, box2에 배치하는 함수 (box2 내용이 box1으로 이동하지 않도록 유지)
@@ -98,7 +109,7 @@ function fetchPCPart(path, id, target) {
 	fetch(`${path}/getThis?id=${id}`)
 		.then(response => response.json())
 		.then(data => {
-//			console.log("Server Response: ", data);
+			//			console.log("Server Response: ", data);
 			if (data.data) {
 				updateDataContent(pageStatus, data.data, target);
 			} else {
@@ -114,58 +125,117 @@ function fetchPCPart(path, id, target) {
 // 제품 정보 표시
 function updateDataContent(status, data, target) {
 	target.querySelector("#item_name").textContent = data.name;
-	target.querySelector("#item_price").textContent = data.price;
-	let image = data.fileName;
-	if (!image || image.trim() === "") {
-	    image = "/assets/img/exam-cpu.jpg";
-	}
-
-	target.querySelector("#item_image").src = image;
+	const chartIds = ["item_ramSpeed", "item_price", "forgeChart"];
+	let barWidth = null;
+	
 	switch (status) {
 		case "cpu":
 			target.querySelector("#item_socket").textContent = data.socket;
-			target.querySelector("#item_core").textContent = data.coreCount;
-			target.querySelector("#item_thread").textContent = data.threadCount;
-			target.querySelector("#item_ddr").textContent = `DDR${data.ddr}`;
-			target.querySelector("#item_ramSpeed").textContent = `${data.ddrSpeed} MHz`;
-			target.querySelector("#item_defaultSpeed").textContent = `${data.defaultSpeed} GHz`;
-			target.querySelector("#item_maxSpeed").textContent = `${data.maxSpeed} GHz`;
-			target.querySelector("#item_channel").textContent = `${data.memoryChannel} Channel`;
-			target.querySelector("#item_gpu").textContent = data.innerGPU ? "내장 GPU 있음" : "내장 GPU 없음";
-			break;
-		case "ram":
-			target.querySelector("#item_type").textContent = data.type;
-			target.querySelector("#item_speed").textContent = data.speed+"MHz";
-			target.querySelector("#item_channel").textContent = data.memoryChannel+"채널";
-			target.querySelector("#item_size").textContent = data.capacity+"GB";
-			break;
-		case "gpu":
-			target.querySelector("#item_speed").textContent = data.defaultSpeed+"MHz";
-			target.querySelector("#item_power").textContent = data.powerConsumption+"W";
-			target.querySelector("#item_memory").textContent = data.memorySize+"MHz";
-			break;
-		case "mboard":
-			target.querySelector("#item_ddr").textContent = data.ddrSupport;
-			target.querySelector("#item_socket").textContent = data.socket;
-			target.querySelector("#item_formFactor").textContent = data.formFactor;
-			target.querySelector("#item_maxMemory").textContent = data.maxMemory+"GB";
-			break;
-		case "psu":
-			target.querySelector("#item_formFactor").textContent = data.formFactor;
-			target.querySelector("#item_wattage").textContent = data.wattage+"W";
-			break;
-		case "comcase":
-			target.querySelector("#item_color").textContent = data.color;
-			target.querySelector("#item_fan").textContent = data.fanSupport + "개";
-			target.querySelector("#item_tower").textContent = data.formFactor;
-			target.querySelector("#item_material").textContent = data.material;
-			break;
-		case "disk":
-			target.querySelector("#item_size").textContent = formatStorage(data.capacity);
-			target.querySelector("#item_speed").textContent = data.speed+"MB/s";
-			target.querySelector("#item_type").textContent = data.type;
 			break;
 	}
+
+	chartIds.forEach(chartId => {
+		const chartCanvas = target.querySelector(`#${chartId}`);
+
+		if (!chartCanvas) {
+			console.error(`Canvas with id ${chartId} not found.`);
+			return; // canvas가 없다면 차트를 그리지 않음
+		}
+
+		if (chartCanvas) {
+			let chartInstance = Chart.getChart(chartCanvas);
+
+			if (chartInstance) {
+				chartInstance.destroy();
+			}
+
+			const dataMap = new Map();
+
+			switch (chartId) {
+				case "item_ramSpeed":
+					dataMap.set("RamSpeed", data.ddrSpeed);
+					break;
+				case "item_price":
+					dataMap.set('Price', data.price);
+					barWidth = 25;
+					break;
+				// 남은 데이터 짬 때리기
+				case "forgeChart":
+					let itemId = data.id;
+					let itemName = data.name;
+					let itemPrice = data.price;
+					let itemImage = data.fileName;
+
+					if (!itemImage || itemImage.trim() === "") {
+						itemImage = "/assets/img/exam-cpu.jpg";
+					}
+					
+					target.querySelector("#item_image").src = itemImage;
+
+					delete data.id;
+					delete data.name;
+					delete data.price;
+					delete data.fileName;
+
+					const keys = Object.keys(data);
+					const values = Object.values(data);
+
+					for (let i = 0; i < keys.length; i++) {
+						dataMap.set(keys[i], values[i]);
+					}
+
+					break;
+			}
+
+			chartInstance = new Chart(chartCanvas, {
+				type: "bar",
+				data: {
+					labels: Array.from(dataMap.keys()),
+					datasets: [{
+						data: Array.from(dataMap.values()),
+						borderWidth: 1
+					}]
+				},
+				options: {
+					indexAxis: "y",
+					responsive: true,
+					maintainAspectRatio: false,
+					barThickness: barWidth,
+					scales: {
+						x: {
+							display: true,
+							grid: {
+								display: false
+							},
+							ticks: {
+								display: false
+							},
+							border: {
+								display: false
+							}
+						},
+						y: {
+							display: true,
+							grid: {
+								display: false
+							},
+							ticks: {
+								display: false
+							},
+							border: {
+								display: true
+							}
+						}
+					},
+					plugins: {
+						legend: {
+							display: false
+						}
+					}
+				}
+			});
+		}
+	});
 }
 
 // GB -> TB 함수
@@ -179,41 +249,44 @@ function formatStorage(sizeGB) {
 
 // 선택 해제 버튼 작동하게 하는 코드
 document.addEventListener("DOMContentLoaded", function () {
-    // 선택 해제 버튼 이벤트 리스너 추가
-    document.querySelectorAll("#select_disable").forEach(button => {
-        button.addEventListener("click", function () {
-            let card = this.closest(".card"); // 현재 버튼이 속한 카드 찾기
-            if (!card) return;
+	// 선택 해제 버튼 이벤트 리스너 추가
+	document.querySelectorAll("#select_disable").forEach(button => {
+		button.addEventListener("click", function () {
+			let card = this.closest(".card"); // 현재 버튼이 속한 카드 찾기
+			if (!card) return;
 
-            let cardId = card.id; // selectedItem1 또는 selectedItem2
-            let itemId = null;
+			let cardId = card.id; // selectedItem1 또는 selectedItem2
+			let itemId = null;
 
-            // ✅ 카드 내부의 item_name을 이용해 체크박스와 매칭할 ID 찾기
-            let itemNameElement = card.querySelector("#item_name");
-            if (itemNameElement && itemNameElement.textContent.trim() !== "") {
-                itemId = [...checkboxes].find(cb => cb.nextElementSibling.textContent.trim() === itemNameElement.textContent.trim())?.value;
-            }
+			// ✅ 카드 내부의 item_name을 이용해 체크박스와 매칭할 ID 찾기
+			let itemNameElement = card.querySelector("#item_name");
+			if (itemNameElement && itemNameElement.textContent.trim() !== "") {
+				itemId = [...checkboxes].find(cb => cb.nextElementSibling.textContent.trim() === itemNameElement.textContent.trim())?.value;
+			}
+			
+			console.log(itemId);
 
-            if (itemId) {
-                // ✅ 선택 목록에서 제거
-                selectedItems = selectedItems.filter(item => item !== itemId);
+			if (itemId) {
+				// ✅ 선택 목록에서 제거
+				selectedItems = selectedItems.filter(item => item !== itemId);
 
-                // ✅ 체크박스 해제
-                let checkbox = document.querySelector(`input[name='item_option'][value='${itemId}']`);
-                if (checkbox) checkbox.checked = false;
-            }
+				// ✅ 체크박스 해제
+				let checkbox = document.querySelector(`input[name='item_option'][value='${itemId}']`);
+				console.log("체크박스 찾음?", checkbox);
+				if (checkbox) checkbox.checked = false;
+			}
 
-            // ✅ 해당 카드 내용 초기화
-            clearTarget(card);
+			// ✅ 해당 카드 내용 초기화
+			clearTarget(card);
 
-            // ✅ targetMap 업데이트
-            if (cardId === "selectedItem1") {
-                targetMap.first = "";
-            } else if (cardId === "selectedItem2") {
-                targetMap.second = "";
-            }
+			// ✅ targetMap 업데이트
+			if (cardId === "selectedItem1") {
+				targetMap.first = "";
+			} else if (cardId === "selectedItem2") {
+				targetMap.second = "";
+			}
 
-            updateTargetMapping(); // 선택 목록 정리
-        });
-    });
+			updateTargetMapping(); // 선택 목록 정리
+		});
+	});
 });
