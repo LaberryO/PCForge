@@ -14,67 +14,50 @@
 	</header>
 	<div class="container mt-4 bg-white text-dark">
 		<div class="row">
-			<!-- 뉴스룸 영역 (7) -->
+			<!-- 뉴스룸 & 광고를 같은 row에 배치 -->
 			<div class="col-md-7 border-start border-3 p-3 shadow-sm">
-				<h4><strong>뉴스룸</strong> > <span class="text-primary">컴퓨팅</span></h4>
-				<div class="row row-cols-2 g-3">
-					<div class="col">
-						<div class="card border">
+				<!-- 뉴스룸 제목 (고정) -->
+				<h4>
+					<strong>뉴스룸</strong> >
 
-							<div class="card-body p-2">
-								<a href="#" class="text-decoration-none text-dark">
-									<img src="/images/miku1.jpg" class="card-img-top img-fluid"
-										style="width:100%; height:150px; object-fit:cover;" alt="뉴스 이미지">
-									<p class="card-text">이것이 진정한 화이트 보드</p>
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card border">
+					<span th:each="category, iterStat : ${categories}"
+					      th:id="'category-' + ${iterStat.index}"
+					      th:text="${category}"
+					      class="category-item"
+					      style="cursor: pointer; margin-right: 20px; color: black; padding-left: 10px; border-left: 2px solid gray; font-weight: normal;">
+					</span>
+				</h4>
 
-							<div class="card-body p-2">
-
-								<a href="#" class="text-decoration-none text-dark">
-									<img src="/images/miku1.jpg" class="card-img-top img-fluid"
-										style="width:100%; height:150px; object-fit:cover;" alt="뉴스 이미지">
-									<p class="card-text">RTX 5050 나올까 말까</p>
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card border">
-
-							<div class="card-body p-2">
-								<a href="#" class="text-decoration-none text-dark">
-									<img src="/images/miku1.jpg" class="card-img-top img-fluid"
-										style="width:100%; height:150px; object-fit:cover;" alt="뉴스 이미지">
-									<p class="card-text">신입 헌터를 위한 최고의 VGA는?</p>
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card border">
-
-							<div class="card-body p-2">
-
-								<a href="#" class="text-decoration-none text-dark">
-									<img src="/images/miku1.jpg" class="card-img-top img-fluid"
-										style="width:100%; height:150px; object-fit:cover;" alt="뉴스 이미지">
-									<p class="card-text">신입 헌터를 위한 최고의 VGA는?</p>
-								</a>
+				<!-- 뉴스룸 캐러셀 -->
+				<div id="newsroomCarousel" class="carousel slide" data-bs-ride="carousel"
+					th:attr="data-categories-json=${categories}">
+					<div class="carousel-inner">
+						<div class="carousel-item" th:each="group, iterStat : ${newsGroups}"
+							th:classappend="${iterStat.index == 0} ? 'active' : ''">
+							<div class="row row-cols-2 g-3">
+								<div class="col" th:each="news : ${group}">
+									<div class="card border">
+										<div class="card-body p-2">
+											<a href="#" class="text-decoration-none text-dark">
+												<img th:src="@{'/uploads/' + ${news.image}}"
+													class="card-img-top img-fluid"
+													style="width:100%; height:150px; object-fit:contain; background-color:black;"
+													alt="뉴스 이미지">
+												<p class="card-text" th:text="${news.title}">뉴스 제목</p>
+											</a>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+
 			</div>
 
-			<!-- 광고 영역 (3) -->
+			<!-- 광고 영역 (오른쪽 30%) -->
 			<div class="col-md-5">
 				<div class="row g-3">
-					<!-- 첫 번째 광고 -->
 					<div class="col-12">
 						<div class="card border rounded shadow-sm">
 							<div class="card-header bg-light d-flex justify-content-between align-items-center p-2">
@@ -97,7 +80,6 @@
 						</div>
 					</div>
 
-					<!-- 두 번째 광고 -->
 					<div class="col-12">
 						<div class="card border rounded shadow-sm">
 							<div class="card-header bg-light d-flex justify-content-between align-items-center p-2">
@@ -121,282 +103,282 @@
 					</div>
 				</div>
 			</div>
+		</div> <!-- row 종료 -->
+	</div> <!-- container 종료 -->
 
 
-			<!-- About-->
-			<section class="content-section bg-light" id="about">
-				<div class="container px-4 px-lg-5 text-center">
-					<div class="row gx-4 gx-lg-5 justify-content-center">
-						<div class="col-lg-10">
-							<h2>Stylish Portfolio is the perfect theme for your next project!</h2>
-							<p class="lead mb-5">
-								This theme features a flexible, UX friendly sidebar menu and stock photos from our
-								friends at
-								<a href="https://unsplash.com/">Unsplash</a>
-								!
-							</p>
-							<a class="btn btn-dark btn-xl" href="#services">What We Offer</a>
-						</div>
-					</div>
+	<!-- About-->
+	<section class="content-section bg-light" id="about">
+		<div class="container px-4 px-lg-5 text-center">
+			<div class="row gx-4 gx-lg-5 justify-content-center">
+				<div class="col-lg-10">
+					<h2>Stylish Portfolio is the perfect theme for your next project!</h2>
+					<p class="lead mb-5">
+						This theme features a flexible, UX friendly sidebar menu and stock photos from our
+						friends at
+						<a href="https://unsplash.com/">Unsplash</a>
+						!
+					</p>
+					<a class="btn btn-dark btn-xl" href="#services">What We Offer</a>
 				</div>
-			</section>
-			<section class="content-section bg-dark text-white text-center" id="carousel">
-				<div class="container px-4 px-lg-5">
-					<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-						<div class="carousel-inner">
-							<!-- 첫 번째 아이템 -->
-							<div class="carousel-item active">
-								<div class="row g-0">
-									<div class="col-4">
-										<img src="your-image-path1.jpg" class="d-block w-100" alt="First Image"
-											style="height: 300px; object-fit: cover;">
-									</div>
-									<div class="col-4">
-										<img src="your-image-path2.jpg" class="d-block w-100" alt="Second Image"
-											style="height: 300px; object-fit: cover;">
-									</div>
-									<div class="col-4">
-										<img src="your-image-path3.jpg" class="d-block w-100" alt="Third Image"
-											style="height: 300px; object-fit: cover;">
-									</div>
-								</div>
-							</div>
-							<!-- 두 번째 아이템 -->
-							<div class="carousel-item">
-								<div class="row g-0">
-									<div class="col-4">
-										<img src="/images/miku1.jpg" class="d-block w-100" alt="Fourth Image"
-											style="height: 300px; object-fit: cover;">
-									</div>
-									<div class="col-4">
-										<img src="/images/miku2.jpg" class="d-block w-100" alt="Fifth Image"
-											style="height: 300px; object-fit: cover;">
-									</div>
-									<div class="col-4">
-										<img src="your-image-path6.jpg" class="d-block w-100" alt="Sixth Image"
-											style="height: 300px; object-fit: cover;">
-									</div>
-								</div>
-							</div>
-							<!-- 세 번째 아이템 -->
-							<div class="carousel-item">
-								<div class="row g-0">
-									<div class="col-4">
-										<img src="your-image-path7.jpg" class="d-block w-100" alt="Seventh Image"
-											style="height: 300px; object-fit: cover;">
-									</div>
-									<div class="col-4">
-										<img src="your-image-path8.jpg" class="d-block w-100" alt="Eighth Image"
-											style="height: 300px; object-fit: cover;">
-									</div>
-									<div class="col-4">
-										<img src="your-image-path9.jpg" class="d-block w-100" alt="Ninth Image"
-											style="height: 300px; object-fit: cover;">
-									</div>
-								</div>
-							</div>
-						</div>
-						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
-							data-bs-slide="prev">
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Previous</span>
-						</button>
-						<button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
-							data-bs-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Next</span>
-						</button>
-					</div>
-				</div>
-			</section>
-			<!-- Services-->
-			<section class="content-section bg-primary text-white text-center" id="services">
-				<div class="container px-4 px-lg-5">
-					<div class="content-section-heading">
-						<h3 class="text-secondary mb-0">Services</h3>
-						<h2 class="mb-5">What We Offer</h2>
-					</div>
-					<div class="row gx-4 gx-lg-5">
-						<div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-							<span class="service-icon rounded-circle mx-auto mb-3"><i
-									class="icon-screen-smartphone"></i></span>
-							<h4><strong>Responsive</strong></h4>
-							<p class="text-faded mb-0">Looks great on any screen size!</p>
-						</div>
-						<div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-							<span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-pencil"></i></span>
-							<h4><strong>Redesigned</strong></h4>
-							<p class="text-faded mb-0">Freshly redesigned for Bootstrap 5.</p>
-						</div>
-						<div class="col-lg-3 col-md-6 mb-5 mb-md-0">
-							<span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-like"></i></span>
-							<h4><strong>Favorited</strong></h4>
-							<p class="text-faded mb-0">
-								Millions of users
-								<i class="fas fa-heart"></i>
-								Start Bootstrap!
-							</p>
-						</div>
-						<div class="col-lg-3 col-md-6">
-							<span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-mustache"></i></span>
-							<h4><strong>Question</strong></h4>
-							<p class="text-faded mb-0">I mustache you a question...</p>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- Callout-->
-			<section class="callout">
-				<div class="container px-4 px-lg-5 text-center">
-					<h2 class="mx-auto mb-5">
-						Welcome to
-						<em>your</em>
-						next website!
-					</h2>
-					<a class="btn btn-primary btn-xl"
-						href="https://startbootstrap.com/theme/stylish-portfolio/">Download
-						Now!</a>
-				</div>
-			</section>
-			<!-- Introduction Section with Cards -->
-			<div class="container">
-
-				<section id="session1">
-					<h2>세션 1: CPU 정보</h2>
-					<div class="row justify-content-center"> <!-- 여기를 수정했습니다. -->
-						<div class="col-md-6 col-lg-4">
-							<div class="card mb-4 text-center" style="min-height: 300px;">
-								<div class="card-body">
-									<h5 class="card-title">프로세서</h5>
-									<p class="card-text">Intel Core i9-13900K</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 col-lg-4">
-							<div class="card mb-4 text-center" style="min-height: 300px;">
-								<div class="card-body">
-									<h5 class="card-title">코어 수</h5>
-									<p class="card-text">24 (8P + 16E)</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<section id="session2">
-					<h2>세션 2: 메모리 정보</h2>
-					<div class="row justify-content-center"> <!-- 여기를 수정했습니다. -->
-						<div class="col-md-6 col-lg-4">
-							<div class="card mb-4 text-center" style="min-height: 300px;">
-								<div class="card-body">
-									<h5 class="card-title">RAM 용량</h5>
-									<p class="card-text">32GB DDR5</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<section id="session3">
-					<h2>세션 3: 스토리지 정보</h2>
-					<div class="row justify-content-center"> <!-- 여기를 수정했습니다. -->
-						<div class="col-md-6 col-lg-4">
-							<div class="card mb-4 text-center" style="min-height: 300px;">
-								<div class="card-body">
-									<h5 class="card-title">SSD</h5>
-									<p class="card-text">Samsung 990 Pro 1TB</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
 			</div>
-
-			<!-- Portfolio-->
-			<section class="content-section" id="portfolio">
-				<div class="container px-4 px-lg-5">
-					<div class="content-section-heading text-center">
-						<h3 class="text-secondary mb-0">Portfolio</h3>
-						<h2 class="mb-5">Recent Projects</h2>
-					</div>
-					<div class="row gx-0">
-						<div class="col-lg-6">
-							<a class="portfolio-item" href="#!">
-								<div class="caption">
-									<div class="caption-content">
-										<div class="h2">Stationary</div>
-										<p class="mb-0">A yellow pencil with envelopes on a clean, blue backdrop!</p>
-									</div>
-								</div>
-								<img class="img-fluid" th:src="@{/assets/img/portfolio-1.jpg}" alt="..." />
-							</a>
-						</div>
-						<div class="col-lg-6">
-							<a class="portfolio-item" href="#!">
-								<div class="caption">
-									<div class="caption-content">
-										<div class="h2">Ice Cream</div>
-										<p class="mb-0">A dark blue background with a colored pencil, a clip, and a tiny
-											ice
-											cream cone!</p>
-									</div>
-								</div>
-								<img class="img-fluid" th:src="@{/assets/img/portfolio-2.jpg}" alt="..." />
-							</a>
-						</div>
-						<div class="col-lg-6">
-							<a class="portfolio-item" href="#!">
-								<div class="caption">
-									<div class="caption-content">
-										<div class="h2">Strawberries</div>
-										<p class="mb-0">Strawberries are such a tasty snack, especially with a little
-											sugar on
-											top!</p>
-									</div>
-								</div>
-								<img class="img-fluid" th:src="@{/assets/img/portfolio-3.jpg}" alt="..." />
-							</a>
-						</div>
-						<div class="col-lg-6">
-							<a class="portfolio-item" href="#!">
-								<div class="caption">
-									<div class="caption-content">
-										<div class="h2">Workspace</div>
-										<p class="mb-0">A yellow workspace with some scissors, pencils, and other
-											objects.</p>
-									</div>
-								</div>
-								<img class="img-fluid" th:src="@{/assets/img/portfolio-4.jpg}" alt="..." />
-							</a>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- Call to Action-->
-			<section class="content-section bg-primary text-white">
-				<div class="container px-4 px-lg-5 text-center">
-					<h2 class="mb-4">The buttons below are impossible to resist...</h2>
-					<a class="btn btn-xl btn-light me-4" href="#!">Click Me!</a>
-					<a class="btn btn-xl btn-dark" href="#!">Look at Me!</a>
-				</div>
-			</section>
-			<!-- Map-->
-			<div class="map" id="contact">
-				<iframe
-					src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
-				<br />
-				<small><a
-						href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a></small>
-			</div>
-
-			<!-- Scroll to Top Button-->
-			<a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
-			<!-- Footer -->
-			<footer th:replace="~{footer :: footerFragment}"></footer>
-			<th:block layout:fragment="script">
-				<!-- 필요 없을 듯 -->
-				<!--<script th:src="@{/js/index.js}"></script>-->
-			</th:block>
 		</div>
+	</section>
+	<section class="content-section bg-dark text-white text-center" id="carousel">
+		<div class="container px-4 px-lg-5">
+			<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+				<div class="carousel-inner">
+					<!-- 첫 번째 아이템 -->
+					<div class="carousel-item active">
+						<div class="row g-0">
+							<div class="col-4">
+								<img src="your-image-path1.jpg" class="d-block w-100" alt="First Image"
+									style="height: 300px; object-fit: cover;">
+							</div>
+							<div class="col-4">
+								<img src="your-image-path2.jpg" class="d-block w-100" alt="Second Image"
+									style="height: 300px; object-fit: cover;">
+							</div>
+							<div class="col-4">
+								<img src="your-image-path3.jpg" class="d-block w-100" alt="Third Image"
+									style="height: 300px; object-fit: cover;">
+							</div>
+						</div>
+					</div>
+					<!-- 두 번째 아이템 -->
+					<div class="carousel-item">
+						<div class="row g-0">
+							<div class="col-4">
+								<img src="/images/miku1.jpg" class="d-block w-100" alt="Fourth Image"
+									style="height: 300px; object-fit: cover;">
+							</div>
+							<div class="col-4">
+								<img src="/images/miku2.jpg" class="d-block w-100" alt="Fifth Image"
+									style="height: 300px; object-fit: cover;">
+							</div>
+							<div class="col-4">
+								<img src="your-image-path6.jpg" class="d-block w-100" alt="Sixth Image"
+									style="height: 300px; object-fit: cover;">
+							</div>
+						</div>
+					</div>
+					<!-- 세 번째 아이템 -->
+					<div class="carousel-item">
+						<div class="row g-0">
+							<div class="col-4">
+								<img src="your-image-path7.jpg" class="d-block w-100" alt="Seventh Image"
+									style="height: 300px; object-fit: cover;">
+							</div>
+							<div class="col-4">
+								<img src="your-image-path8.jpg" class="d-block w-100" alt="Eighth Image"
+									style="height: 300px; object-fit: cover;">
+							</div>
+							<div class="col-4">
+								<img src="your-image-path9.jpg" class="d-block w-100" alt="Ninth Image"
+									style="height: 300px; object-fit: cover;">
+							</div>
+						</div>
+					</div>
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+					data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+					data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+		</div>
+	</section>
+	<!-- Services-->
+	<section class="content-section bg-primary text-white text-center" id="services">
+		<div class="container px-4 px-lg-5">
+			<div class="content-section-heading">
+				<h3 class="text-secondary mb-0">Services</h3>
+				<h2 class="mb-5">What We Offer</h2>
+			</div>
+			<div class="row gx-4 gx-lg-5">
+				<div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+					<span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-screen-smartphone"></i></span>
+					<h4><strong>Responsive</strong></h4>
+					<p class="text-faded mb-0">Looks great on any screen size!</p>
+				</div>
+				<div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+					<span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-pencil"></i></span>
+					<h4><strong>Redesigned</strong></h4>
+					<p class="text-faded mb-0">Freshly redesigned for Bootstrap 5.</p>
+				</div>
+				<div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+					<span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-like"></i></span>
+					<h4><strong>Favorited</strong></h4>
+					<p class="text-faded mb-0">
+						Millions of users
+						<i class="fas fa-heart"></i>
+						Start Bootstrap!
+					</p>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-mustache"></i></span>
+					<h4><strong>Question</strong></h4>
+					<p class="text-faded mb-0">I mustache you a question...</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Callout-->
+	<section class="callout">
+		<div class="container px-4 px-lg-5 text-center">
+			<h2 class="mx-auto mb-5">
+				Welcome to
+				<em>your</em>
+				next website!
+			</h2>
+			<a class="btn btn-primary btn-xl" href="https://startbootstrap.com/theme/stylish-portfolio/">Download
+				Now!</a>
+		</div>
+	</section>
+	<!-- Introduction Section with Cards -->
+	<div class="container">
+
+		<section id="session1">
+			<h2>세션 1: CPU 정보</h2>
+			<div class="row justify-content-center"> <!-- 여기를 수정했습니다. -->
+				<div class="col-md-6 col-lg-4">
+					<div class="card mb-4 text-center" style="min-height: 300px;">
+						<div class="card-body">
+							<h5 class="card-title">프로세서</h5>
+							<p class="card-text">Intel Core i9-13900K</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4">
+					<div class="card mb-4 text-center" style="min-height: 300px;">
+						<div class="card-body">
+							<h5 class="card-title">코어 수</h5>
+							<p class="card-text">24 (8P + 16E)</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="session2">
+			<h2>세션 2: 메모리 정보</h2>
+			<div class="row justify-content-center"> <!-- 여기를 수정했습니다. -->
+				<div class="col-md-6 col-lg-4">
+					<div class="card mb-4 text-center" style="min-height: 300px;">
+						<div class="card-body">
+							<h5 class="card-title">RAM 용량</h5>
+							<p class="card-text">32GB DDR5</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="session3">
+			<h2>세션 3: 스토리지 정보</h2>
+			<div class="row justify-content-center"> <!-- 여기를 수정했습니다. -->
+				<div class="col-md-6 col-lg-4">
+					<div class="card mb-4 text-center" style="min-height: 300px;">
+						<div class="card-body">
+							<h5 class="card-title">SSD</h5>
+							<p class="card-text">Samsung 990 Pro 1TB</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<!-- Portfolio-->
+	<section class="content-section" id="portfolio">
+		<div class="container px-4 px-lg-5">
+			<div class="content-section-heading text-center">
+				<h3 class="text-secondary mb-0">Portfolio</h3>
+				<h2 class="mb-5">Recent Projects</h2>
+			</div>
+			<div class="row gx-0">
+				<div class="col-lg-6">
+					<a class="portfolio-item" href="#!">
+						<div class="caption">
+							<div class="caption-content">
+								<div class="h2">Stationary</div>
+								<p class="mb-0">A yellow pencil with envelopes on a clean, blue backdrop!</p>
+							</div>
+						</div>
+						<img class="img-fluid" th:src="@{/assets/img/portfolio-1.jpg}" alt="..." />
+					</a>
+				</div>
+				<div class="col-lg-6">
+					<a class="portfolio-item" href="#!">
+						<div class="caption">
+							<div class="caption-content">
+								<div class="h2">Ice Cream</div>
+								<p class="mb-0">A dark blue background with a colored pencil, a clip, and a tiny
+									ice
+									cream cone!</p>
+							</div>
+						</div>
+						<img class="img-fluid" th:src="@{/assets/img/portfolio-2.jpg}" alt="..." />
+					</a>
+				</div>
+				<div class="col-lg-6">
+					<a class="portfolio-item" href="#!">
+						<div class="caption">
+							<div class="caption-content">
+								<div class="h2">Strawberries</div>
+								<p class="mb-0">Strawberries are such a tasty snack, especially with a little
+									sugar on
+									top!</p>
+							</div>
+						</div>
+						<img class="img-fluid" th:src="@{/assets/img/portfolio-3.jpg}" alt="..." />
+					</a>
+				</div>
+				<div class="col-lg-6">
+					<a class="portfolio-item" href="#!">
+						<div class="caption">
+							<div class="caption-content">
+								<div class="h2">Workspace</div>
+								<p class="mb-0">A yellow workspace with some scissors, pencils, and other
+									objects.</p>
+							</div>
+						</div>
+						<img class="img-fluid" th:src="@{/assets/img/portfolio-4.jpg}" alt="..." />
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Call to Action-->
+	<section class="content-section bg-primary text-white">
+		<div class="container px-4 px-lg-5 text-center">
+			<h2 class="mb-4">The buttons below are impossible to resist...</h2>
+			<a class="btn btn-xl btn-light me-4" href="#!">Click Me!</a>
+			<a class="btn btn-xl btn-dark" href="#!">Look at Me!</a>
+		</div>
+	</section>
+	<!-- Map-->
+	<div class="map" id="contact">
+		<iframe
+			src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
+		<br />
+		<small><a
+				href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a></small>
+	</div>
+
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+	<!-- Footer -->
+	<footer th:replace="~{footer :: footerFragment}"></footer>
+	<th:block layout:fragment="script">
+		<!-- 필요 없을 듯 -->
+	<script th:src="@{/js/index.js}"></script>
+	</th:block>
+</div>
 
 </html>
