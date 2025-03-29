@@ -28,7 +28,7 @@ public class CommentService {
 	
 	public Comment getComment(int id) {
 		Optional<Comment> com = this.commentRepository.findById(id);
-		if(com.isPresent())
+		if(com.isEmpty())
 			return null;
 		Comment comment = com.get();
 		return comment;

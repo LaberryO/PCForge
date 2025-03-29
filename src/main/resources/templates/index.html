@@ -18,7 +18,7 @@
 			<div class="col-md-7 border-start border-3 p-3 shadow-sm">
 				<!-- 뉴스룸 제목 (고정) -->
 				<h4>
-					<strong>뉴스룸</strong> >
+					<a th:href="@{/starter/main}"><strong>뉴스룸</strong> ></a>
 
 					<span th:each="category, iterStat : ${categories}"
 					      th:id="'category-' + ${iterStat.index}"
@@ -27,7 +27,7 @@
 					      style="cursor: pointer; margin-right: 20px; color: black; padding-left: 10px; border-left: 2px solid gray; font-weight: normal;">
 					</span>
 				</h4>
-
+				
 				<!-- 뉴스룸 캐러셀 -->
 				<div id="newsroomCarousel" class="carousel slide" data-bs-ride="carousel"
 					th:attr="data-categories-json=${categories}">
@@ -38,7 +38,7 @@
 								<div class="col" th:each="news : ${group}">
 									<div class="card border">
 										<div class="card-body p-2">
-											<a href="#" class="text-decoration-none text-dark">
+											<a th:href="@{|/starter/news/${news.id}|}"class="text-decoration-none text-dark">
 												<img th:src="@{'/uploads/' + ${news.image}}"
 													class="card-img-top img-fluid"
 													style="width:100%; height:150px; object-fit:contain; background-color:black;"

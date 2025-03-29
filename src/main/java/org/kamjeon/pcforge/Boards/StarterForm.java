@@ -23,6 +23,7 @@ public class StarterForm {
 	
 	@NotBlank
 	@NotEmpty(message="내용은 필수 항목입니다.")
+	@Size(max = 10000, message="내용이 너무 깁니다.")
 	private String content;
 	
 	  @NotNull(message = "타입을 선택해야 합니다.")
