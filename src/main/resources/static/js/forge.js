@@ -127,7 +127,7 @@ function updateDataContent(status, data, target) {
 	target.querySelector("#item_name").textContent = data.name;
 	const chartIds = [
 		"item_ramSpeed", "item_price", "item_core",
-		"item_speed", "forgeChart", "item_ddr",
+		"item_speed", "item_ddr",
 		"item_gpu"
 	];
 	let barWidth = 25;
@@ -193,33 +193,6 @@ function updateDataContent(status, data, target) {
 							break;
 					}
 					break;
-
-				// 남은 데이터 짬 때리기
-				// default:
-				// 	let itemId = data.id;
-				// 	let itemName = data.name;
-				// 	let itemPrice = data.price;
-				// 	let itemImage = data.fileName;
-
-				// 	if (!itemImage || itemImage.trim() === "") {
-				// 		itemImage = "/assets/img/exam-cpu.jpg";
-				// 	}
-
-				// 	target.querySelector("#item_image").src = itemImage;
-
-				// 	delete data.id;
-				// 	delete data.name;
-				// 	delete data.price;
-				// 	delete data.fileName;
-
-				// 	const keys = Object.keys(data);
-				// 	const values = Object.values(data);
-
-				// 	for (let i = 0; i < keys.length; i++) {
-				// 		dataMap.set(keys[i], values[i]);
-				// 	}
-
-				// 	break;
 			}
 
 			chartInstance = new Chart(chartCanvas, {
@@ -265,6 +238,9 @@ function updateDataContent(status, data, target) {
 							}
 						}
 					},
+					interaction: {
+					    mode: 'none'  // 호버 기능 끄기
+					},
 					plugins: {
 						legend: {
 							display: false
@@ -276,14 +252,13 @@ function updateDataContent(status, data, target) {
 							display: true,
 							formatter: function (value, context) {
 								let idx = context.dataIndex;
-								let temp = value;
 								
 								if (chartId == "item_gpu") {
-									value = isGPU ? " 있음" : " 없음";
+									value = isGPU ? "있음" : "없음";
 								} else {
-									value = ` ${temp} ${unit}`; 
+									value = `${value.toLocaleString()} ${unit}`; 
 								}
-								return context.chart.data.labels[idx] + value;
+								return `${context.chart.data.labels[idx]} ${value}`;
 							}
 						}
 					}
@@ -319,15 +294,12 @@ document.addEventListener("DOMContentLoaded", function () {
 				itemId = [...checkboxes].find(cb => cb.nextElementSibling.textContent.trim() === itemNameElement.textContent.trim())?.value;
 			}
 
-			console.log(itemId);
-
 			if (itemId) {
 				// ✅ 선택 목록에서 제거
 				selectedItems = selectedItems.filter(item => item !== itemId);
 
 				// ✅ 체크박스 해제
 				let checkbox = document.querySelector(`input[name='item_option'][value='${itemId}']`);
-				console.log("체크박스 찾음?", checkbox);
 				if (checkbox) checkbox.checked = false;
 			}
 
