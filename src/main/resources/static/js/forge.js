@@ -134,6 +134,11 @@ function updateDataContent(status, data, target) {
 	let isGPU = null;
 	let unit = null;
 	let isSocket = null;
+	
+	// color
+	let cGreen = "rgba(0, 255, 0, 0.3)";
+	let cRed = "rgba(255, 0, 0, 0.3)";
+	let cNormal = "rgba(135,206,235, 0.5)";
 
 	switch (status) {
 		case "cpu":
@@ -209,8 +214,8 @@ function updateDataContent(status, data, target) {
 						data: Array.from(dataMap.values()),
 						borderWidth: 1,
 						backgroundColor: chartId == "item_gpu"
-							? (isGPU ? "rgba(0, 255, 0, 0.3)" : "rgba(255, 0, 0, 0.3)")
-							: "rgba(135,206,235, 0.5)"
+							? (isGPU ? cGreen : cRed)
+							: cNormal
 					}]
 				},
 				options: {
