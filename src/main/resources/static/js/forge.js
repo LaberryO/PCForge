@@ -127,12 +127,13 @@ function updateDataContent(status, data, target) {
 	target.querySelector("#item_name").textContent = data.name;
 	const chartIds = [
 		"item_ramSpeed", "item_price", "item_core",
-		"item_speed", "item_ddr",
+		"item_speed", "item_ddr", "item_socket",
 		"item_gpu"
 	];
 	let barWidth = 25;
 	let isGPU = null;
 	let unit = null;
+	let isSocket = null;
 
 	switch (status) {
 		case "cpu":
@@ -190,6 +191,11 @@ function updateDataContent(status, data, target) {
 							dataMap.set("내장 GPU 여부", 1);
 							unit = "";
 							isGPU = data.innerGPU;
+							break;
+						case "item_socket":
+							dataMap.set("소켓", 1);
+							unit = "";
+							isSocket = data.socket;
 							break;
 					}
 					break;
@@ -255,6 +261,8 @@ function updateDataContent(status, data, target) {
 								
 								if (chartId == "item_gpu") {
 									value = isGPU ? "있음" : "없음";
+								} else if (chartId == "item_socket") {
+									value = isSocket;
 								} else {
 									value = `${value.toLocaleString()} ${unit}`; 
 								}
