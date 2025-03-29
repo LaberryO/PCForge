@@ -193,7 +193,7 @@ function updateDataContent(status, data, target) {
 							unit = "";
 							break;
 						case "item_gpu":
-							dataMap.set("내장 GPU 여부", 1);
+							dataMap.set("내장 GPU", 1);
 							unit = "";
 							isGPU = data.innerGPU;
 							break;
