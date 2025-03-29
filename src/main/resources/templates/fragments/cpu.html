@@ -5,32 +5,28 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col">코어 수 : <span id="item_core"></span></div>
+		<div class="col">
+			<canvas class="double-chart" id="item_core"></canvas>
+		</div>
 	</div>
 	<div class="row">
-			<div class="col">스레드 수 : <span id="item_thread"></span></div>
+		<div class="col">
+			<canvas class="double-chart" id="item_speed"></canvas>
 		</div>
-	<div class="row">
-		<div class="col">DDR : <span id="item_ddr"></span></div>
 	</div>
-	<div class="row align-items-center justify-content-between">
-		<div class="col-md-3 text-center">
-			램 속도
+	<div class="row">
+		<div class="col">
+			<canvas class="double-chart" id="item_ddr"></canvas>
 		</div>
-		<div class="col-md-9 d-flex align-items-center">
+	</div>
+	<div class="row align-items-center">
+		<div class="col d-flex align-items-center">
 			<canvas class="single-chart" id="item_ramSpeed"></canvas>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col">기본 속도 : <span id="item_defaultSpeed"></span></div>
-	</div>
-	<div class="row">
-		<div class="col">최대 속도 : <span id="item_maxSpeed"></span></div>
-	</div>
-	<div class="row">
-		<div class="col">메모리 채널 : <span id="item_channel"></span></div>
-	</div>
-	<div class="row">
-		<div class="col">내장 GPU : <span id="item_gpu"></span></div>
+		<div class="col">
+			<canvas class="single-chart" id="item_gpu"></canvas>
+		</div>
 	</div>
 </th:block>

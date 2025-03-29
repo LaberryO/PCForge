@@ -125,9 +125,15 @@ function fetchPCPart(path, id, target) {
 // 제품 정보 표시
 function updateDataContent(status, data, target) {
 	target.querySelector("#item_name").textContent = data.name;
-	const chartIds = ["item_ramSpeed", "item_price", "forgeChart"];
-	let barWidth = null;
-	
+	const chartIds = [
+		"item_ramSpeed", "item_price", "item_core",
+		"item_speed", "forgeChart", "item_ddr",
+		"item_gpu"
+	];
+	let barWidth = 25;
+	let isGPU = null;
+	let unit = null;
+
 	switch (status) {
 		case "cpu":
 			target.querySelector("#item_socket").textContent = data.socket;
@@ -152,39 +158,68 @@ function updateDataContent(status, data, target) {
 			const dataMap = new Map();
 
 			switch (chartId) {
-				case "item_ramSpeed":
-					dataMap.set("RamSpeed", data.ddrSpeed);
-					break;
 				case "item_price":
-					dataMap.set('Price', data.price);
-					barWidth = 25;
+					dataMap.set('금액', data.price);
+					unit = "원";
 					break;
+			}
+
+			switch (status) {
+				case "cpu":
+					switch (chartId) {
+						case "item_ramSpeed":
+							dataMap.set("램 속도", data.ddrSpeed);
+							unit = "MT/s";
+							break;
+						case "item_speed":
+							dataMap.set("기본 속도", data.defaultSpeed);
+							dataMap.set("최대 속도", data.maxSpeed);
+							unit = "GHz"
+							break;
+						case "item_core":
+							dataMap.set("코어 수", data.coreCount);
+							dataMap.set("쓰레드 수", data.threadCount);
+							unit = "개";
+							break;
+						case "item_ddr":
+							dataMap.set("DDR", data.ddr);
+							dataMap.set("RAM 지원 채널", data.memoryChannel);
+							unit = "";
+							break;
+						case "item_gpu":
+							dataMap.set("내장 GPU 여부", 1);
+							unit = "";
+							isGPU = data.innerGPU;
+							break;
+					}
+					break;
+
 				// 남은 데이터 짬 때리기
-				case "forgeChart":
-					let itemId = data.id;
-					let itemName = data.name;
-					let itemPrice = data.price;
-					let itemImage = data.fileName;
+				// default:
+				// 	let itemId = data.id;
+				// 	let itemName = data.name;
+				// 	let itemPrice = data.price;
+				// 	let itemImage = data.fileName;
 
-					if (!itemImage || itemImage.trim() === "") {
-						itemImage = "/assets/img/exam-cpu.jpg";
-					}
-					
-					target.querySelector("#item_image").src = itemImage;
+				// 	if (!itemImage || itemImage.trim() === "") {
+				// 		itemImage = "/assets/img/exam-cpu.jpg";
+				// 	}
 
-					delete data.id;
-					delete data.name;
-					delete data.price;
-					delete data.fileName;
+				// 	target.querySelector("#item_image").src = itemImage;
 
-					const keys = Object.keys(data);
-					const values = Object.values(data);
+				// 	delete data.id;
+				// 	delete data.name;
+				// 	delete data.price;
+				// 	delete data.fileName;
 
-					for (let i = 0; i < keys.length; i++) {
-						dataMap.set(keys[i], values[i]);
-					}
+				// 	const keys = Object.keys(data);
+				// 	const values = Object.values(data);
 
-					break;
+				// 	for (let i = 0; i < keys.length; i++) {
+				// 		dataMap.set(keys[i], values[i]);
+				// 	}
+
+				// 	break;
 			}
 
 			chartInstance = new Chart(chartCanvas, {
@@ -193,7 +228,10 @@ function updateDataContent(status, data, target) {
 					labels: Array.from(dataMap.keys()),
 					datasets: [{
 						data: Array.from(dataMap.values()),
-						borderWidth: 1
+						borderWidth: 1,
+						backgroundColor: chartId == "item_gpu"
+							? (isGPU ? "rgba(0, 255, 0, 0.3)" : "rgba(255, 0, 0, 0.3)")
+							: "rgba(135,206,235, 0.5)"
 					}]
 				},
 				options: {
@@ -230,6 +268,23 @@ function updateDataContent(status, data, target) {
 					plugins: {
 						legend: {
 							display: false
+						},
+						tooltip: {
+							enabled: false
+						},
+						datalabels: {
+							display: true,
+							formatter: function (value, context) {
+								let idx = context.dataIndex;
+								let temp = value;
+								
+								if (chartId == "item_gpu") {
+									value = isGPU ? " 있음" : " 없음";
+								} else {
+									value = ` ${temp} ${unit}`; 
+								}
+								return context.chart.data.labels[idx] + value;
+							}
 						}
 					}
 				}
@@ -263,7 +318,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			if (itemNameElement && itemNameElement.textContent.trim() !== "") {
 				itemId = [...checkboxes].find(cb => cb.nextElementSibling.textContent.trim() === itemNameElement.textContent.trim())?.value;
 			}
-			
+
 			console.log(itemId);
 
 			if (itemId) {

@@ -11,3 +11,11 @@
 .single-chart {
 	height: 45px !important;
 }
+
+.double-chart {
+	height: 80px !important;
+}
+
+.h-3em {
+	height: 3em;
+}
