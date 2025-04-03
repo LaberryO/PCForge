@@ -143,7 +143,7 @@ function updateDataContent(status, data, target) {
 	if (!itemImage || itemImage.trim() === "") {
 		itemImage = "/assets/img/exam-cpu.jpg";
 	}
-	
+
 	target.querySelector("#item_image").src = itemImage;
 
 	// color
@@ -275,6 +275,19 @@ function updateDataContent(status, data, target) {
 						// 	dataMap.set("PCI 슬롯", data.PCISlots);
 						// 	unit = "개";
 						// 	break;
+					}
+					break;
+				case "psu":
+					switch (chartId) {
+						case "item_wattage":
+							dataMap.set("전력", data.wattage);
+							unit = "W";
+							break;
+						case "item_formFactor":
+							dataMap.set("폼 팩터", 1);
+							unit = "";
+							justText = data.formFactor;
+							break;
 					}
 					break;
 			}
