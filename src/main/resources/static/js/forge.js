@@ -21,7 +21,7 @@ const targetMap = {
 
 // ✅ 체크박스 이벤트 리스너 추가
 checkboxes.forEach(checkbox => {
-	checkbox.addEventListener("change", function () {
+	checkbox.addEventListener("change", function() {
 		const value = this.value; // 선택된 부품의 ID
 		const path = window.location.pathname;
 
@@ -135,22 +135,16 @@ function updateDataContent(status, data, target) {
 	const canvasElements = target.querySelectorAll("canvas");
 	const chartIds = Array.from(canvasElements).map(canvas => canvas.id);
 	let barWidth = 25;
-	let isGPU = null;
 	let unit = null;
-	let isSocket = null;
-	
+	let isGPU = null;
+
 	// color
 	let cGreen = "rgba(0, 255, 0, 0.3)";
 	let cRed = "rgba(255, 0, 0, 0.3)";
 	let cNormal = "rgba(135,206,235, 0.5)";
 
-	switch (status) {
-		case "cpu":
-			target.querySelector("#item_socket").textContent = data.socket;
-			break;
-	}
-
 	chartIds.forEach(chartId => {
+		let justText = null;
 		const chartCanvas = target.querySelector(`#${chartId}`);
 
 		if (!chartCanvas) {
@@ -204,7 +198,7 @@ function updateDataContent(status, data, target) {
 						case "item_socket":
 							dataMap.set("소켓", 1);
 							unit = "";
-							isSocket = data.socket;
+							justText = data.socket;
 							break;
 					}
 					break;
@@ -228,6 +222,26 @@ function updateDataContent(status, data, target) {
 							break;
 					}
 					break;
+				case "gpu":
+					switch (chartId) {
+						case "item_speed":
+							dataMap.set("기본 속도", data.defaultSpeed);
+							unit = "Mhz";
+							break;
+						case "item_elecSize":
+							dataMap.set("소비 전력", data.powerConsumption);
+							unit = "W";
+							break;
+						case "item_memorySpeed":
+							dataMap.set("메모리 클럭", data.memorySize);
+							unit = "MHz";
+							break;
+						case "item_type":
+							dataMap.set("칩셋", 1);
+							unit = "";
+							justText = data.type;
+							break;
+					}
 			}
 
 			chartInstance = new Chart(chartCanvas, {
@@ -274,7 +288,7 @@ function updateDataContent(status, data, target) {
 						}
 					},
 					interaction: {
-					    mode: 'none'  // 호버 기능 끄기
+						mode: 'none'  // 호버 기능 끄기
 					},
 					plugins: {
 						legend: {
@@ -285,15 +299,15 @@ function updateDataContent(status, data, target) {
 						},
 						datalabels: {
 							display: true,
-							formatter: function (value, context) {
+							formatter: function(value, context) {
 								let idx = context.dataIndex;
-								
+
 								if (chartId == "item_gpu") {
 									value = isGPU ? "있음" : "없음";
-								} else if (chartId == "item_socket") {
-									value = isSocket;
+								} else if (justText != null) {
+									value = justText;
 								} else {
-									value = `${value.toLocaleString()} ${unit}`; 
+									value = `${value.toLocaleString()} ${unit}`;
 								}
 								return `${context.chart.data.labels[idx]} ${value}`;
 							}
@@ -315,10 +329,10 @@ function formatStorage(sizeGB) {
 }
 
 // 선택 해제 버튼 작동하게 하는 코드
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
 	// 선택 해제 버튼 이벤트 리스너 추가
 	document.querySelectorAll("#select_disable").forEach(button => {
-		button.addEventListener("click", function () {
+		button.addEventListener("click", function() {
 			let card = this.closest(".card"); // 현재 버튼이 속한 카드 찾기
 			if (!card) return;
 
