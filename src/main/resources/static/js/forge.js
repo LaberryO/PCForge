@@ -122,14 +122,18 @@ function fetchPCPart(path, id, target) {
 		});
 }
 
+function extractNumbers(value) {
+	if (typeof value === "string") {
+		return value.match(/\d+/g)?.join("") || "";
+	}
+	return null;
+}
+
 // 제품 정보 표시
 function updateDataContent(status, data, target) {
 	target.querySelector("#item_name").textContent = data.name;
-	const chartIds = [
-		"item_ramSpeed", "item_price", "item_core",
-		"item_speed", "item_ddr", "item_socket",
-		"item_gpu"
-	];
+	const canvasElements = target.querySelectorAll("canvas");
+	const chartIds = Array.from(canvasElements).map(canvas => canvas.id);
 	let barWidth = 25;
 	let isGPU = null;
 	let unit = null;
@@ -201,6 +205,26 @@ function updateDataContent(status, data, target) {
 							dataMap.set("소켓", 1);
 							unit = "";
 							isSocket = data.socket;
+							break;
+					}
+					break;
+				case "ram":
+					switch (chartId) {
+						case "item_type":
+							dataMap.set("DDR", extractNumbers(data.type));
+							unit = "";
+							break;
+						case "item_capacity":
+							dataMap.set("RAM 용량", data.capacity);
+							unit = "GB";
+							break;
+						case "item_speed":
+							dataMap.set("램 속도", data.speed);
+							unit = "MT/s";
+							break;
+						case "item_channel":
+							dataMap.set("RAM 지원 채널", data.memoryChannel);
+							unit = "";
 							break;
 					}
 					break;
