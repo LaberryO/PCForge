@@ -1,22 +1,27 @@
 <th:block th:fragment="mboardFragment">
 	<div class="row">
 		<div class="col">
-			DDR 지원 : <span id="item_ddr"></span>	
+			<canvas class="single-chart" id="item_formFactor"></canvas>	
 		</div>
 	</div>
 	<div class="row">
 		<div class="col">
-			소켓 지원 : <span id="item_socket"></span>
+			<canvas class="single-chart" id="item_socket"></canvas>
+		</div>
+	</div>
+	<!-- <div class="row">
+		<div class="col">
+			<canvas class="single-chart" id="item_pci"></canvas>
+		</div>
+	</div> -->
+	<div class="row">
+		<div class="col">
+			<canvas class="single-chart" id="item_ddr"></canvas>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col">
-			폼 팩터 : <span id="item_formFactor"></span>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col">
-			최대 RAM : <span id="item_maxMemory"></span>
+			<canvas class="single-chart" id="item_memory"></canvas>
 		</div>
 	</div>
 </th:block>

@@ -138,6 +138,14 @@ function updateDataContent(status, data, target) {
 	let unit = null;
 	let isGPU = null;
 
+	let itemImage = data.fileName;
+
+	if (!itemImage || itemImage.trim() === "") {
+		itemImage = "/assets/img/exam-cpu.jpg";
+	}
+	
+	target.querySelector("#item_image").src = itemImage;
+
 	// color
 	let cGreen = "rgba(0, 255, 0, 0.3)";
 	let cRed = "rgba(255, 0, 0, 0.3)";
@@ -242,6 +250,33 @@ function updateDataContent(status, data, target) {
 							justText = data.type;
 							break;
 					}
+					break;
+				case "mboard":
+					switch (chartId) {
+						case "item_socket":
+							dataMap.set("소켓", 1);
+							unit = "";
+							justText = data.socket;
+							break;
+						case "item_ddr":
+							dataMap.set("DDR", extractNumbers(data.ddrSupport));
+							unit = "";
+							break;
+						case "item_formFactor":
+							dataMap.set("폼 팩터", 1);
+							unit = "";
+							justText = data.formFactor;
+							break;
+						case "item_memory":
+							dataMap.set("최대 RAM", data.maxMemory);
+							unit = "GB";
+							break;
+						// case "item_pci":
+						// 	dataMap.set("PCI 슬롯", data.PCISlots);
+						// 	unit = "개";
+						// 	break;
+					}
+					break;
 			}
 
 			chartInstance = new Chart(chartCanvas, {
