@@ -1,17 +1,22 @@
 <th:block th:fragment="gpuFragment">
 	<div class="row">
 		<div class="col">
-			기본 속도 : <span id="item_speed"></span>
+			<canvas class="single-chart" id="item_type"></canvas>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col">
-			소비 전력 : <span id="item_power"></span>
+			<canvas class="single-chart" id="item_speed"></canvas>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col">
-			메모리 클럭 : <span id="item_memory"></span>
+			<canvas class="single-chart" id="item_elecSize"></canvas>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<canvas class="single-chart" id="item_memorySpeed"></canvas>
 		</div>
 	</div>
 </th:block>
