@@ -1,5 +1,6 @@
 package org.kamjeon.pcforge.PCpart.GPU;
 
+import org.kamjeon.pcforge.PCpart.BaseProduct;
 import org.kamjeon.pcforge.PCpart.PCParts;
 import org.kamjeon.pcforge.PCpart.Company.Company;
 
@@ -17,13 +18,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class GPU {
+public class GPU extends BaseProduct {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
 	
-	private String name;
 	
 	private Float defaultSpeed;
 	
@@ -31,20 +28,7 @@ public class GPU {
 	
 	private String type;
 	
-
-	private Integer makeCompany;
-	
-   
-	
 	private Integer powerConsumption;
 	
-	private String fileName;
-	
-	private int price;
-	
-	@JsonIgnore
-	  @ManyToOne
-	  @JoinColumn(name = "pcparts_id", nullable = true)
-	  private PCParts pcPart;
 	 
 }

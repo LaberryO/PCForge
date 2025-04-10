@@ -15,14 +15,14 @@ import lombok.RequiredArgsConstructor;
 @Controller
 public class PCpartController {
 	private final PCpartService pcPartService;
-	
+
 	@GetMapping("/list")
     public String list(Model model, 
             @RequestParam(value = "type", defaultValue = "CPU") String type, 
             @RequestParam(value = "page", defaultValue = "0") int page, 
             @RequestParam(value = "kw", defaultValue = "") String kw) {
 
-		 Page<PCParts> paging = this.pcPartService.getList(page, kw, type); 
+		 Page<PCParts> paging = this.pcPartService.getList(page, kw, type, 5); 
 	        model.addAttribute("paging", paging);
 	        model.addAttribute("kw", kw);
 	        model.addAttribute("type", type);

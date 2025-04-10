@@ -1,5 +1,6 @@
 package org.kamjeon.pcforge.PCpart.MBoard;
 
+import org.kamjeon.pcforge.PCpart.BaseProduct;
 import org.kamjeon.pcforge.PCpart.PCParts;
 import org.kamjeon.pcforge.PCpart.Company.Company;
 
@@ -17,13 +18,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class MBoard {
+public class MBoard extends BaseProduct{
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
 	
-	private String name;
 	
 	private String socket;
 	
@@ -35,18 +32,5 @@ public class MBoard {
 	
 	private Integer PCISlots;
 	
-
-	private Integer makeCompany;
-	
-   
-	
-	private String fileName;
-	
-	private int price;
-	
-	@JsonIgnore
-	  @ManyToOne
-	  @JoinColumn(name = "pcparts_id", nullable = true) 
-	  private PCParts pcPart;
 	 
 }

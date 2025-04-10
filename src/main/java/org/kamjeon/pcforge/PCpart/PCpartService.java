@@ -47,11 +47,12 @@ public class PCpartService {
     private final RAMRepository ramRepository;
 
     @SuppressWarnings("unchecked")
-    public <T> Page<T> getList(int page, String kw, String searchType) {
+    public <T> Page<T> getList(int page, String kw, String searchType, int num) {
+    	  
         List<Sort.Order> sorts = new ArrayList<>();
         sorts.add(Sort.Order.desc("id"));  // 기본 정렬 기준을 설정해줌
 
-        Pageable pageable = PageRequest.of(page, 5, Sort.by(sorts));  // 페이지와 정렬 설정
+        Pageable pageable = PageRequest.of(page, num, Sort.by(sorts));  // 페이지와 정렬 설정
 
         switch (searchType) {
             case "COMCASE":
@@ -88,32 +89,16 @@ public class PCpartService {
                 return (Page<T>) pcPartRepository.findAll(pcPartsSpec, pageable);
         }
     }
+    
+
     private Specification<PCParts> searchAll(String kw) {
         return (Root<PCParts> p, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
             System.out.println("여기 실행하는 중");
-            // 각 연관된 엔티티와 조인 설정
-            Join<PCParts, ComCase> comCaseJoin = p.join("comCase", JoinType.LEFT);
-            Join<PCParts, CPU> cpuJoin = p.join("cpu", JoinType.LEFT);
-            Join<PCParts, Disk> diskJoin = p.join("disk", JoinType.LEFT);
-            Join<PCParts, GPU> gpuJoin = p.join("gpu", JoinType.LEFT);
-            Join<PCParts, MBoard> mBoardJoin = p.join("mBoard", JoinType.LEFT);
-            Join<PCParts, PSU> psuJoin = p.join("psu", JoinType.LEFT);
-            Join<PCParts, RAM> ramJoin = p.join("ram", JoinType.LEFT);
-            Join<PCParts, Company> companyJoin = p.join("company", JoinType.LEFT);
-            
-            // 각 리스트의 name 속성으로 검색 조건 설정
-            Predicate searchPredicate = cb.or(
-                cb.like(cb.upper(comCaseJoin.get("name")), "%" + kw.toUpperCase() + "%"),
-                cb.like(cb.upper(cpuJoin.get("name")), "%" + kw.toUpperCase() + "%"),
-                cb.like(cb.upper(diskJoin.get("name")), "%" + kw.toUpperCase() + "%"),
-                cb.like(cb.upper(gpuJoin.get("name")), "%" + kw.toUpperCase() + "%"),
-                cb.like(cb.upper(mBoardJoin.get("name")), "%" + kw.toUpperCase() + "%"),
-                cb.like(cb.upper(psuJoin.get("name")), "%" + kw.toUpperCase() + "%"),
-                cb.like(cb.upper(ramJoin.get("name")), "%" + kw.toUpperCase() + "%"),
-                cb.like(cb.upper(companyJoin.get("name")), "%" + kw.toUpperCase() + "%")
-            );
+            query.distinct(true);
+            Join<PCParts, BaseProduct> baseProductJoin = p.join("baseProduct", JoinType.INNER);
 
-            return searchPredicate;
+            // CPU의 name이 검색어를 포함하는 조건
+            return cb.like(baseProductJoin.get("name"), "%" + kw + "%");
         };
     }
     private Specification<ComCase> searchComCase(String kw) {

@@ -64,11 +64,10 @@ public class DataLoader {
 	    Resource company = resolver.getResource("classpath:json/Company.json");
 	    if (company.exists() && companyRp.count() == 0) { // Company 데이터가 없을 경우만 추가
 	        List<Company> companyData = objectMapper.readValue(company.getInputStream(), new TypeReference<List<Company>>() {});
-	        for (Company c : companyData) {
-	        	 PCParts pcParts = new PCParts();
-         	    pcParts = pcRp.save(pcParts);
-         	    c.setPcPart(pcParts); 
-	        }
+			/*
+			 * for (Company c : companyData) { PCParts pcParts = new PCParts(); pcParts =
+			 * pcRp.save(pcParts); c.setPcPart(pcParts); }
+			 */
 	        companyRp.saveAll(companyData);
 	        System.out.println("회사 데이터 저장 완료");
 	    }

@@ -2,8 +2,10 @@ package org.kamjeon.pcforge.Boards;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -47,6 +49,30 @@ public class StarterController {
 		model.addAttribute("types", StarterType.values());
 		return "starter_form";
 	}
+	
+	@GetMapping("/delete")
+	public String delete(Model model) {
+		List<StarterBoard> newsList = starterBoardRepository.findAll();
+		model.addAttribute("starterBoards", newsList);
+		
+		return "starter_delete";
+	}
+	
+	@PreAuthorize("isAuthenticated()")
+	@PostMapping("/delete/{id}")
+	public String boardDelete(Model model, @PathVariable("id") Integer id) {
+		
+		Optional<StarterBoard> board = this.starterBoardRepository.findById(id);
+		StarterBoard starter = board.get();
+		
+		this.starterBoardRepository.delete(starter);
+		
+		List<StarterBoard> boardList = this.starterBoardRepository.findAll();
+		model.addAttribute("starterBoards", boardList);
+		
+		return "starter_delete";
+	}
+	
 
 	@PostMapping("/create")
 	public String create(@Valid StarterForm starter, BindingResult bindingResult, Model model) {

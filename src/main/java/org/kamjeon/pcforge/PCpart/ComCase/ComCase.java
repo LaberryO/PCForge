@@ -1,5 +1,6 @@
 package org.kamjeon.pcforge.PCpart.ComCase;
 
+import org.kamjeon.pcforge.PCpart.BaseProduct;
 import org.kamjeon.pcforge.PCpart.PCParts;
 import org.kamjeon.pcforge.PCpart.Company.Company;
 
@@ -17,14 +18,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class ComCase {
+public class ComCase extends BaseProduct {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-
-	private String name;
-
+	
 	private String formFactor;
 
 	private String color;
@@ -34,16 +30,7 @@ public class ComCase {
 	private Integer fanSupport;
 
 
-	private String fileName;
 
-	private int price;
-
-	private Integer makeCompany;
-
-	@JsonIgnore
-	  @ManyToOne
-	  @JoinColumn(name = "pcparts_id")
-	  private PCParts pcPart;
 	 
 
 }
