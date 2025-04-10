@@ -1,7 +1,6 @@
 const accountBtn = document.getElementById("navbarDropdown");
 
 function getEmailById() {
-	console.log("Try GetEmail");
     fetch(`${window.location.origin}/user/api/get-email`, {
         method: 'POST'
     })

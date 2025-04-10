@@ -290,6 +290,51 @@ function updateDataContent(status, data, target) {
 							break;
 					}
 					break;
+				case "comcase":
+					switch (chartId) {
+						case "item_fan":
+							dataMap.set("쿨링팬 지원", data.fanSupport);
+							unit = "개";
+							break;
+						case "item_tower":
+							dataMap.set("타워 종류", 1);
+							unit = "";
+							justText = data.formFactor;
+							break;
+						case "item_material":
+							dataMap.set("재질", 1);
+							unit = "";
+							justText = data.material;
+							break;
+						case "item_color":
+							dataMap.set("색상", 1);
+							unit = "";
+							justText = data.color;
+							break;
+					}
+					break;
+				case "disk":
+					switch (chartId) {
+						case "item_size":
+							if (data.capacity >= 1000) {
+								dataMap.set("용량", data.capacity / 1000);
+								unit = "TB";	
+							} else {
+								dataMap.set("용량", data.capacity);
+								unit = "GB";
+							}
+							break;
+						case "item_speed":
+							dataMap.set("속도", data.speed);
+							unit = "MB/s";
+							break;
+						case "item_type":
+							dataMap.set("종류", 1);
+							unit = "";
+							justText = data.type;
+							break;
+					}
+					break;
 			}
 
 			chartInstance = new Chart(chartCanvas, {
