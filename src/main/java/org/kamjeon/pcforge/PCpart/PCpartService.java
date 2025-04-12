@@ -38,14 +38,58 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class PCpartService {
     private final PCpartRepository pcPartRepository;
-    private final ComCaseRepository comcaseRepository;
-    private final CPURepository cpuRepository;
-    private final DiskRepository diskRepository;
-    private final GPURepository gpuRepository;
-    private final MBoardRepository mBoardRepository;
-    private final PSURepository psuRepository;
-    private final RAMRepository ramRepository;
-
+   
+    public <T> List<T> getSearchList(int page, String kw, String searchType, int num){
+    	List<T> newList = new ArrayList<T>();
+    	
+   	 Page<PCParts> paging = getList(page, kw, searchType , num);
+   	 for (PCParts pcPart : paging.getContent()) {
+         switch (searchType) {
+             case "CPU":
+                 if (pcPart.getCpu() != null) {
+                     newList.add((T) pcPart.getCpu());
+                 }
+                 break;
+             case "COMCASE":
+                 if (pcPart.getComcase() != null) {
+                     newList.add((T) pcPart.getComcase());
+                 }
+                 break;
+             case "DISK":
+                 if (pcPart.getDisk() != null) {
+                     newList.add((T) pcPart.getDisk());
+                 }
+                 break;
+             case "GPU":
+                 if (pcPart.getGpu() != null) {
+                     newList.add((T) pcPart.getGpu());
+                 }
+                 break;
+             case "MBOARD":
+                 if (pcPart.getMBoard() != null) {
+                     newList.add((T) pcPart.getMBoard());
+                 }
+                 break;
+             case "PSU":
+                 if (pcPart.getPsu() != null) {
+                     newList.add((T) pcPart.getPsu());
+                 }
+                 break;
+             case "RAM":
+                 if (pcPart.getRam() != null) {
+                     newList.add((T) pcPart.getRam());
+                 }
+                 break;
+             default:
+            	   if (pcPart.getBaseProduct() != null) {
+                       newList.add((T) pcPart.getBaseProduct());
+                   }
+                 break;
+         }
+     }
+   	 
+     return newList;
+    }
     @SuppressWarnings("unchecked")
     public <T> Page<T> getList(int page, String kw, String searchType, int num) {
     	  
@@ -56,32 +100,32 @@ public class PCpartService {
 
         switch (searchType) {
             case "COMCASE":
-                Specification<ComCase> comCaseSpec = searchComCase(kw);
-                return (Page<T>) comcaseRepository.findAll(comCaseSpec, pageable);
+                Specification<PCParts> comCaseSpec = searchComCase(kw);
+                return (Page<T>) pcPartRepository.findAll(comCaseSpec, pageable);
 
             case "CPU":
-                Specification<CPU> cpuSpec = searchCPU(kw);
-                return (Page<T>) cpuRepository.findAll(cpuSpec, pageable);
+                Specification<PCParts> cpuSpec = searchCPU(kw);
+                return (Page<T>) pcPartRepository.findAll(cpuSpec, pageable);
 
             case "DISK":
-                Specification<Disk> diskSpec = searchDisk(kw);
-                return (Page<T>) diskRepository.findAll(diskSpec, pageable);
+                Specification<PCParts> diskSpec = searchDisk(kw);
+                return (Page<T>) pcPartRepository.findAll(diskSpec, pageable);
 
             case "GPU":
-                Specification<GPU> gpuSpec = searchGPU(kw);
-                return (Page<T>) gpuRepository.findAll(gpuSpec, pageable);
+                Specification<PCParts> gpuSpec = searchGPU(kw);
+                return (Page<T>) pcPartRepository.findAll(gpuSpec, pageable);
 
             case "MBOARD":
-                Specification<MBoard> mBoardSpec = searchMBoard(kw);
-                return (Page<T>) mBoardRepository.findAll(mBoardSpec, pageable);
+                Specification<PCParts> mBoardSpec = searchMBoard(kw);
+                return (Page<T>) pcPartRepository.findAll(mBoardSpec, pageable);
 
             case "PSU":
-                Specification<PSU> psuSpec = searchPSU(kw);
-                return (Page<T>) psuRepository.findAll(psuSpec, pageable);
+                Specification<PCParts> psuSpec = searchPSU(kw);
+                return (Page<T>) pcPartRepository.findAll(psuSpec, pageable);
 
             case "RAM":
-                Specification<RAM> ramSpec = searchRAM(kw);
-                return (Page<T>) ramRepository.findAll(ramSpec, pageable);
+                Specification<PCParts> ramSpec = searchRAM(kw);
+                return (Page<T>) pcPartRepository.findAll(ramSpec, pageable);
 
             default:
 
@@ -101,70 +145,63 @@ public class PCpartService {
             return cb.like(baseProductJoin.get("name"), "%" + kw + "%");
         };
     }
-    private Specification<ComCase> searchComCase(String kw) {
-        return (Root<ComCase> p, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
+    private Specification<PCParts> searchComCase(String kw) {
+        return (Root<PCParts> p, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
             query.distinct(true);
-            Join<ComCase, PCParts> comCase = p.join("pcPart", JoinType.INNER);
+            Join<ComCase, PCParts> comCase = p.join("comcase", JoinType.INNER);
             return cb.like(comCase.get("name"), "%" + kw + "%");
         };
     }
 
-    private Specification<CPU> searchCPU(String kw) {
-        return (Root<CPU> cpu, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
+    private Specification<PCParts> searchCPU(String kw) {
+        return (Root<PCParts> cpu, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
             System.out.println("cpu 실행하는 중");
             query.distinct(true);
-            Join<CPU, PCParts> pcParts = cpu.join("pcPart", JoinType.INNER);
+            Join<CPU, PCParts> pcParts = cpu.join("cpu", JoinType.INNER);
 
             // CPU의 name이 검색어를 포함하는 조건
-            return cb.like(cpu.get("name"), "%" + kw + "%");
+            return cb.like(pcParts.get("name"), "%" + kw + "%");
         };
     }
 
-    private Specification<Disk> searchDisk(String kw) {
-        return (Root<Disk> disk, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
+    private Specification<PCParts> searchDisk(String kw) {
+        return (Root<PCParts> disk, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
             query.distinct(true);
-            Join<Disk, PCParts> pcParts = disk.join("pcPart", JoinType.INNER);
-            return cb.like(disk.get("name"), "%" + kw + "%");
+            Join<Disk, PCParts> pcParts = disk.join("disk", JoinType.INNER);
+            return cb.like(pcParts.get("name"), "%" + kw + "%");
         };
     }
 
-    private Specification<GPU> searchGPU(String kw) {
-        return (Root<GPU> gpu, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
+    private Specification<PCParts> searchGPU(String kw) {
+        return (Root<PCParts> gpu, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
             query.distinct(true);
-            Join<GPU, PCParts> pcParts = gpu.join("pcPart", JoinType.INNER);
-            return cb.like(gpu.get("name"), "%" + kw + "%");
+            Join<GPU, PCParts> pcParts = gpu.join("gpu", JoinType.INNER);
+            return cb.like(pcParts.get("name"), "%" + kw + "%");
         };
     }
 
-    private Specification<MBoard> searchMBoard(String kw) {
-        return (Root<MBoard> mBoard, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
+    private Specification<PCParts> searchMBoard(String kw) {
+        return (Root<PCParts> mBoard, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
             query.distinct(true);
-            Join<MBoard, PCParts> pcParts = mBoard.join("pcPart", JoinType.INNER);
-            return cb.like(mBoard.get("name"), "%" + kw + "%");
+            Join<MBoard, PCParts> pcParts = mBoard.join("mBoard", JoinType.INNER);
+            return cb.like(pcParts.get("name"), "%" + kw + "%");
         };
     }
 
-    private Specification<PSU> searchPSU(String kw) {
-        return (Root<PSU> psu, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
+    private Specification<PCParts> searchPSU(String kw) {
+        return (Root<PCParts> psu, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
             query.distinct(true);
-            Join<PSU, PCParts> pcParts = psu.join("pcPart", JoinType.INNER);
-            return cb.like(psu.get("name"), "%" + kw + "%");
+            Join<PSU, PCParts> pcParts = psu.join("psu", JoinType.INNER);
+            return cb.like(pcParts.get("name"), "%" + kw + "%");
         };
     }
 
-    private Specification<RAM> searchRAM(String kw) {
-        return (Root<RAM> ram, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
+    private Specification<PCParts> searchRAM(String kw) {
+        return (Root<PCParts> ram, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
             query.distinct(true);
-            Join<RAM, PCParts> pcParts = ram.join("pcPart", JoinType.INNER);
-            return cb.like(ram.get("name"), "%" + kw + "%");
+            Join<RAM, PCParts> pcParts = ram.join("ram", JoinType.INNER);
+            return cb.like(pcParts.get("name"), "%" + kw + "%");
         };
     }
 
-    private Specification<Company> searchCompany(String kw) {
-        return (Root<Company> company, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
-            query.distinct(true);
-            Join<Company, PCParts> pcParts = company.join("pcPart", JoinType.INNER);
-            return cb.like(company.get("name"), "%" + kw + "%");
-        };
-    }
 }

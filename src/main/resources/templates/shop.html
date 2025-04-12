@@ -1,87 +1,307 @@
 <html layout:decorate="~{layout}">
-  <div layout:fragment="content" class="container my-5">
-    <div class="row">
-      <div class="col-12 text-center">
-        <h1 class="py-5 my-2">PCPart Shop</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-4">
-        <div class="input-group">
-          <input type="text" id="search_kw" class="form-control w-50" th:value="${kw}" />
-          <div class="input-group-append">
-            <button class="btn btn-info" id="btn_search">찾기</button>
-          </div>
-        </div>
-      </div>
-    </div>
+<div layout:fragment="content" class="container mt-5 my-5">
 
-    <div class="col-12 my-2">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>아이디</th>
-            <th>제품명</th>
-            <th>가격</th>
-          </tr>
-        </thead>
-        <tbody>
+	<!-- 1. 상단 큰 캐러셀 -->
+	<div id="topCarousel" class="carousel slide mt-5 mb-5" data-bs-ride="carousel">
+		<div class="carousel-inner">
+			<!-- 상단 캐러셀 이미지 목록 -->
+			<th:block th:each="image, stat : ${topCarouselImages}">
+				<div th:class="${stat.first} ? 'carousel-item active' : 'carousel-item'">
+					<!-- 이미지 경로 수정: th:src에서 @{}를 사용하여 이미지 경로를 동적으로 지정 -->
+					<img th:src="@{'/Images/' + ${image.fileName}}" class="d-block w-100 rounded"
+						style="height: 400px; object-fit: cover;" alt="추천 상품">
+				</div>
+			</th:block>
+		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#topCarousel" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon"></span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#topCarousel" data-bs-slide="next">
+			<span class="carousel-control-next-icon"></span>
+		</button>
+	</div>
 
-			<tr th:each="pcPart, loop : ${paging.content}">
-			    <td th:text="${paging.totalElements - (paging.number * paging.size) - loop.index}"></td> <!-- 현재 페이지의 인덱스 계산 -->
+	<!-- 2. 카테고리별 상품 나열 -->
+	<!-- BASEPRODUCT -->
+	<div class="mb-5">
+		<h4 class="fw-bold border-bottom pb-2 mb-3">전체</h4>
+		<div class="row">
 
-			    <!-- pcPart가 null이 아니고, pcPart의 name이 있을 경우에만 출력 -->
-			    <td th:text="${pcPart != null and pcPart.name != null ? pcPart.name : 'No Name'}"></td>
+			<!-- 🔹 왼쪽 미니 캐러셀 (20%) -->
+			<div class="col-md-2 d-flex flex-column gap-2">
 
-			    <!-- pcPart가 null이 아니고, pcPart의 price가 있을 경우에만 출력 -->
-			    <td th:text="${pcPart != null and pcPart.price != null ? pcPart.price : 'No Price'}"></td>
-			</tr>
+				<!-- 캐러셀 #1 -->
+				<div id="leftMiniCarousel1" class="carousel slide" data-bs-ride="carousel">
+					<div class="carousel-inner">
+						<th:block th:each="img, stat : ${miniCarouselImages}">
+							<div th:class="${stat.first} ? 'carousel-item active' : 'carousel-item'">
+								<img th:src="@{'/Images/' + ${img.fileName}}" class="d-block w-100 rounded"
+									alt="광고 이미지">
+							</div>
+						</th:block>
+					</div>
+					<button class="carousel-control-prev" type="button" data-bs-target="#leftMiniCarousel1"
+						data-bs-slide="prev">
+						<span class="carousel-control-prev-icon"></span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#leftMiniCarousel1"
+						data-bs-slide="next">
+						<span class="carousel-control-next-icon"></span>
+					</button>
+				</div>
 
-        </tbody>
-      </table>
+				<!-- 캐러셀 #2 -->
+				<div id="leftMiniCarousel2" class="carousel slide mt-3" data-bs-ride="carousel">
+					<div class="carousel-inner">
+						<th:block th:each="img, stat : ${miniCarouselImages}">
+							<div th:class="${stat.first} ? 'carousel-item active' : 'carousel-item'">
+								<img th:src="@{'/Images/' + ${img.fileName}}" class="d-block w-100 rounded"
+									alt="광고 이미지">
+							</div>
+						</th:block>
+					</div>
+					<button class="carousel-control-prev" type="button" data-bs-target="#leftMiniCarousel2"
+						data-bs-slide="prev">
+						<span class="carousel-control-prev-icon"></span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#leftMiniCarousel2"
+						data-bs-slide="next">
+						<span class="carousel-control-next-icon"></span>
+					</button>
+				</div>
 
-      <!--페이징 처리 시작-->
-      <nav aria-label="Page navigation example" class="border" th:if="${!paging.isEmpty()}">
-        <ul class="pagination justify-content-center">
-          <li class="page-item" th:classappend="${paging.hasPrevious()} ? '' : 'disabled'">
-            <a class="page-link" href="javascript:void(0)" th:data-page="${paging.number - 1}">이전</a>
-          </li>
+				<!-- 캐러셀 #3 -->
+				<div id="leftMiniCarousel3" class="carousel slide mt-3" data-bs-ride="carousel">
+					<div class="carousel-inner">
+						<th:block th:each="img, stat : ${miniCarouselImages}">
+							<div th:class="${stat.first} ? 'carousel-item active' : 'carousel-item'">
+								<img th:src="@{'/Images/' + ${img.fileName}}" class="d-block w-100 rounded"
+									alt="광고 이미지">
+							</div>
+						</th:block>
+					</div>
+					<button class="carousel-control-prev" type="button" data-bs-target="#leftMiniCarousel3"
+						data-bs-slide="prev">
+						<span class="carousel-control-prev-icon"></span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#leftMiniCarousel3"
+						data-bs-slide="next">
+						<span class="carousel-control-next-icon"></span>
+					</button>
+				</div>
 
-          <li th:each="page : ${#numbers.sequence(0, paging.totalPages - 1)}"
-              th:classappend="${page == paging.number} ? 'active'">
-            <a class="page-link" href="javascript:void(0)" th:data-page="${page}">[[${page + 1}]]</a>
-          </li>
+				<!-- 캐러셀 #4 -->
+				<div id="leftMiniCarousel4" class="carousel slide mt-3" data-bs-ride="carousel">
+					<div class="carousel-inner">
+						<th:block th:each="img, stat : ${miniCarouselImages}">
+							<div th:class="${stat.first} ? 'carousel-item active' : 'carousel-item'">
+								<img th:src="@{'/Images/' + ${img.fileName}}" class="d-block w-100 rounded"
+									alt="광고 이미지">
+							</div>
+						</th:block>
+					</div>
+					<button class="carousel-control-prev" type="button" data-bs-target="#leftMiniCarousel4"
+						data-bs-slide="prev">
+						<span class="carousel-control-prev-icon"></span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#leftMiniCarousel4"
+						data-bs-slide="next">
+						<span class="carousel-control-next-icon"></span>
+					</button>
+				</div>
 
-          <li class="page-item" th:classappend="${paging.hasNext()} ? '' : 'disabled'">
-            <a class="page-link" href="javascript:void(0)" th:data-page="${paging.number + 1}">다음</a>
-          </li>
-        </ul>
-      </nav>
+			</div>
 
-      <form th:action="@{/shop/list}" method="get" id="searchForm">
-        <input type="hidden" id="kw" name="kw" th:value="${kw}" />
-        <input type="hidden" id="page" th:value="${paging.number}" />
-      </form>
+			<!-- 🔸 오른쪽 상품 슬라이드 (80%) -->
+			<div class="col-md-10">
+				<div id="cpuCarousel" class="carousel slide" data-bs-ride="carousel">
+					<div class="carousel-inner">
+						<th:block th:each="product, stat : ${productGroups}">
+							<th:block th:if="${stat.index % 10 == 0}">
+								<div th:class="${stat.index == 0} ? 'carousel-item active' : 'carousel-item'">
+									<div class="row row-cols-1 row-cols-md-5 g-4">
+										<th:block th:each="innerProduct, innerStat : ${productGroups}">
+											<th:block
+												th:if="${innerStat.index >= stat.index and innerStat.index < stat.index + 10}">
+												<div class="col">
+													<div class="card h-100">
+														<img th:src="@{'/Images/' + ${innerProduct.fileName}}"
+															class="card-img-top"
+															style="height: 180px; object-fit: cover;" alt="상품 이미지">
+														<div class="card-body">
+															<h6 class="card-title text-truncate">
+																[[${innerProduct.name}]]</h6>
+															<p class="card-text fw-bold text-primary">
+																[[${#numbers.formatInteger(innerProduct.price, 3,
+																'COMMA')}]]원
+															</p>
+														</div>
+													</div>
+												</div>
+											</th:block>
+										</th:block>
+									</div>
+								</div>
+							</th:block>
+						</th:block>
+					</div>
 
-    </div>
-  </div>
+					<!-- 슬라이드 버튼 -->
+					<button class="carousel-control-prev" type="button" data-bs-target="#cpuCarousel"
+						data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" style="filter: invert(1);"></span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#cpuCarousel"
+						data-bs-slide="next">
+						<span class="carousel-control-next-icon" style="filter: invert(1);"></span>
+					</button>
+				</div>
+			</div>
 
-  <script layout:fragment="script">
-    // 페이지 이동 기능
-    const page_elements = document.getElementsByClassName("page-link");
-    Array.from(page_elements).forEach(function (element) {
-      element.addEventListener("click", function () {
-        document.getElementById("page").value = this.dataset.page;
-        document.getElementById("searchForm").submit();
-      });
-    });
+		</div>
+	</div>
+	<!-- CPU -->
+	<div class="mb-5">
+		<h4 class="fw-bold border-bottom pb-2 mb-3">CPU</h4>
+		<div class="row row-cols-1 row-cols-md-5 g-4">
+			<th:block th:each="product : ${cpuList}">
+				<div class="col">
+					<div class="card h-100">
+						<img th:src="@{'/Images/' + ${product.fileName}}" class="card-img-top"
+							style="height: 180px; object-fit: cover;" alt="상품 이미지">
+						<div class="card-body">
+							<h6 class="card-title text-truncate">[[${product.name}]]</h6>
+							<p class="card-text fw-bold text-primary">[[${#numbers.formatInteger(product.price, 3,
+								'COMMA')}]]원</p>
+						</div>
+					</div>
+				</div>
+			</th:block>
+		</div>
+	</div>
 
-    // 검색 버튼 클릭 시
-    const btn_search = document.getElementById("btn_search");
-    btn_search.addEventListener("click", function () {
-      document.getElementById("kw").value = document.getElementById("search_kw").value;
-      document.getElementById("page").value = 0;
-      document.getElementById("searchForm").submit();
-    });
-  </script>
+	<!-- GPU -->
+	<div class="mb-5">
+		<h4 class="fw-bold border-bottom pb-2 mb-3">GPU</h4>
+		<div class="row row-cols-1 row-cols-md-5 g-4">
+			<th:block th:each="product : ${gpuList}">
+				<div class="col">
+					<div class="card h-100">
+						<img th:src="@{'/Images/' + ${product.fileName}}" class="card-img-top"
+							style="height: 180px; object-fit: cover;" alt="상품 이미지">
+						<div class="card-body">
+							<h6 class="card-title text-truncate">[[${product.name}]]</h6>
+							<p class="card-text fw-bold text-primary">[[${#numbers.formatInteger(product.price, 3,
+								'COMMA')}]]원</p>
+						</div>
+					</div>
+				</div>
+			</th:block>
+		</div>
+	</div>
+
+	<!-- RAM -->
+	<div class="mb-5">
+		<h4 class="fw-bold border-bottom pb-2 mb-3">RAM</h4>
+		<div class="row row-cols-1 row-cols-md-5 g-4">
+			<th:block th:each="product : ${ramList}">
+				<div class="col">
+					<div class="card h-100">
+						<img th:src="@{'/Images/' + ${product.fileName}}" class="card-img-top"
+							style="height: 180px; object-fit: cover;" alt="상품 이미지">
+						<div class="card-body">
+							<h6 class="card-title text-truncate">[[${product.name}]]</h6>
+							<p class="card-text fw-bold text-primary">[[${#numbers.formatInteger(product.price, 3,
+								'COMMA')}]]원</p>
+						</div>
+					</div>
+				</div>
+			</th:block>
+		</div>
+	</div>
+
+	<!-- DISK -->
+	<div class="mb-5">
+		<h4 class="fw-bold border-bottom pb-2 mb-3">디스크</h4>
+		<div class="row row-cols-1 row-cols-md-5 g-4">
+			<th:block th:each="product : ${diskList}">
+				<div class="col">
+					<div class="card h-100">
+						<img th:src="@{'/Images/' + ${product.fileName}}" class="card-img-top"
+							style="height: 180px; object-fit: cover;" alt="상품 이미지">
+						<div class="card-body">
+							<h6 class="card-title text-truncate">[[${product.name}]]</h6>
+							<p class="card-text fw-bold text-primary">[[${#numbers.formatInteger(product.price, 3,
+								'COMMA')}]]원</p>
+						</div>
+					</div>
+				</div>
+			</th:block>
+		</div>
+	</div>
+
+	<!-- MBOARD -->
+	<div class="mb-5">
+		<h4 class="fw-bold border-bottom pb-2 mb-3">메인보드</h4>
+		<div class="row row-cols-1 row-cols-md-5 g-4">
+			<th:block th:each="product : ${mboardList}">
+				<div class="col">
+					<div class="card h-100">
+						<img th:src="@{'/Images/' + ${product.fileName}}" class="card-img-top"
+							style="height: 180px; object-fit: cover;" alt="상품 이미지">
+						<div class="card-body">
+							<h6 class="card-title text-truncate">[[${product.name}]]</h6>
+							<p class="card-text fw-bold text-primary">[[${#numbers.formatInteger(product.price, 3,
+								'COMMA')}]]원</p>
+						</div>
+					</div>
+				</div>
+			</th:block>
+		</div>
+	</div>
+
+	<!-- PSU -->
+	<div class="mb-5">
+		<h4 class="fw-bold border-bottom pb-2 mb-3">파워</h4>
+		<div class="row row-cols-1 row-cols-md-5 g-4">
+			<th:block th:each="product : ${psuList}">
+				<div class="col">
+					<div class="card h-100">
+						<img th:src="@{'/Images/' + ${product.fileName}}" class="card-img-top"
+							style="height: 180px; object-fit: cover;" alt="상품 이미지">
+						<div class="card-body">
+							<h6 class="card-title text-truncate">[[${product.name}]]</h6>
+							<p class="card-text fw-bold text-primary">[[${#numbers.formatInteger(product.price, 3,
+								'COMMA')}]]원</p>
+						</div>
+					</div>
+				</div>
+			</th:block>
+		</div>
+	</div>
+
+	<!-- COMCASE -->
+	<div class="mb-5">
+		<h4 class="fw-bold border-bottom pb-2 mb-3">케이스</h4>
+		<div class="row row-cols-1 row-cols-md-5 g-4">
+			<th:block th:each="product : ${comcaseList}">
+				<div class="col">
+					<div class="card h-100">
+						<img th:src="@{'/Images/' + ${product.fileName}}" class="card-img-top"
+							style="height: 180px; object-fit: cover;" alt="상품 이미지">
+						<div class="card-body">
+							<h6 class="card-title text-truncate">[[${product.name}]]</h6>
+							<p class="card-text fw-bold text-primary">[[${#numbers.formatInteger(product.price, 3,
+								'COMMA')}]]원</p>
+						</div>
+					</div>
+				</div>
+			</th:block>
+		</div>
+	</div>
+
+	<!-- 3. 추천 상품 리스트 -->
+
+</div>
+
 </html>

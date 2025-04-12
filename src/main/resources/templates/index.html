@@ -9,7 +9,7 @@
 		<div class="container px-4 px-lg-5 text-center">
 			<h1 class="mb-3">PCForge</h1>
 			<p class="fs-4 fw-bold mb-5"><em>나만의 PC를 만들 수 있게 도와줍니다.</em></p>
-			<a class="btn btn-success btn-xl" th:href="@{/starter/create}">바로 견적 제작하기</a>
+			<a class="btn btn-success btn-xl" th:href="@{/shop/main}">바로 견적 제작하기</a>
 		</div>
 	</header>
 	<div class="container mt-4 bg-white text-dark">
@@ -366,7 +366,7 @@
 	            <div class="col" th:each="product : ${products}">
 	                <div class="card h-100">
 	                    <!-- 상품 이미지 -->
-	                    <!--<img th:src="@{${product.imageUrl}}" class="card-img-top" alt="Product Image">-->
+	                    <!--<img th:src="@{${product.fileName}}" class="card-img-top" alt="Product Image">-->
 	                    <div class="card-body text-center">
 	                        <!-- 상품 이름 -->
 	                        <h5 class="card-title" th:text="${product.name}">상품 이름</h5>

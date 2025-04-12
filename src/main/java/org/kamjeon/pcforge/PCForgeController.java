@@ -11,6 +11,7 @@ import org.kamjeon.pcforge.PCpart.BaseProduct;
 import org.kamjeon.pcforge.PCpart.PCParts;
 import org.kamjeon.pcforge.PCpart.PCpartRepository;
 import org.kamjeon.pcforge.PCpart.PCpartService;
+import org.kamjeon.pcforge.PCpart.CPU.CPU;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,16 +36,12 @@ public class PCForgeController {
 	        model.addAttribute("newsGroups", List.of(computingNews, gamingNews, mobileNews, hardwareNews));
 	        model.addAttribute("categories", List.of("NEWS", "COMPUTER", "CAR", "AI"));
 	     // ------------------------------------ 상점 초기 부분   
-	   	 Page<PCParts> paging = this.pcPartService.getList(0, "", "ALL" , 27);
+	        
+	   	 List<CPU> paging = this.pcPartService.getSearchList(0, "", "CPU" , 10);
 	   	 
-	   	List<BaseProduct> baseList = new ArrayList<BaseProduct>();
-	   	for (PCParts pcPart : paging.getContent()) {
-	   	    BaseProduct baseProduct = pcPart.getBaseProduct();
-	   	    baseList.add(baseProduct);
-	   	}
-	   	 
+	 
 	   	
-		 model.addAttribute("products",baseList);
+		 model.addAttribute("products",paging);
 		 
 	        return "index"; // Thymeleaf 파일 이름
 	    }

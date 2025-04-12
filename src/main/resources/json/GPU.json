@@ -5,7 +5,7 @@
     "memorySize": 6144,
     "type": "GeForce GTX 1660 Super",
     "powerConsumption": 125,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 259000,
     "makeCompany": 14
   },
@@ -15,7 +15,7 @@
     "memorySize": 8192,
     "type": "GeForce RTX 3070",
     "powerConsumption": 220,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 799000,
     "makeCompany": 19
   },
@@ -25,7 +25,7 @@
     "memorySize": 10240,
     "type": "GeForce RTX 3080",
     "powerConsumption": 320,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 1150000,
     "makeCompany": 19
   },
@@ -35,7 +35,7 @@
     "memorySize": 8192,
     "type": "Radeon RX 6600 XT",
     "powerConsumption": 160,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 490000,
     "makeCompany": 17
   },
@@ -45,7 +45,7 @@
     "memorySize": 12288,
     "type": "GeForce RTX 3060",
     "powerConsumption": 170,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 589000,
     "makeCompany": 8
   },
@@ -55,7 +55,7 @@
     "memorySize": 8192,
     "type": "GeForce RTX 3070 Ti",
     "powerConsumption": 250,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 950000,
     "makeCompany": 14
   },
@@ -65,7 +65,7 @@
     "memorySize": 48512,
     "type": "Quadro RTX 8000",
     "powerConsumption": 295,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 11000000,
     "makeCompany": 19
   },
@@ -75,7 +75,7 @@
     "memorySize": 24336,
     "type": "GeForce RTX 3090",
     "powerConsumption": 350,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 2200000,
     "makeCompany": 14
   },
@@ -85,7 +85,7 @@
     "memorySize": 8192,
     "type": "Radeon RX 5700 XT",
     "powerConsumption": 225,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 600000,
     "makeCompany": 16
   },
@@ -95,7 +95,7 @@
     "memorySize": 6144,
     "type": "GeForce GTX 1660 Ti",
     "powerConsumption": 120,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 370000,
     "makeCompany": 17
   }
