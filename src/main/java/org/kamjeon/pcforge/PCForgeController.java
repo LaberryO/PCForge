@@ -37,7 +37,7 @@ public class PCForgeController {
 	        model.addAttribute("categories", List.of("NEWS", "COMPUTER", "CAR", "AI"));
 	     // ------------------------------------ 상점 초기 부분   
 	        
-	   	 List<CPU> paging = this.pcPartService.getSearchList(0, "", "CPU" , 10);
+	   	 List<BaseProduct> paging = this.pcPartService.getSearchList(0, "", "ALL" , 27);
 	   	 
 	 
 	   	
