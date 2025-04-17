@@ -1,0 +1,30 @@
+<html layout:decorate="~{layout}">
+
+<body>
+	<div layout:fragment="content" class="container mt-5">
+		<div class="row justify-content-center">
+			<div class="col-md-10">
+				<div class="card shadow-sm">
+					<div class="card-body p-4">
+						<!-- 뉴스 이미지 -->
+						<img th:src="${'/uploads/' + starterBoard.image}" class="img-fluid w-100 mb-4"
+							alt="News Image" />
+
+						<!-- 뉴스 제목 -->
+						<h1 class="fw-bold" th:text="${starterBoard.title}"></h1>
+						<hr>
+
+						<!-- 뉴스 본문 -->
+						<div class="card shadow-sm p-4 mb-4">
+							<div class="card-body">
+								<p class="lead">[[${starterBoard.content}]]</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -32,27 +32,27 @@ public class PCParts {
     private Integer id;
 
     @OneToOne(mappedBy = "pcPart", cascade = CascadeType.ALL)  // ComCase는 단일 객체 참조
-    private ComCase comCase;
+    private BaseProduct baseProduct;
 
-    @OneToOne(mappedBy = "pcPart", cascade = CascadeType.ALL)  // CPU는 단일 객체 참조
+    @OneToOne(mappedBy = "pcPart", cascade = CascadeType.ALL)
     private CPU cpu;
-
-    @OneToOne(mappedBy = "pcPart", cascade = CascadeType.ALL)  // Disk는 단일 객체 참조
+    
+    @OneToOne(mappedBy = "pcPart", cascade = CascadeType.ALL)
+    private ComCase comcase;
+    
+    @OneToOne(mappedBy = "pcPart", cascade = CascadeType.ALL)
     private Disk disk;
-
-    @OneToOne(mappedBy = "pcPart", cascade = CascadeType.ALL)  // GPU는 단일 객체 참조
+    
+    @OneToOne(mappedBy = "pcPart", cascade = CascadeType.ALL)
     private GPU gpu;
-
-    @OneToOne(mappedBy = "pcPart", cascade = CascadeType.ALL)  // MBoard는 단일 객체 참조
+    
+    @OneToOne(mappedBy = "pcPart", cascade = CascadeType.ALL)
     private MBoard mBoard;
-
-    @OneToOne(mappedBy = "pcPart", cascade = CascadeType.ALL)  // PSU는 단일 객체 참조
+    
+    @OneToOne(mappedBy = "pcPart", cascade = CascadeType.ALL)
     private PSU psu;
-
-    @OneToOne(mappedBy = "pcPart", cascade = CascadeType.ALL)  // RAM은 단일 객체 참조
+    
+    @OneToOne(mappedBy = "pcPart", cascade = CascadeType.ALL)
     private RAM ram;
-
-    @OneToOne(mappedBy = "pcPart", cascade = CascadeType.ALL)  // Company는 단일 객체 참조
-    private Company company;
-	 
+    
 }

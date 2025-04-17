@@ -4,7 +4,7 @@
     "wattage": 600,
     "efficiency": "80Plus Bronze",
     "formFactor": "ATX",
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 39900,
     "makeCompany": 6
   },
@@ -13,7 +13,7 @@
     "wattage": 650,
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 106000,
     "makeCompany": 7
   },
@@ -22,7 +22,7 @@
     "wattage": 850,
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 139000,
     "makeCompany": 8
   },
@@ -31,7 +31,7 @@
     "wattage": 850,
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 124000,
     "makeCompany": 9
   },
@@ -40,7 +40,7 @@
     "wattage": 750,
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 115000,
     "makeCompany": 10
   },
@@ -49,7 +49,7 @@
     "wattage": 500,
     "efficiency": "80Plus Bronze",
     "formFactor": "ATX",
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 22000,
     "makeCompany": 11
   },
@@ -58,7 +58,7 @@
     "wattage": 850,
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 151000,
     "makeCompany": 12
   },
@@ -67,7 +67,7 @@
     "wattage": 600,
     "efficiency": "80Plus Bronze",
     "formFactor": "ATX",
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 28000,
     "makeCompany": 13
   },
@@ -76,7 +76,7 @@
     "wattage": 750,
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 112000,
     "makeCompany": 8
   },
@@ -85,7 +85,7 @@
     "wattage": 750,
     "efficiency": "80Plus Gold",
     "formFactor": "ATX",
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 119000,
     "makeCompany": 7
   }

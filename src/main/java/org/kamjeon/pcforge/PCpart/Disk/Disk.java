@@ -1,5 +1,6 @@
 package org.kamjeon.pcforge.PCpart.Disk;
 
+import org.kamjeon.pcforge.PCpart.BaseProduct;
 import org.kamjeon.pcforge.PCpart.PCParts;
 import org.kamjeon.pcforge.PCpart.Company.Company;
 
@@ -17,13 +18,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Disk {
+public class Disk extends BaseProduct{
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	
-	private String name;
 	
 	private Integer capacity;
 	
@@ -31,19 +27,5 @@ public class Disk {
 	
 	private Integer speed;
 	
-	
-	
-	private String fileName;
-	
-	private int price;
-	
-
-	private Integer makeCompany;
-	
-   
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name = "pcparts_id", nullable = true) 
-	private PCParts pcPart;
 	 
 }

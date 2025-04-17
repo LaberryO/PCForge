@@ -4,7 +4,7 @@
     "capacity": 1000,
     "type": "SSD",
     "speed": 3500,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": "129000",
     "makeCompany": 1
   },
@@ -13,7 +13,7 @@
     "capacity": 500,
     "type": "SSD",
     "speed": 7000,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": "155000",
     "makeCompany": 19
   },
@@ -22,7 +22,7 @@
     "capacity": 2000,
     "type": "HDD",
     "speed": 7200,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": "82000",
     "makeCompany": 20
   },
@@ -31,7 +31,7 @@
     "capacity": 1000,
     "type": "SSD",
     "speed": 6600,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": "114000",
     "makeCompany": 21
   },
@@ -40,7 +40,7 @@
     "capacity": 4000,
     "type": "HDD",
     "speed": 7200,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": "155000",
     "makeCompany": 19
   },
@@ -49,7 +49,7 @@
     "capacity": 2000,
     "type": "SSD",
     "speed": 7000,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": "269000",
     "makeCompany": 2
   },
@@ -58,7 +58,7 @@
     "capacity": 1000,
     "type": "SSD",
     "speed": 560,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": "89000",
     "makeCompany": 22
   },
@@ -67,7 +67,7 @@
     "capacity": 2000,
     "type": "SSD",
     "speed": 7300,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": "315000",
     "makeCompany": 20
   },
@@ -76,7 +76,7 @@
     "capacity": 500,
     "type": "SSD",
     "speed": 560,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": "62000",
     "makeCompany": 19
   },
@@ -85,7 +85,7 @@
     "capacity": 3000,
     "type": "HDD",
     "speed": 7200,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": "132000",
     "makeCompany": 20
   }

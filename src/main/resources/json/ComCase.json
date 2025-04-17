@@ -5,7 +5,7 @@
     "color": "블랙",
     "material": "강화유리, 메쉬",
     "fanSupport": 4,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 43650,
     "makeCompany": 6
   },
@@ -15,7 +15,7 @@
     "color": "화이트",
     "material": "강화유리, 메쉬",
     "fanSupport": 3,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 35000,
     "makeCompany": 26
   },
@@ -25,7 +25,7 @@
     "color": "블랙",
     "material": "강화유리, 메쉬",
     "fanSupport": 4,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 55000,
     "makeCompany": 26
   },
@@ -35,7 +35,7 @@
     "color": "블랙",
     "material": "강화유리, 메쉬",
     "fanSupport": 4,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 60000,
     "makeCompany": 27
   },
@@ -45,7 +45,7 @@
     "color": "화이트",
     "material": "강화유리, 메쉬",
     "fanSupport": 4,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 65000,
     "makeCompany": 6
   },
@@ -55,7 +55,7 @@
     "color": "블랙",
     "material": "강화유리, 메쉬",
     "fanSupport": 6,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 67000,
     "makeCompany": 28
   },
@@ -65,7 +65,7 @@
     "color": "블랙",
     "material": "강화유리, 메쉬",
     "fanSupport": 4,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 52000,
     "makeCompany": 28
   },
@@ -75,7 +75,7 @@
     "color": "블랙",
     "material": "강화유리, 메쉬",
     "fanSupport": 6,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 74000,
     "makeCompany": 15
   },
@@ -85,7 +85,7 @@
     "color": "블랙",
     "material": "강화유리, 메쉬",
     "fanSupport": 5,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 65000,
     "makeCompany": 29
   },
@@ -95,7 +95,7 @@
     "color": "블랙",
     "material": "강화유리, 메쉬",
     "fanSupport": 5,
-    "fileName": "",
+    "fileName": "Bin.jpg",
     "price": 82000,
     "makeCompany": 30
   }

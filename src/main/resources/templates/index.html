@@ -9,9 +9,104 @@
 		<div class="container px-4 px-lg-5 text-center">
 			<h1 class="mb-3">PCForge</h1>
 			<p class="fs-4 fw-bold mb-5"><em>나만의 PC를 만들 수 있게 도와줍니다.</em></p>
-			<a class="btn btn-success btn-xl" th:href="@{/forge/create}">바로 견적 제작하기</a>
+			<a class="btn btn-success btn-xl" th:href="@{/shop/main}">바로 견적 제작하기</a>
 		</div>
 	</header>
+	<div class="container mt-4 bg-white text-dark">
+		<div class="row">
+			<!-- 뉴스룸 & 광고를 같은 row에 배치 -->
+			<div class="col-md-7 border-start border-3 p-3 shadow-sm">
+				<!-- 뉴스룸 제목 (고정) -->
+				<h4>
+					<a th:href="@{/starter/main}"><strong>뉴스룸</strong> ></a>
+
+					<span th:each="category, iterStat : ${categories}"
+					      th:id="'category-' + ${iterStat.index}"
+					      th:text="${category}"
+					      class="category-item"
+					      style="cursor: pointer; margin-right: 20px; color: black; padding-left: 10px; border-left: 2px solid gray; font-weight: normal;">
+					</span>
+				</h4>
+				
+				<!-- 뉴스룸 캐러셀 -->
+				<div id="newsroomCarousel" class="carousel slide" data-bs-ride="carousel"
+					th:attr="data-categories-json=${categories}">
+					<div class="carousel-inner">
+						<div class="carousel-item" th:each="group, iterStat : ${newsGroups}"
+							th:classappend="${iterStat.index == 0} ? 'active' : ''">
+							<div class="row row-cols-2 g-3">
+								<div class="col" th:each="news : ${group}">
+									<div class="card border">
+										<div class="card-body p-2">
+											<a th:href="@{|/starter/news/${news.id}|}"class="text-decoration-none text-dark">
+												<img th:src="@{'/uploads/' + ${news.image}}"
+													class="card-img-top img-fluid"
+													style="width:100%; height:150px; object-fit:contain; background-color:black;"
+													alt="뉴스 이미지">
+												<p class="card-text" th:text="${news.title}">뉴스 제목</p>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- 광고 영역 (오른쪽 30%) -->
+			<div class="col-md-5">
+				<div class="row g-3">
+					<div class="col-12">
+						<div class="card border rounded shadow-sm">
+							<div class="card-header bg-light d-flex justify-content-between align-items-center p-2">
+								<strong class="small">바른 가치를 더해 만드는 천연 스카프</strong>
+								<span class="badge bg-secondary">AD</span>
+							</div>
+							<img src="/images/miku1.jpg" class="card-img-top img-fluid rounded"
+								style="width:100%; height:120px; object-fit:cover;" alt="광고 이미지">
+							<div class="card-body p-2">
+								<p class="card-text small">천연 염색으로 제작된 친환경 스카프</p>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="d-flex align-items-center">
+										<img src="https://via.placeholder.com/30" class="rounded-circle me-2"
+											alt="브랜드 로고">
+										<span class="fw-bold small">바더만</span>
+									</div>
+									<a href="#" class="btn btn-link text-decoration-none small">더 알아보기 ></a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-12">
+						<div class="card border rounded shadow-sm">
+							<div class="card-header bg-light d-flex justify-content-between align-items-center p-2">
+								<strong class="small">초고속 무선 충전기 출시</strong>
+								<span class="badge bg-secondary">AD</span>
+							</div>
+							<img src="/images/miku1.jpg" class="card-img-top img-fluid rounded"
+								style="width:100%; height:120px; object-fit:cover;" alt="광고 이미지">
+							<div class="card-body p-2">
+								<p class="card-text small">15W 고속 충전 지원! 언제 어디서나 간편하게</p>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="d-flex align-items-center">
+										<img src="https://via.placeholder.com/30" class="rounded-circle me-2"
+											alt="브랜드 로고">
+										<span class="fw-bold small">TechCharger</span>
+									</div>
+									<a href="#" class="btn btn-link text-decoration-none small">더 알아보기 ></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> <!-- row 종료 -->
+	</div> <!-- container 종료 -->
+
+
 	<!-- About-->
 	<section class="content-section bg-light" id="about">
 		<div class="container px-4 px-lg-5 text-center">
@@ -19,7 +114,8 @@
 				<div class="col-lg-10">
 					<h2>Stylish Portfolio is the perfect theme for your next project!</h2>
 					<p class="lead mb-5">
-						This theme features a flexible, UX friendly sidebar menu and stock photos from our friends at
+						This theme features a flexible, UX friendly sidebar menu and stock photos from our
+						friends at
 						<a href="https://unsplash.com/">Unsplash</a>
 						!
 					</p>
@@ -29,62 +125,73 @@
 		</div>
 	</section>
 	<section class="content-section bg-dark text-white text-center" id="carousel">
-	    <div class="container px-4 px-lg-5">
-	        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-	            <div class="carousel-inner">
-	                <!-- 첫 번째 아이템 -->
-	                <div class="carousel-item active">
-	                    <div class="row g-0">
-	                        <div class="col-4">
-	                            <img src="your-image-path1.jpg" class="d-block w-100" alt="First Image" style="height: 300px; object-fit: cover;">
-	                        </div>
-	                        <div class="col-4">
-	                            <img src="your-image-path2.jpg" class="d-block w-100" alt="Second Image" style="height: 300px; object-fit: cover;">
-	                        </div>
-	                        <div class="col-4">
-	                            <img src="your-image-path3.jpg" class="d-block w-100" alt="Third Image" style="height: 300px; object-fit: cover;">
-	                        </div>
-	                    </div>
-	                </div>
-	                <!-- 두 번째 아이템 -->
-	                <div class="carousel-item">
-	                    <div class="row g-0">
-	                        <div class="col-4">
-	                            <img src="/images/miku1.jpg" class="d-block w-100" alt="Fourth Image" style="height: 300px; object-fit: cover;">
-	                        </div>
-	                        <div class="col-4">
-	                            <img src="/images/miku2.jpg" class="d-block w-100" alt="Fifth Image" style="height: 300px; object-fit: cover;">
-	                        </div>
-	                        <div class="col-4">
-	                            <img src="your-image-path6.jpg" class="d-block w-100" alt="Sixth Image" style="height: 300px; object-fit: cover;">
-	                        </div>
-	                    </div>
-	                </div>
-	                <!-- 세 번째 아이템 -->
-	                <div class="carousel-item">
-	                    <div class="row g-0">
-	                        <div class="col-4">
-	                            <img src="your-image-path7.jpg" class="d-block w-100" alt="Seventh Image" style="height: 300px; object-fit: cover;">
-	                        </div>
-	                        <div class="col-4">
-	                            <img src="your-image-path8.jpg" class="d-block w-100" alt="Eighth Image" style="height: 300px; object-fit: cover;">
-	                        </div>
-	                        <div class="col-4">
-	                            <img src="your-image-path9.jpg" class="d-block w-100" alt="Ninth Image" style="height: 300px; object-fit: cover;">
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-	            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-	                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-	                <span class="visually-hidden">Previous</span>
-	            </button>
-	            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-	                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-	                <span class="visually-hidden">Next</span>
-	            </button>
-	        </div>
-	    </div>
+		<div class="container px-4 px-lg-5">
+			<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+				<div class="carousel-inner">
+					<!-- 첫 번째 아이템 -->
+					<div class="carousel-item active">
+						<div class="row g-0">
+							<div class="col-4">
+								<img src="your-image-path1.jpg" class="d-block w-100" alt="First Image"
+									style="height: 300px; object-fit: cover;">
+							</div>
+							<div class="col-4">
+								<img src="your-image-path2.jpg" class="d-block w-100" alt="Second Image"
+									style="height: 300px; object-fit: cover;">
+							</div>
+							<div class="col-4">
+								<img src="your-image-path3.jpg" class="d-block w-100" alt="Third Image"
+									style="height: 300px; object-fit: cover;">
+							</div>
+						</div>
+					</div>
+					<!-- 두 번째 아이템 -->
+					<div class="carousel-item">
+						<div class="row g-0">
+							<div class="col-4">
+								<img src="/images/miku1.jpg" class="d-block w-100" alt="Fourth Image"
+									style="height: 300px; object-fit: cover;">
+							</div>
+							<div class="col-4">
+								<img src="/images/miku2.jpg" class="d-block w-100" alt="Fifth Image"
+									style="height: 300px; object-fit: cover;">
+							</div>
+							<div class="col-4">
+								<img src="your-image-path6.jpg" class="d-block w-100" alt="Sixth Image"
+									style="height: 300px; object-fit: cover;">
+							</div>
+						</div>
+					</div>
+					<!-- 세 번째 아이템 -->
+					<div class="carousel-item">
+						<div class="row g-0">
+							<div class="col-4">
+								<img src="your-image-path7.jpg" class="d-block w-100" alt="Seventh Image"
+									style="height: 300px; object-fit: cover;">
+							</div>
+							<div class="col-4">
+								<img src="your-image-path8.jpg" class="d-block w-100" alt="Eighth Image"
+									style="height: 300px; object-fit: cover;">
+							</div>
+							<div class="col-4">
+								<img src="your-image-path9.jpg" class="d-block w-100" alt="Ninth Image"
+									style="height: 300px; object-fit: cover;">
+							</div>
+						</div>
+					</div>
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+					data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+					data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+		</div>
 	</section>
 	<!-- Services-->
 	<section class="content-section bg-primary text-white text-center" id="services">
@@ -135,59 +242,59 @@
 	</section>
 	<!-- Introduction Section with Cards -->
 	<div class="container">
-		
-				<section id="session1">
-				    <h2>세션 1: CPU 정보</h2>
-				    <div class="row justify-content-center"> <!-- 여기를 수정했습니다. -->
-				        <div class="col-md-6 col-lg-4">
-				            <div class="card mb-4 text-center" style="min-height: 300px;">
-				                <div class="card-body">
-				                    <h5 class="card-title">프로세서</h5>
-				                    <p class="card-text">Intel Core i9-13900K</p>
-				                </div>
-				            </div>
-				        </div>
-				        <div class="col-md-6 col-lg-4">
-				            <div class="card mb-4 text-center" style="min-height: 300px;">
-				                <div class="card-body">
-				                    <h5 class="card-title">코어 수</h5>
-				                    <p class="card-text">24 (8P + 16E)</p>
-				                </div>
-				            </div>
-				        </div>
-				    </div>
-				</section>
 
-				<section id="session2">
-				    <h2>세션 2: 메모리 정보</h2>
-				    <div class="row justify-content-center"> <!-- 여기를 수정했습니다. -->
-				        <div class="col-md-6 col-lg-4">
-				            <div class="card mb-4 text-center" style="min-height: 300px;">
-				                <div class="card-body">
-				                    <h5 class="card-title">RAM 용량</h5>
-				                    <p class="card-text">32GB DDR5</p>
-				                </div>
-				            </div>
-				        </div>
-				    </div>
-				</section>
+		<section id="session1">
+			<h2>세션 1: CPU 정보</h2>
+			<div class="row justify-content-center"> <!-- 여기를 수정했습니다. -->
+				<div class="col-md-6 col-lg-4">
+					<div class="card mb-4 text-center" style="min-height: 300px;">
+						<div class="card-body">
+							<h5 class="card-title">프로세서</h5>
+							<p class="card-text">Intel Core i9-13900K</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4">
+					<div class="card mb-4 text-center" style="min-height: 300px;">
+						<div class="card-body">
+							<h5 class="card-title">코어 수</h5>
+							<p class="card-text">24 (8P + 16E)</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-				<section id="session3">
-				    <h2>세션 3: 스토리지 정보</h2>
-				    <div class="row justify-content-center"> <!-- 여기를 수정했습니다. -->
-				        <div class="col-md-6 col-lg-4">
-				            <div class="card mb-4 text-center" style="min-height: 300px;">
-				                <div class="card-body">
-				                    <h5 class="card-title">SSD</h5>
-				                    <p class="card-text">Samsung 990 Pro 1TB</p>
-				                </div>
-				            </div>
-				        </div>
-				    </div>
-				</section>
+		<section id="session2">
+			<h2>세션 2: 메모리 정보</h2>
+			<div class="row justify-content-center"> <!-- 여기를 수정했습니다. -->
+				<div class="col-md-6 col-lg-4">
+					<div class="card mb-4 text-center" style="min-height: 300px;">
+						<div class="card-body">
+							<h5 class="card-title">RAM 용량</h5>
+							<p class="card-text">32GB DDR5</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="session3">
+			<h2>세션 3: 스토리지 정보</h2>
+			<div class="row justify-content-center"> <!-- 여기를 수정했습니다. -->
+				<div class="col-md-6 col-lg-4">
+					<div class="card mb-4 text-center" style="min-height: 300px;">
+						<div class="card-body">
+							<h5 class="card-title">SSD</h5>
+							<p class="card-text">Samsung 990 Pro 1TB</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 	</div>
-	
-	   <!-- Portfolio-->
+
+	<!-- Portfolio-->
 	<section class="content-section" id="portfolio">
 		<div class="container px-4 px-lg-5">
 			<div class="content-section-heading text-center">
@@ -211,7 +318,8 @@
 						<div class="caption">
 							<div class="caption-content">
 								<div class="h2">Ice Cream</div>
-								<p class="mb-0">A dark blue background with a colored pencil, a clip, and a tiny ice
+								<p class="mb-0">A dark blue background with a colored pencil, a clip, and a tiny
+									ice
 									cream cone!</p>
 							</div>
 						</div>
@@ -223,7 +331,8 @@
 						<div class="caption">
 							<div class="caption-content">
 								<div class="h2">Strawberries</div>
-								<p class="mb-0">Strawberries are such a tasty snack, especially with a little sugar on
+								<p class="mb-0">Strawberries are such a tasty snack, especially with a little
+									sugar on
 									top!</p>
 							</div>
 						</div>
@@ -235,7 +344,8 @@
 						<div class="caption">
 							<div class="caption-content">
 								<div class="h2">Workspace</div>
-								<p class="mb-0">A yellow workspace with some scissors, pencils, and other objects.</p>
+								<p class="mb-0">A yellow workspace with some scissors, pencils, and other
+									objects.</p>
 							</div>
 						</div>
 						<img class="img-fluid" th:src="@{/assets/img/portfolio-4.jpg}" alt="..." />
@@ -243,6 +353,32 @@
 				</div>
 			</div>
 		</div>
+	</section>
+	<!-- Shop Section -->
+	<section class="content-section" id="shop">
+	    <div class="container px-4 px-lg-5">
+	        <div class="content-section-heading text-center">
+	            <h3 class="text-secondary mb-0">Shop</h3>
+	            <h2 class="mb-5">Popular Products</h2>
+	        </div>
+	        <div class="row row-cols-1 row-cols-md-3 g-4">
+	            <!-- Thymeleaf 반복문으로 상품 리스트 출력 -->
+	            <div class="col" th:each="product : ${products}">
+	                <div class="card h-100">
+	                    <!-- 상품 이미지 -->
+	                    <!--<img th:src="@{${product.fileName}}" class="card-img-top" alt="Product Image">-->
+	                    <div class="card-body text-center">
+	                        <!-- 상품 이름 -->
+	                        <h5 class="card-title" th:text="${product.name}">상품 이름</h5>
+	                        <!-- 상품 가격 -->
+	                        <p class="card-text text-primary fw-bold" th:text="|₩ ${product.price}|">₩ 가격</p>
+	                        <!-- 상세보기 버튼 -->
+	                        <a th:href="@{/shop/details(id=${product.id})}" class="btn btn-outline-primary">View Details</a>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
 	</section>
 	<!-- Call to Action-->
 	<section class="content-section bg-primary text-white">
@@ -267,7 +403,7 @@
 	<footer th:replace="~{footer :: footerFragment}"></footer>
 	<th:block layout:fragment="script">
 		<!-- 필요 없을 듯 -->
-		<!--<script th:src="@{/js/index.js}"></script>-->
+	<script th:src="@{/js/index.js}"></script>
 	</th:block>
 </div>
 

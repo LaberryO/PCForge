@@ -1,5 +1,6 @@
 package org.kamjeon.pcforge.PCpart.PSU;
 
+import org.kamjeon.pcforge.PCpart.BaseProduct;
 import org.kamjeon.pcforge.PCpart.PCParts;
 import org.kamjeon.pcforge.PCpart.Company.Company;
 
@@ -18,31 +19,13 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class PSU {
+public class PSU extends BaseProduct {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-
-	private String name;
 
 	private Integer wattage;
 
 	private String efficency;
 
 	private String formFactor;
-
-	
-	private Integer makeCompany;
-	
-   
-
-	private String fileName;
-
-	private int price;
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name = "pcparts_id", nullable = true)
-	private PCParts pcPart;
 
 }

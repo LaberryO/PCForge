@@ -1,5 +1,6 @@
 package org.kamjeon.pcforge.PCpart.RAM;
 
+import org.kamjeon.pcforge.PCpart.BaseProduct;
 import org.kamjeon.pcforge.PCpart.PCParts;
 import org.kamjeon.pcforge.PCpart.Company.Company;
 
@@ -17,13 +18,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class RAM {
+public class RAM extends BaseProduct{
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-
-	private String name;
+	
 
 	private Integer capacity;
 
@@ -33,16 +30,5 @@ public class RAM {
 
 	private Integer memoryChannel;
 
-	private Integer makeCompany;
-	
-   
-
-	private String fileName;
-
-	private int price;
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name = "pcparts_id", nullable = true)
-	private PCParts pcPart;
 
 }
