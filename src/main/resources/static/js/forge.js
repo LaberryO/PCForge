@@ -422,7 +422,7 @@ function formatStorage(sizeGB) {
 	}
 }
 
-// 선택 해제 버튼 작동하게 하는 코드
+// 로딩 완료시 실행
 document.addEventListener("DOMContentLoaded", function() {
 	// 선택 해제 버튼 이벤트 리스너 추가
 	document.querySelectorAll("#select_disable").forEach(button => {
@@ -461,4 +461,34 @@ document.addEventListener("DOMContentLoaded", function() {
 			updateTargetMapping(); // 선택 목록 정리
 		});
 	});
+	
+	const parent = document.querySelector("#forgeNav");
+	const path = window.location.pathname;
+	const seg = path.split("/");
+	const pathNow = seg[3];
+	
+	switch (pathNow) {
+		case "cpu":
+			parent.children[0].style.backgroundColor = "rgba(0,255,0,0.5)";
+			break;
+		case "ram":
+			parent.children[1].style.backgroundColor = "rgba(0,255,0,0.5)";
+			break;
+		case "gpu":
+			parent.children[2].style.backgroundColor = "rgba(0,255,0,0.5)";
+			break;
+		case "mboard":
+			parent.children[3].style.backgroundColor = "rgba(0,255,0,0.5)";
+			break;
+		case "psu":
+			parent.children[4].style.backgroundColor = "rgba(0,255,0,0.5)";
+			break;
+		case "comcase":
+			parent.children[5].style.backgroundColor = "rgba(0,255,0,0.5)";
+			break;
+		case "disk":
+			parent.children[6].style.backgroundColor = "rgba(0,255,0,0.5)";
+			break;
+	}
+	
 });
