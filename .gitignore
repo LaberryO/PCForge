@@ -32,3 +32,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Local Upload ###
+**/resources/static/uploads
