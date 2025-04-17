@@ -461,6 +461,19 @@ document.addEventListener("DOMContentLoaded", function() {
 			updateTargetMapping(); // 선택 목록 정리
 		});
 	});
+
+	document.querySelectorAll("#select_this").forEach(button => {
+		button.addEventListener("click", function () {
+			let card = this.closest(".card");
+			if (!card) return;
+	
+			// ✅ 카드 내부의 item_name을 이용해 체크박스와 매칭할 ID 찾기
+			let itemId = card.querySelector("#item_id").value;
+			if (!itemId) return;
+	
+			button.href = window.location.pathname + "/cart?id=" + encodeURIComponent(itemId);
+		});
+	});
 	
 	const parent = document.querySelector("#forgeNav");
 	const path = window.location.pathname;
@@ -492,3 +505,4 @@ document.addEventListener("DOMContentLoaded", function() {
 	}
 	
 });
+

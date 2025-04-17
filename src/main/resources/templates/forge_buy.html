@@ -1,0 +1,81 @@
+<html layout:decorate="~{layout}">
+<title layout:fragment="title">PCForge 대시보드</title>
+<th:block layout:fragment="style">
+	<link rel="stylesheet" th:href="@{/css/index.css}" />
+</th:block>
+<div layout:fragment="content" class="mb-5" id="layoutSidenav_content">
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">구분</th>
+				<th scope="col">제품명</th>
+				<th class="text-end" scope="col">가격</th>
+				<th class="text-center" scope="col">비고</th>				
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th scope="row">CPU</th>
+				<td th:text="${forgeList.cpu != null && forgeList.cpu.name != null ? forgeList.cpu.name : 'N/A'}"></td>
+				<td class="text-end" th:text="${forgeList.cpu != null && forgeList.cpu.price != null ? forgeList.cpu.price + ' 원' : '0 원'}"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<th scope="row">RAM</th>
+				<td th:text="${forgeList.ram != null && forgeList.ram.name != null ? forgeList.ram.name : 'N/A'}"></td>
+				<td class="text-end" th:text="${forgeList.ram != null && forgeList.ram.price != null ? forgeList.ram.price + ' 원' : '0 원'}"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<th scope="row">GPU</th>
+				<td th:text="${forgeList.gpu != null && forgeList.gpu.name != null ? forgeList.gpu.name : 'N/A'}"></td>
+				<td class="text-end" th:text="${forgeList.gpu != null && forgeList.gpu.price != null ? forgeList.gpu.price + ' 원' : '0 원'}"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<th scope="row">메인보드</th>
+				<td th:text="${forgeList.mboard != null && forgeList.mboard.name != null ? forgeList.mboard.name : 'N/A'}"></td>
+				<td class="text-end" th:text="${forgeList.mboard != null && forgeList.mboard.price != null ? forgeList.mboard.price + ' 원' : '0 원'}"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<th scope="row">파워</th>
+				<td th:text="${forgeList.psu != null && forgeList.psu.name != null ? forgeList.psu.name : 'N/A'}"></td>
+				<td class="text-end" th:text="${forgeList.psu != null && forgeList.psu.price != null ? forgeList.psu.price + ' 원' : '0 원'}"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<th scope="row">케이스</th>
+				<td th:text="${forgeList.comCase != null && forgeList.comCase.name != null ? forgeList.comCase.name : 'N/A'}"></td>
+				<td class="text-end" th:text="${forgeList.comCase != null && forgeList.comCase.price != null ? forgeList.comCase.price + ' 원' : '0 원'}"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<th scope="row">디스크</th>
+				<td th:text="${forgeList.disk != null && forgeList.disk.name != null ? forgeList.disk.name : 'N/A'}"></td>
+				<td class="text-end" th:text="${forgeList.disk != null && forgeList.disk.price != null ? forgeList.disk.price + ' 원' : '0 원'}"></td>
+				<td class="text-center" th:text="${forgeList.disk != null && forgeList.disk.type != null ? forgeList.disk.type : 'N/A'}"></td>
+			</tr>
+			<tr>
+				<th scope="row">총합</th>
+				<td></td>
+				<td class="text-end" th:text="${
+					(forgeList.cpu != null && forgeList.cpu.price != null ? forgeList.cpu.price : 0) +
+					(forgeList.ram != null && forgeList.ram.price != null ? forgeList.ram.price : 0) +
+					(forgeList.gpu != null && forgeList.gpu.price != null ? forgeList.gpu.price : 0) +
+					(forgeList.mboard != null && forgeList.mboard.price != null ? forgeList.mboard.price : 0) +
+					(forgeList.psu != null && forgeList.psu.price != null ? forgeList.psu.price : 0) +
+					(forgeList.comCase != null && forgeList.comCase.price != null ? forgeList.comCase.price : 0) +
+					(forgeList.disk != null && forgeList.disk.price != null ? forgeList.disk.price : 0)
+				} + ' 원'"></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+	<!-- Footer -->
+	<footer th:replace="~{footer :: footerFragment}"></footer>
+	<th:block layout:fragment="script">
+	</th:block>
+</div>
+
+</html>

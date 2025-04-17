@@ -27,6 +27,7 @@ import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.JoinType;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -40,6 +41,65 @@ public class ForgeService {
 	private final MBoardRepository mBoardRepository;
 	private final PSURepository psuRepository;
 	private final RAMRepository ramRepository;
+	
+    public Forge getForgeForSession(HttpSession session) {
+        // 세션 ID 가져오기
+        String sessionId = session.getId();
+
+        // 세션 ID를 기반으로 Forge 가져오기
+        Optional<Forge> optionalForge = forgeRepository.findBySessionId(sessionId);
+        if (optionalForge.isPresent()) {
+            return optionalForge.get();
+        } else {
+            // Forge가 없으면 새로 생성
+            Forge forge = new Forge();
+            forge.setSessionId(sessionId); // 세션 ID 저장
+            forgeRepository.save(forge);
+            return forge;
+        }
+    }
+
+	public void addOrUpdatePart(String partType, Integer partId, HttpSession session) {
+		Forge forge = getForgeForSession(session);
+
+		// 부품을 가져와 Forge에 저장
+		switch (partType) {
+		case "cpu":
+			CPU cpu = cpuRepository.findById(partId).orElseThrow(() -> new IllegalArgumentException("Invalid CPU ID"));
+			forge.setCpu(cpu);
+			break;
+		case "ram":
+			RAM ram = ramRepository.findById(partId).orElseThrow(() -> new IllegalArgumentException("Invalid RAM ID"));
+			forge.setRam(ram);
+			break;
+		case "gpu":
+			GPU gpu = gpuRepository.findById(partId).orElseThrow(() -> new IllegalArgumentException("Invalid GPU ID"));
+			forge.setGpu(gpu);
+			break;
+		case "mboard":
+			MBoard mboard = mBoardRepository.findById(partId)
+					.orElseThrow(() -> new IllegalArgumentException("Invalid Motherboard ID"));
+			forge.setMboard(mboard);
+			break;
+		case "disk":
+			Disk disk = diskRepository.findById(partId)
+					.orElseThrow(() -> new IllegalArgumentException("Invalid Disk ID"));
+			forge.setDisk(disk);
+			break;
+		case "psu":
+			PSU psu = psuRepository.findById(partId).orElseThrow(() -> new IllegalArgumentException("Invalid PSU ID"));
+			forge.setPsu(psu);
+			break;
+		case "comcase":
+			ComCase comCase = comCaseRepository.findById(partId)
+					.orElseThrow(() -> new IllegalArgumentException("Invalid Case ID"));
+			forge.setComCase(comCase);
+			break;
+		}
+
+		// Forge 저장
+		forgeRepository.save(forge);
+	}
 
 	// 나중에 견적 사이트에서 추가해줄 것들
 	public Optional<CPU> getCpu(int id) {
@@ -78,8 +138,8 @@ public class ForgeService {
 	}
 
 	// 세이브하는 메서드
-	public void save() {
-
+	public void save(Forge forge) {
+		this.forgeRepository.save(forge);
 	}
 
 	// 만들어진 forge테이블에서 가져오기

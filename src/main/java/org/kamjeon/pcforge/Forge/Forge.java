@@ -50,6 +50,9 @@ public class Forge {
 	@ManyToOne
 	private ComCase comCase;
 	
+	// 세션 ID를 저장하기 위한 필드
+    private String sessionId;
+	
 	//각 부품들의 사진들을 가져와서 저장 시키는 것 
 	private List<String> fileNames;
 }

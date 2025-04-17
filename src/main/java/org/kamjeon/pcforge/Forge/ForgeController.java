@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -24,7 +25,7 @@ import lombok.RequiredArgsConstructor;
 public class ForgeController {
 	private final ForgeService forgeService;
 	// 필요하면 활성화 하기로
-	//private final PCpartService pCpartService;
+	// private final PCpartService pCpartService;
 
 	// 처음에 견적사이트 버튼 누르면
 	@GetMapping("create")
@@ -34,42 +35,52 @@ public class ForgeController {
 
 	@GetMapping("create/{status}")
 	public String statusForge(@PathVariable("status") String status, Model model, Forge forge,
-			@RequestParam(value = "kw", required = false) String kw) {
+			@RequestParam(value = "kw", required = false) String kw, HttpSession session) {
 		try {
 			String statusTemp = status.toLowerCase();
+			String itemName = null;
 			PCpartUtils.checkPCPart(statusTemp);
 			List<?> forgeSearchList = null; // 변수 선언
+			
+			Forge forgeCartList = this.forgeService.getForgeForSession(session);
 
 			boolean isKwEmpty = (kw == null || kw.trim().isEmpty());
 
 			switch (statusTemp) {
-			case "cpu":
-				forgeSearchList = isKwEmpty ? this.forgeService.getCPUList() : this.forgeService.getCPUList(kw);
-				break;
-			case "comcase":
-				forgeSearchList = isKwEmpty ? this.forgeService.getComCaseList()
-						: this.forgeService.getComCaseList(kw);
-				break;
-			case "disk":
-				forgeSearchList = isKwEmpty ? this.forgeService.getDiskList() : this.forgeService.getDiskList(kw);
-				break;
-			case "gpu":
-				forgeSearchList = isKwEmpty ? this.forgeService.getGPUList() : this.forgeService.getGPUList(kw);
-				break;
-			case "mboard":
-				forgeSearchList = isKwEmpty ? this.forgeService.getMBoardList() : this.forgeService.getMBoardList(kw);
-				break;
-			case "psu":
-				forgeSearchList = isKwEmpty ? this.forgeService.getPSUList() : this.forgeService.getPSUList(kw);
-				break;
-			case "ram":
-				forgeSearchList = isKwEmpty ? this.forgeService.getRAMList() : this.forgeService.getRAMList(kw);
-				break;
-			default:
-				throw new IllegalArgumentException("알 수 없는 부품입니다: " + statusTemp);
-			}
-			model.addAttribute("statusTemp", statusTemp);
-			model.addAttribute("forgeSearchList", forgeSearchList);
+		    case "cpu":
+		        itemName = forgeCartList.getCpu() != null ? forgeCartList.getCpu().getName() : null;
+		        forgeSearchList = isKwEmpty ? this.forgeService.getCPUList() : this.forgeService.getCPUList(kw);
+		        break;
+		    case "comcase":
+		        itemName = forgeCartList.getComCase() != null ? forgeCartList.getComCase().getName() : null;
+		        forgeSearchList = isKwEmpty ? this.forgeService.getComCaseList() : this.forgeService.getComCaseList(kw);
+		        break;
+		    case "disk":
+		        itemName = forgeCartList.getDisk() != null ? forgeCartList.getDisk().getName() : null;
+		        forgeSearchList = isKwEmpty ? this.forgeService.getDiskList() : this.forgeService.getDiskList(kw);
+		        break;
+		    case "gpu":
+		        itemName = forgeCartList.getGpu() != null ? forgeCartList.getGpu().getName() : null;
+		        forgeSearchList = isKwEmpty ? this.forgeService.getGPUList() : this.forgeService.getGPUList(kw);
+		        break;
+		    case "mboard":
+		        itemName = forgeCartList.getMboard() != null ? forgeCartList.getMboard().getName() : null;
+		        forgeSearchList = isKwEmpty ? this.forgeService.getMBoardList() : this.forgeService.getMBoardList(kw);
+		        break;
+		    case "psu":
+		        itemName = forgeCartList.getPsu() != null ? forgeCartList.getPsu().getName() : null;
+		        forgeSearchList = isKwEmpty ? this.forgeService.getPSUList() : this.forgeService.getPSUList(kw);
+		        break;
+		    case "ram":
+		        itemName = forgeCartList.getRam() != null ? forgeCartList.getRam().getName() : null;
+		        forgeSearchList = isKwEmpty ? this.forgeService.getRAMList() : this.forgeService.getRAMList(kw);
+		        break;
+		    default:
+		        throw new IllegalArgumentException("알 수 없는 부품입니다: " + statusTemp);
+		}
+		model.addAttribute("statusTemp", statusTemp);
+		model.addAttribute("forgeSearchList", forgeSearchList);
+		model.addAttribute("itemId", itemName);
 		} catch (IllegalArgumentException e) {
 			System.out.println("에러 발생: " + e.getMessage());
 		}
@@ -106,10 +117,29 @@ public class ForgeController {
 			forgeSearchOne = this.forgeService.getRAM(id);
 			break;
 		}
-		
+
 		Map<String, Object> response = new HashMap<>();
-        response.put("data", forgeSearchOne.orElse(null)); // Optional 값 반환
-        return ResponseEntity.ok(response);
+		response.put("data", forgeSearchOne.orElse(null)); // Optional 값 반환
+		return ResponseEntity.ok(response);
+	}
+
+	// 장바구니
+	@GetMapping("create/{status}/cart")
+	public String setCart(@PathVariable("status") String status, @RequestParam("id") Integer id, HttpSession session) {
+		String statusTemp = status.toLowerCase();
+		
+		PCpartUtils.checkPCPart(statusTemp);
+		// 부품 추가 또는 업데이트
+        this.forgeService.addOrUpdatePart(statusTemp, id, session);
+		
+		return "redirect:/forge/create/" + statusTemp;
+	}
+	
+	@GetMapping("buy")
+	public String buy(HttpSession session, Model model) {
+		Forge forge = this.forgeService.getForgeForSession(session);
+		model.addAttribute("forgeList", forge);
+		return "forge_buy";
 	}
 
 }
