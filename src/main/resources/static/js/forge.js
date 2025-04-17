@@ -144,6 +144,7 @@ function updateDataContent(status, data, target) {
 		itemImage = "/assets/img/exam-cpu.jpg";
 	}
 
+	target.querySelector("#item_id").value = data.id;
 	target.querySelector("#item_image").src = itemImage;
 
 	// color
