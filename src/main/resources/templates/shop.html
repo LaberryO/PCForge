@@ -38,6 +38,92 @@
 	    <span class="carousel-control-next-icon bg-dark rounded-circle p-2"></span>
 	  </button>
 	</div>
+	
+		<div class="container text-center mt-5 mb-4">
+		  <h2 class="display-5 fw-bold">🛍️ 부품 상점에 오신 것을 환영합니다!</h2>
+		  <p class="lead text-muted">필요한 부품을 빠르게 찾아보세요.</p>
+		</div>
+
+	<!-- 3. 추천 상품 리스트 -->
+	<div class="container mt-5" id="productList">
+	  <form th:action="@{/shop/main/ALL}" method="get" class="input-group mb-4">
+	    <input type="text" name="kw" class="form-control"  placeholder="원하는 제품을 검색하세요"
+	           th:value="${kw}">
+	    <button class="btn btn-outline-primary" type="submit">검색</button>
+	  </form>
+	</div>
+
+	<!-- 2. 부품 필터 버튼 영역 -->
+	<div class="container mb-4">
+	  <div class="btn-group w-100 d-flex flex-wrap justify-content-center gap-2" role="group">
+	    <a th:href="@{/shop/main/ALL}"
+	       class="btn btn-outline-secondary flex-fill">전체</a>
+	    <a th:href="@{/shop/main/CPU}"
+	       class="btn btn-outline-secondary flex-fill">CPU</a>
+	    <a th:href="@{/shop/main/GPU}"
+	       class="btn btn-outline-secondary flex-fill">GPU</a>
+	    <a th:href="@{/shop/main/RAM}"
+	       class="btn btn-outline-secondary flex-fill">RAM</a>
+	    <a th:href="@{/shop/main/DISK}"
+	       class="btn btn-outline-secondary flex-fill">디스크</a>
+	    <a th:href="@{/shop/main/MBOARD}"
+	       class="btn btn-outline-secondary flex-fill">메인보드</a>
+	    <a th:href="@{/shop/main/PSU}"
+	       class="btn btn-outline-secondary flex-fill">파워</a>
+	    <a th:href="@{/shop/main/COMCASE}"
+	       class="btn btn-outline-secondary flex-fill">케이스</a>
+	  </div>
+	</div>
+
+	<!-- 3. 추천 상품 or 전체 리스트 -->
+	<div class="container mb-5">
+	  <div class="row row-cols-1 row-cols-md-4 g-4">
+	    <th:block th:each="product : ${productList}">
+	      <div class="col">
+	        <div class="card h-100 shadow-sm">
+	          <img th:src="@{'/Images/' + ${product.fileName}}" class="card-img-top"
+	               style="height: 200px; object-fit: cover;" alt="상품 이미지"/>
+	          <div class="card-body">
+	            <h5 class="card-title" th:text="${product.name}">제품 이름</h5>
+	            <p class="card-text">
+	              <!-- 제품 설명이 DB에 없다면 고정 텍스트 또는 조건 추가 -->
+	              최고의 성능과 품질을 자랑하는 부품입니다.
+	            </p>
+	            <a th:href="@{'/shop/goShop/' + ${product.id}}" class="btn btn-primary w-100">구매하기</a>
+	          </div>
+	        </div>
+	      </div>
+	    </th:block>
+		
+	  </div>
+	  <nav aria-label="Page navigation example" class="border" th:if="${!productList.isEmpty()}">
+	  		    <ul class="pagination justify-content-center">
+	  		        <!-- 이전 페이지 버튼 -->
+	  		        <li class="page-item" th:classappend="${!productList.hasPrevious()} ? 'disabled'">
+	  		            <a class="page-link" 
+	  		               th:href="@{|/shop/main/${search}?page=${productList.number - 1}&kw=${kw}|}">이전</a>
+	  		        </li>
+
+	  		        <!-- 페이지 번호 -->
+	  		        <th:block th:each="page : ${#numbers.sequence(0, productList.totalPages - 1)}">
+	  		            <li th:if="${page >= productList.number - 5 and page <= productList.number + 5}" 
+	  		                class="page-item" 
+	  		                th:classappend="${page == productList.number} ? 'active'">
+	  		                <a class="page-link" 
+	  		                   th:href="@{|/shop/main/${search}?page=${page}&kw=${kw}|}">[[${page + 1}]]</a>
+	  		            </li>
+	  		        </th:block>
+
+	  		        <!-- 다음 페이지 버튼 -->
+	  		        <li class="page-item" th:classappend="${!productList.hasNext()} ? 'disabled'">
+	  		            <a class="page-link" 
+	  		               th:href="@{|/shop/main/${search}?page=${productList.number + 1}&kw=${kw}|}">다음</a>
+	  		        </li>
+	  		    </ul>
+	  		</nav>
+
+	</div>
+
 	<!-- 2. 카테고리별 상품 나열 -->
 	<!-- BASEPRODUCT -->
 	<div class="mb-5">
@@ -326,63 +412,6 @@
 			</div>
 		</div>
 		
-		<div class="container text-center mt-5 mb-4">
-		  <h2 class="display-5 fw-bold">🛍️ 부품 상점에 오신 것을 환영합니다!</h2>
-		  <p class="lead text-muted">필요한 부품을 빠르게 찾아보세요.</p>
-		</div>
-
-	<!-- 3. 추천 상품 리스트 -->
-	<div class="container mt-5" id="productList">
-	  <form th:action="@{/main}" method="get" class="input-group mb-4">
-	    <input type="text" class="form-control" name="keyword" placeholder="원하는 제품을 검색하세요"
-	           th:value="${keyword}">
-	    <button class="btn btn-outline-primary" type="submit">검색</button>
-	  </form>
-	</div>
-
-	<!-- 2. 부품 필터 버튼 영역 -->
-	<div class="container mb-4">
-	  <div class="btn-group w-100 d-flex flex-wrap justify-content-center gap-2" role="group">
-	    <a th:href="@{/shop/filter/ALL}"
-	       class="btn btn-outline-secondary flex-fill">전체</a>
-	    <a th:href="@{/shop/filter/CPU}"
-	       class="btn btn-outline-secondary flex-fill">CPU</a>
-	    <a th:href="@{/shop/filter/GPU}"
-	       class="btn btn-outline-secondary flex-fill">GPU</a>
-	    <a th:href="@{/shop/filter/RAM}"
-	       class="btn btn-outline-secondary flex-fill">RAM</a>
-	    <a th:href="@{/shop/filter/DISK}"
-	       class="btn btn-outline-secondary flex-fill">디스크</a>
-	    <a th:href="@{/shop/filter/MBOARD}"
-	       class="btn btn-outline-secondary flex-fill">메인보드</a>
-	    <a th:href="@{/shop/filter/PSU}"
-	       class="btn btn-outline-secondary flex-fill">파워</a>
-	    <a th:href="@{/shop/filter/COMCASE}"
-	       class="btn btn-outline-secondary flex-fill">케이스</a>
-	  </div>
-	</div>
-
-	<!-- 3. 추천 상품 or 전체 리스트 -->
-	<div class="container">
-	  <div class="row row-cols-1 row-cols-md-4 g-4">
-	    <th:block th:each="product : ${productList}">
-	      <div class="col">
-	        <div class="card h-100 shadow-sm">
-	          <img th:src="@{'/Images/' + ${product.fileName}}" class="card-img-top"
-	               style="height: 200px; object-fit: cover;" alt="상품 이미지">
-	          <div class="card-body">
-	            <h5 class="card-title" th:text="${product.name}">제품 이름</h5>
-	            <p class="card-text">
-	              <!-- 제품 설명이 DB에 없다면 고정 텍스트 또는 조건 추가 -->
-	              최고의 성능과 품질을 자랑하는 부품입니다.
-	            </p>
-	            <a th:href="@{'/buy/' + ${product.id}}" class="btn btn-primary w-100">구매하기</a>
-	          </div>
-	        </div>
-	      </div>
-	    </th:block>
-	  </div>
-	</div>
 
 </div>
 
