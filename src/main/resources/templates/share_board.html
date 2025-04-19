@@ -1,0 +1,61 @@
+<html layout:decorate="~{layout}">
+<title layout:fragment="title">견적 공유 게시판</title>
+<th:block layout:fragment="style">
+	<link rel="stylesheet" th:href="@{/css/index.css}" />
+</th:block>
+<div layout:fragment="content" class="mb-5" id="layoutSidenav_content">
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<td>제목</td>
+				<td>가격</td>
+				<td>작성자</td>
+				<td>작성일</td>
+				<td>조회수</td>
+				<td>추천수</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="share, loop : ${paging}">
+				<th scope="row">[[${paging.getTotalElements - (paging.number * paging.size) - loop.index}]]</th>
+				<td>
+					<a href="">
+						[[${share.subject}]]
+					</a>
+				</td>
+				<td>
+					<span>
+						[[${share.forge.totalPrice}]]
+					</span>
+				</td>
+				<td>
+					<span>
+						[[$share.user]]
+					</span>
+				</td>
+				<td>
+					<span>
+						[[${#temporals.format(share.createDate, 'yyyy-MM-dd HH:mm')}]]
+					</span>
+				</td>
+				<td>
+					<span>
+						[[${share.click}]]
+					</span>
+				</td>
+				<td>
+					<span>
+						[[${#lists.size(share.voter)}]]
+					</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<!-- Footer -->
+	<footer th:replace="~{footer :: footerFragment}"></footer>
+	<th:block layout:fragment="script">
+	</th:block>
+</div>
+
+</html>

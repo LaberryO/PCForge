@@ -1,0 +1,28 @@
+<html layout:decorate="~{layout}">
+<title layout:fragment="title">견적 공유 게시판</title>
+<th:block layout:fragment="style">
+	<link rel="stylesheet" th:href="@{/css/index.css}" />
+</th:block>
+<div layout:fragment="content" class="mb-5" id="layoutSidenav_content">
+	<form method="post" th:object="${shareForm}">
+		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+		<!-- th:value로 forgeid 추가 필요 -->
+		<input type="hidden" th:field="*{forge}" />
+		<!--<div th:replace="~{form_errors :: formErrorsFragment}"></div>-->
+		<div class="form-group">
+			<label for="subject">제목</label>
+			<input type="text" class="form-control" th:field="*{subject}">
+		</div>
+		<div class="form-group">
+			<label for="content">내용</label>
+			<textarea class="form-control" rows="3" th:field="*{content}"></textarea>
+		</div>
+		<button type="submit" class="btn btn-primary">등록</button>
+	</form>
+	<!-- Footer -->
+	<footer th:replace="~{footer :: footerFragment}"></footer>
+	<th:block layout:fragment="script">
+	</th:block>
+</div>
+
+</html>

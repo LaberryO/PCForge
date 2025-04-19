@@ -58,6 +58,16 @@ public class ShareService {
 		this.shareRepository.save(share);
 	}
 	
+	public void create(String subject, String content, SiteUser siteUser, Forge forge) {
+		Share share = new Share();
+		share.setSubject(subject);
+		share.setContent(content);
+		share.setCreateDate(LocalDateTime.now());
+		share.setForge(forge);
+		
+		this.shareRepository.save(share);
+	}
+	
 	public void delete(Share share) {
 		this.shareRepository.delete(share);
 	}

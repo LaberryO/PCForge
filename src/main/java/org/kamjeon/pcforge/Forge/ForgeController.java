@@ -9,6 +9,7 @@ import org.kamjeon.pcforge.PCpart.PCpartService;
 import org.kamjeon.pcforge.PCpart.PCpartUtils;
 import org.kamjeon.pcforge.PCpart.CPU.CPU;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +27,12 @@ public class ForgeController {
 	private final ForgeService forgeService;
 	// 필요하면 활성화 하기로
 	// private final PCpartService pCpartService;
+	
+	// 상점에서 비교 요청
+	@GetMapping("response/{part}")
+	public String shopResponse(@PathVariable("part") String part, @RequestParam(value = "id") String id) {
+		return "";
+	}
 
 	// 처음에 견적사이트 버튼 누르면
 	@GetMapping("create")
@@ -92,6 +99,7 @@ public class ForgeController {
 			@RequestParam("id") Integer id) {
 		String statusTemp = status.toLowerCase();
 		PCpartUtils.checkPCPart(statusTemp);
+		// 단일 검색
 		Optional<?> forgeSearchOne = Optional.empty();
 
 		switch (statusTemp) {
@@ -141,5 +149,28 @@ public class ForgeController {
 		model.addAttribute("forgeList", forge);
 		return "forge_buy";
 	}
-
+	
+	// 다음 페이지로 이동
+	@GetMapping("next/{status}")
+	public String nextPage(@PathVariable("status") String status) {
+		String statusTemp = status.toLowerCase();
+		int index = 0;
+		
+		PCpartUtils.checkPCPart(statusTemp);
+		
+		String[] pcparts = PCpartUtils.getPCparts();
+		
+		for (int i = 0; i < pcparts.length; i++) {
+			if (pcparts[i].equals(statusTemp)) {
+				if (i == pcparts.length - 1) {
+					statusTemp = pcparts[i];
+				} else {
+					statusTemp = pcparts[i+1];
+				}
+				break;
+			}
+		}
+		
+		return "redirect:/forge/create/" + statusTemp;
+	}
 }

@@ -15,6 +15,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PostLoad;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,37 +25,48 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Forge {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	private String name;
-	
+
 	@ManyToOne
 	private CPU cpu;
-	
+
 	@ManyToOne
 	private RAM ram;
-	
+
 	@ManyToOne
 	private GPU gpu;
-	
+
 	@ManyToOne
 	private MBoard mboard;
-	
+
 	@ManyToOne
 	private Disk disk;
-	
+
 	@ManyToOne
 	private PSU psu;
-	
+
 	@ManyToOne
 	private ComCase comCase;
-	
+
+	private Integer totalPrice;
+
+	@PrePersist
+	@PreUpdate
+	public void setTotalPrice() {
+		this.totalPrice = (cpu != null ? cpu.getPrice() : 0) + (ram != null ? ram.getPrice() : 0)
+				+ (gpu != null ? gpu.getPrice() : 0) + (mboard != null ? mboard.getPrice() : 0)
+				+ (disk != null ? disk.getPrice() : 0) + (psu != null ? psu.getPrice() : 0)
+				+ (comCase != null ? comCase.getPrice() : 0);
+	}
+
 	// 세션 ID를 저장하기 위한 필드
-    private String sessionId;
-	
-	//각 부품들의 사진들을 가져와서 저장 시키는 것 
+	private String sessionId;
+
+	// 각 부품들의 사진들을 가져와서 저장 시키는 것
 	private List<String> fileNames;
 }

@@ -3,6 +3,8 @@ package org.kamjeon.pcforge.Board.Share;
 import java.security.Principal;
 
 import org.kamjeon.pcforge.Board.Comment.CommentForm;
+import org.kamjeon.pcforge.Forge.Forge;
+import org.kamjeon.pcforge.User.SiteUser;
 import org.kamjeon.pcforge.User.UserService;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -33,7 +35,7 @@ public class ShareController {
 		Page<Share> paging = this.shareService.getList(page);
 		model.addAttribute("paging", paging);
 		
-		return "board";
+		return "share_board";
 	}
 	
 	@GetMapping("/board/{id}")
@@ -46,6 +48,24 @@ public class ShareController {
 		model.addAttribute("share",share);
 		
 		return ""; //해당 share ID의 페이지로 이동 #kim
+	}
+	
+	@PreAuthorize("isAuthenticated()")
+	@GetMapping("/create")
+	public String create(ShareForm shareForm, Principal principal) {
+		
+		return "share_form";
+	}
+	
+	@PreAuthorize("isAuthenticated()")
+	@PostMapping("/create")
+	public String create(@Valid ShareForm shareForm, BindingResult bindingResult, Principal principal) {
+		if (bindingResult.hasErrors()) {
+			return "share_form";
+		}
+		SiteUser siteUser = this.userService.getUser(principal.getName());
+		this.shareService.create(shareForm.getSubject(), shareForm.getContent(), siteUser, shareForm.getForge());
+		return "redirect:/share/list";
 	}
 	
 	@PreAuthorize("isAuthenticated()")

@@ -133,6 +133,7 @@
 								</div>
 								<div class="card-footer">
 									<a th:href="@{/forge/buy}" class="btn btn-outline-success">구매</a>
+									<a th:if="${statusTemp != 'disk'}" th:href="@{|/forge/next/${statusTemp}|}" class="btn btn-outline-primary">다음</a>
 								</div>
 							</div>
 						</div>

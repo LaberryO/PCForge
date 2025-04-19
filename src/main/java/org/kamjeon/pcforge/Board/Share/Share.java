@@ -49,6 +49,8 @@ public class Share {
 	@ManyToOne
 	private SiteUser user;
 	
+	private LocalDateTime createDate;
+	
 	private LocalDateTime modifyDate;
 	
 	@ManyToMany

@@ -461,7 +461,8 @@ document.addEventListener("DOMContentLoaded", function() {
 			updateTargetMapping(); // 선택 목록 정리
 		});
 	});
-
+	
+	// 장바구니 담는 메소드
 	document.querySelectorAll("#select_this").forEach(button => {
 		button.addEventListener("click", function () {
 			let card = this.closest(".card");
