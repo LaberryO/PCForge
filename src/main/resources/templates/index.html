@@ -9,7 +9,7 @@
 		<div class="container px-4 px-lg-5 text-center">
 			<h1 class="mb-3">PCForge</h1>
 			<p class="fs-4 fw-bold mb-5"><em>나만의 PC를 만들 수 있게 도와줍니다.</em></p>
-			<a class="btn btn-success btn-xl" th:href="@{/shop/main/All}">바로 견적 제작하기</a>
+			<a class="btn btn-success btn-xl" th:href="@{/product/create}">바로 견적 제작하기</a>
 		</div>
 	</header>
 	<div class="container mt-4 bg-white text-dark">
@@ -382,7 +382,7 @@
 
 	                    <!-- 카드 푸터 -->
 	                    <div class="card-footer bg-white text-center border-0">
-	                        <a th:href="@{'/shop/goShop/' + ${product.id}}"  class="btn btn-primary w-75">
+	                        <a th:href="@{'/shop/goShop/' + ${product.id}}"   class="btn btn-primary w-75">
 	                            자세히 보기
 	                        </a>
 	                    </div>
