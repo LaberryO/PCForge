@@ -20,14 +20,12 @@
 				<h4>
 					<a th:href="@{/starter/main}"><strong>뉴스룸</strong> ></a>
 
-					<span th:each="category, iterStat : ${categories}"
-					      th:id="'category-' + ${iterStat.index}"
-					      th:text="${category}"
-					      class="category-item"
-					      style="cursor: pointer; margin-right: 20px; color: black; padding-left: 10px; border-left: 2px solid gray; font-weight: normal;">
+					<span th:each="category, iterStat : ${categories}" th:id="'category-' + ${iterStat.index}"
+						th:text="${category}" class="category-item"
+						style="cursor: pointer; margin-right: 20px; color: black; padding-left: 10px; border-left: 2px solid gray; font-weight: normal;">
 					</span>
 				</h4>
-				
+
 				<!-- 뉴스룸 캐러셀 -->
 				<div id="newsroomCarousel" class="carousel slide" data-bs-ride="carousel"
 					th:attr="data-categories-json=${categories}">
@@ -38,7 +36,8 @@
 								<div class="col" th:each="news : ${group}">
 									<div class="card border">
 										<div class="card-body p-2">
-											<a th:href="@{|/starter/news/${news.id}|}"class="text-decoration-none text-dark">
+											<a th:href="@{|/starter/news/${news.id}|}"
+												class="text-decoration-none text-dark">
 												<img th:src="@{'/uploads/' + ${news.image}}"
 													class="card-img-top img-fluid"
 													style="width:100%; height:150px; object-fit:contain; background-color:black;"
@@ -355,31 +354,44 @@
 		</div>
 	</section>
 	<!-- Shop Section -->
-	<section class="content-section" id="shop">
+	<section class="py-5 text-center text-white" style="background: linear-gradient(135deg, #6a11cb, #2575fc);" id="shop">
 	    <div class="container px-4 px-lg-5">
-	        <div class="content-section-heading text-center">
-	            <h3 class="text-secondary mb-0">Shop</h3>
-	            <h2 class="mb-5">Popular Products</h2>
+	        <!-- 소개 영역 -->
+	        <div class="mb-5">
+	            <h1 class="display-4 fw-bold">우리의 인기 상품을 만나보세요</h1>
+	            <p class="lead">지금 바로 상점에서 다양한 제품을 확인하세요!</p>
+	            <a th:href="@{/shop/main/ALL}" class="btn btn-lg btn-light px-5 py-3 rounded-pill shadow mt-3">
+	                상점으로 이동 →
+	            </a>
 	        </div>
+
+	        <!-- 상품 카드 리스트 -->
 	        <div class="row row-cols-1 row-cols-md-3 g-4">
-	            <!-- Thymeleaf 반복문으로 상품 리스트 출력 -->
 	            <div class="col" th:each="product : ${products}">
-	                <div class="card h-100">
+	                <div class="card h-100 shadow-sm border-0 product-card"
+	                    style="transition: transform 0.2s, box-shadow 0.2s;">
 	                    <!-- 상품 이미지 -->
-	                    <!--<img th:src="@{${product.fileName}}" class="card-img-top" alt="Product Image">-->
+	                    <img th:src="@{'/Images/' + ${product.fileName}}" class="card-img-top" alt="Product Image"
+	                        style="object-fit: cover; height: 250px; border-top-left-radius: .5rem; border-top-right-radius: .5rem;">
+
+	                    <!-- 카드 본문 -->
 	                    <div class="card-body text-center">
-	                        <!-- 상품 이름 -->
-	                        <h5 class="card-title" th:text="${product.name}">상품 이름</h5>
-	                        <!-- 상품 가격 -->
-	                        <p class="card-text text-primary fw-bold" th:text="|₩ ${product.price}|">₩ 가격</p>
-	                        <!-- 상세보기 버튼 -->
-	                        <a th:href="@{/shop/details(id=${product.id})}" class="btn btn-outline-primary">View Details</a>
+	                        <h5 class="card-title fw-semibold" th:text="${product.name}">상품 이름</h5>
+	                        <p class="card-text text-primary fw-bold fs-5" th:text="|₩ ${product.price}|">₩ 가격</p>
+	                    </div>
+
+	                    <!-- 카드 푸터 -->
+	                    <div class="card-footer bg-white text-center border-0">
+	                        <a th:href="@{'/shop/goShop/' + ${product.id}}"  class="btn btn-primary w-75">
+	                            자세히 보기
+	                        </a>
 	                    </div>
 	                </div>
 	            </div>
 	        </div>
 	    </div>
 	</section>
+
 	<!-- Call to Action-->
 	<section class="content-section bg-primary text-white">
 		<div class="container px-4 px-lg-5 text-center">
@@ -403,7 +415,7 @@
 	<footer th:replace="~{footer :: footerFragment}"></footer>
 	<th:block layout:fragment="script">
 		<!-- 필요 없을 듯 -->
-	<script th:src="@{/js/index.js}"></script>
+		<script th:src="@{/js/index.js}"></script>
 	</th:block>
 </div>
 
