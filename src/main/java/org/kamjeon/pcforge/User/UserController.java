@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
@@ -71,5 +72,17 @@ public class UserController {
 	    } else {
 	        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인되지 않은 사용자입니다.");
 	    }
+	}
+	
+	@GetMapping("/api/auth/check")
+	public ResponseEntity<?> checkLogin(HttpServletRequest request) {
+	    // 세션이나 JWT 토큰에서 사용자 정보 확인
+	    String userEmail = (String) request.getSession().getAttribute("userEmail");
+
+	    if (userEmail == null) {
+	        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인이 필요합니다.");
+	    }
+
+	    return ResponseEntity.ok("로그인 상태");
 	}
 }

@@ -1,6 +1,7 @@
 package org.kamjeon.pcforge.PCpart;
 
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -14,8 +15,12 @@ import org.kamjeon.pcforge.PCpart.GPU.GPU;
 import org.kamjeon.pcforge.PCpart.MBoard.MBoard;
 import org.kamjeon.pcforge.PCpart.PSU.PSU;
 import org.kamjeon.pcforge.PCpart.RAM.RAM;
+import org.kamjeon.pcforge.User.SiteUser;
+import org.kamjeon.pcforge.User.UserRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +37,7 @@ public class PCpartController {
 	private final PCpartService pcPartService;
 	private final BaseProductRepository baseRep;
 	private final CompanyRepository comRep;
+	private final UserRepository userRepository;
 
 	@GetMapping("/main/{search}")
     public String main(Model model,  @PathVariable("search") String type,
@@ -104,8 +110,9 @@ public class PCpartController {
 		return "shop"; // 이동 
 	}
 	
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/goShop/{id}")
-	public String goShop(Model model,@PathVariable("id") int id) {
+	public String goShop(Model model,@PathVariable("id") int id, Principal principal) {
 		Optional<BaseProduct> base = this.baseRep.findById(id);
 		if(!base.isPresent())
 			return null;
@@ -120,6 +127,11 @@ public class PCpartController {
 		model.addAttribute("product", product);
 		model.addAttribute("companyName", company.getName());
 		
+		 if (principal != null) {
+			 String username = SecurityContextHolder.getContext().getAuthentication().getName();
+			 SiteUser user = userRepository.findByUserName(username).orElseThrow();
+		        model.addAttribute("user", user);
+		    }
 		return "shop_fragment";
 	}
 	
@@ -130,4 +142,9 @@ public class PCpartController {
 		
 		return "shop";
 	}
+	@GetMapping("completed")
+	public String getMethodName() {
+		return "buyCompleted";
+	}
+	
 }
