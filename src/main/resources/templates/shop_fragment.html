@@ -31,12 +31,23 @@
 	    </div>
 
 	    <!-- 하단: 추가 정보 -->
-	    <div class="mt-5 pt-4 border-top">
-	        <h5 class="fw-bold mb-3">제품 상세 설명</h5>
-	        <p class="text-muted">
-	            이 곳에는 제품에 대한 추가 설명을 작성할 수 있습니다. 스펙, 사용 예시, 호환성 정보 등을 여기에 표시해 주세요.
-	        </p>
-	    </div>
+		<div class="mt-5 pt-4 border-top">
+		    <h5 class="fw-bold mb-3">추가 이미지</h5>
+		    <th:block th:if="${files != null and !files.isEmpty()}">
+		        <div class="row row-cols-1 row-cols-md-3 g-4">
+		            <th:block th:each="fileName : ${product.files}">
+		                <div class="col">
+		                    <div class="card h-100">
+		                        <img th:src="@{'/Images/' + ${fileName}}" class="card-img-top rounded" alt="추가 이미지" style="object-fit: cover; height: 250px;">
+		                    </div>
+		                </div>
+		            </th:block>
+		        </div>
+		    </th:block>
+		    <th:block th:if="${files == null or files.isEmpty()}">
+		        <p class="text-muted">추가 이미지가 없습니다.</p>
+		    </th:block>
+		</div>
 	</div>
 	<!-- 포트원 결제 스크립트 삽입 -->
 	<th:block layout:fragment="script">

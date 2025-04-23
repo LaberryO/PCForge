@@ -2,7 +2,11 @@
 <div layout:fragment="content" class="container mt-5 my-5">
 	<h2 class="text-center mb-4">부품 등록</h2>
 
-	<form th:action="@{/yourController/save}" method="post" th:object="${questionForm}">
+	<form id="productForm" method="post" th:object="${selectForm}" enctype="multipart/form-data">
+
+
+		<div th:replace="~{form_error :: formErrorsFragment}"></div>
+
 		<!-- 필수 항목들 -->
 		<div class="form-group">
 			<label for="name">이름</label>
@@ -24,10 +28,18 @@
 			<input type="text" class="form-control" id="makeCompany" th:field="*{makeCompany}" placeholder="회사를 입력하세요">
 		</div>
 
+		<div class="form-group" id="file-upload-group">
+			<label>추가 이미지 업로드</label>
+			<!-- 첫 번째 파일 입력창 -->
+			<div class="input-wrapper">
+				<input type="file" name="files" class="form-control mb-2" onchange="handleFileChange(this)">
+			</div>
+		</div>
+
 		<!-- 부품 종류 선택 -->
 		<div class="form-group">
 			<label for="type">부품 종류</label>
-			<select id="search" name="search" class="form-control" th:field="*{search}" onchange="showPartDetails()">
+			<select id="search" name="search" class="form-control" th:field="*{search}" onchange="updateFormAction()">
 				<option value="" disabled selected>부품을 선택하세요</option>
 				<option value="CPU">CPU</option>
 				<option value="DISK">Disk</option>
@@ -38,6 +50,7 @@
 				<option value="COMCASE">ComCase</option>
 			</select>
 		</div>
+
 		<!-- CPU 부품 입력 필드 -->
 		<div id="cpuFields" class="partFields" style="display: none;">
 			<div class="form-group">
@@ -73,8 +86,8 @@
 				<input type="number" class="form-control" id="memoryChannel" th:field="*{memoryChannel}">
 			</div>
 			<div class="form-check">
-			  <input type="checkbox" class="form-check-input" id="innerGPU" th:field="*{innerGPU}">
-			  <label class="form-check-label" for="innerGPU">내장 GPU</label>
+				<input type="checkbox" class="form-check-input" id="innerGPU" th:field="*{innerGPU}">
+				<label class="form-check-label" for="innerGPU">내장 GPU</label>
 			</div>
 		</div>
 
@@ -190,37 +203,74 @@
 	</form>
 	<script>
 		function showPartDetails() {
-				// 모든 부품 필드를 숨깁니다
-				const partFields = document.querySelectorAll('.partFields');
-				partFields.forEach(field => {
-					field.style.display = 'none';
-				});
+			// 모든 부품 필드를 숨깁니다
+			const partFields = document.querySelectorAll('.partFields');
+			partFields.forEach(field => {
+				field.style.display = 'none';
+			});
 
-				// 선택한 부품 값 가져오기
-				const selectedPart = document.getElementById('search').value;
+			// 선택한 부품 값 가져오기
+			const selectedPart = document.getElementById('search').value;
 
-				// 선택한 부품에 해당하는 필드를 표시합니다
-				if (selectedPart === "CPU") {
-					document.getElementById('cpuFields').style.display = 'block';
-				} else if (selectedPart === "DISK") {
-					document.getElementById('diskFields').style.display = 'block';
-				} else if (selectedPart === "GPU") {
-					document.getElementById('gpuFields').style.display = 'block';
-				} else if (selectedPart === "MBOAED") {
-					document.getElementById('mBoardFields').style.display = 'block';
-				} else if (selectedPart === "PSU") {
-					document.getElementById('psuFields').style.display = 'block';
-				} else if (selectedPart === "RAM") {
-					document.getElementById('ramFields').style.display = 'block';
-				} else if (selectedPart === "COMCASE") {
-					document.getElementById('comCaseFields').style.display = 'block';
+			// 선택한 부품에 해당하는 필드를 표시합니다
+			if (selectedPart === "CPU") {
+				document.getElementById('cpuFields').style.display = 'block';
+			} else if (selectedPart === "DISK") {
+				document.getElementById('diskFields').style.display = 'block';
+			} else if (selectedPart === "GPU") {
+				document.getElementById('gpuFields').style.display = 'block';
+			} else if (selectedPart === "MBOAED") {
+				document.getElementById('mBoardFields').style.display = 'block';
+			} else if (selectedPart === "PSU") {
+				document.getElementById('psuFields').style.display = 'block';
+			} else if (selectedPart === "RAM") {
+				document.getElementById('ramFields').style.display = 'block';
+			} else if (selectedPart === "COMCASE") {
+				document.getElementById('comCaseFields').style.display = 'block';
+			}
+		}
+
+		// 페이지 로드 시에도 이전 선택 상태를 반영해 필드를 보여주도록 설정
+		document.addEventListener('DOMContentLoaded', function () {
+			showPartDetails(); // 초기값 설정
+		});
+
+		function handleFileChange(input) {
+			const parent = document.getElementById('file-upload-group');
+			const wrappers = parent.querySelectorAll('.input-wrapper');
+
+			if (input.files.length > 0) {
+				// 현재 input에 파일이 있고, 이 input이 마지막 input이면 새 input 추가
+				if (input === wrappers[wrappers.length - 1].querySelector('input')) {
+					const newWrapper = document.createElement('div');
+					newWrapper.className = 'input-wrapper';
+
+					const newInput = document.createElement('input');
+					newInput.type = 'file';
+					newInput.name = 'files';
+					newInput.className = 'form-control mb-2';
+					newInput.onchange = function () {
+						handleFileChange(this);
+					};
+
+					newWrapper.appendChild(newInput);
+					parent.appendChild(newWrapper);
+				}
+			} else {
+				// 선택이 취소되었고, 입력창이 2개 이상일 경우 현재 입력창 제거
+				if (wrappers.length > 1) {
+					input.parentElement.remove();
 				}
 			}
+		}
+		function updateFormAction() {
+			const selectedType = document.getElementById("search").value;
+			const form = document.getElementById("productForm");
 
-			// 페이지 로드 시에도 이전 선택 상태를 반영해 필드를 보여주도록 설정
-			document.addEventListener('DOMContentLoaded', function () {
-				showPartDetails(); // 초기값 설정
-			});
+			if (selectedType) {
+				form.action = `/product/save/${selectedType}`;
+			}
+		}
 	</script>
 </div>
 

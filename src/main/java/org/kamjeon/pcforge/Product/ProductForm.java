@@ -1,5 +1,7 @@
 package org.kamjeon.pcforge.Product;
 
+import java.util.List;
+
 import org.kamjeon.pcforge.PCpart.SearchType;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -28,6 +30,8 @@ public class ProductForm {
     @NotBlank
 	@NotEmpty(message="회사은 필수 항목입니다.")
     private Integer makeCompany;
+    
+    private List<MultipartFile> files;
 
     // CPU 관련 입력 필드
     private Float defaultSpeed;
