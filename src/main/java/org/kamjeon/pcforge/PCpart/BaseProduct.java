@@ -31,6 +31,7 @@ public class BaseProduct {
     
     private List<String> files;
     
+    private String manager;
     @JsonIgnore
 	  @ManyToOne
 	  @JoinColumn(name = "pcparts_id")

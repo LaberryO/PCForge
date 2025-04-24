@@ -5,9 +5,9 @@ import java.util.List;
 import org.kamjeon.pcforge.PCpart.SearchType;
 import org.springframework.web.multipart.MultipartFile;
 
-import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,22 +16,25 @@ import lombok.Setter;
 public class ProductForm {
 	 // 부품에 따라 다르게 표시할 추가적인 입력 필드들
 	
-	private SearchType search;
+
+	
 	@NotBlank
 	@NotEmpty(message="이름은 필수 항목입니다.")
     private String name;
+	
     @NotNull
     private MultipartFile fileName;
     
-    @NotBlank
-	@NotEmpty(message="가격은 필수 항목입니다.")
+    @NotNull(message = "가격은 필수 항목입니다.")
     private Integer price;
     
-    @NotBlank
-	@NotEmpty(message="회사은 필수 항목입니다.")
+    @NotNull(message = "제조사를 선택해야 합니다.")
     private Integer makeCompany;
     
     private List<MultipartFile> files;
+    
+	@NotNull(message = "타입을 선택해야 합니다.")
+	private SearchType search;
 
     // CPU 관련 입력 필드
     private Float defaultSpeed;

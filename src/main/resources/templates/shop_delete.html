@@ -1,0 +1,60 @@
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Starter 관리</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+	<style>
+		td img {
+			width: 120px;
+			height: 50px;
+			object-fit: cover;
+		}
+	</style>
+</head>
+
+<body>
+	<div layout:fragment="content" class="container mt-5">
+
+		<h2>내가 등록한 상품 목록</h2>
+
+		<!-- 제품이 없을 때 보여줄 내용 -->
+		<div th:if="${#lists.isEmpty(products)}" class="d-flex flex-column justify-content-center align-items-center text-muted" style="height: 60vh;">
+		    <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" fill="currentColor" class="bi bi-box mb-4"
+		        viewBox="0 0 16 16">
+		        <path
+		            d="M8.21.5a.5.5 0 0 1 .58 0l6 4A.5.5 0 0 1 15 5v6a.5.5 0 0 1-.21.4l-6 4a.5.5 0 0 1-.58 0l-6-4A.5.5 0 0 1 1 11V5a.5.5 0 0 1 .21-.4l6-4zM2 5.37v5.26l5 3.33V8.7L2 5.37zm6 3.33v5.26l5-3.33V5.37L8 8.7zM8 1.56L3.1 4.7 8 7.84l4.9-3.13L8 1.56z" />
+		    </svg>
+		    <p class="fs-3 fw-semibold">등록한 제품이 없어요</p>
+		</div>
+
+		<!-- 제품이 있을 때만 테이블 렌더링 -->
+		<table class="table" th:if="${!#lists.isEmpty(products)}">
+			<thead>
+				<tr>
+					<th>상품명</th>
+					<th>가격</th>
+					<th>제조사</th>
+					<th>삭제</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="product : ${products}">
+					<td th:text="${product.name}"></td>
+					<td th:text="${product.price}"></td>
+					<td th:text="${companyNames[product.makeCompany]}"></td>
+					<td>
+						<a th:href="@{/product/delete/{id}(id=${product.id})}" 
+						   class="btn btn-danger d-inline-flex align-items-center px-3 py-1">
+						    <i class="bi bi-trash me-2"></i> 삭제
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+</body>
+
+</html>

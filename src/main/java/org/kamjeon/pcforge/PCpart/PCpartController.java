@@ -18,7 +18,6 @@ import org.kamjeon.pcforge.PCpart.RAM.RAM;
 import org.kamjeon.pcforge.User.SiteUser;
 import org.kamjeon.pcforge.User.UserRepository;
 import org.springframework.data.domain.Page;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
