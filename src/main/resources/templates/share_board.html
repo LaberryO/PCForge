@@ -20,18 +20,18 @@
 			<tr th:each="share, loop : ${paging}">
 				<th scope="row">[[${paging.getTotalElements - (paging.number * paging.size) - loop.index}]]</th>
 				<td>
-					<a href="">
+					<a th:href="@{|/share/board/${share.id}|}">
 						[[${share.subject}]]
 					</a>
 				</td>
 				<td>
-					<span>
+					<span th:if="${share.forge != null}">
 						[[${share.forge.totalPrice}]]
 					</span>
 				</td>
 				<td>
 					<span>
-						[[$share.user]]
+						[[${share.user != null ? share.user : '관리자'}]]
 					</span>
 				</td>
 				<td>
@@ -49,6 +49,7 @@
 						[[${#lists.size(share.voter)}]]
 					</span>
 				</td>
+				<td th:if="${share.forge != null}">[[${share.forge.getId()}]]</td>
 			</tr>
 		</tbody>
 	</table>

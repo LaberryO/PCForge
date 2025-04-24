@@ -80,7 +80,7 @@
 			<tr>
 				<th scope="row">총합</th>
 				<td></td>
-				<td class="text-end" th:text="${
+				<!--<td class="text-end" th:text="${
 					(forgeList.cpu != null && forgeList.cpu.price != null ? forgeList.cpu.price : 0) +
 					(forgeList.ram != null && forgeList.ram.price != null ? forgeList.ram.price : 0) +
 					(forgeList.gpu != null && forgeList.gpu.price != null ? forgeList.gpu.price : 0) +
@@ -88,7 +88,8 @@
 					(forgeList.psu != null && forgeList.psu.price != null ? forgeList.psu.price : 0) +
 					(forgeList.comCase != null && forgeList.comCase.price != null ? forgeList.comCase.price : 0) +
 					(forgeList.disk != null && forgeList.disk.price != null ? forgeList.disk.price : 0)
-				} + ' 원'"></td>
+				} + ' 원'"></td>-->
+				<td class="text-end">[[${forgeList.totalPrice}]] 원</td>
 				<td></td>
 			</tr>
 		</tbody>
@@ -103,7 +104,7 @@
 					</form>
 				</td>
 				<td>
-					<form action="">
+					<form th:action="@{/share/create}" method="get">
 						<input type="hidden" name="forgeId" th:value="${forgeList.getId()}" />
 						<button type="submit" class="btn btn-outline-dark">공유</button>
 					</form>

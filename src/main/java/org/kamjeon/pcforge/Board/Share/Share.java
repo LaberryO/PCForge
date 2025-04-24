@@ -20,6 +20,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrePersist;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -60,5 +61,12 @@ public class Share {
 	private Forge forge;
 	
 	private Integer click; //조회수
+	
+	@PrePersist
+    public void prePersist() {
+        if (click == null) {
+            click = 0;
+        }
+    }
 	
 }

@@ -4,6 +4,7 @@ import java.security.Principal;
 
 import org.kamjeon.pcforge.Board.Comment.CommentForm;
 import org.kamjeon.pcforge.Forge.Forge;
+import org.kamjeon.pcforge.Forge.ForgeService;
 import org.kamjeon.pcforge.User.SiteUser;
 import org.kamjeon.pcforge.User.UserService;
 import org.springframework.data.domain.Page;
@@ -28,6 +29,7 @@ import lombok.RequiredArgsConstructor;
 public class ShareController {
 	private final UserService userService;
 	private final ShareService shareService;
+	private final ForgeService forgeService;
 	
 	// TODO 나중에 list 구현
 	@GetMapping("/list")
@@ -47,13 +49,15 @@ public class ShareController {
 		
 		model.addAttribute("share",share);
 		
-		return ""; //해당 share ID의 페이지로 이동 #kim
+		return "share_detail"; //해당 share ID의 페이지로 이동 #kim
 	}
 	
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/create")
-	public String create(ShareForm shareForm, Principal principal) {
-		
+	public String create(Model model, @RequestParam("forgeId") Integer forgeId, ShareForm shareForm, Principal principal) {
+		Forge forge = this.forgeService.getForge(forgeId).orElseThrow();
+		shareForm.setForge(forge);
+		model.addAttribute("forgeId", forgeId);
 		return "share_form";
 	}
 	

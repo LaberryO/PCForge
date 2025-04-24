@@ -1,0 +1,73 @@
+<html layout:decorate="~{layout}">
+<title layout:fragment="title">견적 공유 상세보기</title>
+<th:block layout:fragment="style">
+	<link rel="stylesheet" th:href="@{/css/index.css}" />
+</th:block>
+<div layout:fragment="content" class="mb-5" id="layoutSidenav_content">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>[[${share.subject}]]</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>[[${share.content}]]</td>
+			</tr>
+		</tbody>
+		<tfooter>
+			<tr>
+				<td>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>종류</th>
+								<td>상품 정보</td>
+								<td>가격</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th>CPU</th>
+								<td><a href="">[[${share.forge.cpu.name}]]</a></td>
+								<td>[[${share.forge.cpu.price}]] 원</td>
+							</tr>
+							<tr>
+								<th>RAM</th>
+								<td><a href="">[[${share.forge.ram.name}]]</a></td>
+								<td>[[${share.forge.ram.price}]] 원</td>
+							</tr>
+							<tr>
+								<th>GPU</th>
+								<td><a href="">[[${share.forge.gpu.name}]]</a></td>
+								<td>[[${share.forge.gpu.price}]] 원</td>
+							</tr>
+							<tr>
+								<th>메인보드</th>
+								<td><a href="">[[${share.forge.mboard.name}]]</a></td>
+								<td>[[${share.forge.mboard.price}]] 원</td>
+							</tr>
+							<tr>
+								<th>케이스</th>
+								<td><a href="">[[${share.forge.comCase.name}]]</a></td>
+								<td>[[${share.forge.comCase.price}]] 원</td>
+							</tr>
+							<tr>
+								<th>파워</th>
+								<td><a href="">[[${share.forge.psu.name}]]</a></td>
+								<td>[[${share.forge.psu.price}]] 원</td>
+							</tr>
+						</tbody>
+
+					</table>
+				</td>
+			</tr>
+		</tfooter>
+	</table>
+	<!-- Footer -->
+	<footer th:replace="~{footer :: footerFragment}"></footer>
+	<th:block layout:fragment="script">
+	</th:block>
+</div>
+
+</html>
