@@ -63,7 +63,7 @@ public class ShareController {
 	
 	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/create")
-	public String create(@Valid ShareForm shareForm, BindingResult bindingResult, Principal principal) {
+	public String create(@Valid ShareForm shareForm, BindingResult bindingResult, Principal principal) throws Exception {
 		if (bindingResult.hasErrors()) {
 			return "share_form";
 		}

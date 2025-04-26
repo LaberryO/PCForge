@@ -63,6 +63,7 @@ public class ShareService {
 		share.setSubject(subject);
 		share.setContent(content);
 		share.setCreateDate(LocalDateTime.now());
+		share.setUser(siteUser);
 		share.setForge(forge);
 		
 		this.shareRepository.save(share);

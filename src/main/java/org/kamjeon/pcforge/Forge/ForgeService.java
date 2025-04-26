@@ -46,18 +46,45 @@ public class ForgeService {
         // 세션 ID 가져오기
         String sessionId = session.getId();
 
-        // 세션 ID를 기반으로 Forge 가져오기
-        Optional<Forge> optionalForge = forgeRepository.findBySessionId(sessionId);
-        if (optionalForge.isPresent()) {
-            return optionalForge.get();
-        } else {
-            // Forge가 없으면 새로 생성
-            Forge forge = new Forge();
-            forge.setSessionId(sessionId); // 세션 ID 저장
-            forgeRepository.save(forge);
+        Forge forge = forgeRepository.findTopBySessionIdOrderByIdDesc(sessionId);
+        if (forge != null) {
             return forge;
+        } else {
+            Forge newForge = new Forge();
+            newForge.setSessionId(sessionId);
+            forgeRepository.save(newForge);
+            return newForge;
         }
     }
+    
+    // 디버그용
+    public void delForgeForSession(HttpSession session) {
+    	// 세션 ID 가져오기
+        String sessionId = session.getId();
+
+        // 세션 ID를 기반으로 Forge 가져오기
+        List<Forge> forgeList = forgeRepository.findAllBySessionId(sessionId);
+
+        for (Forge forge : forgeList) {
+            // 예: 공유된 Forge는 삭제 안 함
+            if (forge.getShare() == null) {
+                forgeRepository.delete(forge);
+            }
+        }
+    }
+    
+    public List<Forge> getForgesForSession(HttpSession session) {
+        String sessionId = session.getId();
+        return forgeRepository.findAllBySessionId(sessionId);
+    }
+
+    public Forge createNewForgeForSession(HttpSession session) {
+        String sessionId = session.getId();
+        Forge forge = new Forge();
+        forge.setSessionId(sessionId);
+        return forgeRepository.save(forge);
+    }
+
 
 	public void addOrUpdatePart(String partType, Integer partId, HttpSession session) {
 		Forge forge = getForgeForSession(session);

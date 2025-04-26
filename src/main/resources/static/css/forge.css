@@ -19,3 +19,7 @@
 .h-3em {
 	height: 3em;
 }
+
+#forgeNav * {
+	pointer-events: none;
+}

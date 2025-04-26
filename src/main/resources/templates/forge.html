@@ -130,6 +130,9 @@
 								</div>
 								<div class="card-body">
 									내용
+									<span th:if="${usernameTest != null}">
+										[[${usernameTest}]]
+									</span>
 								</div>
 								<div class="card-footer">
 									<a th:href="@{/forge/buy}" class="btn btn-outline-success">구매</a>
