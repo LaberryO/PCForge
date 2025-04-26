@@ -6,7 +6,7 @@
     "ddrSupport": "DDR5",
     "maxMemory": 256,
     "PCISlots": 4,
-    "fileName": "Bin.jpg",
+    "fileName": "mboard3.png",
     "price": 350000,
     "makeCompany": 14
   },
@@ -17,7 +17,7 @@
     "ddrSupport": "DDR5",
     "maxMemory": 192,
     "PCISlots": 3,
-    "fileName": "Bin.jpg",
+    "fileName": "mboard1.png",
     "price": 150000,
     "makeCompany": 16
   },
@@ -28,7 +28,7 @@
     "ddrSupport": "DDR5",
     "maxMemory": 256,
     "PCISlots": 3,
-    "fileName": "Bin.jpg",
+    "fileName": "mboard2.png",
     "price": 180000,
     "makeCompany": 14
   },
@@ -39,7 +39,7 @@
     "ddrSupport": "DDR4",
     "maxMemory": 128,
     "PCISlots": 3,
-    "fileName": "Bin.jpg",
+    "fileName": "mboard4.png",
     "price": 130000,
     "makeCompany": 14
   },
@@ -50,7 +50,7 @@
     "ddrSupport": "DDR5",
     "maxMemory": 256,
     "PCISlots": 3,
-    "fileName": "Bin.jpg",
+    "fileName": "mboard2.png",
     "price": 170000,
     "makeCompany": 14
   },
@@ -61,7 +61,7 @@
     "ddrSupport": "DDR5",
     "maxMemory": 192,
     "PCISlots": 3,
-    "fileName": "Bin.jpg",
+    "fileName": "mboard1.png",
     "price": 200000,
     "makeCompany": 8
   },
@@ -72,7 +72,7 @@
     "ddrSupport": "DDR5",
     "maxMemory": 192,
     "PCISlots": 3,
-    "fileName": "Bin.jpg",
+    "fileName": "mboard4.png",
     "price": 160000,
     "makeCompany": 17
   },
@@ -83,7 +83,7 @@
     "ddrSupport": "DDR5",
     "maxMemory": 192,
     "PCISlots": 3,
-    "fileName": "Bin.jpg",
+    "fileName": "mboard3.png",
     "price": 160000,
     "makeCompany": 17
   },
@@ -94,7 +94,7 @@
     "ddrSupport": "DDR4",
     "maxMemory": 64,
     "PCISlots": 3,
-    "fileName": "Bin.jpg",
+    "fileName": "mboard2.png",
     "price": 75000,
     "makeCompany": 8
   },
@@ -105,7 +105,7 @@
     "ddrSupport": "DDR5",
     "maxMemory": 192,
     "PCISlots": 3,
-    "fileName": "Bin.jpg",
+    "fileName": "mboard1.png",
     "price": 130000,
     "makeCompany": 16
   }

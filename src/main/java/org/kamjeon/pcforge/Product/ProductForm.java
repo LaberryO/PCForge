@@ -16,8 +16,6 @@ import lombok.Setter;
 public class ProductForm {
 	 // 부품에 따라 다르게 표시할 추가적인 입력 필드들
 	
-
-	
 	@NotBlank
 	@NotEmpty(message="이름은 필수 항목입니다.")
     private String name;
@@ -33,7 +31,6 @@ public class ProductForm {
     
     private List<MultipartFile> files;
     
-	@NotNull(message = "타입을 선택해야 합니다.")
 	private SearchType search;
 
     // CPU 관련 입력 필드
