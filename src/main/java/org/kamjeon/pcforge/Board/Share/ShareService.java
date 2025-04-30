@@ -50,6 +50,11 @@ public class ShareService {
 		return _share.get();
 	}
 	
+	public Share getShareByForge(Forge forge) {
+		Optional<Share> _share = this.shareRepository.findByForge(forge);
+		return _share.orElse(null);
+	}
+	
 	public void modify(Share share, String subject, String content) {
 		share.setSubject(subject);
 		share.setContent(content);
@@ -63,6 +68,7 @@ public class ShareService {
 		share.setSubject(subject);
 		share.setContent(content);
 		share.setCreateDate(LocalDateTime.now());
+		share.setUser(siteUser);
 		share.setForge(forge);
 		
 		this.shareRepository.save(share);

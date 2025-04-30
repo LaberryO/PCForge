@@ -68,7 +68,13 @@ public class ShareController {
 			return "share_form";
 		}
 		SiteUser siteUser = this.userService.getUser(principal.getName());
-		this.shareService.create(shareForm.getSubject(), shareForm.getContent(), siteUser, shareForm.getForge());
+		Forge forgeTemp = shareForm.getForge();
+		
+		Share existingShare = this.shareService.getShareByForge(forgeTemp);
+		if (existingShare != null) {
+			forgeTemp = this.forgeService.copyForge(forgeTemp);
+		}
+		this.shareService.create(shareForm.getSubject(), shareForm.getContent(), siteUser, forgeTemp);
 		return "redirect:/share/list";
 	}
 	

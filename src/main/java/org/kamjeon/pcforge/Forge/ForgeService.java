@@ -131,6 +131,33 @@ public class ForgeService {
 	}
 
 	// -------------------------------------------------------------
+	
+	public Forge copyForge(Forge original) {
+        Forge copied = new Forge();
+
+        // 부품들 복사
+        copied.setCpu(original.getCpu());
+        copied.setRam(original.getRam());
+        copied.setGpu(original.getGpu());
+        copied.setMboard(original.getMboard());
+        copied.setDisk(original.getDisk());
+        copied.setPsu(original.getPsu());
+        copied.setComCase(original.getComCase());
+
+        // 기타 필드 복사
+        copied.setName(original.getName());
+        copied.setSessionId(original.getSessionId());
+        copied.setFileNames(original.getFileNames());
+
+        // 총 가격은 자동 계산됨 (@PrePersist, @PreUpdate 덕분에)
+
+        // Share는 아직 연결 안 함 (새로운 Share가 생성되며 연결될 예정)
+        copied.setShare(null);
+
+        // 저장하고 반환
+        return forgeRepository.save(copied);
+    }
+	
 	// 극 초반 간단하게 forge만 생성
 	public Forge create() {
 		Forge forge = new Forge();
