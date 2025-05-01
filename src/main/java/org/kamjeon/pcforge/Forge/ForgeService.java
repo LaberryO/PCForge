@@ -42,22 +42,21 @@ public class ForgeService {
 	private final PSURepository psuRepository;
 	private final RAMRepository ramRepository;
 	
-    public Forge getForgeForSession(HttpSession session) {
-        // 세션 ID 가져오기
-        String sessionId = session.getId();
+	public Forge getForgeForSession(HttpSession session) {
+	    String sessionId = session.getId();
 
-        // 세션 ID를 기반으로 Forge 가져오기
-        Optional<Forge> optionalForge = forgeRepository.findBySessionId(sessionId);
-        if (optionalForge.isPresent()) {
-            return optionalForge.get();
-        } else {
-            // Forge가 없으면 새로 생성
-            Forge forge = new Forge();
-            forge.setSessionId(sessionId); // 세션 ID 저장
-            forgeRepository.save(forge);
-            return forge;
-        }
-    }
+	    List<Forge> forgeList = forgeRepository.findBySessionId(sessionId);
+
+	    if (!forgeList.isEmpty()) {
+	        return forgeList.get(0); // 가장 첫 번째 것 사용 (혹은 마지막 선택 등)
+	    } else {
+	        Forge forge = new Forge();
+	        forge.setSessionId(sessionId);
+	        forgeRepository.save(forge);
+	        return forge;
+	    }
+	}
+
 
 	public void addOrUpdatePart(String partType, Integer partId, HttpSession session) {
 		Forge forge = getForgeForSession(session);

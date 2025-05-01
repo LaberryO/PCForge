@@ -10931,7 +10931,11 @@ body {
 }
 .sb-nav-fixed #layoutSidenav #layoutSidenav_content {
   padding-left: 225px;
-  /*top: 56px;*/
+  top: 56px;
+}
+
+.indexContent {
+	top: 0 !important;
 }
 
 #layoutError {
