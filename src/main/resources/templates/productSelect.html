@@ -1,0 +1,280 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" class="container mt-5 my-5">
+	<h2 class="text-center mb-4">부품 등록</h2>
+
+	<form id="productForm" method="post" th:object="${productForm}" enctype="multipart/form-data">
+		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+
+		<div th:replace="~{form_error :: formErrorsFragment}"></div>
+	
+
+
+		<!-- 필수 항목들 -->
+		<div class="form-group">
+			<label for="name">이름</label>
+			<input type="text" class="form-control" id="name" th:field="*{name}" placeholder="부품의 이름을 입력하세요">
+		</div>
+
+		<div class="form-group">
+			<label for="fileName">파일</label>
+			<input type="file" class="form-control" id="fileName" th:field="*{fileName}">
+		</div>
+
+		<div class="form-group">
+			<label for="price">가격</label>
+			<input type="number" class="form-control" id="price" th:field="*{price}" placeholder="가격을 입력하세요">
+		</div>
+
+		<div class="form-group">
+			<label for="makeCompany">회사</label>
+			<input type="text" class="form-control" id="makeCompany" th:field="*{makeCompany}" placeholder="회사를 입력하세요">
+		</div>
+
+		<div class="form-group" id="file-upload-group">
+			<label>추가 이미지 업로드</label>
+			<!-- 첫 번째 파일 입력창 -->
+			<div class="input-wrapper">
+				<input type="file" name="files" class="form-control mb-2" onchange="handleFileChange(this)">
+			</div>
+		</div>
+
+		<!-- 부품 종류 선택 -->
+		<div class="form-group">
+			<label for="type">부품 종류</label>
+			<select id="search" onchange="showPartDetails(); updateFormAction();" class="form-select">
+				<option value="CPU" selected>CPU</option>
+				<option value="DISK">DISK</option>
+				<option value="GPU">GPU</option>
+				<option value="MBOARD">MBOARD</option>
+				<option value="PSU">PSU</option>
+				<option value="RAM">RAM</option>
+				<option value="COMCASE">COMCASE</option>
+			</select>
+		</div>
+
+		<!-- CPU 부품 입력 필드 -->
+		<div id="cpuFields" class="partFields" style="display: none;">
+			<div class="form-group">
+				<label for="defaultSpeed">기본 속도</label>
+				<input type="number" class="form-control" id="defaultSpeed" th:field="*{defaultSpeed}">
+			</div>
+			<div class="form-group">
+				<label for="maxSpeed">최대 속도</label>
+				<input type="number" class="form-control" id="maxSpeed" th:field="*{maxSpeed}">
+			</div>
+			<div class="form-group">
+				<label for="socket">소켓</label>
+				<input type="text" class="form-control" id="socket" th:field="*{socket}">
+			</div>
+			<div class="form-group">
+				<label for="coreCount">코어 수</label>
+				<input type="number" class="form-control" id="coreCount" th:field="*{coreCount}">
+			</div>
+			<div class="form-group">
+				<label for="threadCount">스레드 수</label>
+				<input type="number" class="form-control" id="threadCount" th:field="*{threadCount}">
+			</div>
+			<div class="form-group">
+				<label for="ddr">DDR</label>
+				<input type="number" class="form-control" id="ddr" th:field="*{ddr}">
+			</div>
+			<div class="form-group">
+				<label for="ddrSpeed">DDR 속도</label>
+				<input type="number" class="form-control" id="ddrSpeed" th:field="*{ddrSpeed}">
+			</div>
+			<div class="form-group">
+				<label for="memoryChannel">메모리 채널</label>
+				<input type="number" class="form-control" id="memoryChannel" th:field="*{memoryChannel}">
+			</div>
+			<div class="form-check">
+				<input type="checkbox" class="form-check-input" id="innerGPU" th:field="*{innerGPU}">
+				<label class="form-check-label" for="innerGPU">내장 GPU</label>
+			</div>
+		</div>
+
+		<!-- Disk 부품 입력 필드 -->
+		<div id="diskFields" class="partFields" style="display: none;">
+			<div class="form-group">
+				<label for="capacity">용량</label>
+				<input type="number" class="form-control" id="capacity" th:field="*{capacity}">
+			</div>
+			<div class="form-group">
+				<label for="type">유형</label>
+				<input type="text" class="form-control" id="diskType" th:field="*{type}">
+			</div>
+			<div class="form-group">
+				<label for="speed">속도</label>
+				<input type="number" class="form-control" id="speed" th:field="*{speed}">
+			</div>
+		</div>
+
+		<!-- GPU 부품 입력 필드 -->
+		<div id="gpuFields" class="partFields" style="display: none;">
+			<div class="form-group">
+				<label for="memorySize">메모리 크기</label>
+				<input type="number" class="form-control" id="memorySize" th:field="*{memorySize}">
+			</div>
+			<div class="form-group">
+				<label for="powerConsumption">전력 소비</label>
+				<input type="number" class="form-control" id="powerConsumption" th:field="*{powerConsumption}">
+			</div>
+		</div>
+
+		<!-- MBoard 부품 입력 필드 -->
+		<div id="mBoardFields" class="partFields" style="display: none;">
+			<div class="form-group">
+				<label for="formFactor">폼 팩터</label>
+				<input type="text" class="form-control" id="formFactor" th:field="*{formFactor}">
+			</div>
+			<div class="form-group">
+				<label for="maxMemory">최대 메모리 용량</label>
+				<input type="number" class="form-control" id="maxMemory" th:field="*{maxMemory}">
+			</div>
+			<div class="form-group">
+				<label for="ddrSupport">DDR 지원</label>
+				<input type="text" class="form-control" id="ddrSupport" th:field="*{ddrSupport}">
+			</div>
+			<div class="form-group">
+				<label for="PCISlots">PCI 슬롯 수</label>
+				<input type="number" class="form-control" id="PCISlots" th:field="*{PCISlots}">
+			</div>
+		</div>
+
+		<!-- PSU 부품 입력 필드 -->
+		<div id="psuFields" class="partFields" style="display: none;">
+			<div class="form-group">
+				<label for="wattage">와트</label>
+				<input type="number" class="form-control" id="wattage" th:field="*{wattage}">
+			</div>
+			<div class="form-group">
+				<label for="efficiency">효율성</label>
+				<input type="text" class="form-control" id="efficiency" th:field="*{efficiency}">
+			</div>
+			<div class="form-group">
+				<label for="psuFormFactor">폼 팩터</label>
+				<input type="text" class="form-control" id="psuFormFactor" th:field="*{psuFormFactor}">
+			</div>
+		</div>
+
+		<!-- RAM 부품 입력 필드 -->
+		<div id="ramFields" class="partFields" style="display: none;">
+			<div class="form-group">
+				<label for="ramCapacity">용량</label>
+				<input type="number" class="form-control" id="ramCapacity" th:field="*{ramCapacity}">
+			</div>
+			<div class="form-group">
+				<label for="ramType">유형</label>
+				<input type="text" class="form-control" id="ramType" th:field="*{ramType}">
+			</div>
+			<div class="form-group">
+				<label for="ramSpeed">속도</label>
+				<input type="number" class="form-control" id="ramSpeed" th:field="*{ramSpeed}">
+			</div>
+			<div class="form-group">
+				<label for="ramMemoryChannel">메모리 채널 수</label>
+				<input type="number" class="form-control" id="ramMemoryChannel" th:field="*{ramMemoryChannel}">
+			</div>
+		</div>
+
+		<!-- ComCase 부품 입력 필드 -->
+		<div id="comCaseFields" class="partFields" style="display: none;">
+			<div class="form-group">
+				<label for="caseFormFactor">폼 팩터</label>
+				<input type="text" class="form-control" id="caseFormFactor" th:field="*{caseFormFactor}">
+			</div>
+			<div class="form-group">
+				<label for="caseColor">색상</label>
+				<input type="text" class="form-control" id="caseColor" th:field="*{caseColor}">
+			</div>
+			<div class="form-group">
+				<label for="caseMaterial">재질</label>
+				<input type="text" class="form-control" id="caseMaterial" th:field="*{caseMaterial}">
+			</div>
+			<div class="form-group">
+				<label for="fanSupport">팬 지원 수</label>
+				<input type="number" class="form-control" id="fanSupport" th:field="*{fanSupport}">
+			</div>
+		</div>
+
+		<!-- 제출 버튼 -->
+		<div class="form-group text-center mt-5">
+			<button type="submit" class="btn btn-primary btn-lg">저장</button>
+		</div>
+
+	</form>
+	<script>
+		function showPartDetails() {
+			// 모든 부품 필드를 숨깁니다
+			const partFields = document.querySelectorAll('.partFields');
+			partFields.forEach(field => {
+				field.style.display = 'none';
+			});
+
+			// 선택한 부품 값 가져오기
+			const selectedPart = document.getElementById('search').value;
+
+			// 선택한 부품에 해당하는 필드를 표시합니다
+			if (selectedPart === "CPU") {
+				document.getElementById('cpuFields').style.display = 'block';
+			} else if (selectedPart === "DISK") {
+				document.getElementById('diskFields').style.display = 'block';
+			} else if (selectedPart === "GPU") {
+				document.getElementById('gpuFields').style.display = 'block';
+			} else if (selectedPart === "MBOARD") {
+				document.getElementById('mBoardFields').style.display = 'block';
+			} else if (selectedPart === "PSU") {
+				document.getElementById('psuFields').style.display = 'block';
+			} else if (selectedPart === "RAM") {
+				document.getElementById('ramFields').style.display = 'block';
+			} else if (selectedPart === "COMCASE") {
+				document.getElementById('comCaseFields').style.display = 'block';
+			}
+		}
+
+		// 페이지 로드 시에도 이전 선택 상태를 반영해 필드를 보여주도록 설정
+		document.addEventListener('DOMContentLoaded', function () {
+			showPartDetails();     // CPU 관련 필드 보여주기
+			updateFormAction();    // form action 경로도 /product/save/CPU 로 설정
+		});
+
+		function handleFileChange(input) {
+			const parent = document.getElementById('file-upload-group');
+			const wrappers = parent.querySelectorAll('.input-wrapper');
+
+			if (input.files.length > 0) {
+				// 현재 input에 파일이 있고, 이 input이 마지막 input이면 새 input 추가
+				if (input === wrappers[wrappers.length - 1].querySelector('input')) {
+					const newWrapper = document.createElement('div');
+					newWrapper.className = 'input-wrapper';
+
+					const newInput = document.createElement('input');
+					newInput.type = 'file';
+					newInput.name = 'files';
+					newInput.className = 'form-control mb-2';
+					newInput.onchange = function () {
+						handleFileChange(this);
+					};
+
+					newWrapper.appendChild(newInput);
+					parent.appendChild(newWrapper);
+				}
+			} else {
+				// 선택이 취소되었고, 입력창이 2개 이상일 경우 현재 입력창 제거
+				if (wrappers.length > 1) {
+					input.parentElement.remove();
+				}
+			}
+		}
+		function updateFormAction() {
+			const selectedType = document.getElementById("search").value;
+			const form = document.getElementById("productForm");
+
+			if (selectedType) {
+				form.action = `/product/save/${selectedType}`;
+			}
+		}
+	</script>
+</div>
+
+</html>

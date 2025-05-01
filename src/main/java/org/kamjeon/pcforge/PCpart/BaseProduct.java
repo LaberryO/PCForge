@@ -1,4 +1,6 @@
 package org.kamjeon.pcforge.PCpart;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
@@ -27,6 +29,9 @@ public class BaseProduct {
 
     private Integer makeCompany;
     
+    private List<String> files;
+    
+    private String manager;
     @JsonIgnore
 	  @ManyToOne
 	  @JoinColumn(name = "pcparts_id")

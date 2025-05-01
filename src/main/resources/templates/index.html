@@ -9,28 +9,37 @@
 		<div class="container px-4 px-lg-5 text-center">
 			<h1 class="mb-3">PCForge</h1>
 			<p class="fs-4 fw-bold mb-5"><em>나만의 PC를 만들 수 있게 도와줍니다.</em></p>
-			<a class="btn btn-success btn-xl" th:href="@{/forge/create}">바로 견적 제작하기</a>
+			<a class="btn btn-success btn-xl" th:href="@{/forge/main}">바로 견적 제작하기</a>
 		</div>
 	</header>
-	<div class="container mt-4 bg-white text-dark">
+	<div class="container mt-4 bg-dark text-dark">
 		<div class="row">
 			<!-- 뉴스룸 & 광고를 같은 row에 배치 -->
-			<div class="col-md-7 border-start border-3 p-3 shadow-sm">
-				<!-- 뉴스룸 제목 (고정) -->
-				<h4>
-					<a th:href="@{/starter/main}"><strong>뉴스룸</strong> ></a>
+			<div class="col-md-7 p-3 shadow-sm">
+				<!-- 뉴스룸 섹션 타이틀 -->
+				<div class="d-flex align-items-center mb-3">
+					<i class="bi bi-newspaper fs-3 text-white me-2"></i>
+					<h4 class="mb-0">
+						<a th:href="@{/starter/main}" class="text-white text-decoration-none"><strong>뉴스룸</strong> ></a>
+					</h4>
+				</div>
 
-					<span th:each="category, iterStat : ${categories}"
-					      th:id="'category-' + ${iterStat.index}"
-					      th:text="${category}"
-					      class="category-item"
-					      style="cursor: pointer; margin-right: 20px; color: black; padding-left: 10px; border-left: 2px solid gray; font-weight: normal;">
+				<!-- 카테고리 리스트 -->
+				<div class="mb-3">
+					<small class="text-muted">카테고리별 뉴스 보기:</small><br />
+					<span th:each="category, iterStat : ${categories}" 
+						  th:id="'category-' + ${iterStat.index}"
+						  th:text="${category}"
+						  class="category-item"
+						  style="cursor: pointer; margin-right: 20px; color: rgb(255, 255, 255); padding-left: 10px; border-left: 2px solid gray; font-weight: normal;">
 					</span>
-				</h4>
-				
+				</div>
+
 				<!-- 뉴스룸 캐러셀 -->
 				<div id="newsroomCarousel" class="carousel slide" data-bs-ride="carousel"
 					th:attr="data-categories-json=${categories}">
+					
+					<!-- 캐러셀 본문 -->
 					<div class="carousel-inner">
 						<div class="carousel-item" th:each="group, iterStat : ${newsGroups}"
 							th:classappend="${iterStat.index == 0} ? 'active' : ''">
@@ -38,12 +47,13 @@
 								<div class="col" th:each="news : ${group}">
 									<div class="card border">
 										<div class="card-body p-2">
-											<a th:href="@{|/starter/news/${news.id}|}"class="text-decoration-none text-dark">
-												<img th:src="@{'/uploads/' + ${news.image}}"
-													class="card-img-top img-fluid"
-													style="width:100%; height:150px; object-fit:contain; background-color:black;"
-													alt="뉴스 이미지">
-												<p class="card-text" th:text="${news.title}">뉴스 제목</p>
+											<a th:href="@{|/starter/news/${news.id}|}" class="text-decoration-none text-dark">
+												<img th:src="@{'/uploads/' + ${news.image}}" 
+													 class="card-img-top img-fluid"
+													 style="width:100%; height:150px; object-fit:contain; background-color:black;" 
+													 alt="뉴스 이미지">
+												<p class="card-text fw-bold mt-2" th:text="${news.title}">뉴스 제목</p>
+												
 											</a>
 										</div>
 									</div>
@@ -52,7 +62,6 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
 
 			<!-- 광고 영역 (오른쪽 30%) -->
@@ -61,19 +70,15 @@
 					<div class="col-12">
 						<div class="card border rounded shadow-sm">
 							<div class="card-header bg-light d-flex justify-content-between align-items-center p-2">
-								<strong class="small">바른 가치를 더해 만드는 천연 스카프</strong>
+								<strong class="small">LG 신규 고해상도 모니터 출시</strong>
 								<span class="badge bg-secondary">AD</span>
 							</div>
-							<img src="/images/miku1.jpg" class="card-img-top img-fluid rounded"
+							<img src="/Images/LgMoniter.jpg" class="card-img-top img-fluid rounded"
 								style="width:100%; height:120px; object-fit:cover;" alt="광고 이미지">
 							<div class="card-body p-2">
-								<p class="card-text small">천연 염색으로 제작된 친환경 스카프</p>
+								<p class="card-text small">초고속 실사화 모니터를 경험해보세요 </p>
 								<div class="d-flex justify-content-between align-items-center">
-									<div class="d-flex align-items-center">
-										<img src="https://via.placeholder.com/30" class="rounded-circle me-2"
-											alt="브랜드 로고">
-										<span class="fw-bold small">바더만</span>
-									</div>
+
 									<a href="#" class="btn btn-link text-decoration-none small">더 알아보기 ></a>
 								</div>
 							</div>
@@ -83,19 +88,15 @@
 					<div class="col-12">
 						<div class="card border rounded shadow-sm">
 							<div class="card-header bg-light d-flex justify-content-between align-items-center p-2">
-								<strong class="small">초고속 무선 충전기 출시</strong>
+								<strong class="small">초고속 메모리칩 충전기 출시</strong>
 								<span class="badge bg-secondary">AD</span>
 							</div>
-							<img src="/images/miku1.jpg" class="card-img-top img-fluid rounded"
+							<img src="/Images/Bin.jpg" class="card-img-top img-fluid rounded"
 								style="width:100%; height:120px; object-fit:cover;" alt="광고 이미지">
 							<div class="card-body p-2">
 								<p class="card-text small">15W 고속 충전 지원! 언제 어디서나 간편하게</p>
 								<div class="d-flex justify-content-between align-items-center">
-									<div class="d-flex align-items-center">
-										<img src="https://via.placeholder.com/30" class="rounded-circle me-2"
-											alt="브랜드 로고">
-										<span class="fw-bold small">TechCharger</span>
-									</div>
+
 									<a href="#" class="btn btn-link text-decoration-none small">더 알아보기 ></a>
 								</div>
 							</div>
@@ -108,7 +109,7 @@
 
 
 	<!-- About-->
-	<section class="content-section bg-light" id="about">
+	<!--<section class="content-section bg-light" id="about">
 		<div class="container px-4 px-lg-5 text-center">
 			<div class="row gx-4 gx-lg-5 justify-content-center">
 				<div class="col-lg-10">
@@ -123,6 +124,23 @@
 				</div>
 			</div>
 		</div>
+	</section>-->
+	
+	
+	<!-- Callout-->
+	<section class="callout mb-5 mt-5">
+		<div class="container px-4 px-lg-5 text-center py-5">
+			<h2 class="mx-auto mb-4 text-white" style="font-size: 2.5rem; font-weight: 700;">
+				어서오세요!
+				<em style="color: rgb(0, 255, 255);">PCForge</em>에 오신 걸 환영합니다 🛒
+			</h2>
+			<p class="lead mb-5" style="font-size: 1.25rem; color: #f8f9fa; font-weight: 400;">
+				최신 부품부터 인기 제품까지, <br class="d-none d-md-block"> 다양한 아이템을 한눈에 둘러보세요!
+			</p>
+			<a class="btn btn-custom-navy btn-xl shadow" href="/shop/main" style="font-size: 1.2rem; padding: 1rem 2rem;">
+				🛍️ 쇼핑하러 가기
+			</a>
+		</div>
 	</section>
 	<section class="content-section bg-dark text-white text-center" id="carousel">
 		<div class="container px-4 px-lg-5">
@@ -132,15 +150,15 @@
 					<div class="carousel-item active">
 						<div class="row g-0">
 							<div class="col-4">
-								<img src="your-image-path1.jpg" class="d-block w-100" alt="First Image"
+								<img src="/images/cpu1.png" class="d-block w-100" alt="First Image"
 									style="height: 300px; object-fit: cover;">
 							</div>
 							<div class="col-4">
-								<img src="your-image-path2.jpg" class="d-block w-100" alt="Second Image"
+								<img src="/images/cpu2.png" class="d-block w-100" alt="Second Image"
 									style="height: 300px; object-fit: cover;">
 							</div>
 							<div class="col-4">
-								<img src="your-image-path3.jpg" class="d-block w-100" alt="Third Image"
+								<img src="/images/cpu3.png" class="d-block w-100" alt="Third Image"
 									style="height: 300px; object-fit: cover;">
 							</div>
 						</div>
@@ -149,15 +167,15 @@
 					<div class="carousel-item">
 						<div class="row g-0">
 							<div class="col-4">
-								<img src="/images/miku1.jpg" class="d-block w-100" alt="Fourth Image"
+								<img src="/images/cpu4.png" class="d-block w-100" alt="Fourth Image"
 									style="height: 300px; object-fit: cover;">
 							</div>
 							<div class="col-4">
-								<img src="/images/miku2.jpg" class="d-block w-100" alt="Fifth Image"
+								<img src="/images/cpu5.png" class="d-block w-100" alt="Fifth Image"
 									style="height: 300px; object-fit: cover;">
 							</div>
 							<div class="col-4">
-								<img src="your-image-path6.jpg" class="d-block w-100" alt="Sixth Image"
+								<img src="/images/cpu6.png" class="d-block w-100" alt="Sixth Image"
 									style="height: 300px; object-fit: cover;">
 							</div>
 						</div>
@@ -166,15 +184,15 @@
 					<div class="carousel-item">
 						<div class="row g-0">
 							<div class="col-4">
-								<img src="your-image-path7.jpg" class="d-block w-100" alt="Seventh Image"
+								<img src="/images/cpu7.png" class="d-block w-100" alt="Seventh Image"
 									style="height: 300px; object-fit: cover;">
 							</div>
 							<div class="col-4">
-								<img src="your-image-path8.jpg" class="d-block w-100" alt="Eighth Image"
+								<img src="/Images/cpu8.png" class="d-block w-100" alt="Eighth Image"
 									style="height: 300px; object-fit: cover;">
 							</div>
 							<div class="col-4">
-								<img src="your-image-path9.jpg" class="d-block w-100" alt="Ninth Image"
+								<img src="/Images/cpu9.png" class="d-block w-100" alt="Ninth Image"
 									style="height: 300px; object-fit: cover;">
 							</div>
 						</div>
@@ -193,64 +211,76 @@
 			</div>
 		</div>
 	</section>
-	<!-- Services-->
-	<section class="content-section bg-primary text-white text-center" id="services">
-		<div class="container px-4 px-lg-5">
-			<div class="content-section-heading">
-				<h3 class="text-secondary mb-0">Services</h3>
-				<h2 class="mb-5">What We Offer</h2>
-			</div>
-			<div class="row gx-4 gx-lg-5">
-				<div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-					<span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-screen-smartphone"></i></span>
-					<h4><strong>Responsive</strong></h4>
-					<p class="text-faded mb-0">Looks great on any screen size!</p>
-				</div>
-				<div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-					<span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-pencil"></i></span>
-					<h4><strong>Redesigned</strong></h4>
-					<p class="text-faded mb-0">Freshly redesigned for Bootstrap 5.</p>
-				</div>
-				<div class="col-lg-3 col-md-6 mb-5 mb-md-0">
-					<span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-like"></i></span>
-					<h4><strong>Favorited</strong></h4>
-					<p class="text-faded mb-0">
-						Millions of users
-						<i class="fas fa-heart"></i>
-						Start Bootstrap!
-					</p>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-mustache"></i></span>
-					<h4><strong>Question</strong></h4>
-					<p class="text-faded mb-0">I mustache you a question...</p>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Callout-->
-	<section class="callout">
-		<div class="container px-4 px-lg-5 text-center">
-			<h2 class="mx-auto mb-5">
-				Welcome to
-				<em>your</em>
-				next website!
-			</h2>
-			<a class="btn btn-primary btn-xl" href="https://startbootstrap.com/theme/stylish-portfolio/">Download
-				Now!</a>
-		</div>
-	</section>
-	<!-- Introduction Section with Cards -->
-	<div class="container">
 
+
+	<!-- Introduction Section with Cards -->
+
+
+	<!-- Portfolio-->
+	
+	<!-- Shop Section -->
+	<section class="py-5 text-center text-white" style="background: linear-gradient(135deg, #28283a, #5475af);"
+		id="shop">
+		<div class="container px-4 px-lg-5">
+			<!-- 소개 영역 -->
+			<div class="mb-5">
+				<h1 class="display-4 fw-bold">우리의 인기 상품을 만나보세요</h1>
+				<p class="lead">지금 바로 상점에서 다양한 제품을 확인하세요!</p>
+				<a th:href="@{/shop/main/ALL}" class="btn btn-lg btn-light px-5 py-3 rounded-pill shadow mt-3">
+					상점으로 이동 →
+				</a>
+			</div>
+
+			<!-- 상품 카드 리스트 -->
+			<div class="row row-cols-1 row-cols-md-3 g-4">
+				<div class="col" th:each="product : ${products}">
+					<div class="card h-100 shadow-sm border-0 product-card"
+						style="transition: transform 0.2s, box-shadow 0.2s;">
+						<!-- 상품 이미지 -->
+						<img th:src="@{'/Images/' + ${product.fileName}}" class="card-img-top" alt="Product Image"
+							style="object-fit: cover; height: 250px; border-top-left-radius: .5rem; border-top-right-radius: .5rem;">
+
+						<!-- 카드 본문 -->
+						<div class="card-body text-center">
+							<h5 class="card-title fw-semibold" th:text="${product.name}">상품 이름</h5>
+							<p class="card-text text-primary fw-bold fs-5" th:text="|₩ ${product.price}|">₩ 가격</p>
+						</div>
+
+						<!-- 카드 푸터 -->
+						<div class="card-footer">
+							<a th:href="@{'/shop/goShop/' + ${product.id}}" class="btn btn-primary w-75">
+								자세히 보기
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Call to Action-->
+	<!--<section class="content-section bg-primary text-white">
+		<div class="container px-4 px-lg-5 text-center">
+			<h2 class="mb-4">The buttons below are impossible to resist...</h2>
+			<a class="btn btn-xl btn-light me-4" href="#!">Click Me!</a>
+			<a class="btn btn-xl btn-dark" href="#!">Look at Me!</a>
+		</div>
+	</section>-->
+	<div class="container mt-5 mb-5">
+		<section id="intro" class="text-center py-5 mb-5">
+			<h1 class="mb-3">내 컴퓨터 사양 소개</h1>
+			<p class="lead">최신 고성능 하드웨어를 바탕으로 최고의 퍼포먼스를 경험하세요.<br>
+			아래에서 CPU, 메모리, 저장 장치까지 자세히 살펴볼 수 있습니다.</p>
+		</section>
 		<section id="session1">
 			<h2>세션 1: CPU 정보</h2>
-			<div class="row justify-content-center"> <!-- 여기를 수정했습니다. -->
+			<div class="row justify-content-center">
 				<div class="col-md-6 col-lg-4">
 					<div class="card mb-4 text-center" style="min-height: 300px;">
 						<div class="card-body">
 							<h5 class="card-title">프로세서</h5>
 							<p class="card-text">Intel Core i9-13900K</p>
+							<p>최신 13세대 인텔 CPU로, 높은 성능과 멀티태스킹에 최적화된 고성능 프로세서입니다.</p>
 						</div>
 					</div>
 				</div>
@@ -259,6 +289,16 @@
 						<div class="card-body">
 							<h5 class="card-title">코어 수</h5>
 							<p class="card-text">24 (8P + 16E)</p>
+							<p>성능 코어 8개와 효율 코어 16개로 구성되어, 무거운 작업과 백그라운드 처리를 동시에 수행합니다.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4">
+					<div class="card mb-4 text-center" style="min-height: 300px;">
+						<div class="card-body">
+							<h5 class="card-title">기본 클럭</h5>
+							<p class="card-text">3.0GHz (최대 5.8GHz)</p>
+							<p>터보 부스트 기술로 필요한 순간 최대 5.8GHz까지 자동 상승하여 속도 향상에 기여합니다.</p>
 						</div>
 					</div>
 				</div>
@@ -267,12 +307,22 @@
 
 		<section id="session2">
 			<h2>세션 2: 메모리 정보</h2>
-			<div class="row justify-content-center"> <!-- 여기를 수정했습니다. -->
+			<div class="row justify-content-center">
 				<div class="col-md-6 col-lg-4">
 					<div class="card mb-4 text-center" style="min-height: 300px;">
 						<div class="card-body">
 							<h5 class="card-title">RAM 용량</h5>
 							<p class="card-text">32GB DDR5</p>
+							<p>차세대 DDR5 메모리로 빠른 속도와 안정성을 제공하며, 멀티태스킹에 유리합니다.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4">
+					<div class="card mb-4 text-center" style="min-height: 300px;">
+						<div class="card-body">
+							<h5 class="card-title">메모리 속도</h5>
+							<p class="card-text">5600MHz</p>
+							<p>고속 클럭을 기반으로 데이터 처리 속도가 빨라지고, 최신 프로그램 실행이 쾌적해집니다.</p>
 						</div>
 					</div>
 				</div>
@@ -281,121 +331,134 @@
 
 		<section id="session3">
 			<h2>세션 3: 스토리지 정보</h2>
-			<div class="row justify-content-center"> <!-- 여기를 수정했습니다. -->
+			<div class="row justify-content-center">
 				<div class="col-md-6 col-lg-4">
 					<div class="card mb-4 text-center" style="min-height: 300px;">
 						<div class="card-body">
 							<h5 class="card-title">SSD</h5>
 							<p class="card-text">Samsung 990 Pro 1TB</p>
+							<p>PCIe 4.0 기반의 초고속 SSD로, 부팅 및 데이터 로딩 시간이 획기적으로 단축됩니다.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4">
+					<div class="card mb-4 text-center" style="min-height: 300px;">
+						<div class="card-body">
+							<h5 class="card-title">읽기 속도</h5>
+							<p class="card-text">최대 7450MB/s</p>
+							<p>초당 7.4GB의 데이터를 읽어올 수 있어 대용량 작업에도 탁월한 성능을 발휘합니다.</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-	</div>
 
-	<!-- Portfolio-->
+	</div>
 	<section class="content-section" id="portfolio">
+			<div class="container px-4 px-lg-5">
+				<div class="content-section-heading text-center">
+					<h3 class="text-secondary mb-0">New Technology</h3>
+					<h2 class="mb-5">Our site technology</h2>
+				</div>
+				<div class="row gx-0">
+					<div class="col-lg-6">
+						<a class="portfolio-item" href="#!">
+							<div class="caption">
+								<div class="caption-content">
+									<div class="h2">Network</div>
+									<p class="mb-0">고속 데이터 전송과 안정성을 보장하는 최첨단 네트워크 인프라를 제공합니다.</p>
+								</div>
+							</div>
+							<img class="img-fluid" th:src="@{/assets/img/Internet.jpg}" alt="Network Image" />
+						</a>
+					</div>
+
+					<div class="col-lg-6">
+						<a class="portfolio-item" href="#!">
+							<div class="caption">
+								<div class="caption-content">
+									<div class="h2">Supercomputer</div>
+									<p class="mb-0">최신 슈퍼컴퓨터 기술로 대규모 데이터 처리와 연산을 빠르게 수행합니다.</p>
+								</div>
+							</div>
+							<img class="img-fluid" th:src="@{/assets/img/SuperComputer.jpg}" alt="Supercomputer Image" />
+						</a>
+					</div>
+
+					<div class="col-lg-6">
+						<a class="portfolio-item" href="#!">
+							<div class="caption">
+								<div class="caption-content">
+									<div class="h2">Storage</div>
+									<p class="mb-0">대용량 스토리지 솔루션으로 안전하고 신속한 데이터 저장을 지원합니다.</p>
+								</div>
+							</div>
+							<img class="img-fluid" th:src="@{/assets/img/Super.jpg}" alt="Storage Image" />
+						</a>
+					</div>
+
+					<div class="col-lg-6">
+						<a class="portfolio-item" href="#!">
+							<div class="caption">
+								<div class="caption-content">
+									<div class="h2">Server</div>
+									<p class="mb-0">강력한 서버 성능으로 다양한 비즈니스 환경을 위한 최적의 인프라를 제공합니다.</p>
+								</div>
+							</div>
+							<img class="img-fluid" th:src="@{/assets/img/Soso.jpg}" alt="Server Image" />
+						</a>
+					</div>
+
+				</div>
+			</div>
+		</section>
+	<!-- Services-->
+	<section class="content-section bg-primary text-white text-center" id="services">
 		<div class="container px-4 px-lg-5">
-			<div class="content-section-heading text-center">
-				<h3 class="text-secondary mb-0">Portfolio</h3>
-				<h2 class="mb-5">Recent Projects</h2>
+			<div class="content-section-heading">
+				<h3 class="text-secondary mb-0">관리자 팀</h3>
+				<h2 class="mb-5">우리가 제공하는 서비스</h2>
 			</div>
-			<div class="row gx-0">
-				<div class="col-lg-6">
-					<a class="portfolio-item" href="#!">
-						<div class="caption">
-							<div class="caption-content">
-								<div class="h2">Stationary</div>
-								<p class="mb-0">A yellow pencil with envelopes on a clean, blue backdrop!</p>
-							</div>
-						</div>
-						<img class="img-fluid" th:src="@{/assets/img/portfolio-1.jpg}" alt="..." />
-					</a>
+			<div class="row gx-4 gx-lg-5">
+				<div class="row gx-4 gx-lg-5">
+					<div class="col-lg-3 col-md-6 mb-5 mb-lg-0 text-center">
+						<span class="service-icon rounded-circle mx-auto mb-3"
+							style="background: url('/assets/img/people1.jpg') center/cover no-repeat;"></span>
+						<h4><strong>김현수</strong></h4>
+						<p class="text-faded mb-0">게시판 및 커뮤니티 관리 담당</p>
+					</div>
+					<div class="col-lg-3 col-md-6 mb-5 mb-lg-0 text-center">
+						<span class="service-icon rounded-circle mx-auto mb-3"
+							style="background: url('/assets/img/people2.jpg') center/cover no-repeat;"></span>
+						<h4><strong>이서윤</strong></h4>
+						<p class="text-faded mb-0">제품 등록 및 부품 정보 업데이트 담당</p>
+					</div>
+					<div class="col-lg-3 col-md-6 mb-5 mb-md-0 text-center">
+						<span class="service-icon rounded-circle mx-auto mb-3"
+							style="background: url('/assets/img/people3.jpg') center/cover no-repeat;"></span>
+						<h4><strong>박지훈</strong></h4>
+						<p class="text-faded mb-0">고객 리뷰 및 피드백 관리 담당</p>
+					</div>
+					<div class="col-lg-3 col-md-6 text-center">
+						<span class="service-icon rounded-circle mx-auto mb-3"
+							style="background: url('/assets/img/people4.jpg') center/cover no-repeat;"></span>
+						<h4><strong>최유진</strong></h4>
+						<p class="text-faded mb-0">서버 유지보수 및 보안 관리 담당</p>
+					</div>
 				</div>
-				<div class="col-lg-6">
-					<a class="portfolio-item" href="#!">
-						<div class="caption">
-							<div class="caption-content">
-								<div class="h2">Ice Cream</div>
-								<p class="mb-0">A dark blue background with a colored pencil, a clip, and a tiny
-									ice
-									cream cone!</p>
-							</div>
-						</div>
-						<img class="img-fluid" th:src="@{/assets/img/portfolio-2.jpg}" alt="..." />
-					</a>
-				</div>
-				<div class="col-lg-6">
-					<a class="portfolio-item" href="#!">
-						<div class="caption">
-							<div class="caption-content">
-								<div class="h2">Strawberries</div>
-								<p class="mb-0">Strawberries are such a tasty snack, especially with a little
-									sugar on
-									top!</p>
-							</div>
-						</div>
-						<img class="img-fluid" th:src="@{/assets/img/portfolio-3.jpg}" alt="..." />
-					</a>
-				</div>
-				<div class="col-lg-6">
-					<a class="portfolio-item" href="#!">
-						<div class="caption">
-							<div class="caption-content">
-								<div class="h2">Workspace</div>
-								<p class="mb-0">A yellow workspace with some scissors, pencils, and other
-									objects.</p>
-							</div>
-						</div>
-						<img class="img-fluid" th:src="@{/assets/img/portfolio-4.jpg}" alt="..." />
-					</a>
-				</div>
+
 			</div>
 		</div>
 	</section>
-	<!-- Shop Section -->
-	<section class="content-section" id="shop">
-	    <div class="container px-4 px-lg-5">
-	        <div class="content-section-heading text-center">
-	            <h3 class="text-secondary mb-0">Shop</h3>
-	            <h2 class="mb-5">Popular Products</h2>
-	        </div>
-	        <div class="row row-cols-1 row-cols-md-3 g-4">
-	            <!-- Thymeleaf 반복문으로 상품 리스트 출력 -->
-	            <div class="col" th:each="product : ${products}">
-	                <div class="card h-100">
-	                    <!-- 상품 이미지 -->
-	                    <!--<img th:src="@{${product.fileName}}" class="card-img-top" alt="Product Image">-->
-	                    <div class="card-body text-center">
-	                        <!-- 상품 이름 -->
-	                        <h5 class="card-title" th:text="${product.name}">상품 이름</h5>
-	                        <!-- 상품 가격 -->
-	                        <p class="card-text text-primary fw-bold" th:text="|₩ ${product.price}|">₩ 가격</p>
-	                        <!-- 상세보기 버튼 -->
-	                        <a th:href="@{/shop/details(id=${product.id})}" class="btn btn-outline-primary">View Details</a>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	</section>
-	<!-- Call to Action-->
-	<section class="content-section bg-primary text-white">
-		<div class="container px-4 px-lg-5 text-center">
-			<h2 class="mb-4">The buttons below are impossible to resist...</h2>
-			<a class="btn btn-xl btn-light me-4" href="#!">Click Me!</a>
-			<a class="btn btn-xl btn-dark" href="#!">Look at Me!</a>
-		</div>
-	</section>
+
 	<!-- Map-->
-	<div class="map" id="contact">
+	<!--<div class="map" id="contact">
 		<iframe
 			src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
 		<br />
 		<small><a
 				href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a></small>
-	</div>
+	</div>-->
 
 	<!-- Scroll to Top Button-->
 	<a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
@@ -403,7 +466,7 @@
 	<footer th:replace="~{footer :: footerFragment}"></footer>
 	<th:block layout:fragment="script">
 		<!-- 필요 없을 듯 -->
-	<script th:src="@{/js/index.js}"></script>
+		<script th:src="@{/js/index.js}"></script>
 	</th:block>
 </div>
 

@@ -18,18 +18,48 @@
 
 	            <!-- 구매 버튼 -->
 	            <div class="d-grid gap-2">
-	                <button class="btn btn-primary btn-lg">구매하기</button>
+					<button class="btn btn-primary btn-lg" id="payment"
+					        th:attr="data-useremail=${user.email},
+					                 data-username=${user.userName},
+					                 data-productname=${product.name},
+					                 data-price=${product.price}">
+					    구매하기
+					</button>
 	                <button class="btn btn-outline-secondary">장바구니 담기</button>
 	            </div>
 	        </div>
 	    </div>
 
 	    <!-- 하단: 추가 정보 -->
-	    <div class="mt-5 pt-4 border-top">
-	        <h5 class="fw-bold mb-3">제품 상세 설명</h5>
-	        <p class="text-muted">
-	            이 곳에는 제품에 대한 추가 설명을 작성할 수 있습니다. 스펙, 사용 예시, 호환성 정보 등을 여기에 표시해 주세요.
-	        </p>
-	    </div>
+		<div class="mt-5 pt-4 border-top">
+		    <h5 class="fw-bold mb-4">추가 이미지</h5>
+
+		    <div th:if="${product.files != null and !product.files.isEmpty()}">
+		        <div class="d-flex flex-column gap-4">
+		            <div th:each="fileName : ${product.files}">
+		                <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+		                    <img th:src="@{'/Images/' + ${fileName}}"
+		                         class="img-fluid w-100"
+		                         style="object-fit: cover; max-height: 600px;"
+		                         alt="추가 이미지">
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+
+		    <div th:if="${product.files == null or product.files.isEmpty()}">
+		        <p class="text-muted">추가 이미지가 없습니다.</p>
+		    </div>
+		</div>
 	</div>
+	<!-- 포트원 결제 스크립트 삽입 -->
+	<th:block layout:fragment="script">
+	    <!-- 포트원 필수 스크립트 -->
+	    <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+	    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	    <script src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+
+	    <!-- 결제 처리용 로컬 JS -->
+	    <script th:src="@{/js/payment.js}"></script>
+	</th:block>
 </html>

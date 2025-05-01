@@ -38,6 +38,14 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class PCpartService {
     private final PCpartRepository pcPartRepository;
+    private final ComCaseRepository comcaseRepository;
+    private final CPURepository cpuRepository;
+    private final DiskRepository diskRepository;
+    private final GPURepository gpuRepository;
+    private final MBoardRepository mBoardRepository;
+    private final PSURepository psuRepository;
+    private final RAMRepository ramRepository;
+    private final BaseProductRepository baseRepository;
    
     public <T> List<T> getSearchList(int page, String kw, String searchType, int num){
     	List<T> newList = new ArrayList<T>();
@@ -91,7 +99,7 @@ public class PCpartService {
      return newList;
     }
     @SuppressWarnings("unchecked")
-    public <T> Page<T> getList(int page, String kw, String searchType, int num) {
+    private <T> Page<T> getList(int page, String kw, String searchType, int num) {
     	  
         List<Sort.Order> sorts = new ArrayList<>();
         sorts.add(Sort.Order.desc("id"));  // 기본 정렬 기준을 설정해줌
@@ -201,6 +209,105 @@ public class PCpartService {
             query.distinct(true);
             Join<RAM, PCParts> pcParts = ram.join("ram", JoinType.INNER);
             return cb.like(pcParts.get("name"), "%" + kw + "%");
+        };
+    }
+
+    
+    @SuppressWarnings("unchecked")
+    public <T> Page<T> get_List(int page, String kw, String searchType, int num) {
+        List<Sort.Order> sorts = new ArrayList<>();
+        sorts.add(Sort.Order.desc("id"));
+
+        Pageable pageable = PageRequest.of(page, num, Sort.by(sorts));
+
+        switch (searchType) {
+            case "COMCASE":
+                Specification<ComCase> comCaseSpec = createComCaseSpecification(kw);
+                return (Page<T>) comcaseRepository.findAll(comCaseSpec, pageable);
+
+            case "CPU":
+                Specification<CPU> cpuSpec = createCPUSpecification(kw);
+                return (Page<T>) cpuRepository.findAll(cpuSpec, pageable);
+
+            case "DISK":
+                Specification<Disk> diskSpec = createDiskSpecification(kw);
+                return (Page<T>) diskRepository.findAll(diskSpec, pageable);
+
+            case "GPU":
+                Specification<GPU> gpuSpec = createGPUSpecification(kw);
+                return (Page<T>) gpuRepository.findAll(gpuSpec, pageable);
+
+            case "MBOARD":
+                Specification<MBoard> mBoardSpec = createMBoardSpecification(kw);
+                return (Page<T>) mBoardRepository.findAll(mBoardSpec, pageable);
+
+            case "PSU":
+                Specification<PSU> psuSpec = createPSUSpecification(kw);
+                return (Page<T>) psuRepository.findAll(psuSpec, pageable);
+
+            case "RAM":
+                Specification<RAM> ramSpec = createRAMSpecification(kw);
+                return (Page<T>) ramRepository.findAll(ramSpec, pageable);
+
+            default:
+                Specification<BaseProduct> baseSpec = createBaseProductSpecification(kw);
+                return (Page<T>) baseRepository.findAll(baseSpec, pageable);
+        }
+    }
+    
+    private Specification<ComCase> createComCaseSpecification(String kw) {
+        return (Root<ComCase> root, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
+            query.distinct(true);
+            return cb.like(root.get("name"), "%" + kw + "%");
+        };
+    }
+
+    private Specification<CPU> createCPUSpecification(String kw) {
+        return (Root<CPU> root, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
+            query.distinct(true);
+            return cb.like(root.get("name"), "%" + kw + "%");
+        };
+    }
+
+    private Specification<Disk> createDiskSpecification(String kw) {
+        return (Root<Disk> root, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
+            query.distinct(true);
+            return cb.like(root.get("name"), "%" + kw + "%");
+        };
+    }
+
+    private Specification<GPU> createGPUSpecification(String kw) {
+        return (Root<GPU> root, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
+            query.distinct(true);
+            return cb.like(root.get("name"), "%" + kw + "%");
+        };
+    }
+
+    private Specification<MBoard> createMBoardSpecification(String kw) {
+        return (Root<MBoard> root, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
+            query.distinct(true);
+            return cb.like(root.get("name"), "%" + kw + "%");
+        };
+    }
+
+    private Specification<PSU> createPSUSpecification(String kw) {
+        return (Root<PSU> root, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
+            query.distinct(true);
+            return cb.like(root.get("name"), "%" + kw + "%");
+        };
+    }
+
+    private Specification<RAM> createRAMSpecification(String kw) {
+        return (Root<RAM> root, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
+            query.distinct(true);
+            return cb.like(root.get("name"), "%" + kw + "%");
+        };
+    }
+
+    private Specification<BaseProduct> createBaseProductSpecification(String kw) {
+        return (Root<BaseProduct> root, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
+            query.distinct(true);
+            return cb.like(root.get("name"), "%" + kw + "%");
         };
     }
 

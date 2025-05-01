@@ -5,7 +5,7 @@
     "type": "DDR4",
     "speed": 25600,
     "memoryChannel": 2,
-    "fileName": "Bin.jpg",
+    "fileName": "ram1.png",
     "price": 29000,
     "makeCompany": 1
   },
@@ -15,7 +15,7 @@
     "type": "DDR4",
     "speed": 3200,
     "memoryChannel": 2,
-    "fileName": "Bin.jpg",
+    "fileName": "ram2.png",
     "price": 54000,
     "makeCompany": 2
   },
@@ -25,7 +25,7 @@
     "type": "DDR4",
     "speed": 3200,
     "memoryChannel": 2,
-    "fileName": "Bin.jpg",
+    "fileName": "ram3.png",
     "price": 27000,
     "makeCompany": 3
   },
@@ -35,7 +35,7 @@
     "type": "DDR4",
     "speed": 3200,
     "memoryChannel": 2,
-    "fileName": "Bin.jpg",
+    "fileName": "ram4.png",
     "price": 63000,
     "makeCompany": 4
   },
@@ -45,7 +45,7 @@
     "type": "DDR4",
     "speed": 3600,
     "memoryChannel": 2,
-    "fileName": "Bin.jpg",
+    "fileName": "ram5.png",
     "price": 35000,
     "makeCompany": 5
   },
@@ -55,7 +55,7 @@
     "type": "DDR4",
     "speed": 3200,
     "memoryChannel": 2,
-    "fileName": "Bin.jpg",
+    "fileName": "ram6.png",
     "price": 115000,
     "makeCompany": 4
   },
@@ -65,7 +65,7 @@
     "type": "DDR4",
     "speed": 25600,
     "memoryChannel": 2,
-    "fileName": "Bin.jpg",
+    "fileName": "ram7.png",
     "price": 54000,
     "makeCompany": 1
   },
@@ -75,7 +75,7 @@
     "type": "DDR4",
     "speed": 3200,
     "memoryChannel": 2,
-    "fileName": "Bin.jpg",
+    "fileName": "ram8.png",
     "price": 65000,
     "makeCompany": 3
   },
@@ -85,7 +85,7 @@
     "type": "DDR4",
     "speed": 3600,
     "memoryChannel": 2,
-    "fileName": "Bin.jpg",
+    "fileName": "ram2.png",
     "price": 78000,
     "makeCompany": 2
   },
@@ -95,7 +95,7 @@
     "type": "DDR4",
     "speed": 3600,
     "memoryChannel": 2,
-    "fileName": "Bin.jpg",
+    "fileName": "ram1.png",
     "price": 175000,
     "makeCompany": 5
   }

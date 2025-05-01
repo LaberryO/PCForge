@@ -1,6 +1,7 @@
 package org.kamjeon.pcforge.PCpart;
 
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -14,8 +15,11 @@ import org.kamjeon.pcforge.PCpart.GPU.GPU;
 import org.kamjeon.pcforge.PCpart.MBoard.MBoard;
 import org.kamjeon.pcforge.PCpart.PSU.PSU;
 import org.kamjeon.pcforge.PCpart.RAM.RAM;
+import org.kamjeon.pcforge.User.SiteUser;
+import org.kamjeon.pcforge.User.UserRepository;
 import org.springframework.data.domain.Page;
-import org.springframework.data.jpa.domain.Specification;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,9 +36,12 @@ public class PCpartController {
 	private final PCpartService pcPartService;
 	private final BaseProductRepository baseRep;
 	private final CompanyRepository comRep;
+	private final UserRepository userRepository;
 
-	@GetMapping("/main")
-    public String main(Model model) {
+	@GetMapping("/main/{search}")
+    public String main(Model model,  @PathVariable("search") String type,
+    		@RequestParam(value = "kw", defaultValue = "") String kw,
+			@RequestParam(value = "page", defaultValue = "0") int page) {
 		List<BaseProduct> base = this.pcPartService.getSearchList(0, "", "ALL", 30);
 		List<CPU> cpu = this.pcPartService.getSearchList(0, "", "CPU", 10);
 		List<ComCase> comcase = this.pcPartService.getSearchList(0, "", "COMCASE", 10);
@@ -61,12 +68,50 @@ public class PCpartController {
 		
 		model.addAttribute("miniCarouselImages", base);
 		model.addAttribute("topCarouselImages", groupedImages);
+		model.addAttribute("kw", kw);
+		
+		switch(type) {
+		   case "COMCASE":
+			  Page<ComCase> comList = this.pcPartService.get_List(page, kw, type, 10);
+		      model.addAttribute("productList", comList);
+		      break;
+		   case "CPU":
+			   Page<CPU> cpuList = this.pcPartService.get_List(page, kw, type, 10);
+		      model.addAttribute("productList", cpuList);
+		      break;
+		   case "DISK":
+			   Page<Disk> diskList = this.pcPartService.get_List(page, kw, type, 10);
+		      model.addAttribute("productList", diskList);
+		      break;
+		   case "GPU":
+			   Page<GPU> gpuList = this.pcPartService.get_List(page, kw, type, 10);
+		      model.addAttribute("productList", gpuList);
+		      break;
+		   case "MBOARD":
+			   Page<MBoard> mBoardList = this.pcPartService.get_List(page, kw, type, 10);
+		      model.addAttribute("productList", mBoardList);
+		      break;
+		   case "PSU":
+			   Page<PSU> psuList = this.pcPartService.get_List(page, kw, type, 10);
+		      model.addAttribute("productList", psuList);
+		      break;
+		   case "RAM":
+			   Page<RAM> ramList = this.pcPartService.get_List(page, kw, type, 10);
+		      model.addAttribute("productList", ramList);
+		      break;
+		   default:
+			   Page<BaseProduct> baseList = this.pcPartService.get_List(page, kw, type, 10);
+		      model.addAttribute("productList", baseList);
+		      System.out.println(base.size());
+		      break;
+		}
 
 		return "shop"; // 이동 
 	}
 	
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/goShop/{id}")
-	public String goShop(Model model,@PathVariable("id") int id) {
+	public String goShop(Model model,@PathVariable("id") int id, Principal principal) {
 		Optional<BaseProduct> base = this.baseRep.findById(id);
 		if(!base.isPresent())
 			return null;
@@ -81,47 +126,24 @@ public class PCpartController {
 		model.addAttribute("product", product);
 		model.addAttribute("companyName", company.getName());
 		
+		 if (principal != null) {
+			 String username = SecurityContextHolder.getContext().getAuthentication().getName();
+			 SiteUser user = userRepository.findByUserName(username).orElseThrow();
+		        model.addAttribute("user", user);
+		    }
 		return "shop_fragment";
 	}
 	
-	@GetMapping("/filter/{search}")
+	@GetMapping("/filter")
 	public String filter(Model model, @PathVariable("search") String type) {
-		switch(type) {
-		   case "COMCASE":
-		      List<ComCase> comList = this.pcPartService.getSearchList(0, "", type, 10);
-		      model.addAttribute("productList", comList);
-		      break;
-		   case "CPU":
-		      List<CPU> cpu = this.pcPartService.getSearchList(0, "", type, 10);
-		      model.addAttribute("productList", cpu);
-		      break;
-		   case "DISK":
-		      List<Disk> disk = this.pcPartService.getSearchList(0, "", type, 10);
-		      model.addAttribute("productList", disk);
-		      break;
-		   case "GPU":
-		      List<GPU> gpu = this.pcPartService.getSearchList(0, "", type, 10);
-		      model.addAttribute("productList", gpu);
-		      break;
-		   case "MBOARD":
-		      List<MBoard> mboard = this.pcPartService.getSearchList(0, "", type, 10);
-		      model.addAttribute("productList", mboard);
-		      break;
-		   case "PSU":
-		      List<PSU> psu = this.pcPartService.getSearchList(0, "", type, 10);
-		      model.addAttribute("productList", psu);
-		      break;
-		   case "RAM":
-		      List<RAM> ram = this.pcPartService.getSearchList(0, "", type, 10);
-		      model.addAttribute("productList", ram);
-		      break;
-		   default:
-		      List<BaseProduct> base = this.pcPartService.getSearchList(0, "", type, 10);
-		      model.addAttribute("productList", base);
-		      System.out.println(base.size());
-		      break;
-		}
+		System.out.println("하는게 하는게 아니야");
 		
-		return "redirect:/shop/main#productList";
+		
+		return "shop";
 	}
+	@GetMapping("completed")
+	public String getMethodName() {
+		return "buyCompleted";
+	}
+	
 }
