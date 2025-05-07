@@ -49,6 +49,14 @@
 								<a class="nav-link" th:href="@{/share/list}">견적 공유 게시판</a>
 							</nav>
 						</div>
+						<div class="sb-sidenav-menu-heading">Board</div>
+						<a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/share/list}">
+							<div class="sb-nav-link-icon">
+								<i class="fas fa-list"></i> <!-- 목록 아이콘 -->
+							</div>
+							게시판으로 이동
+						</a>
+						<div class="sb-sidenav-menu-heading">Shop</div>
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
 							aria-expanded="false" aria-controls="collapsePages">
 							<div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
