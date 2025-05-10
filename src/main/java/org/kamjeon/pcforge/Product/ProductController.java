@@ -12,13 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.UUID;
-
-import org.kamjeon.pcforge.Boards.StarterBoard;
-import org.kamjeon.pcforge.Boards.StarterType;
 import org.kamjeon.pcforge.PCpart.BaseProduct;
 import org.kamjeon.pcforge.PCpart.BaseProductRepository;
-import org.kamjeon.pcforge.PCpart.SearchType;
 import org.kamjeon.pcforge.PCpart.CPU.CPU;
 import org.kamjeon.pcforge.PCpart.CPU.CPURepository;
 import org.kamjeon.pcforge.PCpart.ComCase.ComCase;
@@ -34,7 +29,6 @@ import org.kamjeon.pcforge.PCpart.PSU.PSU;
 import org.kamjeon.pcforge.PCpart.PSU.PSURepository;
 import org.kamjeon.pcforge.PCpart.RAM.RAM;
 import org.kamjeon.pcforge.PCpart.RAM.RAMRepository;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,10 +38,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.server.ResponseStatusException;
-
-import com.fasterxml.jackson.databind.deser.Deserializers.Base;
-
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 

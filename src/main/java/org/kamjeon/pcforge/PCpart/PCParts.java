@@ -4,7 +4,6 @@ package org.kamjeon.pcforge.PCpart;
 
 import org.kamjeon.pcforge.PCpart.CPU.CPU;
 import org.kamjeon.pcforge.PCpart.ComCase.ComCase;
-import org.kamjeon.pcforge.PCpart.Company.Company;
 import org.kamjeon.pcforge.PCpart.Disk.Disk;
 import org.kamjeon.pcforge.PCpart.GPU.GPU;
 import org.kamjeon.pcforge.PCpart.MBoard.MBoard;

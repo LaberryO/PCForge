@@ -2,7 +2,6 @@ package org.kamjeon.pcforge.PCpart;
 
 
 
-import org.kamjeon.pcforge.PCpart.CPU.CPU;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;

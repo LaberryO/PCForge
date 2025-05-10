@@ -7,7 +7,6 @@ import org.kamjeon.pcforge.PCpart.CPU.CPU;
 import org.kamjeon.pcforge.PCpart.CPU.CPURepository;
 import org.kamjeon.pcforge.PCpart.ComCase.ComCase;
 import org.kamjeon.pcforge.PCpart.ComCase.ComCaseRepository;
-import org.kamjeon.pcforge.PCpart.Company.Company;
 import org.kamjeon.pcforge.PCpart.Disk.Disk;
 import org.kamjeon.pcforge.PCpart.Disk.DiskRepository;
 import org.kamjeon.pcforge.PCpart.GPU.GPU;
@@ -30,7 +29,6 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.JoinType;
-import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import lombok.RequiredArgsConstructor;
 
@@ -47,7 +45,8 @@ public class PCpartService {
     private final RAMRepository ramRepository;
     private final BaseProductRepository baseRepository;
    
-    public <T> List<T> getSearchList(int page, String kw, String searchType, int num){
+    @SuppressWarnings("unchecked")
+	public <T> List<T> getSearchList(int page, String kw, String searchType, int num){
     	List<T> newList = new ArrayList<T>();
     	
    	 Page<PCParts> paging = getList(page, kw, searchType , num);

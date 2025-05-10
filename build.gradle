@@ -1,6 +1,6 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.4.2'
+	id 'org.springframework.boot' version '3.4.5'
 	id 'io.spring.dependency-management' version '1.1.7'
 }
 
@@ -28,8 +28,8 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-devtools'
-	compileOnly group: 'org.projectlombok', name: 'lombok'
-	//implementation group: 'org.thymeleaf', name: 'thymeleaf'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 	compileOnly 'com.h2database:h2'
@@ -44,9 +44,8 @@ dependencies {
 	implementation 'org.springframework.security:spring-security-taglibs'
 	
 	//김좌겸이 새로 추가 한것들
-	 implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     runtimeOnly("com.h2database:h2") // H2 Database (테스트용)
-    runtimeOnly("mysql:mysql-connector-java") // MySQL (선택 사항)
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.0'
 }
 
@@ -57,8 +56,3 @@ tasks.named('test') {
 tasks.withType(JavaCompile) {
     options.compilerArgs << "-parameters"
 }
-
-/*tasks.withType(JavaCompile) {
-    options.compilerArgs.add('-parameters')
-}*/
-

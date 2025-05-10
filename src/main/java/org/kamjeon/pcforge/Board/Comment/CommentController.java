@@ -45,7 +45,7 @@ public class CommentController {
 		}
 	
 		SiteUser user =  this.userService.getUser(principal.getName());
-		Comment com = this.commentService.create(user, share, comment.getContent());
+		this.commentService.create(user, share, comment.getContent());
 		
 		return ""; //전부 작성하고 이동할 페이지 #Kim
 	}

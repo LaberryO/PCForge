@@ -2,8 +2,6 @@ package org.kamjeon.pcforge.JSON;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
-
 import org.kamjeon.pcforge.PCpart.PCParts;
 import org.kamjeon.pcforge.PCpart.PCpartRepository;
 import org.kamjeon.pcforge.PCpart.CPU.CPU;
@@ -88,7 +86,7 @@ public class DataLoader {
 
 	                	    disk.setPcPart(pcParts); 
 
-	                    Optional<Company> com = this.companyRp.findById(disk.getMakeCompany());
+	                    this.companyRp.findById(disk.getMakeCompany());
 	                    
 	                }
 	                diskRp.saveAll(diskData);
@@ -102,7 +100,7 @@ public class DataLoader {
 
 	                	    cpu.setPcPart(pcParts); 
 
-	                    Optional<Company> com = this.companyRp.findById(cpu.getMakeCompany());
+	                    this.companyRp.findById(cpu.getMakeCompany());
 	                   
 	                }
 	                cpuRp.saveAll(cpuData);
@@ -115,7 +113,7 @@ public class DataLoader {
 	                	    pcParts = pcRp.save(pcParts);
 
 	                	    gpu.setPcPart(pcParts); 
-	                    Optional<Company> com = this.companyRp.findById(gpu.getMakeCompany());
+	                    this.companyRp.findById(gpu.getMakeCompany());
 	                   
 	                }
 	                gpuRp.saveAll(gpuData);
@@ -128,7 +126,7 @@ public class DataLoader {
 	                	    pcParts = pcRp.save(pcParts);
 
 	                	    mBoard.setPcPart(pcParts); 
-	                    Optional<Company> com = this.companyRp.findById(mBoard.getMakeCompany());
+	                    this.companyRp.findById(mBoard.getMakeCompany());
 	           
 	                }
 	                mBoardRp.saveAll(mBoardData);
@@ -141,7 +139,7 @@ public class DataLoader {
 	                	    pcParts = pcRp.save(pcParts);
 
 	                	    psu.setPcPart(pcParts); 
-	                    Optional<Company> com = this.companyRp.findById(psu.getMakeCompany());
+	                    this.companyRp.findById(psu.getMakeCompany());
 	              
 	                }
 	                psuRp.saveAll(psuData);
@@ -154,7 +152,7 @@ public class DataLoader {
 	                	    pcParts = pcRp.save(pcParts);
 
 	                	    ram.setPcPart(pcParts); 
-	                    Optional<Company> com = this.companyRp.findById(ram.getMakeCompany());
+	                    this.companyRp.findById(ram.getMakeCompany());
 	             
 	                }
 	                ramRp.saveAll(ramData);
@@ -167,7 +165,7 @@ public class DataLoader {
 	                	    pcParts = pcRp.save(pcParts);
 
 	                	    comCase.setPcPart(pcParts); 
-	                    Optional<Company> com = this.companyRp.findById(comCase.getMakeCompany());
+	                    this.companyRp.findById(comCase.getMakeCompany());
 	           
 	                }
 	                comRp.saveAll(comData);
