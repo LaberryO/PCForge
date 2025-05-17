@@ -48,7 +48,7 @@
 									<div class="card border">
 										<div class="card-body p-2">
 											<a th:href="@{|/starter/news/${news.id}|}" class="text-decoration-none text-dark">
-												<img th:src="@{'/uploads/' + ${news.image}}" 
+												<img th:src="${news.image.startsWith('/upload/') ? news.image : '/Images/' + news.image}" 
 													 class="card-img-top img-fluid"
 													 style="width:100%; height:150px; object-fit:contain; background-color:black;" 
 													 alt="뉴스 이미지">
@@ -150,15 +150,15 @@
 					<div class="carousel-item active">
 						<div class="row g-0">
 							<div class="col-4">
-								<img src="/images/cpu1.png" class="d-block w-100" alt="First Image"
+								<img src="/Images/cpu1.png" class="d-block w-100" alt="First Image"
 									style="height: 300px; object-fit: cover;">
 							</div>
 							<div class="col-4">
-								<img src="/images/cpu2.png" class="d-block w-100" alt="Second Image"
+								<img src="/Images/cpu2.png" class="d-block w-100" alt="Second Image"
 									style="height: 300px; object-fit: cover;">
 							</div>
 							<div class="col-4">
-								<img src="/images/cpu3.png" class="d-block w-100" alt="Third Image"
+								<img src="/Images/cpu3.png" class="d-block w-100" alt="Third Image"
 									style="height: 300px; object-fit: cover;">
 							</div>
 						</div>
@@ -167,15 +167,15 @@
 					<div class="carousel-item">
 						<div class="row g-0">
 							<div class="col-4">
-								<img src="/images/cpu4.png" class="d-block w-100" alt="Fourth Image"
+								<img src="/Images/cpu4.png" class="d-block w-100" alt="Fourth Image"
 									style="height: 300px; object-fit: cover;">
 							</div>
 							<div class="col-4">
-								<img src="/images/cpu5.png" class="d-block w-100" alt="Fifth Image"
+								<img src="/Images/cpu5.png" class="d-block w-100" alt="Fifth Image"
 									style="height: 300px; object-fit: cover;">
 							</div>
 							<div class="col-4">
-								<img src="/images/cpu6.png" class="d-block w-100" alt="Sixth Image"
+								<img src="/Images/cpu6.png" class="d-block w-100" alt="Sixth Image"
 									style="height: 300px; object-fit: cover;">
 							</div>
 						</div>
@@ -184,7 +184,7 @@
 					<div class="carousel-item">
 						<div class="row g-0">
 							<div class="col-4">
-								<img src="/images/cpu7.png" class="d-block w-100" alt="Seventh Image"
+								<img src="/Images/cpu7.png" class="d-block w-100" alt="Seventh Image"
 									style="height: 300px; object-fit: cover;">
 							</div>
 							<div class="col-4">
@@ -237,7 +237,7 @@
 					<div class="card h-100 shadow-sm border-0 product-card"
 						style="transition: transform 0.2s, box-shadow 0.2s;">
 						<!-- 상품 이미지 -->
-						<img th:src="@{'/Images/' + ${product.fileName}}" class="card-img-top" alt="Product Image"
+						<img th:src="${product.fileName.startsWith('/upload/') ? product.fileName : '/Images/' + product.fileName}" class="card-img-top" alt="Product Image"
 							style="object-fit: cover; height: 250px; border-top-left-radius: .5rem; border-top-right-radius: .5rem;">
 
 						<!-- 카드 본문 -->

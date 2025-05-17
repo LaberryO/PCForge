@@ -69,7 +69,7 @@
 								<div class="col-12 col-sm-6 col-lg-6">
 									<a th:href="@{|/starter/news/${news.id}|}" class="text-decoration-none text-white">
 										<div class="card bg-dark h-100">
-											<img th:src="@{'/uploads/' + ${news.image}}" class="card-img-top"
+											<img th:src="${news.image.startsWith('/upload/') ? news.image : '/Images/' + news.image}" class="card-img-top"
 												style="height: 300px; object-fit: cover;">
 											<div class="card-body">
 												<h5 class="card-title" th:text="${news.title}">뉴스 제목</h5>
@@ -162,7 +162,7 @@
 								<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
 							</div>
 							<!-- 이미지 부분 -->
-							<img class="img-fluid" th:src="@{'/uploads/' + ${news.image}}" alt="..." />
+							<img class="img-fluid" th:src="${news.image.startsWith('/upload/') ? news.image : '/Images/' + news.image}" alt="..." />
 						</a>
 						<div class="portfolio-caption">
 							<div class="portfolio-caption-heading" th:text="${news.title}"></div>

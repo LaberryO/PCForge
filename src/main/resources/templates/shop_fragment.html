@@ -3,7 +3,7 @@
 	    <div class="row g-5 mt-5">
 	        <!-- 왼쪽: 이미지 영역 -->
 	        <div class="col-md-6">
-	            <img th:src="@{'/Images/' + ${product.fileName}}" class="img-fluid rounded border" alt="상품 이미지">
+	            <img th:src="${product.fileName.startsWith('/upload/') ? product.fileName : '/Images/' + product.fileName}" class="img-fluid rounded border" alt="상품 이미지">
 	        </div>
 
 	        <!-- 오른쪽: 상세 정보 -->
@@ -38,7 +38,7 @@
 		        <div class="d-flex flex-column gap-4">
 		            <div th:each="fileName : ${product.files}">
 		                <div class="card border-0 shadow-sm rounded-4">
-		                    <img th:src="@{'/Images/' + ${fileName}}"
+		                    <img th:src="${fileName.startsWith('/upload/') ? fileName : '/Images/' + fileName}@{'/Images/' + ${fileName}"
 		                         class="img-fluid w-100"
 		                         style="object-fit: cover;"
 		                         alt="추가 이미지">

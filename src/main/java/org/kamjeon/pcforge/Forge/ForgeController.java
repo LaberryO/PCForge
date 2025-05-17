@@ -1,12 +1,17 @@
 package org.kamjeon.pcforge.Forge;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 import org.kamjeon.pcforge.PCpart.PCpartUtils;
+import org.kamjeon.pcforge.User.SiteUser;
+import org.kamjeon.pcforge.User.UserRepository;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +27,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/forge")
 public class ForgeController {
 	private final ForgeService forgeService;
+	private final UserRepository userRepository;
 	// 필요하면 활성화 하기로
 	// private final PCpartService pCpartService;
 	
@@ -140,10 +146,17 @@ public class ForgeController {
 		return "redirect:/forge/create/" + statusTemp;
 	}
 	
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("buy")
-	public String buy(HttpSession session, Model model) {
+	public String buy(HttpSession session, Model model, Principal principal) {
 		Forge forge = this.forgeService.getForgeForSession(session);
 		model.addAttribute("forgeList", forge);
+		
+		 if (principal != null) {
+			 String username = SecurityContextHolder.getContext().getAuthentication().getName();
+			 SiteUser user = userRepository.findByUserName(username).orElseThrow();
+		        model.addAttribute("user", user);
+		    }
 		return "forge_buy";
 	}
 	

@@ -100,7 +100,11 @@
 				<td class="d-flex justify-content-end">
 					<form action="">
 						<input type="hidden" name="forgeId" th:value="${forgeList.getId()}" />
-						<button type="submit" class="btn btn-outline-success">결제</button>
+						<button class="btn btn-outline-success" id="payment"
+											        th:attr="data-useremail=${user.email},
+											                 data-username=${user.userName},
+											                 data-productname=${product.name},
+											                 data-price=${forgeList.totalPrice}">>결제</button>
 					</form>
 				</td>
 				<td>
