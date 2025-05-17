@@ -14,7 +14,7 @@
 							<th:block th:each="image : ${group}">
 								<div class="col-md-4 mb-3">
 									<div class="card h-100 shadow-sm">
-										<img th:src="@{'/Images/' + ${image.fileName}}" class="card-img-top"
+										<img th:src="${image.fileName.startsWith('/upload/') ? image.fileName : '/Images/' + image.fileName}"
 											style="height: 200px; object-fit: cover;" alt="상품 이미지">
 										<div class="card-body">
 											<h5 class="card-title" th:text="${image.name}">제품 이름</h5>
@@ -73,7 +73,7 @@
 			<th:block th:each="product : ${productList}">
 				<div class="col">
 					<div class="card h-100 shadow-sm">
-						<img th:src="@{'/Images/' + ${product.fileName}}" class="card-img-top"
+						<img th:src="${product.fileName.startsWith('/upload/') ? product.fileName : '/Images/' + product.fileName}" class="card-img-top"
 							style="height: 200px; object-fit: cover;" alt="상품 이미지" />
 						<div class="card-body">
 							<h5 class="card-title" th:text="${product.name}">제품 이름</h5>
