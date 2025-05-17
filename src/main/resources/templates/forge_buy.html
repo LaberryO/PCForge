@@ -98,10 +98,14 @@
 				<td></td>
 				<td></td>
 				<td class="d-flex justify-content-end">
-					<form action="">
+					
 						<input type="hidden" name="forgeId" th:value="${forgeList.getId()}" />
-						<button type="submit" class="btn btn-outline-success">결제</button>
-					</form>
+						<button class="btn btn-outline-success" id="payment"
+											        th:attr="data-useremail=${user.email},
+											                 data-username=${user.userName},
+											                 data-productname=${forgeList.totalName},
+											                 data-price=${forgeList.totalPrice}">>결제</button>
+					
 				</td>
 				<td>
 					<form th:action="@{/share/create}" method="get">
@@ -115,6 +119,11 @@
 	<!-- Footer -->
 	<footer th:replace="~{footer :: footerFragment}"></footer>
 	<th:block layout:fragment="script">
+		<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+		<script src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+
+		<script th:src="@{/js/payment.js}"></script>
 	</th:block>
 </div>
 

@@ -7,7 +7,7 @@
 				<div class="card shadow-sm">
 					<div class="card-body p-4">
 						<!-- 뉴스 이미지 -->
-						<img th:src="${'/uploads/' + starterBoard.image}" class="img-fluid w-100 mb-4"
+						<img th:src="${starterBoard.image.startsWith('/upload/') ? starterBoard.image : '/Images/' + starterBoard.image}" class="img-fluid w-100 mb-4"
 							alt="News Image" />
 
 						<!-- 뉴스 제목 -->

@@ -29,7 +29,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class StarterService {
 	private final StarterRepository starterRepository;
-	private static final String UPLOAD_DIR = "home/ubuntu/upload/";
+	private static final String UPLOAD_DIR = "/home/ubuntu/upload/";
 
 	public void create(String tile, String fileName, String content, StarterType type) {
 		StarterBoard s = new StarterBoard();

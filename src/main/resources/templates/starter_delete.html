@@ -29,7 +29,7 @@
                 <tr th:each="board : ${starterBoards}">
                     <td th:text="${board.id}"></td>
                     <td>
-                        <img th:src="${'/uploads/' + board.image}" alt="이미지 없음">
+                        <img th:src="${board.image.startsWith('/upload/') ? board.image : '/Images/' + board.image}" alt="이미지 없음">
                     </td>
                     <td th:text="${board.title}"></td>
                     

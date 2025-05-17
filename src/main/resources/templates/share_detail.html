@@ -31,47 +31,66 @@
                                 </thead>
                                 <tbody>
                                     <!-- CPU -->
-                                    <tr th:if="${share.forge.cpu != null}">
-                                        <td>CPU</td>
-                                        <td><img th:src="@{'/images/' + ${share.forge.cpu.fileName}}" alt="CPU 이미지" width="100" height="100" /></td>
-                                        <td><a href="">[[${share.forge.cpu.name}]]</a></td>
-                                        <td>[[${share.forge.cpu.price}]] 원</td>
-                                    </tr>
-                                    <!-- RAM -->
-                                    <tr th:if="${share.forge.ram != null}">
-                                        <td>RAM</td>
-                                        <td><img th:src="@{'/images/' + ${share.forge.ram.fileName}}" alt="RAM 이미지" width="100" height="100" /></td>
-                                        <td><a href="">[[${share.forge.ram.name}]]</a></td>
-                                        <td>[[${share.forge.ram.price}]] 원</td>
-                                    </tr>
-                                    <!-- GPU -->
-                                    <tr th:if="${share.forge.gpu != null}">
-                                        <td>GPU</td>
-                                        <td><img th:src="@{'/images/' + ${share.forge.gpu.fileName}}" alt="GPU 이미지" width="100" height="100" /></td>
-                                        <td><a href="">[[${share.forge.gpu.name}]]</a></td>
-                                        <td>[[${share.forge.gpu.price}]] 원</td>
-                                    </tr>
-                                    <!-- Mainboard -->
-                                    <tr th:if="${share.forge.mboard != null}">
-                                        <td>메인보드</td>
-                                        <td><img th:src="@{'/images/' + ${share.forge.mboard.fileName}}" alt="메인보드 이미지" width="100" height="100" /></td>
-                                        <td><a href="">[[${share.forge.mboard.name}]]</a></td>
-                                        <td>[[${share.forge.mboard.price}]] 원</td>
-                                    </tr>
-                                    <!-- 케이스 -->
-                                    <tr th:if="${share.forge.comCase != null}">
-                                        <td>케이스</td>
-                                        <td><img th:src="@{'/images/' + ${share.forge.comCase.fileName}}" alt="케이스 이미지" width="100" height="100" /></td>
-                                        <td><a href="">[[${share.forge.comCase.name}]]</a></td>
-                                        <td>[[${share.forge.comCase.price}]] 원</td>
-                                    </tr>
-                                    <!-- 파워 -->
-                                    <tr th:if="${share.forge.psu != null}">
-                                        <td>파워</td>
-                                        <td><img th:src="@{'/images/' + ${share.forge.psu.fileName}}" alt="파워 이미지" width="100" height="100" /></td>
-                                        <td><a href="">[[${share.forge.psu.name}]]</a></td>
-                                        <td>[[${share.forge.psu.price}]] 원</td>
-                                    </tr>
+									<!-- CPU -->
+									<tr th:if="${share.forge.cpu != null}">
+									    <td>CPU</td>
+									    <td>
+									        <img th:src="${share.forge.cpu.fileName.startsWith('/upload/') ? share.forge.cpu.fileName : '/images/' + share.forge.cpu.fileName}" alt="CPU 이미지" width="100" height="100" />
+									    </td>
+									    <td><a href="">[[${share.forge.cpu.name}]]</a></td>
+									    <td>[[${share.forge.cpu.price}]] 원</td>
+									</tr>
+
+									<!-- RAM -->
+									<tr th:if="${share.forge.ram != null}">
+									    <td>RAM</td>
+									    <td>
+									        <img th:src="${share.forge.ram.fileName.startsWith('/upload/') ? share.forge.ram.fileName : '/images/' + share.forge.ram.fileName}" alt="RAM 이미지" width="100" height="100" />
+									    </td>
+									    <td><a href="">[[${share.forge.ram.name}]]</a></td>
+									    <td>[[${share.forge.ram.price}]] 원</td>
+									</tr>
+
+									<!-- GPU -->
+									<tr th:if="${share.forge.gpu != null}">
+									    <td>GPU</td>
+									    <td>
+									        <img th:src="${share.forge.gpu.fileName.startsWith('/upload/') ? share.forge.gpu.fileName : '/images/' + share.forge.gpu.fileName}" alt="GPU 이미지" width="100" height="100" />
+									    </td>
+									    <td><a href="">[[${share.forge.gpu.name}]]</a></td>
+									    <td>[[${share.forge.gpu.price}]] 원</td>
+									</tr>
+
+									<!-- Mainboard -->
+									<tr th:if="${share.forge.mboard != null}">
+									    <td>메인보드</td>
+									    <td>
+									        <img th:src="${share.forge.mboard.fileName.startsWith('/upload/') ? share.forge.mboard.fileName : '/images/' + share.forge.mboard.fileName}" alt="메인보드 이미지" width="100" height="100" />
+									    </td>
+									    <td><a href="">[[${share.forge.mboard.name}]]</a></td>
+									    <td>[[${share.forge.mboard.price}]] 원</td>
+									</tr>
+
+									<!-- 케이스 -->
+									<tr th:if="${share.forge.comCase != null}">
+									    <td>케이스</td>
+									    <td>
+									        <img th:src="${share.forge.comCase.fileName.startsWith('/upload/') ? share.forge.comCase.fileName : '/images/' + share.forge.comCase.fileName}" alt="케이스 이미지" width="100" height="100" />
+									    </td>
+									    <td><a href="">[[${share.forge.comCase.name}]]</a></td>
+									    <td>[[${share.forge.comCase.price}]] 원</td>
+									</tr>
+
+									<!-- 파워 -->
+									<tr th:if="${share.forge.psu != null}">
+									    <td>파워</td>
+									    <td>
+									        <img th:src="${share.forge.psu.fileName.startsWith('/upload/') ? share.forge.psu.fileName : '/images/' + share.forge.psu.fileName}" alt="파워 이미지" width="100" height="100" />
+									    </td>
+									    <td><a href="">[[${share.forge.psu.name}]]</a></td>
+									    <td>[[${share.forge.psu.price}]] 원</td>
+									</tr>
+
                                 </tbody>
                             </table>
                         </div>
