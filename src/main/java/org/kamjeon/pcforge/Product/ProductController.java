@@ -45,7 +45,7 @@ import lombok.RequiredArgsConstructor;
 @Controller
 @RequiredArgsConstructor
 public class ProductController {
-	private static final String uploadDir = "src/main/resources/static/Images/";
+	private static final String UPLOAD_DIR = "home/ubuntu/upload/";
 	private final BaseProductRepository baseRep;
 	private final CPURepository cpuRep;
 	private final DiskRepository diskService;
@@ -246,21 +246,30 @@ public class ProductController {
 	}
 	
 	
-	private String saveImage(MultipartFile image) throws IOException {
+	public String saveImage(MultipartFile image) throws IOException {
 
-		if (image.isEmpty())
-			return null;
+	    if (image.isEmpty()) {
+	        return null;  // 이미지가 비었으면 null 반환
+	    }
 
-		String original = image.getOriginalFilename();
-		String fileName = System.currentTimeMillis() + "_" + original;
+	    // 원본 파일 이름과 시스템 시간 기반으로 새로운 파일 이름 생성
+	    String original = image.getOriginalFilename();
+	    String fileName = System.currentTimeMillis() + "_" + original;
 
-		File upload = new File(uploadDir);
-		if (!upload.exists())
-			upload.mkdirs();
+	    // 업로드 디렉토리 설정 (UPLOAD_DIR이 절대 경로여야 합니다)
+	    File uploadDir = new File(UPLOAD_DIR);  
+	    if (!uploadDir.exists()) {
+	        uploadDir.mkdirs();  // 디렉토리가 없으면 생성
+	    }
 
-		Path filePath = Paths.get(uploadDir + fileName);
-		Files.copy(image.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+	    // 절대 경로와 파일명을 결합하여 파일 경로 설정
+	    Path filePath = Paths.get(UPLOAD_DIR, fileName);  // UPLOAD_DIR은 절대 경로
 
-		return fileName;
+	    // 파일 복사 (입력 스트림에서 파일 시스템으로 복사)
+	    Files.copy(image.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+
+	    // 업로드된 파일에 대한 상대 경로 반환 (웹에서 접근할 수 있도록 설정)
+	    return "/upload/" + fileName;
 	}
+
 }

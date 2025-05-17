@@ -29,7 +29,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class StarterService {
 	private final StarterRepository starterRepository;
-	private static final String UPLOAD_DIR = "src/main/resources/static/uploads/";
+	private static final String UPLOAD_DIR = "home/ubuntu/upload/";
 
 	public void create(String tile, String fileName, String content, StarterType type) {
 		StarterBoard s = new StarterBoard();
@@ -51,20 +51,28 @@ public class StarterService {
 
 	public String saveIamge(MultipartFile image) throws IOException {
 
-		if (image.isEmpty())
-			return null;
+	    if (image.isEmpty()) {
+	        return null;  // 이미지가 비었으면 null 반환
+	    }
 
-		String original = image.getOriginalFilename();
-		String fileName = System.currentTimeMillis() + "_" + original;
+	    // 파일 이름 생성
+	    String original = image.getOriginalFilename();
+	    String fileName = System.currentTimeMillis() + "_" + original;
 
-		File uploadDir = new File(UPLOAD_DIR);
-		if (!uploadDir.exists())
-			uploadDir.mkdirs();
+	    // 파일 업로드 디렉토리 지정
+	    File uploadDir = new File(UPLOAD_DIR);
+	    if (!uploadDir.exists()) {
+	        uploadDir.mkdirs();  // 디렉토리가 없다면 생성
+	    }
 
-		Path filePath = Paths.get(UPLOAD_DIR + fileName);
-		Files.copy(image.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+	    // 파일 경로 결합 (UPLOAD_DIR이 절대 경로로 설정되어 있다고 가정)
+	    Path filePath = Paths.get(UPLOAD_DIR, fileName);  // 경로 결합을 Paths.get()으로 수정
 
-		return fileName;
+	    // 파일 복사
+	    Files.copy(image.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+
+	    // 업로드된 파일을 웹에서 접근할 수 있는 URL로 반환 (상대 경로로 반환)
+	    return "/upload/" + fileName;  // "/upload/" 경로로 웹에서 접근 가능하게 반환
 	}
 
 	public List<List<StarterBoard>> partitionList(List<StarterBoard> list, int chunkSize) {
