@@ -1,5 +1,6 @@
 package org.kamjeon.pcforge.Forge;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.kamjeon.pcforge.Board.Share.Share;
@@ -55,6 +56,7 @@ public class Forge {
 	private ComCase comCase;
 
 	private Integer totalPrice;
+	private String totalName;
 
 	@PrePersist
 	@PreUpdate
@@ -63,6 +65,18 @@ public class Forge {
 				+ (gpu != null ? gpu.getPrice() : 0) + (mboard != null ? mboard.getPrice() : 0)
 				+ (disk != null ? disk.getPrice() : 0) + (psu != null ? psu.getPrice() : 0)
 				+ (comCase != null ? comCase.getPrice() : 0);
+		
+		 List<String> names = new ArrayList<String>();
+		    if (cpu != null) names.add("CPU");
+		    if (ram != null) names.add("RAM");
+		    if (gpu != null) names.add("GPU");
+		    if (mboard != null) names.add("메인보드");
+		    if (disk != null) names.add("디스크");
+		    if (psu != null) names.add("파워");
+		    if (comCase != null) names.add("케이스");
+
+		    // 쉼표로 이어 붙이기
+		    this.totalName = String.join(", ", names);
 	}
 
 	// 세션 ID를 저장하기 위한 필드
