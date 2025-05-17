@@ -41,92 +41,94 @@
 	<script th:src="@{/js/scripts.js}"></script>
 	<!-- Page JS -->
 	<th:block layout:fragment="script"></th:block>
-</body>
+
 <!-- Masthead-->
-<header class="masthead">
-	<div class="container">
-		<div class="masthead-subheading">Welcome To Our Studio!</div>
-		<div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
-		<a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
+<header class="masthead bg-dark text-white py-5">
+	<div class="container text-center">
+		<div class="masthead-subheading fs-4 mb-3">Stay Informed With The Latest</div>
+		<div class="masthead-heading text-uppercase fw-bold display-4">Today's Top News</div>
+		<a class="btn btn-warning btn-xl text-uppercase mt-4" href="#news">Explore News</a>
 	</div>
 </header>
-<div class="carousel-caption d-none d-md-block mt-5 mb-5">
-	<h2 class="display-4 mb-5" style="font-weight: bold; text-shadow: 2px 2px 4px rgb(255, 255, 255);">Multiple News
-	</h2>
-</div>
-<div id="mainCarousel" class="carousel slide mt-5" data-bs-ride="carousel">
-	<div class="carousel-inner" style="height: 80vh;">
 
-		<!-- 첫 번째 슬라이드 -->
-		<th:block th:each="chunk, chunkStat : ${newsList}">
-			<div th:class="${chunkStat.first} ? 'carousel-item active' : 'carousel-item'">
-				<div class="container">
-					<div class="row g-2">
-						<!-- 2x2 그리드 형식으로 이미지 배치 -->
-						<th:block th:each="news : ${chunk}">
-							<div class="col-md-6 col-md-3"> <!-- 2x2 그리드로 설정 -->
-								<a th:href="@{|/starter/news/${news.id}|}" class="text-decoration-none text-dark">
-									<div class="image-container">
-										<img th:src="@{'/uploads/' + ${news.image}}" class="d-block w-100"
-											style="height: 350px; object-fit: cover; border-radius: .25rem;"
-											alt="뉴스 이미지">
-									</div>
-									<p class="card-text mt-2" th:text="${news.title}">뉴스 제목</p>
-								</a>
-							</div>
-						</th:block>
+
+<section id="news" class="bg-black text-white py-5">
+	<div class="container">
+		<div class="text-center mb-5">
+			<h2 class="display-4 fw-bold text-warning">Multiple News</h2>
+		</div>
+
+		<!-- 뉴스 캐러셀 -->
+		<div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+			<div class="carousel-inner">
+
+				<th:block th:each="chunk, chunkStat : ${newsList}">
+					<div th:class="${chunkStat.first} ? 'carousel-item active' : 'carousel-item'">
+						<div class="row g-4">
+							<th:block th:each="news : ${chunk}">
+								<div class="col-12 col-sm-6 col-lg-6">
+									<a th:href="@{|/starter/news/${news.id}|}" class="text-decoration-none text-white">
+										<div class="card bg-dark h-100">
+											<img th:src="@{'/uploads/' + ${news.image}}" class="card-img-top"
+												style="height: 300px; object-fit: cover;">
+											<div class="card-body">
+												<h5 class="card-title" th:text="${news.title}">뉴스 제목</h5>
+											</div>
+										</div>
+									</a>
+								</div>
+							</th:block>
+						</div>
 					</div>
-				</div>
+				</th:block>
 			</div>
-		</th:block>
-	</div>
 
-	<!-- Carousel Controls -->
-	<button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
-		<span class="carousel-control-prev-icon"></span>
-	</button>
-	<button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
-		<span class="carousel-control-next-icon"></span>
-	</button>
-</div>
+			<!-- 캐러셀 컨트롤 -->
+			<button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon"></span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+				<span class="carousel-control-next-icon"></span>
+			</button>
+		</div>
+	</div>
+</section>
 <!-- Services-->
-<section class="page-section" id="services">
+<section class="page-section bg-dark text-light" id="news">
 	<div class="container">
 		<div class="text-center">
-			<h2 class="section-heading text-uppercase">Services</h2>
-			<h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+			<h2 class="section-heading text-uppercase text-white">News Highlights</h2>
+			<h3 class="section-subheading text-muted">최신 IT 소식을 한눈에 확인해보세요.</h3>
 		</div>
 		<div class="row text-center">
-			<div class="col-md-4">
+			<div class="col-md-4 mb-5">
 				<span class="fa-stack fa-4x">
-					<i class="fas fa-circle fa-stack-2x text-primary"></i>
-					<i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+					<i class="fas fa-circle fa-stack-2x text-info"></i>
+					<i class="fas fa-microchip fa-stack-1x fa-inverse"></i>
 				</span>
-				<h4 class="my-3">E-Commerce</h4>
-				<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
-					architecto quo inventore harum ex magni, dicta impedit.</p>
+				<h4 class="my-3 text-white">하드웨어 소식</h4>
+				<p class="text-muted">최신 CPU, GPU, 메모리 등 다양한 하드웨어 정보를 빠르게 전달드립니다.</p>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-4 mb-5">
 				<span class="fa-stack fa-4x">
-					<i class="fas fa-circle fa-stack-2x text-primary"></i>
-					<i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+					<i class="fas fa-circle fa-stack-2x text-success"></i>
+					<i class="fas fa-newspaper fa-stack-1x fa-inverse"></i>
 				</span>
-				<h4 class="my-3">Responsive Design</h4>
-				<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
-					architecto quo inventore harum ex magni, dicta impedit.</p>
+				<h4 class="my-3 text-white">주요 뉴스 요약</h4>
+				<p class="text-muted">IT 업계 전반의 주요 이슈를 간단하고 명확하게 요약해드립니다.</p>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-4 mb-5">
 				<span class="fa-stack fa-4x">
-					<i class="fas fa-circle fa-stack-2x text-primary"></i>
-					<i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+					<i class="fas fa-circle fa-stack-2x text-warning"></i>
+					<i class="fas fa-chart-line fa-stack-1x fa-inverse"></i>
 				</span>
-				<h4 class="my-3">Web Security</h4>
-				<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam
-					architecto quo inventore harum ex magni, dicta impedit.</p>
+				<h4 class="my-3 text-white">시장 동향 분석</h4>
+				<p class="text-muted">제품 출시 트렌드와 가격 변동 등 다양한 시장 동향을 심층 분석합니다.</p>
 			</div>
 		</div>
 	</div>
 </section>
+
 <!-- Portfolio Grid-->
 <section class="page-section bg-light" id="portfolio">
 	<div class="container">
@@ -230,71 +232,74 @@
 	</div>
 </section>
 <!-- About-->
-<section class="page-section" id="about">
-	<div class="container">
-		<div class="text-center mb-5">
-			<h2 class="section-heading text-uppercase">Our Journey</h2>
-			<h3 class="section-subheading text-muted">작은 시작에서 혁신으로, 그리고 그 다음을 향해</h3>
-		</div>
+<section class="page-section" id="news">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-heading text-uppercase">Latest News</h2>
+      <h3 class="section-subheading text-muted">세상의 변화를 전하는 뉴스 이야기</h3>
+    </div>
 
-		<div class="row align-items-center mb-5">
-			<div class="col-md-8">
-				<h4 class="text-primary">🚀 작은 아이디어, 큰 도전</h4>
-				<p class="text-muted">
-					모든 것은 한 가지 아이디어에서 시작되었습니다.
-					<strong>우리는 "더 나은 세상을 만들 수 있을까?"</strong> 라는 질문을 던졌습니다.
-					그리고 그 대답을 찾기 위해, 우리는 가장 작은 것부터 바꾸기 시작했죠.
-				</p>
-				<blockquote class="blockquote">
-					<p class="mb-0">"모든 혁신은 작은 도전에서 시작된다."</p>
-					<footer class="blockquote-footer">창립자 이야기</footer>
-				</blockquote>
-			</div>
-			<div class="col-md-4 text-center">
-				<img class="rounded-circle img-fluid small-img" th:src="@{/starterAsset/img/about/1.jpg}" alt="..." />
-			</div>
-		</div>
+    <!-- 뉴스 아이템 1 -->
+    <div class="row align-items-center mb-5">
+      <div class="col-md-8">
+        <h4 class="text-primary">📰 혁신 기술, 미래를 바꾸다</h4>
+        <p class="text-muted">
+          최신 AI 기술이 우리 생활에 미치는 영향이 점점 커지고 있습니다.
+          <strong>기술과 인간의 조화</strong>를 통해 새로운 가능성이 열리고 있죠.
+          이 변화가 가져올 밝은 미래를 함께 살펴봅니다.
+        </p>
+        <blockquote class="blockquote">
+          <p class="mb-0">"기술은 도구일 뿐, 사람의 마음이 변화를 만듭니다."</p>
+          <footer class="blockquote-footer">기술전문가 인터뷰</footer>
+        </blockquote>
+      </div>
+      <div class="col-md-4 text-center">
+        <img class="rounded-circle img-fluid small-img" th:src="@{/starterAsset/img/about/1.jpg}" alt="기술 혁신 이미지" />
+      </div>
+    </div>
 
-		<div class="row align-items-center mb-5 flex-row-reverse">
-			<div class="col-md-8">
-				<h4 class="text-primary">🔥 실패를 넘어, 성장을 향해</h4>
-				<p class="text-muted">
-					첫 번째 도전은 실패로 끝났습니다. 하지만 그 실패 덕분에, 우리는 배웠습니다.
-					**사용자들의 진짜 문제는 무엇인가?** 어떻게 하면 우리의 기술이 그들을 도울 수 있을까?
-					시행착오 끝에, 우리는 <mark>더 나은 해결책</mark>을 찾게 되었습니다.
-				</p>
-			</div>
-			<div class="col-md-4 text-center">
-				<img class="rounded-circle img-fluid small-img" th:src="@{/starterAsset/img/about/2.jpg}" alt="..." />
-			</div>
-		</div>
+    <!-- 뉴스 아이템 2 -->
+    <div class="row align-items-center mb-5 flex-row-reverse">
+      <div class="col-md-8">
+        <h4 class="text-primary">🌐 글로벌 시장과 우리의 도전</h4>
+        <p class="text-muted">
+          전 세계가 연결되는 시대, 국내 스타트업들이 글로벌 무대에서
+          <strong>어떻게 경쟁하고 협력하는지</strong>를 조명합니다.
+          혁신과 협업의 힘이 만들어내는 새로운 기회를 이야기합니다.
+        </p>
+      </div>
+      <div class="col-md-4 text-center">
+        <img class="rounded-circle img-fluid small-img" th:src="@{/starterAsset/img/about/2.jpg}" alt="글로벌 시장 이미지" />
+      </div>
+    </div>
 
-		<div class="row align-items-center mb-5">
-			<div class="col-md-8">
-				<h4 class="text-primary">🌎 글로벌 무대를 향해</h4>
-				<p class="text-muted">
-					현재, 우리는 국내를 넘어 **전 세계적인 서비스**로 성장하고 있습니다.
-					<em>AI, 데이터 분석, 블록체인 등 다양한 기술을 결합하여 더 혁신적인 솔루션을 제공하고 있죠.</em>
-					하지만 우리의 목표는 단순한 성장이 아닙니다. <strong>사람들에게 긍정적인 영향을 주는 것</strong>,
-					그것이 우리가 나아가는 방향입니다.
-				</p>
-			</div>
-			<div class="col-md-4 text-center">
-				<img class="rounded-circle img-fluid small-img" th:src="@{/starterAsset/img/about/3.jpg}" alt="..." />
-			</div>
-		</div>
+    <!-- 뉴스 아이템 3 -->
+    <div class="row align-items-center mb-5">
+      <div class="col-md-8">
+        <h4 class="text-primary">🌿 지속 가능한 미래를 위한 노력</h4>
+        <p class="text-muted">
+          친환경 기술과 사회적 책임이 강조되는 오늘,
+          <mark>기업과 개인이 함께 만들어가는 지속 가능한 미래</mark>를 소개합니다.
+          작은 실천이 큰 변화를 만들어냅니다.
+        </p>
+      </div>
+      <div class="col-md-4 text-center">
+        <img class="rounded-circle img-fluid small-img" th:src="@{/starterAsset/img/about/3.jpg}" alt="지속 가능성 이미지" />
+      </div>
+    </div>
 
-		<div class="row text-center">
-			<div class="col-lg-12">
-				<h4 class="text-primary">🌟 우리는 함께 만들어갑니다</h4>
-				<p class="text-muted">
-					우리의 이야기는 아직 끝나지 않았습니다. 그리고,
-					<strong>이 이야기를 함께 만들어갈 당신</strong>이 있기에 우리는 더 나아갈 수 있습니다.
-					이제, <mark>함께 새로운 미래를 만들어 봅시다.</mark>
-				</p>
-			</div>
-		</div>
-	</div>
+    <!-- 뉴스 마무리 섹션 -->
+    <div class="row text-center">
+      <div class="col-lg-12">
+        <h4 class="text-primary">🗞️ 뉴스는 계속됩니다</h4>
+        <p class="text-muted">
+          우리와 함께 세상을 읽고, 생각하고, 행동하는 뉴스룸.
+          <strong>더 깊고 넓은 이야기를 전달하겠습니다.</strong>
+          앞으로도 많은 관심과 응원 부탁드립니다.
+        </p>
+      </div>
+    </div>
+  </div>
 </section>
 
 
@@ -355,5 +360,5 @@
 <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-
+</body>
 </html>
