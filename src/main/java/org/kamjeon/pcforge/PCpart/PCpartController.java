@@ -37,6 +37,11 @@ public class PCpartController {
 	private final BaseProductRepository baseRep;
 	private final CompanyRepository comRep;
 	private final UserRepository userRepository;
+	
+	@GetMapping("/main")
+	public String main() {
+		return "redirect:/shop/main/ALL";
+	}
 
 	@GetMapping("/main/{search}")
     public String main(Model model,  @PathVariable("search") String type,
