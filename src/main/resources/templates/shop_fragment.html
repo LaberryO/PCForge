@@ -37,10 +37,10 @@
 		    <div th:if="${product.files != null and !product.files.isEmpty()}">
 		        <div class="d-flex flex-column gap-4">
 		            <div th:each="fileName : ${product.files}">
-		                <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+		                <div class="card border-0 shadow-sm rounded-4">
 		                    <img th:src="@{'/Images/' + ${fileName}}"
 		                         class="img-fluid w-100"
-		                         style="object-fit: cover; max-height: 600px;"
+		                         style="object-fit: cover;"
 		                         alt="추가 이미지">
 		                </div>
 		            </div>
