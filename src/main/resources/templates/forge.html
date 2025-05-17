@@ -128,9 +128,6 @@
 									선택된 제품<br>
 									<th:block th:if="${itemId != null}" th:text="${itemId}"></th:block>
 								</div>
-								<div class="card-body">
-									내용
-								</div>
 								<div class="card-footer">
 									<a th:href="@{/forge/buy}" class="btn btn-outline-success">구매</a>
 									<a th:if="${statusTemp != 'disk'}" th:href="@{|/forge/next/${statusTemp}|}" class="btn btn-outline-primary">다음</a>
