@@ -139,13 +139,14 @@ function updateDataContent(status, data, target) {
 	let isGPU = null;
 
 	let itemImage = data.fileName;
+	console.log(itemImage);
 
 	if (!itemImage || itemImage.trim() === "") {
 		itemImage = "/assets/img/exam-cpu.jpg";
 	}
 
 	target.querySelector("#item_id").value = data.id;
-	target.querySelector("#item_image").src = itemImage;
+	target.querySelector("#item_image").src = itemImage.includes("/upload/") ? itemImage : `/Images/${itemImage}`;
 
 	// color
 	let cGreen = "rgba(0, 255, 0, 0.3)";
