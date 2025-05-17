@@ -4,11 +4,7 @@
 			<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
 				<div class="sb-sidenav-menu">
 					<div class="nav">
-						<div class="sb-sidenav-menu-heading">Home</div>
-						<a class="nav-link" th:href="@{/sub}">
-							<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-							대시보드
-						</a>
+						
 						<div sec:authorize="hasRole('ROLE_Admin')" class="sb-sidenav-menu-heading">Admin</div>
 						<a class="nav-link" sec:authorize="hasRole('ROLE_Admin')" th:href="@{/starter/create}">
 							<div class="sb-nav-link-icon"><i class="fas fa-cogs"></i></div>
